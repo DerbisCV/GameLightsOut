@@ -1,0 +1,126 @@
+﻿@using LightsOut.Services.Models;
+
+@model GameBoardModel
+
+@{
+    ViewData["Title"] = "Lights Out Game";
+    int rowNo = 1;
+    int colNo = 1;
+}
+
+<input id="BoardSize" type="hidden" value="@Model.BoardSize" data-boardSize="@Model.BoardSize">
+
+<div class='row'>
+    <div class='col-4'>
+        <div class="card">
+            <h5 class="card-header">@ViewData["Title"]</h5>
+            <div class='card-body'>
+                @foreach (var rowModel in Model.Rows)
+                {
+                    <div class='row'>
+                        <div class='col-12 btn-group'>
+                            @foreach (var celValue in rowModel)
+                            {
+                                <button type="button" class='btn btn-game btn-@rowNo-@colNo @(celValue ? "btn-warning" : "btn-outline-primary")' data-row='@rowNo' data-col='@colNo'> * </button>
+                                colNo++;
+                            }
+                        </div>
+                    </div>
+                    rowNo++;
+                    colNo = 1;
+                }
+            </div>
+            <div class='card-footer'>
+                <a href='@Url.Action("GameLightsOut", "Home")' class="btn btn-primary">New Game</a>
+            </div>
+        </div>
+        <hr />
+        <p>
+            LightsOut is based on a deceptively simple concept. Clicking on a cell toggles that cell and each of its immediate neighbors. The goal is to turn out all the lights, ideally with the minimum number of clicks.
+        </p>
+
+        <hr />
+        <a href='https://www.logicgamesonline.com/lightsout/' target='_blank'>References</a>
+    </div>
+    <div class='col-8'>
+        <div class="card">
+            <div class="card-header">How To Solve LightsOut Puzzles</div>
+            <div class="card-body">
+                <p>
+                    All valid LightsOut puzzles can be solved without clicking on any cell twice. This is because clikcing on a cell twice is the same as not clicking it at all.
+                </p>
+                <h6>Chase The Lights</h6>
+                <p>The easiest way to solve LightsOut puzzles is to use a method called Chase The Lights. Starting with the second row, click on every cell that has a light on in the row above it. This will turn off all the lights in that row. Continue with each successive row until the only remaining lights are in the final row.</p>
+
+                <h6>Pattern Lookup</h6>
+                <p>Now that you only have lights on in the final row, use the lookup table below and find the pattern of lights. This will tell you which lights to click in the top row. When you chase the lights this time, the bottom row will end up dark, just like the rest of the puzzle.</p>
+                <table class="clicks" border='1'>
+                    <tbody>
+                        <tr><th>Bottom Row Lights</th><th>Top Row Clicks</th></tr>
+                        <tr><td>..***</td><td>...+.</td></tr>
+                        <tr><td>.*.*.</td><td>.+..+</td></tr>
+                        <tr><td>.**.*</td><td>+....</td></tr>
+                        <tr><td>*...*</td><td>...++</td></tr>
+                        <tr><td>*.**.</td><td>....+</td></tr>
+                        <tr><td>**.**</td><td>..+..</td></tr>
+                        <tr><td>***..</td><td>.+...</td></tr>
+                    </tbody>
+                </table>
+                <p>For a 9x9 puzzle, you will either end up with a dark bottom row, or *.*.*.*.* as your pattern. If you have the latter, click the top left cell, and chase it to turn out all the lights.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.btn-game').click(function () {
+            var rowNo = $(this).data('row');
+            var colNo = $(this).data('col');
+            var arr = getBtnAdjacent(rowNo, colNo);
+
+            for (let elm of arr) {
+                fnBtnToggle(elm);
+            }
+
+            var gameCompleted = $('.btn-game.btn-outline-primary').length == $('.btn-game').length;
+            if (gameCompleted) {
+                alert('Congratulations! You have turned off all the lights');
+            }
+        });
+
+        function fnBtnToggle(elmSelector) {
+            var $jqElm = $(elmSelector);
+
+            var isOn = $jqElm.hasClass('btn-warning');
+            if (isOn) {
+                $jqElm
+                    .removeClass('btn-warning')
+                    .addClass('btn-outline-primary');
+            }
+            else {
+                $jqElm
+                    .removeClass('btn-outline-primary')
+                    .addClass('btn-warning');
+            }
+        }
+
+        function getBtnAdjacent(row, col) {
+            var rowNo = parseInt(row);
+            var colNo = parseInt(col);
+
+            var arr = [];
+            arr.push('.btn-' + rowNo + '-' + colNo);
+            arr.push('.btn-' + rowNo + '-' + (colNo-1).toString());
+            arr.push('.btn-' + rowNo + '-' + (colNo+1).toString());
+            arr.push('.btn-' + (rowNo-1).toString() + '-' + colNo);
+            arr.push('.btn-' + (rowNo+1).toString() + '-' + colNo);
+
+            //console.log(arr);
+            return arr;
+        }
+    });
+</script>
+}
