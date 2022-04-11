@@ -1,18 +1,18 @@
-﻿using LightsOut.Services.Contracts;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Solvtio.Services.Contracts;
 using System;
 
-namespace LightsOut.API.Controllers
+namespace Solvtio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class SettingController : ControllerBase
+    public class ConfiguracionController : ControllerBase
     {
-        private readonly ILogger<LightsOutController> _logger;
-        private readonly ILightsOutService _lightsOutService;
+        private readonly ILogger<ConfiguracionController> _logger;
+        private readonly IConfiguracionService _lightsOutService;
 
-        public SettingController(ILogger<LightsOutController> logger, ILightsOutService lightsOutService)
+        public ConfiguracionController(ILogger<ConfiguracionController> logger, IConfiguracionService lightsOutService)
         {
             _logger = logger;
             _lightsOutService = lightsOutService;
@@ -23,7 +23,7 @@ namespace LightsOut.API.Controllers
         {
             try
             {
-                return Ok(_lightsOutService.GetAllLightsOutSetting());
+                return Ok(_lightsOutService.GetAllConfiguracion());
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace LightsOut.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
-            var setting = _lightsOutService.GetLightsOutSettingByNameAsync(id).Result;
+            var setting = _lightsOutService.GetConfiguracionByNameAsync(id).Result;
             if (setting == null)
             {
                 var errorMessage = $"The '{id}' setting does not exist!";

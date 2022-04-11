@@ -69,7 +69,7 @@ namespace Solvtio.Models
 
         #region Properties virtual ICollection
 
-        public virtual ICollection<Hip_TipoInmueble> HipTipoInmuebleSet { get; set; }
+        //public virtual ICollection<Hip_TipoInmueble> HipTipoInmuebleSet { get; set; }
 
         #endregion
 

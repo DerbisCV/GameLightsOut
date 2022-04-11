@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Solvtio.Data\Solvtio.Data.csproj" />
     <ProjectReference Include="..\Solvtio.Services\Solvtio.Services.csproj" />
   </ItemGroup>
 

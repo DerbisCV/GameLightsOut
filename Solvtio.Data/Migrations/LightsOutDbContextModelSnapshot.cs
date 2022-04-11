@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Solvtio.Data;
 
-namespace LightsOut.Services.Migrations
+namespace Solvtio.Data.Migrations
 {
-    [DbContext(typeof(LightsOutDbContext))]
+    [DbContext(typeof(SolvtioDbContext))]
     partial class LightsOutDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

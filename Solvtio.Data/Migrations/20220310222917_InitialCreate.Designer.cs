@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace LightsOut.Services.Migrations
+namespace Solvtio.Data.Migrations
 {
-    [DbContext(typeof(LightsOutDbContext))]
-    [Migration("20220310222917_InitialCreate")]
+    [DbContext(typeof(SolvtioDbContext))]
+    [Migration("202006261125114_AutomaticMigration")] //202006261125114_AutomaticMigration 
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

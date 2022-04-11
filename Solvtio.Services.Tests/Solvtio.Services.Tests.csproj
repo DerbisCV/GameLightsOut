@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Solvtio.Common\Solvtio.Common.csproj" />
+    <ProjectReference Include="..\Solvtio.Data\Solvtio.Data.csproj" />
+    <ProjectReference Include="..\Solvtio.Models\Solvtio.Models.csproj" />
     <ProjectReference Include="..\Solvtio.Services\Solvtio.Services.csproj" />
   </ItemGroup>
 
