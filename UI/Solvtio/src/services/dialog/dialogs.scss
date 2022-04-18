@@ -1,0 +1,36 @@
+@mixin modal_default {
+    display: block;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    .modal-body {
+      max-height: 70vh;
+      overflow: auto;
+    }
+    .modal-header {
+      background: var(--header-bgcolor);
+      color: var(--header-color);
+      cursor: move;
+  
+      .modal-title {
+        span {
+          float: left;
+          margin: 2px 0.5rem 0 0;
+        }
+      }
+    }
+    .modal-footer {
+      button {
+        min-width: 100px;
+      }
+    }
+  }
+  
+  .modal-lg {
+    width: 70vw !important;
+    max-width: unset !important;
+  }
+
+alert-dialog,
+confirm-dialog {
+    @include modal_default();
+}
+

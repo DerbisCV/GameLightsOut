@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@types/rx": "^4.1.2"
+  }
+}

@@ -1,0 +1,19 @@
+<div cdkDrag cdkDragRootElement=".modal-content">
+    <div class="modal-header" cdkDragHandle>
+        <h4 class="modal-title pull-left">
+            {{data.title}}
+        </h4>
+        <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="ok()">
+            <span aria-hidden="true">&times;</span>
+        </button> -->
+    </div>
+    <div class="modal-body">
+        <p [innerHtml]="data.message"></p>
+    </div>
+    <div class="modal-footer">
+        <button *ngIf="hasButton(1)" type="button" class="btn btn-outline-primary px-4" (click)="action(1)">{{'Ok'}}</button>
+        <button *ngIf="hasButton(2)" type="button" class="btn btn-outline-{{data.acceptType}} px-4" (click)="action(2)">{{'Yes'}}</button>
+        <button *ngIf="hasButton(4)" type="button" class="btn btn-outline-secondary px-4" (click)="action(4)">{{'Cancel'}}</button>
+        <button *ngIf="hasButton(8)" type="button" class="btn btn-outline-secondary px-4" (click)="action(8)">{{'No'}}</button>
+    </div>
+</div>

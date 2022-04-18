@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7175728F-9A18-4866-96FC-43B3AAE17B27}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90 - Test", "90 - Test", "{7175728F-9A18-4866-96FC-43B3AAE17B27}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solvtio.Services", "Solvtio.Services\Solvtio.Services.csproj", "{C67B3683-2B9D-49E3-9635-81C413419ACE}"
 EndProject
@@ -15,11 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7-Common", "7-Common", "{50
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solvtio.Common", "Solvtio.Common\Solvtio.Common.csproj", "{727D9745-80B2-4B8A-9534-2074DF54CCC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solvtio.Models", "Solvtio.Models\Solvtio.Models.csproj", "{B9C00653-3D7F-49DA-9366-B6E134152EFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solvtio.Models", "Solvtio.Models\Solvtio.Models.csproj", "{B9C00653-3D7F-49DA-9366-B6E134152EFB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Data", "5-Data", "{7C286E94-E08F-4ED2-B4FD-70B2CFAB0D20}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Service - Data", "5-Service - Data", "{7C286E94-E08F-4ED2-B4FD-70B2CFAB0D20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solvtio.Data", "Solvtio.Data\Solvtio.Data.csproj", "{E7A725B0-798E-4101-A68D-D0A03F9577AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-API", "1-API", "{2EF727BA-B7AB-4AC9-BAE9-3F8A1490F3C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{050B16EF-0371-417D-9B8B-905B13DA2BF2} = {2EF727BA-B7AB-4AC9-BAE9-3F8A1490F3C2}
 		{17DC2986-2F3E-482A-80BE-44FBC2ECA20F} = {7175728F-9A18-4866-96FC-43B3AAE17B27}
 		{727D9745-80B2-4B8A-9534-2074DF54CCC4} = {502E9062-059C-4ECC-B17E-8EB1154A8536}
 		{B9C00653-3D7F-49DA-9366-B6E134152EFB} = {502E9062-059C-4ECC-B17E-8EB1154A8536}
