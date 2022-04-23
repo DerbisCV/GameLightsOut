@@ -11,20 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialog } from '../services/dialog/confirm.dialog';
 import { AlertDialog } from '../services/dialog/alert.dialog';
 
-import { DataTablesModule } from 'angular-datatables';
-import { TableModule } from 'ngx-easy-table';
-
 @NgModule({
   declarations: [AppComponent, ConfirmDialog, AlertDialog],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DataTablesModule,
-    TableModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [BsModalService],
   bootstrap: [AppComponent],
 })

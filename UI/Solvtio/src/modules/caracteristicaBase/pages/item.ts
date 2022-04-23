@@ -24,20 +24,33 @@ export class CaracteristicaBaseItemComponent implements OnInit {
     private route: ActivatedRoute,
     public elementRef: ElementRef
   ) {
+    console.log('constructor id=' + this.route.snapshot.params['id']);
     this.createFormData();
   }
 
   async ngOnInit() {
+    console.log('ngOnInit id=' + this.route.snapshot.params['id']);
     const id = this.route.snapshot.params['id'];
     this.caracteristicaBase = !!id
       ? await this.api.srvApiCaracteristicaBase.getById(id)
       : new CaracteristicaBase();
   }
 
-  createFormData() {
-    this.formData = this.fb.group({
-      nombre: [''],
-      apellidos: [''],
-    });
+  async createFormData() {
+    const id = this.route.snapshot.params['id'];
+    this.caracteristicaBase = !!id
+      ? await this.api.srvApiCaracteristicaBase.getById(id)
+      : new CaracteristicaBase();
+
+    // let controlsConfig = {
+    //   nombre: [this.caracteristicaBase.nombre],
+    //   apellidos: [''],
+    // };
+    let controlsConfig = this.caracteristicaBase;
+    this.formData = this.fb.group(controlsConfig);
+  }
+
+  saveData() {
+    console.log(this.formData);
   }
 }

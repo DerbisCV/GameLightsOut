@@ -5,13 +5,21 @@ import {
   CaracteristicaBaseListComponent,
 } from './pages';
 import { RoutingModule } from './routing';
+import { TableModule } from 'ngx-easy-table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     CaracteristicaBaseListComponent,
     CaracteristicaBaseItemComponent,
   ],
-  imports: [CommonModule, RoutingModule],
+  imports: [
+    CommonModule,
+    RoutingModule,
+    TableModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [CaracteristicaBaseListComponent, CaracteristicaBaseItemComponent],
   providers: [],
 })
