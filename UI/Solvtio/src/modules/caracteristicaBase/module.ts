@@ -6,8 +6,8 @@ import {
   CaracteristicaBaseListComponent,
 } from './pages';
 import { RoutingModule } from './routing';
-import { TableModule } from 'ngx-easy-table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TableModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   exports: [CaracteristicaBaseListComponent, CaracteristicaBaseItemComponent],
   providers: [],

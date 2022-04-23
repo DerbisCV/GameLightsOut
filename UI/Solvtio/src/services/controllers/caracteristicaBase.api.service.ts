@@ -33,10 +33,13 @@ export class CaracteristicaBaseApiService {
     return this.api.post<CaracteristicaBase>(this.pathApi, item);
   }
 
-  public async udpate(item: CaracteristicaBase, id: number) {
-    item.id = id;
-    return this.api.put<CaracteristicaBase>(`${this.pathApi}/${id}`, item);
+  public async udpate(item: CaracteristicaBase) {
+    return this.api.put<CaracteristicaBase>(`${this.pathApi}/${item.id}`, item);
   }
+  // public async udpate(item: CaracteristicaBase, id: number) {
+  //   item.id = id;
+  //   return this.api.put<CaracteristicaBase>(`${this.pathApi}/${id}`, item);
+  // }
 
   public async delete(id: string) {
     return this.api.delete(`${this.pathApi}/${id}`);

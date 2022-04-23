@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Solvtio.Models.Model;
 
-
 namespace Solvtio.Models
 {
-    public class Alq_Expediente
+    public class Alq_Expediente : ExpedienteExt
 	{
 		#region Constructors
 

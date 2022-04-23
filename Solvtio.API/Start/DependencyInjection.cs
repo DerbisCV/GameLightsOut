@@ -18,6 +18,8 @@ namespace Solvtio.API.Start
                 .AddTransient<IConfiguracionService, ConfiguracionService>()
                 .AddTransient<IConfiguracionRepository, ConfiguracionRepository>()
                 .AddTransient<ICaracteristicaBaseRepository, CaracteristicaBaseRepository>()
+                .AddTransient<IExpedienteRepository, ExpedienteRepository>()
+                .AddTransient<IAlquilerRepository, AlquilerRepository>()
                 //
                 ;
 
