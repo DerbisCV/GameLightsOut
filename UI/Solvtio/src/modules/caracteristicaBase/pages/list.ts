@@ -6,6 +6,8 @@ import { ApiService } from '../../../services/api.service';
 // import { BrowserModule } from '@angular/platform-browser';
 import { DataTablesModule } from 'angular-datatables';
 
+import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
+
 @Component({
   selector: 'page-caracteristicaBase-list',
   templateUrl: './list.html',
@@ -19,7 +21,39 @@ export class CaracteristicaBaseListComponent implements OnInit {
     pageLength: 2,
   };
 
-  constructor(private api: ApiService) {}
+  public configuration: Config;
+  public columns: Columns[];
+
+  public data = [
+    {
+      phone: '+1 (934) 551-2224',
+      age: 20,
+      address: { street: 'North street', number: 12 },
+      company: 'ZILLANET',
+      name: 'Valentine Webb',
+      isActive: false,
+    },
+    {
+      phone: '+1 (948) 460-3627',
+      age: 31,
+      address: { street: 'South street', number: 12 },
+      company: 'KNOWLYSIS',
+      name: 'Heidi Duncan',
+      isActive: true,
+    },
+  ];
+
+  constructor(private api: ApiService) {
+    this.columns = [
+      { key: 'phone', title: 'Phone' },
+      { key: 'age', title: 'Age' },
+      { key: 'company', title: 'Company' },
+      { key: 'name', title: 'Name' },
+      { key: 'isActive', title: 'STATUS' },
+    ];
+    this.configuration = { ...DefaultConfig };
+    this.configuration.searchEnabled = true;
+  }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -28,6 +62,17 @@ export class CaracteristicaBaseListComponent implements OnInit {
     };
 
     this.getAllCaracteristicasBase();
+
+    this.configuration = { ...DefaultConfig };
+    this.configuration.searchEnabled = true;
+    // ... etc.
+    this.columns = [
+      { key: 'phone', title: 'Phone' },
+      { key: 'age', title: 'Age' },
+      { key: 'company', title: 'Company' },
+      { key: 'name', title: 'Name' },
+      { key: 'isActive', title: 'STATUS' },
+    ];
   }
 
   async getAllCaracteristicasBase() {
