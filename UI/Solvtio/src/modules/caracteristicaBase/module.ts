@@ -1,3 +1,4 @@
+import { TableModule } from 'ngx-easy-table';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -11,7 +12,7 @@ import { RoutingModule } from './routing';
     CaracteristicaBaseListComponent,
     CaracteristicaBaseItemComponent,
   ],
-  imports: [CommonModule, RoutingModule],
+  imports: [CommonModule, RoutingModule, TableModule],
   exports: [CaracteristicaBaseListComponent, CaracteristicaBaseItemComponent],
   providers: [],
 })

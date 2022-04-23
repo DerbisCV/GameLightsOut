@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CaracteristicaBaseSearch } from 'src/models';
 import { ApiService } from '../../../services/api.service';
-
-// import { NgModule } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
-import { DataTablesModule } from 'angular-datatables';
-
-import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
+import {  DefaultConfig } from 'ngx-easy-table';
 
 @Component({
   selector: 'page-caracteristicaBase-list',
@@ -16,13 +11,14 @@ import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 })
 export class CaracteristicaBaseListComponent implements OnInit {
   caracteristicaBaseSearch!: CaracteristicaBaseSearch;
-  public dtOptions: DataTables.Settings = {
-    pagingType: 'full_numbers',
-    pageLength: 2,
-  };
-
-  public configuration: Config;
-  public columns: Columns[];
+  configuration = { ...DefaultConfig };
+  public columns = [
+    { key: 'phone', title: 'Phone' },
+    { key: 'age', title: 'Age' },
+    { key: 'company', title: 'Company' },
+    { key: 'name', title: 'Name' },
+    { key: 'isActive', title: 'STATUS' },
+  ];;
 
   public data = [
     {
@@ -51,16 +47,12 @@ export class CaracteristicaBaseListComponent implements OnInit {
       { key: 'name', title: 'Name' },
       { key: 'isActive', title: 'STATUS' },
     ];
-    this.configuration = { ...DefaultConfig };
-    this.configuration.searchEnabled = true;
+    this.configuration.searchEnabled = 
+    this.configuration.exportEnabled = 
+    this.configuration.serverPagination = true;
   }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 2,
-    };
-
     this.getAllCaracteristicasBase();
 
     this.configuration = { ...DefaultConfig };
@@ -76,9 +68,9 @@ export class CaracteristicaBaseListComponent implements OnInit {
   }
 
   async getAllCaracteristicasBase() {
-    this.caracteristicaBaseSearch = await this.api.srvApiCaracteristicaBase.get(
-      new CaracteristicaBaseSearch()
-    );
+    // this.caracteristicaBaseSearch = await this.api.srvApiCaracteristicaBase.get(
+    //   new CaracteristicaBaseSearch()
+    // );
 
     // alert(this.caracteristicaBaseSearch.result.length);
     // $('#example').DataTable();

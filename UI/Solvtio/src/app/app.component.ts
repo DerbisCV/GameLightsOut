@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { DialogResult } from 'src/const/dialogResult.enum';
 import { CaracteristicaBaseItemComponent } from 'src/modules/caracteristicaBase/pages';
 import { DialogService } from 'src/services/dialog/dialog.service';
@@ -6,7 +6,8 @@ import { DialogService } from 'src/services/dialog/dialog.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   constructor(private dialogService: DialogService) {}
