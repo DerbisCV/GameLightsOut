@@ -1,3 +1,4 @@
+import { TableModule } from 'ngx-easy-table';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
