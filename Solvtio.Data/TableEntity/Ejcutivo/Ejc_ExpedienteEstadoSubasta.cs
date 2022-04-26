@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
@@ -19,6 +20,9 @@ namespace Solvtio.Models
         #region Properties
 
         public int IdExpedienteEstado { get; set; }
+        [ForeignKey("IdExpedienteEstado")]
+        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+        
         public int IdExpediente { get; set; }
         public DateTime? FechaCelebracion1 { get; set; }
         public DateTime? FechaCelebracion2 { get; set; }
@@ -40,7 +44,7 @@ namespace Solvtio.Models
         public int? IdDocumentoOposicionSenalamientoVista { get; set; }
         public int? IdDocumentoOposicionResolucion { get; set; }
 
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+       
 
         #endregion
 

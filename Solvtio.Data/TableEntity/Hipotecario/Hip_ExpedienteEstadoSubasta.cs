@@ -18,7 +18,11 @@ namespace Solvtio.Models
 		#region Properties
 
 		public int ExpedienteEstadoId { get; set; }
-        public DateTime? FechaSolicitudSubasta { get; set; }
+
+		[ForeignKey("ExpedienteEstadoId")]
+		public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+        
+		public DateTime? FechaSolicitudSubasta { get; set; }
         public int TipoModeloSubastaId { get; set; }
         public int? DocumentoSolicitudSubastaId { get; set; }
         public int? DocumentoCelebracionSubastaId1 { get; set; }
@@ -91,17 +95,17 @@ namespace Solvtio.Models
 
 		#region Properties virtual
 
-		public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento4 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento5 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento6 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento7 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento8 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento9 { get; set; }
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+		//public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento4 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento5 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento6 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento7 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento8 { get; set; }
+		//      public virtual ExpedienteDocumento ExpedienteDocumento9 { get; set; }
+
         public virtual Hip_TipoSubasta Hip_TipoSubasta { get; set; }
         public virtual Hip_TipoTitulizado Hip_TipoTitulizado { get; set; }
 

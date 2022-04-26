@@ -12,7 +12,7 @@ namespace Solvtio.Models
 		public Alq_Expediente()
         {
             Alq_Expediente_Contratos = new List<Alq_Expediente_Contrato>();
-            Ejc_Expediente1 = new List<Ejc_Expediente>();
+            //Ejc_Expediente1 = new List<Ejc_Expediente>();
             IdAccionPropuesta = 1;
         }
 
@@ -88,13 +88,13 @@ namespace Solvtio.Models
         public virtual Gnr_TipoEstadoCliente Gnr_TipoEstadoCliente { get; set; }
 
         public int? IdExpedienteEjc { get; set; }
-        [ForeignKey("IdExpedienteEjc")]
-        public virtual Ejc_Expediente Ejc_Expediente { get; set; }
+        //[ForeignKey("IdExpedienteEjc")]
+        //public virtual Ejc_Expediente Ejc_Expediente { get; set; }
 
         public int? IdExpedientePadre { get; set; }
 
         public virtual ICollection<Alq_Expediente_Contrato> Alq_Expediente_Contratos { get; set; }
-        public virtual ICollection<Ejc_Expediente> Ejc_Expediente1 { get; set; }
+        //public virtual ICollection<Ejc_Expediente> Ejc_Expediente1 { get; set; }
 
         #endregion
 

@@ -1,40 +1,39 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class FacturaMap : EntityTypeConfiguration<Factura>
+    public class FacturaMap : IEntityTypeConfiguration<Factura>
     {
-        public FacturaMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdFactura);
+
+            public void Configure(EntityTypeBuilder<Factura> builder) {
+           builder.HasKey(t => t.IdFactura);
 
             // Properties
-            Property(t => t.NoFactura)
+           builder.Property(t => t.NoFactura)
                 .HasMaxLength(20);
 
-            Property(t => t.Usuario)
+           builder.Property(t => t.Usuario)
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            ToTable("Factura");
-            Property(t => t.IdFactura).HasColumnName("IdFactura");
-            Property(t => t.IdCliente).HasColumnName("IdCliente");
-            Property(t => t.HitoFacturacion).HasColumnName("HitoFacturacion");
-            Property(t => t.NoFactura).HasColumnName("NoFactura");
-            Property(t => t.Fecha).HasColumnName("Fecha");
-            Property(t => t.BaseImponible).HasColumnName("BaseImponible");
-            Property(t => t.Iva).HasColumnName("Iva");
-            Property(t => t.ImporteTotal).HasColumnName("ImporteTotal");
-            Property(t => t.Observaciones).HasColumnName("Observaciones");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
-            Property(t => t.Usuario).HasColumnName("Usuario");
-            Property(t => t.Aprobada).HasColumnName("Aprobada");
+           builder.ToTable("Factura");
+           builder.Property(t => t.IdFactura).HasColumnName("IdFactura");
+           builder.Property(t => t.IdCliente).HasColumnName("IdCliente");
+           builder.Property(t => t.HitoFacturacion).HasColumnName("HitoFacturacion");
+           builder.Property(t => t.NoFactura).HasColumnName("NoFactura");
+           builder.Property(t => t.Fecha).HasColumnName("Fecha");
+           builder.Property(t => t.BaseImponible).HasColumnName("BaseImponible");
+           builder.Property(t => t.Iva).HasColumnName("Iva");
+           builder.Property(t => t.ImporteTotal).HasColumnName("ImporteTotal");
+           builder.Property(t => t.Observaciones).HasColumnName("Observaciones");
+           builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+           builder.Property(t => t.Usuario).HasColumnName("Usuario");
+           builder.Property(t => t.Aprobada).HasColumnName("Aprobada");
 
             // Relationships
-            HasRequired(t => t.Gnr_Cliente)
-                .WithMany(t => t.Facturas)
-                .HasForeignKey(d => d.IdCliente);
+            //HasRequired(t => t.Gnr_Cliente)
+                //  .WithMany(t => t.Facturas)
+                //  .HasForeignKey(d => d.IdCliente);
 
         }
     }

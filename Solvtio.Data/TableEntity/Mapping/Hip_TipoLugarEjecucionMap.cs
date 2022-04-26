@@ -1,24 +1,24 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Hip_TipoLugarEjecucionMap : EntityTypeConfiguration<Hip_TipoLugarEjecucion>
+    public class Hip_TipoLugarEjecucionMap : IEntityTypeConfiguration<Hip_TipoLugarEjecucion>
     {
         public Hip_TipoLugarEjecucionMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoLugarEjecucion);
+           } public void Configure(EntityTypeBuilder<Hip_TipoLugarEjecucion> builder) {
+           builder.HasKey(t => t.IdTipoLugarEjecucion);
 
             // Properties
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .IsRequired()
                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            ToTable("Hip_TipoLugarEjecucion");
-            Property(t => t.IdTipoLugarEjecucion).HasColumnName("IdTipoLugarEjecucion");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
-            Property(t => t.Activo).HasColumnName("Activo");
+           builder.ToTable("Hip_TipoLugarEjecucion");
+           builder.Property(t => t.IdTipoLugarEjecucion).HasColumnName("IdTipoLugarEjecucion");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.Property(t => t.Activo).HasColumnName("Activo");
         }
     }
 }

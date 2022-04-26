@@ -1,12 +1,12 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Hip_PartidoJudicialMap : EntityTypeConfiguration<PartidoJudicial>
+    public class Hip_PartidoJudicialMap : IEntityTypeConfiguration<PartidoJudicial>
     {
         public Hip_PartidoJudicialMap()
         {
-            // Primary Key
+           } public void Configure(EntityTypeBuilder<PartidoJudicial> builder) {
             //HasKey(t => t.IdPartidoJudicial);
 
             // Properties

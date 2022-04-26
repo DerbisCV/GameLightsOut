@@ -1,31 +1,31 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class vGnr_NombresCamposMap : EntityTypeConfiguration<vGnr_NombresCampos>
-    {
-        public vGnr_NombresCamposMap()
-        {
-            // Primary Key
-            HasKey(t => new { t.Tabla, t.column_id });
+    //public class vGnr_NombresCamposMap : IEntityTypeConfiguration<vGnr_NombresCampos>
+    //{
+    //    public vGnr_NombresCamposMap()
+    //    {
+    //       } public void Configure(EntityTypeBuilder<object> builder) {
+    //       builder.HasKey(t => new { t.Tabla, t.column_id });
 
-            // Properties
-            Property(t => t.Tabla)
-                .IsRequired()
-                .HasMaxLength(128);
+    //        // Properties
+    //       builder.Property(t => t.Tabla)
+    //            .IsRequired()
+    //            .HasMaxLength(128);
 
-            Property(t => t.Columna)
-                .HasMaxLength(128);
+    //       builder.Property(t => t.Columna)
+    //            .HasMaxLength(128);
 
-            Property(t => t.column_id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.column_id)
+    //            .ValueGeneratedNever();
 
-            // Table & Column Mappings
-            ToTable("vGnr_NombresCampos");
-            Property(t => t.Tabla).HasColumnName("Tabla");
-            Property(t => t.Columna).HasColumnName("Columna");
-            Property(t => t.column_id).HasColumnName("column_id");
-        }
-    }
+    //        // Table & Column Mappings
+    //       builder.ToTable("vGnr_NombresCampos");
+    //       builder.Property(t => t.Tabla).HasColumnName("Tabla");
+    //       builder.Property(t => t.Columna).HasColumnName("Columna");
+    //       builder.Property(t => t.column_id).HasColumnName("column_id");
+    //    }
+    //}
 }

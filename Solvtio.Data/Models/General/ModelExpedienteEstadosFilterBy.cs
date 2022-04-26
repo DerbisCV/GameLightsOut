@@ -29,10 +29,11 @@ namespace Solvtio.Esp.Datos
 
         public void Refresh()
         {
-            LstAbogados = LstExpedienteEstado
-                .Select(x => x.AbogadoActual).ToList()
-                .Distinct()
-                .ToList();
+            //LstAbogados = LstExpedienteEstado
+            //    //.Select(x => x.AbogadoActual)
+            //    //.ToList()
+            //    .Distinct()
+            //    .ToList();
         }
 
         #endregion

@@ -1,34 +1,34 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Hip_ExpedienteEstadoNegociacionPosesionMap : EntityTypeConfiguration<Hip_ExpedienteEstadoNegociacionPosesion>
+    public class Hip_ExpedienteEstadoNegociacionPosesionMap : IEntityTypeConfiguration<Hip_ExpedienteEstadoNegociacionPosesion>
     {
         public Hip_ExpedienteEstadoNegociacionPosesionMap()
         {
-            // Primary Key
-            HasKey(t => t.ExpedienteEstadoId);
+           } public void Configure(EntityTypeBuilder<Hip_ExpedienteEstadoNegociacionPosesion> builder) {
+           builder.HasKey(t => t.ExpedienteEstadoId);
 
             // Properties
-            Property(t => t.ExpedienteEstadoId)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.ExpedienteEstadoId)
+                .ValueGeneratedNever();
 
             // Table & Column Mappings
-            ToTable("Hip_ExpedienteEstadoNegociacionPosesion");
-            Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
-            Property(t => t.DatosContacto).HasColumnName("DatosContacto");
-            Property(t => t.Incidencias).HasColumnName("Incidencias");
-            Property(t => t.NegociacionFinalizadaPor).HasColumnName("NegociacionFinalizadaPor");
-            Property(t => t.FechaPropuestaEnviada).HasColumnName("FechaPropuestaEnviada");
-            Property(t => t.FechaPropuestaAceptada).HasColumnName("FechaPropuestaAceptada");
-            Property(t => t.FechaCartaPagoEnviada).HasColumnName("FechaCartaPagoEnviada");
-            Property(t => t.FechaCartaPagoFirmada).HasColumnName("FechaCartaPagoFirmada");
-            Property(t => t.FechaCartaPagoEnviadaAlProcurador).HasColumnName("FechaCartaPagoEnviadaAlProcurador");
+           builder.ToTable("Hip_ExpedienteEstadoNegociacionPosesion");
+           builder.Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
+           builder.Property(t => t.DatosContacto).HasColumnName("DatosContacto");
+           builder.Property(t => t.Incidencias).HasColumnName("Incidencias");
+           builder.Property(t => t.NegociacionFinalizadaPor).HasColumnName("NegociacionFinalizadaPor");
+           builder.Property(t => t.FechaPropuestaEnviada).HasColumnName("FechaPropuestaEnviada");
+           builder.Property(t => t.FechaPropuestaAceptada).HasColumnName("FechaPropuestaAceptada");
+           builder.Property(t => t.FechaCartaPagoEnviada).HasColumnName("FechaCartaPagoEnviada");
+           builder.Property(t => t.FechaCartaPagoFirmada).HasColumnName("FechaCartaPagoFirmada");
+           builder.Property(t => t.FechaCartaPagoEnviadaAlProcurador).HasColumnName("FechaCartaPagoEnviadaAlProcurador");
 
             // Relationships
-            HasRequired(t => t.ExpedienteEstado)
-                .WithOptional(t => t.Hip_ExpedienteEstadoNegociacionPosesion);
+            //HasRequired(t => t.ExpedienteEstado)
+                //  .WithOptional(t => t.Hip_ExpedienteEstadoNegociacionPosesion);
 
         }
     }

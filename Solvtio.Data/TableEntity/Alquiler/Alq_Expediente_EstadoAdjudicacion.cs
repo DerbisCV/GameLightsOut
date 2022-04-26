@@ -1,10 +1,13 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
     public partial class Alq_Expediente_EstadoAdjudicacion
     {
         public int IdExpedienteEstado { get; set; }
+        [ForeignKey("IdExpedienteEstado")]
+        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
         public DateTime? FechaAdjudicacion { get; set; }
         public bool LiquidacionITP { get; set; }
         public DateTime? FechaLiquidacionITP { get; set; }
@@ -18,6 +21,6 @@ namespace Solvtio.Models
         public bool ContratoAlquiler { get; set; }
         public bool Defectos { get; set; }
         public bool Subsanado { get; set; }
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+        //
     }
 }

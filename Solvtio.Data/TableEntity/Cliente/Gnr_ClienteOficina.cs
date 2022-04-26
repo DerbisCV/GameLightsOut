@@ -23,7 +23,7 @@ namespace Solvtio.Models
         {
             CIF = "PENDIENTE";
             Expedientes = new List<Expediente>();
-            Gnr_Valija = new List<Gnr_Valija>();
+            //Gnr_Valija = new List<Gnr_Valija>();
         }
 
         #endregion
@@ -101,7 +101,7 @@ namespace Solvtio.Models
         #region Properties virtual ICollection
 
         public virtual ICollection<Expediente> Expedientes { get; set; }
-        public virtual ICollection<Gnr_Valija> Gnr_Valija { get; set; }
+        //public virtual ICollection<Gnr_Valija> Gnr_Valija { get; set; }
         public virtual ICollection<SlaOficina> SlaOficinaSet { get; set; }
         public virtual ICollection<Contacto> ContactoSet { get; set; }
 

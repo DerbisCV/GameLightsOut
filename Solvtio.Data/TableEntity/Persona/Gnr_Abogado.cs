@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
@@ -21,6 +22,7 @@ namespace Solvtio.Models
         #region Properties
 
         public int IdPersona { get; set; }
+        [ForeignKey("IdPersona")]
         public virtual Gnr_Persona Persona { get; set; }
 
         public string NoColegiado { get; set; }
@@ -28,9 +30,11 @@ namespace Solvtio.Models
         public bool EsAbogadoDeZona { get; set; }
 
         public int? IdDepartamento { get; set; }
+        [ForeignKey("IdDepartamento")]
         public virtual Departamento Departamento { get; set; }
 
         public int? IdArea { get; set; }
+        [ForeignKey("IdArea")]
         public virtual Area Area { get; set; }
 
         public bool RolAccionComercial { get; set; }
@@ -45,7 +49,7 @@ namespace Solvtio.Models
         public virtual ICollection<Alq_Expediente_EstadoTramitaJuzgado> Alq_Expediente_EstadoTramitaJuzgado { get; set; }
         public virtual ICollection<Expediente> Expedientes { get; set; }
         public virtual ICollection<Gnr_Cliente> Gnr_Cliente { get; set; }
-        public virtual ICollection<ExpedienteEstado> ExpedienteEstadoSet { get; set; }
+        //public virtual ICollection<ExpedienteEstado> ExpedienteEstadoSet { get; set; }
         public virtual ICollection<ExpedienteEstadoAbogadoHistorico> ExpedienteEstadoAbogadoHistoricoSet { get; set; }
         public virtual ICollection<ExpedienteJurisdiccionVoluntaria> ExpedienteJurisdiccionVoluntariaSet { get; set; }
         public virtual ICollection<HipExpedienteEstadoTramitacionSubasta> HipExpedienteEstadoTramitacionSubastaSet { get; set; }//

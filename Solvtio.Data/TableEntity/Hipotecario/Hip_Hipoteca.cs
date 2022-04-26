@@ -15,7 +15,7 @@ namespace Solvtio.Models
         {
             CreateBase();
 
-            IdValija = hipotecaBase.IdValija;
+            //IdValija = hipotecaBase.IdValija;
             IdExpediente = idExpediente;
             Usuario = usuario;
 
@@ -66,7 +66,7 @@ namespace Solvtio.Models
 
         public void CreateBase()
         {
-            IdValija = 0;
+            //IdValija = 0;
             NoHipoteca = 1;
             FechaAlta = DateTime.Now;
             Hip_HipotecaDatoEscritura = new List<Hip_HipotecaDatoEscritura>();
@@ -83,9 +83,9 @@ namespace Solvtio.Models
 
         public int IdHipoteca { get; set; }
 
-        public int IdValija { get; set; }
-        [ForeignKey("IdValija")]
-        public virtual Gnr_Valija Gnr_Valija { get; set; }
+        //public int IdValija { get; set; }
+        //[ForeignKey("IdValija")]
+        //public virtual Gnr_Valija Gnr_Valija { get; set; }
 
         [Index]
         public int? IdExpediente { get; set; }

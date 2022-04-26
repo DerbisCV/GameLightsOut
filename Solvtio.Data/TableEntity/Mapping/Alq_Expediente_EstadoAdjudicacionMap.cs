@@ -1,39 +1,43 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
+using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore.Metadata.Builders; 
 namespace Solvtio.Models.Mapping
 {
-    public class Alq_Expediente_EstadoAdjudicacionMap : EntityTypeConfiguration<Alq_Expediente_EstadoAdjudicacion>
+    public class Alq_Expediente_EstadoAdjudicacionMap : IEntityTypeConfiguration<Alq_Expediente_EstadoAdjudicacion>
     {
-        public Alq_Expediente_EstadoAdjudicacionMap()
+        public void Configure(EntityTypeBuilder<Alq_Expediente_EstadoAdjudicacion> builder)
         {
-            // Primary Key
-            HasKey(t => t.IdExpedienteEstado);
-
+            // public void Configure(EntityTypeBuilder<object> builder)
+            builder.HasKey(t => t.IdExpedienteEstado);
+            
             // Properties
-            Property(t => t.IdExpedienteEstado)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdExpedienteEstado)
+                .ValueGeneratedNever();
 
             // Table & Column Mappings
-            ToTable("Alq_Expediente_EstadoAdjudicacion");
-            Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
-            Property(t => t.FechaAdjudicacion).HasColumnName("FechaAdjudicacion");
-            Property(t => t.LiquidacionITP).HasColumnName("LiquidacionITP");
-            Property(t => t.FechaLiquidacionITP).HasColumnName("FechaLiquidacionITP");
-            Property(t => t.FechaCertificadoInscripcion).HasColumnName("FechaCertificadoInscripcion");
-            Property(t => t.FechaDiligenciaPosesion).HasColumnName("FechaDiligenciaPosesion");
-            Property(t => t.FormaPacifica).HasColumnName("FormaPacifica");
-            Property(t => t.Inquilinos).HasColumnName("Inquilinos");
-            Property(t => t.Ocupantes).HasColumnName("Ocupantes");
-            Property(t => t.FechaLanzamiento).HasColumnName("FechaLanzamiento");
-            Property(t => t.FechaEntregaLLaves).HasColumnName("FechaEntregaLLaves");
-            Property(t => t.ContratoAlquiler).HasColumnName("ContratoAlquiler");
-            Property(t => t.Defectos).HasColumnName("Defectos");
-            Property(t => t.Subsanado).HasColumnName("Subsanado");
+            builder.ToTable("Alq_Expediente_EstadoAdjudicacion");
+           builder.Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
+           builder.Property(t => t.FechaAdjudicacion).HasColumnName("FechaAdjudicacion");
+           builder.Property(t => t.LiquidacionITP).HasColumnName("LiquidacionITP");
+           builder.Property(t => t.FechaLiquidacionITP).HasColumnName("FechaLiquidacionITP");
+           builder.Property(t => t.FechaCertificadoInscripcion).HasColumnName("FechaCertificadoInscripcion");
+           builder.Property(t => t.FechaDiligenciaPosesion).HasColumnName("FechaDiligenciaPosesion");
+           builder.Property(t => t.FormaPacifica).HasColumnName("FormaPacifica");
+           builder.Property(t => t.Inquilinos).HasColumnName("Inquilinos");
+           builder.Property(t => t.Ocupantes).HasColumnName("Ocupantes");
+           builder.Property(t => t.FechaLanzamiento).HasColumnName("FechaLanzamiento");
+           builder.Property(t => t.FechaEntregaLLaves).HasColumnName("FechaEntregaLLaves");
+           builder.Property(t => t.ContratoAlquiler).HasColumnName("ContratoAlquiler");
+           builder.Property(t => t.Defectos).HasColumnName("Defectos");
+           builder.Property(t => t.Subsanado).HasColumnName("Subsanado");
 
             // Relationships
-            HasRequired(t => t.ExpedienteEstado)
-                .WithOptional(t => t.Alq_Expediente_EstadoAdjudicacion);
+            //HasRequired(t => t.ExpedienteEstado)
+            //    .WithOptional(t => t.Alq_Expediente_EstadoAdjudicacion);
 
         }
     }

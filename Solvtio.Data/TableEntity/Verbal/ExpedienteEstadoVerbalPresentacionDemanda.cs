@@ -21,8 +21,8 @@ namespace Solvtio.Models
 
         #region Properties
 
-        [Key]       
-        public int IdExpedienteEstado { get; set; }
+        //[Key]       
+        //public int IdExpedienteEstado { get; set; }
 
         public int IdExpediente { get; set; }
 

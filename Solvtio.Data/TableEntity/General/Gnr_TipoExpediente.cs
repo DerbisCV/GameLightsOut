@@ -18,7 +18,7 @@ namespace Solvtio.Models
             Gnr_TipoDeudor = new List<Gnr_TipoDeudor>();
             Gnr_TipoEstado = new List<Gnr_TipoEstado>();
             Gnr_TipoExpedienteDocumento = new List<Gnr_TipoExpedienteDocumento>();
-            Gnr_Valija = new List<Gnr_Valija>();
+            //Gnr_Valija = new List<Gnr_Valija>();
             TipoExpedienteAccions = new List<TipoExpedienteAccion>();
             TipoVistas = new List<TipoVista>();
         }
@@ -53,7 +53,7 @@ namespace Solvtio.Models
         public virtual ICollection<Gnr_TipoDeudor> Gnr_TipoDeudor { get; set; }
         public virtual ICollection<Gnr_TipoEstado> Gnr_TipoEstado { get; set; }
         public virtual ICollection<Gnr_TipoExpedienteDocumento> Gnr_TipoExpedienteDocumento { get; set; }
-        public virtual ICollection<Gnr_Valija> Gnr_Valija { get; set; }
+        //public virtual ICollection<Gnr_Valija> Gnr_Valija { get; set; }
         public virtual ICollection<TipoExpedienteAccion> TipoExpedienteAccions { get; set; }
         public virtual ICollection<TipoVista> TipoVistas { get; set; }
 

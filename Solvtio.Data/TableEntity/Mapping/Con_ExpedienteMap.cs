@@ -1,46 +1,44 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Con_ExpedienteMap : EntityTypeConfiguration<Con_Expediente>
+    public class Con_ExpedienteMap : IEntityTypeConfiguration<Con_Expediente>
     {
-        public Con_ExpedienteMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdExpediente);
+            public void Configure(EntityTypeBuilder<Con_Expediente> builder) {
+           builder.HasKey(t => t.IdExpediente);
 
             // Properties
-            Property(t => t.IdExpediente)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdExpediente)
+                .ValueGeneratedNever();
 
             //this.Property(t => t.NoAuto)
             //    .HasMaxLength(50);
 
-            Property(t => t.Usuario)
+           builder.Property(t => t.Usuario)
                 .HasMaxLength(50);
 
             //this.Property(t => t.Juzgado)
             //    .HasMaxLength(100);
 
             // Table & Column Mappings
-            ToTable("Con_Expediente");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.FechaDeclaracion).HasColumnName("FechaDeclaracion");
-            Property(t => t.FechaPublicacionBoe).HasColumnName("FechaPublicacionBoe");
-            Property(t => t.PlazoEnDias).HasColumnName("PlazoEnDias");
+           builder.ToTable("Con_Expediente");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.FechaDeclaracion).HasColumnName("FechaDeclaracion");
+           builder.Property(t => t.FechaPublicacionBoe).HasColumnName("FechaPublicacionBoe");
+           builder.Property(t => t.PlazoEnDias).HasColumnName("PlazoEnDias");
             //this.Property(t => t.NoAuto).HasColumnName("NoAuto");
-            Property(t => t.Usuario).HasColumnName("Usuario");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+           builder.Property(t => t.Usuario).HasColumnName("Usuario");
+           builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
             //this.Property(t => t.Juzgado).HasColumnName("Juzgado");
-            Property(t => t.IdDeudorPrincipal).HasColumnName("IdDeudorPrincipal");
+           builder.Property(t => t.IdDeudorPrincipal).HasColumnName("IdDeudorPrincipal");
 
             // Relationships
-            HasOptional(t => t.Gnr_Persona)
-                .WithMany(t => t.Con_Expediente)
-                .HasForeignKey(d => d.IdDeudorPrincipal);
-            HasRequired(t => t.Expediente)
-                .WithOptional(t => t.Con_Expediente);
+            // HasOptional(t => t.Gnr_Persona)
+                //  .WithMany(t => t.Con_Expediente)
+                //  .HasForeignKey(d => d.IdDeudorPrincipal);
+            //HasRequired(t => t.Expediente)
+                //  .WithOptional(t => t.Con_Expediente);
 
         }
     }

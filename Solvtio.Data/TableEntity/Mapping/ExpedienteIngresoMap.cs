@@ -1,33 +1,34 @@
 using System.Data.Entity.ModelConfiguration;
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Solvtio.Models.Mapping
 {
-    public class ExpedienteIngresoMap : EntityTypeConfiguration<ExpedienteIngreso>
+    public class ExpedienteIngresoMap : IEntityTypeConfiguration<ExpedienteIngreso>
     {
-        public ExpedienteIngresoMap()
+        public void Configure(EntityTypeBuilder<ExpedienteIngreso> builder)
         {
-            // Primary Key
-            HasKey(t => t.IdExpedienteIngreso);
+            builder.HasKey(t => t.IdExpedienteIngreso);
 
             // Properties
-            Property(t => t.Usuario)
-                .IsRequired()
-                .HasMaxLength(50);
+            builder.Property(t => t.Usuario)
+                 .IsRequired()
+                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            ToTable("ExpedienteIngreso");
-            Property(t => t.IdExpedienteIngreso).HasColumnName("IdExpedienteIngreso");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.Fecha).HasColumnName("Fecha");
-            Property(t => t.Importe).HasColumnName("Importe");
-            Property(t => t.Observaciones).HasColumnName("Observaciones");
-            Property(t => t.Usuario).HasColumnName("Usuario");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+            builder.ToTable("ExpedienteIngreso");
+            builder.Property(t => t.IdExpedienteIngreso).HasColumnName("IdExpedienteIngreso");
+            builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+            builder.Property(t => t.Fecha).HasColumnName("Fecha");
+            builder.Property(t => t.Importe).HasColumnName("Importe");
+            builder.Property(t => t.Observaciones).HasColumnName("Observaciones");
+            builder.Property(t => t.Usuario).HasColumnName("Usuario");
+            builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
 
             // Relationships
-            HasRequired(t => t.Expediente)
-                .WithMany(t => t.ExpedienteIngresoes)
-                .HasForeignKey(d => d.IdExpediente);
+            //HasRequired(t => t.Expediente)
+            //  .WithMany(t => t.ExpedienteIngresoes)
+            //  .HasForeignKey(d => d.IdExpediente);
 
         }
     }

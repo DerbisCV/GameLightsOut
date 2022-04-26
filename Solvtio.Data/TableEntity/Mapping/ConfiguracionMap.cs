@@ -1,28 +1,28 @@
 using Solvtio.Data;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class ConfiguracionMap : EntityTypeConfiguration<Configuracion>
+    public class ConfiguracionMap : IEntityTypeConfiguration<Configuracion>
     {
-        public ConfiguracionMap()
+        public void Configure(EntityTypeBuilder<Configuracion> builder)
         {
-            // Primary Key
-            HasKey(t => t.Clave);
+            // 
+           builder.HasKey(t => t.Clave);
 
             // Properties
-            Property(t => t.Clave)
+           builder.Property(t => t.Clave)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            Property(t => t.Valor)
+           builder.Property(t => t.Valor)
                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            ToTable("Configuracion");
-            Property(t => t.Clave).HasColumnName("Clave");
-            Property(t => t.Valor).HasColumnName("Valor");
-            Property(t => t.Observaciones).HasColumnName("Observaciones");
+           builder.ToTable("Configuracion");
+           builder.Property(t => t.Clave).HasColumnName("Clave");
+           builder.Property(t => t.Valor).HasColumnName("Valor");
+           builder.Property(t => t.Observaciones).HasColumnName("Observaciones");
         }
     }
 }

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using Solvtio.Models;
 
+//--[e].[NegociacionIdExpedienteNegociacion], 
+//--[e].[Gnr_ValijaIdValija], 
+
 namespace Solvtio.Models
 {
     public class Expediente : BaseValues //AuditableMin
@@ -40,12 +43,12 @@ namespace Solvtio.Models
         {
             CreateBase();
 
-            IdValija = hipoteca.IdValija;
+            //IdValija = hipoteca.IdValija;
             DeudaFinal = hipoteca.DeudaCierreFijacion;
             ReferenciaExterna = hipoteca.ReferenciaExterna;
             IdTipoArea = hipoteca.IdTipoArea;
-            IdTipoExpediente = hipoteca.Gnr_Valija.IdTipoExpediente;
-            IdClienteOficina = hipoteca.Gnr_Valija.IdClienteOficina;
+            //IdTipoExpediente = hipoteca.Gnr_Valija.IdTipoExpediente;
+            //IdClienteOficina = hipoteca.Gnr_Valija.IdClienteOficina;
             Usuario = hipoteca.Usuario ?? "";
             Observaciones = hipoteca.Observaciones;
         }
@@ -87,7 +90,7 @@ namespace Solvtio.Models
             Con_ExpedienteAdministrador = new List<Con_ExpedienteAdministrador>();
             Con_ExpedienteCredito = new List<Con_ExpedienteCredito>();
             Con_ExpedienteIncidente = new List<Con_ExpedienteIncidente>();
-            ExpedienteDocumentoes = new List<ExpedienteDocumento>();
+            //ExpedienteDocumentoes = new List<ExpedienteDocumento>();
             ExpedienteAcreedores = new List<ExpedienteAcreedore>();
             ExpedienteAlertas = new List<ExpedienteAlerta>();
 
@@ -153,7 +156,7 @@ namespace Solvtio.Models
 
         [Index]
         public int IdTipoExpediente { get; set; }
-        public int? IdAbogado { get; set; }
+        
         public int IdTipoArea { get; set; }
         [Index]
         public int IdClienteOficina { get; set; }
@@ -170,8 +173,8 @@ namespace Solvtio.Models
         public decimal? DeudaFinal { get; set; }
 
         public int? IdExpedienteNegociacion { get; set; }
-        [ForeignKey("IdExpedienteNegociacion")]
-        public virtual ExpedienteNegociacion ExpedienteNegociacion { get; set; }
+        //[ForeignKey("IdExpedienteNegociacion")]
+        //public virtual ExpedienteNegociacion ExpedienteNegociacion { get; set; }
 
         public int? IdExpedienteFather { get; set; }
         public int? IdExpedienteSon { get; set; }
@@ -188,7 +191,8 @@ namespace Solvtio.Models
 
         [Index]
         public int? IdEstadoLast { get; set; }
-        [ForeignKey("IdEstadoLast")]
+        //[ForeignKey("IdEstadoLast")]
+        [NotMapped]
         public virtual ExpedienteEstado ExpedienteEstadoLast { get; set; }
 
         [Index]
@@ -197,7 +201,8 @@ namespace Solvtio.Models
         //public virtual ExpedienteFaseCliente ExpedienteFaseClienteLast { get; set; }
 
         public int? IdExpedienteSubastaLast { get; set; }
-        [ForeignKey("IdExpedienteSubastaLast")]
+        //[ForeignKey("IdExpedienteSubastaLast")]
+        [NotMapped]
         public virtual ExpedienteSubasta ExpedienteSubastaLast { get; set; }
 
         public int? IdDeudorPrincipal { get; set; }
@@ -341,36 +346,68 @@ namespace Solvtio.Models
 
         #region Expedientes Tipo
 
+        // [ForeignKey("IdExpediente")]
         public virtual Hip_Expediente Hip_Expediente { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual Alq_Expediente Alq_Expediente { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual Con_Expediente Con_Expediente { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual Ejc_Expediente Ejc_Expediente { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual Mnt_Expediente Mnt_Expediente { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteMultiDivisa ExpedienteMultiDivisa { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteJurisdiccionVoluntaria ExpedienteJurisdiccionVoluntaria { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteJV ExpedienteJV { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteInscripcionCredito ExpedienteInscripcionCredito { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteOrdinario ExpedienteOrdinario { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteOrdinarioCs ExpedienteOrdinarioCs { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteMonitorio ExpedienteMonitorio { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteVerbal ExpedienteVerbal { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteSaneamiento ExpedienteSaneamiento { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedientePenal ExpedientePenal { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteFiscal ExpedienteFiscal { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteConciliacion ExpedienteConciliacion { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteJuraCuenta ExpedienteJuraCuenta { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteCivil ExpedienteCivil { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteMercantilInmobiliario ExpedienteMercantilInmobiliario { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteDdl ExpedienteDdl { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteContenciosoAdministrativo ExpedienteContenciosoAdministrativo { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteContenciosoOrdinario ExpedienteContenciosoOrdinario { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteCambiario ExpedienteCambiario { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteProcura ExpedienteProcura { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteScne ExpedienteScne { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteBastanteo ExpedienteBastanteo { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteTestamentario ExpedienteTestamentario { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedienteTpn ExpedienteTpn { get; set; }
+        // [ForeignKey("IdExpediente")]
         public virtual ExpedientePrelitigio ExpedientePrelitigio { get; set; }
+        // [ForeignKey("IdExpediente")]
+        public virtual Neg_Gestion Neg_Gestion { get; set; }
 
         #endregion
 
@@ -380,16 +417,22 @@ namespace Solvtio.Models
         [ForeignKey("IdPagador")]
         public virtual Pagador Pagador { get; set; }
 
-        public virtual ICollection<ExpedienteNegociacion> ExpedienteNegociacionSet { get; set; }
+        //public virtual ICollection<ExpedienteNegociacion> ExpedienteNegociacionSet { get; set; }
 
-        public virtual Neg_Gestion Neg_Gestion { get; set; }
 
+        public int? IdAbogado { get; set; }
+        [ForeignKey("IdAbogado")]
         public virtual Gnr_Abogado Gnr_Abogado { get; set; }
+        [ForeignKey("IdClienteOficina")]
         public virtual Gnr_ClienteOficina Gnr_ClienteOficina { get; set; }
+        [ForeignKey("IdProcurador")]
         public virtual Gnr_Procurador Gnr_Procurador { get; set; }
-        public virtual Gnr_Valija Gnr_Valija { get; set; }
+        //public virtual Gnr_Valija Gnr_Valija { get; set; }
+        [ForeignKey("IdPartidoJudicial")]
         public virtual PartidoJudicial Hip_PartidoJudicial { get; set; }
+        [ForeignKey("IdTipoArea")]
         public virtual Gnr_TipoArea Gnr_TipoArea { get; set; }
+        [ForeignKey("IdTipoExpediente")]
         public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
 
         #endregion
@@ -399,7 +442,7 @@ namespace Solvtio.Models
         public virtual ICollection<Con_ExpedienteAdministrador> Con_ExpedienteAdministrador { get; set; }
         public virtual ICollection<Con_ExpedienteCredito> Con_ExpedienteCredito { get; set; }
         public virtual ICollection<Con_ExpedienteIncidente> Con_ExpedienteIncidente { get; set; }
-        public virtual ICollection<ExpedienteDocumento> ExpedienteDocumentoes { get; set; }
+        //public virtual ICollection<ExpedienteDocumento> ExpedienteDocumentoes { get; set; }
         public virtual ICollection<ExpedienteAcreedore> ExpedienteAcreedores { get; set; }
         public virtual ICollection<ExpedienteAlerta> ExpedienteAlertas { get; set; }
         public virtual ICollection<ExpedienteDeudor> ExpedienteDeudors { get; set; }
@@ -422,7 +465,7 @@ namespace Solvtio.Models
         public virtual ICollection<Actuacion> ActuacionSet { get; set; }
         public virtual ICollection<Mediacion> MediacionSet { get; set; }
 
-        public virtual ICollection<ExpedienteEscritura> ExpedienteEscrituraSet { get; set; }
+        //public virtual ICollection<ExpedienteEscritura> ExpedienteEscrituraSet { get; set; }
         public virtual ICollection<ExpedienteSubasta> ExpedienteSubastaSet { get; set; }
         public virtual ICollection<ExpedienteHitoProcesal> ExpedienteHitoProcesalSet { get; set; }
         public virtual ICollection<ExpedienteVencimiento> ExpedienteVencimientoSet { get; set; }
@@ -682,28 +725,28 @@ namespace Solvtio.Models
             }
         }
 
-        private ExpedienteNegociacion _negociacion;
-        /// <summary>
-        /// Old (Mejor usar la propiedad ExpedienteNegociacion)
-        /// </summary>
-        public ExpedienteNegociacion Negociacion
-        {
-            get
-            {
-                return _negociacion ?? (_negociacion = ExpedienteNegociacion);
-            }
-            set
-            {
-                _negociacion = value;
-            }
-        }
+        //private ExpedienteNegociacion _negociacion;
+        ///// <summary>
+        ///// Old (Mejor usar la propiedad ExpedienteNegociacion)
+        ///// </summary>
+        //public ExpedienteNegociacion Negociacion
+        //{
+        //    get
+        //    {
+        //        return _negociacion ?? (_negociacion = ExpedienteNegociacion);
+        //    }
+        //    set
+        //    {
+        //        _negociacion = value;
+        //    }
+        //}
 
 
-        public bool NegociacionEnCurso => ExpedienteNegociacion != null && (
-                (ExpedienteNegociacion.PrecontenciosoFechaInicio.HasValue && !ExpedienteNegociacion.PrecontenciosoFechaFin.HasValue)
-                ||
-                (ExpedienteNegociacion.ContenciosoFechaInicio.HasValue && !ExpedienteNegociacion.ContenciosoFechaFin.HasValue)
-            );
+        //public bool NegociacionEnCurso => ExpedienteNegociacion != null && (
+        //        (ExpedienteNegociacion.PrecontenciosoFechaInicio.HasValue && !ExpedienteNegociacion.PrecontenciosoFechaFin.HasValue)
+        //        ||
+        //        (ExpedienteNegociacion.ContenciosoFechaInicio.HasValue && !ExpedienteNegociacion.ContenciosoFechaFin.HasValue)
+        //    );
 
         public string DeudoresTitulo =>
             TipoExpediente == TipoExpedienteEnum.Alquiler ? "Titulares" :

@@ -24,12 +24,12 @@ namespace Solvtio.Models
         public int IdEvaluacionEmpleado { get; set; }
 
         public int IdEmpleado { get; set; }
-        [ForeignKey("IdEmpleado")]
-        public virtual Usuario Empleado { get; set; }
+        //[ForeignKey("IdEmpleado")]
+        //public virtual Usuario Empleado { get; set; }
 
         public int? IdEvaluador { get; set; }
-        [ForeignKey("IdEvaluador")]
-        public virtual Usuario Evaluador { get; set; }
+        //[ForeignKey("IdEvaluador")]
+        //public virtual Usuario Evaluador { get; set; }
 
         public string PeriodoEvaluacion { get; set; }
 
@@ -47,20 +47,20 @@ namespace Solvtio.Models
 
 
         public int? IdSucesorEmergencia1 { get; set; }
-        [ForeignKey("IdSucesorEmergencia1")]
-        public virtual Usuario SucesorEmergencia1 { get; set; }
+        //[ForeignKey("IdSucesorEmergencia1")]
+        //public virtual Usuario SucesorEmergencia1 { get; set; }
 
         public int? IdSucesorEmergencia2 { get; set; }
-        [ForeignKey("IdSucesorEmergencia2")]
-        public virtual Usuario SucesorEmergencia2 { get; set; }
+        //[ForeignKey("IdSucesorEmergencia2")]
+        //public virtual Usuario SucesorEmergencia2 { get; set; }
 
         public int? IdSucesor1 { get; set; }
-        [ForeignKey("IdSucesor1")]
-        public virtual Usuario Sucesor1 { get; set; }
+        //[ForeignKey("IdSucesor1")]
+        //public virtual Usuario Sucesor1 { get; set; }
 
         public int? IdSucesor2 { get; set; }
-        [ForeignKey("IdSucesor2")]
-        public virtual Usuario Sucesor2 { get; set; }
+        //[ForeignKey("IdSucesor2")]
+        //public virtual Usuario Sucesor2 { get; set; }
 
 
         public int? IdSucesorEmergenciaAutoEvaluacion1 { get; set; }

@@ -1,31 +1,29 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Con_ExpedienteEstadoFinalizadoMap : EntityTypeConfiguration<Con_ExpedienteEstadoFinalizado>
+    public class Con_ExpedienteEstadoFinalizadoMap : IEntityTypeConfiguration<Con_ExpedienteEstadoFinalizado>
     {
-        public Con_ExpedienteEstadoFinalizadoMap()
-        {
-            // Primary Key
-            HasKey(t => t.ExpedienteEstadoId);
+           public void Configure(EntityTypeBuilder<Con_ExpedienteEstadoFinalizado> builder) {
+           builder.HasKey(t => t.ExpedienteEstadoId);
 
             // Properties
-            Property(t => t.ExpedienteEstadoId)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.ExpedienteEstadoId)
+                .ValueGeneratedNever();
 
             // Table & Column Mappings
-            ToTable("Con_ExpedienteEstadoFinalizado");
-            Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
-            Property(t => t.FechaFinalizacion).HasColumnName("FechaFinalizacion");
+           builder.ToTable("Con_ExpedienteEstadoFinalizado");
+           builder.Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
+           builder.Property(t => t.FechaFinalizacion).HasColumnName("FechaFinalizacion");
             //Property(t => t.DocumentoAutoConclusionId).HasColumnName("DocumentoAutoConclusionId");
 
             // Relationships
             //HasOptional(t => t.ExpedienteDocumento)
-            //    .WithMany(t => t.Con_ExpedienteEstadoFinalizado)
-            //    .HasForeignKey(d => d.DocumentoAutoConclusionId);
-            HasRequired(t => t.ExpedienteEstado)
-                .WithOptional(t => t.Con_ExpedienteEstadoFinalizado);
+            //    //  .WithMany(t => t.Con_ExpedienteEstadoFinalizado)
+            //    //  .HasForeignKey(d => d.DocumentoAutoConclusionId);
+            //HasRequired(t => t.ExpedienteEstado)
+                //  .WithOptional(t => t.Con_ExpedienteEstadoFinalizado);
 
         }
     }

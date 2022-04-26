@@ -1,24 +1,24 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Gnr_TipoEstadoMotivoMap : EntityTypeConfiguration<Gnr_TipoEstadoMotivo>
+    public class Gnr_TipoEstadoMotivoMap : IEntityTypeConfiguration<Gnr_TipoEstadoMotivo>
     {
         public Gnr_TipoEstadoMotivoMap()
         {
-            // Primary Key
-            HasKey(t => t.IdMotivo);
+           } public void Configure(EntityTypeBuilder<Gnr_TipoEstadoMotivo> builder) {
+           builder.HasKey(t => t.IdMotivo);
 
             // Properties
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            ToTable("Gnr_TipoEstadoMotivo");
-            Property(t => t.IdMotivo).HasColumnName("IdMotivo");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
-            Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
+           builder.ToTable("Gnr_TipoEstadoMotivo");
+           builder.Property(t => t.IdMotivo).HasColumnName("IdMotivo");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
         }
     }
 }

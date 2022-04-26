@@ -1,25 +1,25 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Hip_ExpedienteGarantiaMap : EntityTypeConfiguration<Hip_ExpedienteGarantia>
+    public class Hip_ExpedienteGarantiaMap : IEntityTypeConfiguration<Hip_ExpedienteGarantia>
     {
         public Hip_ExpedienteGarantiaMap()
         {
-            // Primary Key
-            HasKey(t => t.IdExpedienteGarantia);
+           } public void Configure(EntityTypeBuilder<Hip_ExpedienteGarantia> builder) {
+           builder.HasKey(t => t.IdExpedienteGarantia);
 
             // Properties
             // Table & Column Mappings
-            ToTable("Hip_ExpedienteGarantia");
-            Property(t => t.IdExpedienteGarantia).HasColumnName("IdExpedienteGarantia");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.ToTable("Hip_ExpedienteGarantia");
+           builder.Property(t => t.IdExpedienteGarantia).HasColumnName("IdExpedienteGarantia");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
 
             // Relationships
-            HasRequired(t => t.Hip_Expediente)
-                .WithMany(t => t.Hip_ExpedienteGarantia)
-                .HasForeignKey(d => d.IdExpediente);
+            //HasRequired(t => t.Hip_Expediente)
+                //  .WithMany(t => t.Hip_ExpedienteGarantia)
+                //  .HasForeignKey(d => d.IdExpediente);
 
         }
     }

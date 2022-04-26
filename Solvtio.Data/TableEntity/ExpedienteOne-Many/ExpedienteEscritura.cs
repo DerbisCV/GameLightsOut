@@ -6,7 +6,7 @@ using Solvtio.Models.Model;
 namespace Solvtio.Models
 {
     [Table("ExpedienteEscritura")]
-    public sealed class ExpedienteEscritura
+    public class ExpedienteEscritura
     {
         #region Constructors
 
@@ -37,7 +37,8 @@ namespace Solvtio.Models
 
         public int IdExpediente { get; set; }
         [ForeignKey("IdExpediente")]
-        public Expediente Expediente { get; set; }
+        public virtual Expediente Expediente { get; set; }
+        
 
         public DateTime Fecha { get; set; }
         public string NoProtocolo { get; set; }

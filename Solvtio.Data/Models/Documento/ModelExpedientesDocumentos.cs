@@ -14,7 +14,7 @@ namespace Solvtio.Models
         private void createBase()
         {
             Filter = new ModelFilterBase();
-            LstDocumentos = new List<ExpedienteDocumento>();
+            //LstDocumentos = new List<ExpedienteDocumento>();
         }
 
         #endregion
@@ -22,7 +22,7 @@ namespace Solvtio.Models
         #region Properties
 
         public ModelFilterBase Filter { get; set; }
-        public List<ExpedienteDocumento> LstDocumentos { get; set; }
+        //public List<ExpedienteDocumento> LstDocumentos { get; set; }
         //public string RefExternaMacro { get; set; }
         //public ModelEntityBase Juzgado { get; set; }
         //public ModelEntityBase PartidoJudicial { get; set; }

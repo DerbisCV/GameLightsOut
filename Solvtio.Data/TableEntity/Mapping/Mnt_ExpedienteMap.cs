@@ -1,41 +1,43 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Solvtio.Models.Mapping
 {
-    public class Mnt_ExpedienteMap : EntityTypeConfiguration<Mnt_Expediente>
+    public class Mnt_ExpedienteMap : IEntityTypeConfiguration<Mnt_Expediente>
     {
         public Mnt_ExpedienteMap()
         {
-            // Primary Key
-            HasKey(t => t.IdExpediente);
+        }
+        public void Configure(EntityTypeBuilder<Mnt_Expediente> builder)
+        {
+            builder.ToTable("Mnt_Expediente");
+            builder.HasKey(t => t.IdExpediente);
+            builder.Property(t => t.IdExpediente).ValueGeneratedNever();
 
-            // Properties
-            Property(t => t.IdExpediente)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            builder.Property(t => t.CuentaOficina)
+                 .IsRequired()
+                 .HasMaxLength(4);
 
-            Property(t => t.CuentaOficina)
-                .IsRequired()
-                .HasMaxLength(4);
-
-            Property(t => t.CuentaNo)
-                .IsRequired()
-                .HasMaxLength(10);
+            builder.Property(t => t.CuentaNo)
+                 .IsRequired()
+                 .HasMaxLength(10);
 
             // Table & Column Mappings
-            ToTable("Mnt_Expediente");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.CuentaOficina).HasColumnName("CuentaOficina");
-            Property(t => t.CuentaNo).HasColumnName("CuentaNo");
-            Property(t => t.Importe).HasColumnName("Importe");
-            Property(t => t.IdDeudorPrincipal).HasColumnName("IdDeudorPrincipal");
+            
+            //builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+            //builder.Property(t => t.CuentaOficina).HasColumnName("CuentaOficina");
+            //builder.Property(t => t.CuentaNo).HasColumnName("CuentaNo");
+            //builder.Property(t => t.Importe).HasColumnName("Importe");
+            //builder.Property(t => t.IdDeudorPrincipal).HasColumnName("IdDeudorPrincipal");
 
             // Relationships
-            HasRequired(t => t.Expediente)
-                .WithOptional(t => t.Mnt_Expediente);
-            HasRequired(t => t.Gnr_Persona)
-                .WithMany(t => t.Mnt_Expediente)
-                .HasForeignKey(d => d.IdDeudorPrincipal);
+            //HasRequired(t => t.Expediente)
+            //  .WithOptional(t => t.Mnt_Expediente);
+            //HasRequired(t => t.Gnr_Persona)
+            //  .WithMany(t => t.Mnt_Expediente)
+            //  .HasForeignKey(d => d.IdDeudorPrincipal);
 
         }
     }

@@ -6,7 +6,7 @@ namespace Solvtio.Models
     {
         public Gnr_Valija()
         {
-            Expedientes = new List<Expediente>();
+            //Expedientes = new List<Expediente>();
         }
 
         public int IdValija { get; set; }
@@ -16,10 +16,11 @@ namespace Solvtio.Models
         public string Usuario { get; set; }
         public System.DateTime FechaAlta { get; set; }
         public int IdTipoExpediente { get; set; }
-        public virtual ICollection<Expediente> Expedientes { get; set; }
-        public virtual Gnr_ClienteOficina Gnr_ClienteOficina { get; set; }
-        public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
+        
+  //      public virtual ICollection<Expediente> Expedientes { get; set; }
+  //      public virtual Gnr_ClienteOficina Gnr_ClienteOficina { get; set; }
+  //      public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
 
-		public virtual ICollection<Hip_Hipoteca> Hip_Hipoteca { get; set; }
+		//public virtual ICollection<Hip_Hipoteca> Hip_Hipoteca { get; set; }
     }
 }

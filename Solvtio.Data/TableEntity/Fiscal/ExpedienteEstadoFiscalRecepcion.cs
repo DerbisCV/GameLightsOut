@@ -20,9 +20,10 @@ namespace Solvtio.Models
 
         #region Properties
 
-        [Key]
-        [ForeignKey("ExpedienteEstado")]
-        public int IdExpedienteEstado { get; set; }
+        //[Key]
+        //[ForeignKey("ExpedienteEstado")]
+        //public int IdExpedienteEstado { get; set; }
+        
 
         public int IdExpediente { get; set; }
 

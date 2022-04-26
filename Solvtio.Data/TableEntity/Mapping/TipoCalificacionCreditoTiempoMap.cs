@@ -1,23 +1,23 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class TipoCalificacionCreditoTiempoMap : EntityTypeConfiguration<TipoCalificacionCreditoTiempo>
+    public class TipoCalificacionCreditoTiempoMap : IEntityTypeConfiguration<TipoCalificacionCreditoTiempo>
     {
         public TipoCalificacionCreditoTiempoMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoCalificacionCreditoTiempo);
+           } public void Configure(EntityTypeBuilder<TipoCalificacionCreditoTiempo> builder) {
+           builder.HasKey(t => t.IdTipoCalificacionCreditoTiempo);
 
             // Properties
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .IsRequired()
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            ToTable("TipoCalificacionCreditoTiempo");
-            Property(t => t.IdTipoCalificacionCreditoTiempo).HasColumnName("IdTipoCalificacionCreditoTiempo");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.ToTable("TipoCalificacionCreditoTiempo");
+           builder.Property(t => t.IdTipoCalificacionCreditoTiempo).HasColumnName("IdTipoCalificacionCreditoTiempo");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
         }
     }
 }

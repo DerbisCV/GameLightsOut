@@ -9,9 +9,9 @@ namespace Solvtio.Models
 
         public Gnr_TipoEstadoMotivo()
         {
-            Ejc_ExpedienteEstadoFinalizacion = new List<Ejc_ExpedienteEstadoFinalizacion>();
-            Hip_ExpedienteEstadoFinalizacion = new List<Hip_ExpedienteEstadoFinalizacion>();
-            Hip_ExpedienteEstadoProcesoParalizado = new List<Hip_ExpedienteEstadoProcesoParalizado>();
+            //Ejc_ExpedienteEstadoFinalizacion = new List<Ejc_ExpedienteEstadoFinalizacion>();
+            //Hip_ExpedienteEstadoFinalizacion = new List<Hip_ExpedienteEstadoFinalizacion>();
+            //Hip_ExpedienteEstadoProcesoParalizado = new List<Hip_ExpedienteEstadoProcesoParalizado>();
         }
 
         #endregion
@@ -29,12 +29,12 @@ namespace Solvtio.Models
 
         #region Properties One To Many
 
-        public virtual ICollection<Ejc_ExpedienteEstadoFinalizacion> Ejc_ExpedienteEstadoFinalizacion { get; set; }
-        public virtual ICollection<Hip_ExpedienteEstadoFinalizacion> Hip_ExpedienteEstadoFinalizacion { get; set; }
-        public virtual ICollection<Hip_ExpedienteEstadoProcesoParalizado> Hip_ExpedienteEstadoProcesoParalizado { get; set; }
-		public virtual ICollection<Hip_ExpedienteEstadoSubasta> Hip_ExpedienteEstadoSubastaSet { get; set; }
-        public virtual ICollection<ExpedienteEstadoParalizado> ExpedienteEstadoParalizadoSet { get; set; }
-        public virtual ICollection<Alq_Expediente_EstadoFinalizacion> AlqExpedienteEstadoFinalizacionSet { get; set; }
+  //      public virtual ICollection<Ejc_ExpedienteEstadoFinalizacion> Ejc_ExpedienteEstadoFinalizacion { get; set; }
+  //      public virtual ICollection<Hip_ExpedienteEstadoFinalizacion> Hip_ExpedienteEstadoFinalizacion { get; set; }
+  //      public virtual ICollection<Hip_ExpedienteEstadoProcesoParalizado> Hip_ExpedienteEstadoProcesoParalizado { get; set; }
+		//public virtual ICollection<Hip_ExpedienteEstadoSubasta> Hip_ExpedienteEstadoSubastaSet { get; set; }
+  //      public virtual ICollection<ExpedienteEstadoParalizado> ExpedienteEstadoParalizadoSet { get; set; }
+  //      public virtual ICollection<Alq_Expediente_EstadoFinalizacion> AlqExpedienteEstadoFinalizacionSet { get; set; }
 
         #endregion
     }

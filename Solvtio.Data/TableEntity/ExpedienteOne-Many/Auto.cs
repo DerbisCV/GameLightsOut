@@ -38,7 +38,7 @@ namespace Solvtio.Models
         public int IdAuto { get; set; }
 
         public int IdExpedienteEstado { get; set; }
-        //[ForeignKey("IdExpedienteEstado")]
+        [ForeignKey("IdExpedienteEstado")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
         public string Titulo { get; set; }

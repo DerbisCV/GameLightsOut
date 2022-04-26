@@ -9,7 +9,7 @@ namespace Solvtio.Data.Implementations
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         //protected readonly DbContext _context;
-        private readonly SolvtioDbContext _context;
+        internal readonly SolvtioDbContext _context;
         protected readonly DbSet<T> _dbSet;
         
 

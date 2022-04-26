@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solvtio.Data", "Solvtio.Dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-API", "1-API", "{2EF727BA-B7AB-4AC9-BAE9-3F8A1490F3C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solvtio.DataTests", "Solvtio.DataTests\Solvtio.DataTests.csproj", "{BFA0854E-B711-49D3-AD25-CCD9F4F033D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{E7A725B0-798E-4101-A68D-D0A03F9577AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7A725B0-798E-4101-A68D-D0A03F9577AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7A725B0-798E-4101-A68D-D0A03F9577AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFA0854E-B711-49D3-AD25-CCD9F4F033D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFA0854E-B711-49D3-AD25-CCD9F4F033D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFA0854E-B711-49D3-AD25-CCD9F4F033D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFA0854E-B711-49D3-AD25-CCD9F4F033D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

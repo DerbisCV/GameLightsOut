@@ -1,29 +1,29 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class ProcuradoresClienteMap : EntityTypeConfiguration<ProcuradoresCliente>
+    public class ProcuradoresClienteMap : IEntityTypeConfiguration<ProcuradoresCliente>
     {
         public ProcuradoresClienteMap()
         {
-            // Primary Key
-            HasKey(t => t.IdProcuradorCliente);
+           } public void Configure(EntityTypeBuilder<ProcuradoresCliente> builder) {
+           builder.HasKey(t => t.IdProcuradorCliente);
 
             // Properties
             // Table & Column Mappings
-            ToTable("ProcuradoresClientes");
-            Property(t => t.IdProcuradorCliente).HasColumnName("IdProcuradorCliente");
-            Property(t => t.IdCliente).HasColumnName("IdCliente");
-            Property(t => t.IdProcurador).HasColumnName("IdProcurador");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+           builder.ToTable("ProcuradoresClientes");
+           builder.Property(t => t.IdProcuradorCliente).HasColumnName("IdProcuradorCliente");
+           builder.Property(t => t.IdCliente).HasColumnName("IdCliente");
+           builder.Property(t => t.IdProcurador).HasColumnName("IdProcurador");
+           builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
 
             // Relationships
-            HasRequired(t => t.Gnr_Cliente)
-                .WithMany(t => t.ProcuradoresClientes)
-                .HasForeignKey(d => d.IdCliente);
-            HasRequired(t => t.GNR_Procuradores)
-                .WithMany(t => t.ProcuradoresClientes)
-                .HasForeignKey(d => d.IdProcurador);
+            //HasRequired(t => t.Gnr_Cliente)
+                //  .WithMany(t => t.ProcuradoresClientes)
+                //  .HasForeignKey(d => d.IdCliente);
+            //HasRequired(t => t.GNR_Procuradores)
+                //  .WithMany(t => t.ProcuradoresClientes)
+                //  .HasForeignKey(d => d.IdProcurador);
 
         }
     }

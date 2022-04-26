@@ -13,8 +13,8 @@ namespace Solvtio.Models
         public System.Guid PathId { get; set; }
         public string Path { get; set; }
         public string LoweredPath { get; set; }
-        public virtual aspnet_Applications aspnet_Applications { get; set; }
-        public virtual aspnet_PersonalizationAllUsers aspnet_PersonalizationAllUsers { get; set; }
+        //public virtual aspnet_Applications aspnet_Applications { get; set; }
+        //public virtual aspnet_PersonalizationAllUsers aspnet_PersonalizationAllUsers { get; set; }
         public virtual ICollection<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
     }
 }

@@ -1,23 +1,23 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Hip_TipoTitulizadoMap : EntityTypeConfiguration<Hip_TipoTitulizado>
+    public class Hip_TipoTitulizadoMap : IEntityTypeConfiguration<Hip_TipoTitulizado>
     {
         public Hip_TipoTitulizadoMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoTitulizado);
+           } public void Configure(EntityTypeBuilder<Hip_TipoTitulizado> builder) {
+           builder.HasKey(t => t.IdTipoTitulizado);
 
             // Properties
-            Property(t => t.Nombre)
+           builder.Property(t => t.Nombre)
                 .IsRequired()
                 .HasMaxLength(150);
 
             // Table & Column Mappings
-            ToTable("Hip_TipoTitulizado");
-            Property(t => t.IdTipoTitulizado).HasColumnName("IdTipoTitulizado");
-            Property(t => t.Nombre).HasColumnName("Nombre");
+           builder.ToTable("Hip_TipoTitulizado");
+           builder.Property(t => t.IdTipoTitulizado).HasColumnName("IdTipoTitulizado");
+           builder.Property(t => t.Nombre).HasColumnName("Nombre");
         }
     }
 }

@@ -1,25 +1,22 @@
-using System.Data.Entity.ModelConfiguration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class AccionFlujoMap : EntityTypeConfiguration<AccionFlujo>
+    public class AccionFlujoMap : IEntityTypeConfiguration<AccionFlujo>
     {
-        public AccionFlujoMap()
+        public void Configure(EntityTypeBuilder<AccionFlujo> builder)
         {
-            // Primary Key
-            HasKey(t => t.IdAccionFlujo);
+            builder
+                .ToTable("AccionFlujo")
+                .HasKey(t => t.IdAccionFlujo);
 
-            // Properties
-            // Table & Column Mappings
-            ToTable("AccionFlujo");
-            Property(t => t.IdAccionFlujo).HasColumnName("IdAccionFlujo");
-            Property(t => t.IdAccionOrigen).HasColumnName("IdAccionOrigen");
-            Property(t => t.IdAccionDestino).HasColumnName("IdAccionDestino");
 
-            // Relationships
-            HasRequired(t => t.TipoAccion)
-                .WithMany(t => t.AccionFlujoes)
-                .HasForeignKey(d => d.IdAccionOrigen);
+            //builder.HasKey(o => o.OrderNumber);
+            //builder.Property(t => t.TipoAccion).HasOne();
+            
+            //        .HasColumnType("Date")
+            //        .HasDefaultValueSql("GetDate())"
 
         }
     }

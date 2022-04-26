@@ -1,59 +1,59 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class GNR_ProcuradoresMap : EntityTypeConfiguration<GNR_Procuradores>
+    public class GNR_ProcuradoresMap : IEntityTypeConfiguration<GNR_Procuradores>
     {
         public GNR_ProcuradoresMap()
         {
-            // Primary Key
-            HasKey(t => t.IdProcurador);
+        } public void Configure(EntityTypeBuilder<GNR_Procuradores> builder) {
+           builder.HasKey(t => t.IdProcurador);
 
             // Properties
-            Property(t => t.Nombre)
+           builder.Property(t => t.Nombre)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            Property(t => t.Apellidos)
+           builder.Property(t => t.Apellidos)
                 .IsRequired()
                 .HasMaxLength(250);
 
-            Property(t => t.Telefono)
+           builder.Property(t => t.Telefono)
                 .HasMaxLength(50);
 
-            Property(t => t.Telefono2)
+           builder.Property(t => t.Telefono2)
                 .HasMaxLength(50);
 
-            Property(t => t.Movil)
+           builder.Property(t => t.Movil)
                 .HasMaxLength(50);
 
-            Property(t => t.Fax)
+           builder.Property(t => t.Fax)
                 .HasMaxLength(50);
 
-            Property(t => t.Email)
+           builder.Property(t => t.Email)
                 .HasMaxLength(200);
 
-            Property(t => t.Provincia)
+           builder.Property(t => t.Provincia)
                 .HasMaxLength(200);
 
-            Property(t => t.EnvioDemandas)
+           builder.Property(t => t.EnvioDemandas)
                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            ToTable("GNR_Procuradores");
-            Property(t => t.IdProcurador).HasColumnName("IdProcurador");
-            Property(t => t.IdPartidoJudicial).HasColumnName("IdPartidoJudicial");
-            Property(t => t.Nombre).HasColumnName("Nombre");
-            Property(t => t.Apellidos).HasColumnName("Apellidos");
-            Property(t => t.Telefono).HasColumnName("Telefono");
-            Property(t => t.Telefono2).HasColumnName("Telefono2");
-            Property(t => t.Movil).HasColumnName("Movil");
-            Property(t => t.Fax).HasColumnName("Fax");
-            Property(t => t.Email).HasColumnName("Email");
-            Property(t => t.Provincia).HasColumnName("Provincia");
-            Property(t => t.Direccion).HasColumnName("Direccion");
-            Property(t => t.IdTratamiento).HasColumnName("IdTratamiento");
-            Property(t => t.EnvioDemandas).HasColumnName("EnvioDemandas");
+           builder.ToTable("GNR_Procuradores");
+           builder.Property(t => t.IdProcurador).HasColumnName("IdProcurador");
+           builder.Property(t => t.IdPartidoJudicial).HasColumnName("IdPartidoJudicial");
+           builder.Property(t => t.Nombre).HasColumnName("Nombre");
+           builder.Property(t => t.Apellidos).HasColumnName("Apellidos");
+           builder.Property(t => t.Telefono).HasColumnName("Telefono");
+           builder.Property(t => t.Telefono2).HasColumnName("Telefono2");
+           builder.Property(t => t.Movil).HasColumnName("Movil");
+           builder.Property(t => t.Fax).HasColumnName("Fax");
+           builder.Property(t => t.Email).HasColumnName("Email");
+           builder.Property(t => t.Provincia).HasColumnName("Provincia");
+           builder.Property(t => t.Direccion).HasColumnName("Direccion");
+           builder.Property(t => t.IdTratamiento).HasColumnName("IdTratamiento");
+           builder.Property(t => t.EnvioDemandas).HasColumnName("EnvioDemandas");
         }
     }
 }

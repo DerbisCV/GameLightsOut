@@ -7,6 +7,7 @@ namespace Solvtio.Models
         #region Properties
 
         public int IdExpedienteEstado { get; set; }
+        [ForeignKey("IdExpedienteEstado")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
         public bool PagoDeuda { get; set; }

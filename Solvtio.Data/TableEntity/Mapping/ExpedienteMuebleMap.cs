@@ -1,12 +1,12 @@
 //using System.Data.Entity.ModelConfiguration;
 
-//namespace Solvtio.Models.Mapping
+//using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 //{
-//    public class ExpedienteMuebleMap : EntityTypeConfiguration<ExpedienteDeudorMueble>
+//    public class ExpedienteMuebleMap : IEntityTypeConfiguration<ExpedienteDeudorMueble>
 //    {
 //        public ExpedienteMuebleMap()
 //        {
-//            // Primary Key
+//            public void Configure(EntityTypeBuilder<object> builder) {
 //            this.HasKey(t => t.IdMueble);
 
 //            // Properties
@@ -34,9 +34,9 @@
 //            this.Property(t => t.Descripcion).HasColumnName("Descripcion");
 
 //            // Relationships
-//            this.HasRequired(t => t.ExpedienteEstado)
-//                .WithMany(t => t.ExpedienteMuebles)
-//                .HasForeignKey(d => d.IdExpedienteEstado);
+//            this.//HasRequired(t => t.ExpedienteEstado)
+//                //  .WithMany(t => t.ExpedienteMuebles)
+//                //  .HasForeignKey(d => d.IdExpedienteEstado);
 
 //        }
 //    }

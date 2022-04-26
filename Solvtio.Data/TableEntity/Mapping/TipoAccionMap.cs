@@ -1,25 +1,25 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class TipoAccionMap : EntityTypeConfiguration<TipoAccion>
+    public class TipoAccionMap : IEntityTypeConfiguration<TipoAccion>
     {
         public TipoAccionMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoAccion);
+           } public void Configure(EntityTypeBuilder<TipoAccion> builder) {
+           builder.HasKey(t => t.IdTipoAccion);
 
             // Properties
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .IsRequired()
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            ToTable("TipoAccion");
-            Property(t => t.IdTipoAccion).HasColumnName("IdTipoAccion");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
-            Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
-            Property(t => t.Inactivo).HasColumnName("Inactivo");
+           builder.ToTable("TipoAccion");
+           builder.Property(t => t.IdTipoAccion).HasColumnName("IdTipoAccion");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
+           builder.Property(t => t.Inactivo).HasColumnName("Inactivo");
         }
     }
 }

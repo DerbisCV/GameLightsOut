@@ -1,16 +1,20 @@
-﻿using Solvtio.Data.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using Solvtio.Data.Contracts;
 using Solvtio.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Solvtio.Data.Implementations
 {
-    public class ExpedienteRepository : GenericRepository<Expediente>, IExpedienteRepository
+    public class ExpedienteRepository : IExpedienteRepository //GenericRepository<Expediente>, IExpedienteRepository
     {
-        //private readonly SolvtioDbContext _solvtioDbContext;
+        private readonly SolvtioDbContext _solvtioDbContext;
 
-        public ExpedienteRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext)
+        public ExpedienteRepository(SolvtioDbContext solvtioDbContext) //: base(solvtioDbContext)
         {
-            //_context = solvtioDbContext;
+            //_context = solvtioDbContext ?? throw new ArgumentNullException(nameof(context));
+            _solvtioDbContext = solvtioDbContext;
         }
 
         //public void Add(Expediente entity)
@@ -23,10 +27,22 @@ namespace Solvtio.Data.Implementations
         //    throw new System.NotImplementedException();
         //}
 
-        //public Expediente Get(int id)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
+        public async Task<ModelExpediente> GetModelExpediente(int id)
+        {
+            var result = await _solvtioDbContext.ExpedienteSet
+                .Where(x => x.IdExpediente == id)
+                .Select(x => new ModelExpediente 
+                {
+                    IdExpediente = id,
+                    NoExpediente = x.NoExpediente,
+                    ReferenciaExterna = x.ReferenciaExterna,
+                    TipoExpediente = x.TipoExpediente,
+                    ClienteOficina = x.Gnr_ClienteOficina.Nombre                    
+                })
+                .FirstOrDefaultAsync();
+
+            return result;
+        }
 
         //public IEnumerable<Expediente> GetAll()
         //{

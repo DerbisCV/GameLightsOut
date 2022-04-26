@@ -1,33 +1,32 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class ExpedienteAcreedoreMap : EntityTypeConfiguration<ExpedienteAcreedore>
+    public class ExpedienteAcreedoreMap : IEntityTypeConfiguration<ExpedienteAcreedore>
     {
-        public ExpedienteAcreedoreMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdExpAcreedor);
+    
+            public void Configure(EntityTypeBuilder<ExpedienteAcreedore> builder) {
+           builder.HasKey(t => t.IdExpAcreedor);
 
             // Properties
-            Property(t => t.IdExpAcreedor)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdExpAcreedor)
+                .ValueGeneratedNever();
 
             // Table & Column Mappings
-            ToTable("ExpedienteAcreedores");
-            Property(t => t.IdExpAcreedor).HasColumnName("IdExpAcreedor");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.IdPersona).HasColumnName("IdPersona");
-            Property(t => t.IdTipoAcreedor).HasColumnName("IdTipoAcreedor");
+           builder.ToTable("ExpedienteAcreedores");
+           builder.Property(t => t.IdExpAcreedor).HasColumnName("IdExpAcreedor");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.IdPersona).HasColumnName("IdPersona");
+           builder.Property(t => t.IdTipoAcreedor).HasColumnName("IdTipoAcreedor");
 
             // Relationships
-            HasOptional(t => t.Expediente)
-                .WithMany(t => t.ExpedienteAcreedores)
-                .HasForeignKey(d => d.IdExpediente);
-            HasRequired(t => t.Gnr_Persona)
-                .WithMany(t => t.ExpedienteAcreedores)
-                .HasForeignKey(d => d.IdPersona);
+            // HasOptional(t => t.Expediente)
+                //  .WithMany(t => t.ExpedienteAcreedores)
+                //  .HasForeignKey(d => d.IdExpediente);
+            //HasRequired(t => t.Gnr_Persona)
+                //  .WithMany(t => t.ExpedienteAcreedores)
+                //  .HasForeignKey(d => d.IdPersona);
 
         }
     }

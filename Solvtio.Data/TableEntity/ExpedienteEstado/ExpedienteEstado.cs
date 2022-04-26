@@ -608,7 +608,9 @@ namespace Solvtio.Models
 
         [Index("IX_ExpedienteFecha", 1)]
         public int IdExpediente { get; set; }
+        [ForeignKey("IdExpediente")]
         public virtual Expediente Expediente { get; set; }
+        
 
         [Index("IX_IdTipoEstadoAndIdAbogado", 1)]
         [Index]
@@ -630,12 +632,12 @@ namespace Solvtio.Models
 
         [Index("IX_IdTipoEstadoAndIdAbogado", 2)]
         public int? IdAbogado { get; set; }
-        [ForeignKey("IdAbogado")]
-        public virtual Gnr_Abogado Abogado { get; set; }
+        //[ForeignKey("IdAbogado")]
+        //public virtual Gnr_Abogado Abogado { get; set; }
 
         public int? IdAbogado2 { get; set; }
-        [ForeignKey("IdAbogado2")]
-        public virtual Gnr_Abogado Abogado2 { get; set; }
+        //[ForeignKey("IdAbogado2")]
+        //public virtual Gnr_Abogado Abogado2 { get; set; }
 
         public TipoFaseEstado? FaseEstado { get; set; }
 
@@ -664,45 +666,62 @@ namespace Solvtio.Models
         public virtual ICollection<ExpedienteEstadoCitacion> ExpedienteEstadoCitacionSet { get; set; }
         //public virtual ICollection<ExpedienteParalizado> ExpedienteParalizadoSet { get; set; }
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoParalizado ExpedienteEstadoParalizado { get; set; }
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoJurisdiccionVoluntaria ExpedienteEstadoJurisdiccionVoluntaria { get; set; }
 
         #endregion
 
         #region Hip_ExpedienteEstado
 
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual HipExpedienteEstadoRecepcion Hip_ExpedienteEstadoRecepcion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual HipExpedienteEstadoGeneracion HipExpedienteEstadoGeneracion { get; set; }
-
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Hip_ExpedienteEstadoAdjudicacion Hip_ExpedienteEstadoAdjudicacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual HipExpedienteEstadoPresentacionDemanda Hip_ExpedienteEstadoPresentacionDemanda { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual HipExpedienteEstadoTramitacionSubasta HipExpedienteEstadoTramitacionSubasta { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Hip_ExpedienteEstadoFinalizacion Hip_ExpedienteEstadoFinalizacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Hip_ExpedienteEstadoNegociacionPosesion Hip_ExpedienteEstadoNegociacionPosesion { get; set; }
-
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Hip_ExpedienteEstadoSubasta Hip_ExpedienteEstadoSubasta { get; set; }
-
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ICollection<Hip_ExpedienteEstadoAdjudicacionVencimiento> Hip_ExpedienteEstadoAdjudicacionVencimientoSet { get; set; }
 
         #endregion
 
         #region ExpedienteEstadoOrdinario
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioRecepcion ExpedienteEstadoOrdinarioRecepcion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioPresentacionDemanda ExpedienteEstadoOrdinarioPresentacionDemanda { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioTramitacionJuzgado ExpedienteEstadoOrdinarioTramitacionJuzgado { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioProcesoParalizado ExpedienteEstadoOrdinarioProcesoParalizado { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioSubasta ExpedienteEstadoOrdinarioSubasta { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioAdjudicacion ExpedienteEstadoOrdinarioAdjudicacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioNegociacionPosesion ExpedienteEstadoOrdinarioNegociacionPosesion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioFinalizacion ExpedienteEstadoOrdinarioFinalizacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioJuicio ExpedienteEstadoOrdinarioJuicio { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioAutoAdmisionNotificacion ExpedienteEstadoOrdinarioAutoAdmisionNotificacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioEjecucionSentencia ExpedienteEstadoOrdinarioEjecucionSentencia { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioSentencia ExpedienteEstadoOrdinarioSentencia { get; set; }
         //
 
@@ -710,22 +729,37 @@ namespace Solvtio.Models
 
         #region ExpedienteEstadoOrdinarioCs 
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsRecepcion ExpedienteEstadoOrdinarioCsRecepcion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsAudienciaPrevia ExpedienteEstadoOrdinarioCsPresentacionDemanda { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsTramitacionJuzgado ExpedienteEstadoOrdinarioCsTramitacionJuzgado { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsProcesoParalizado ExpedienteEstadoOrdinarioCsProcesoParalizado { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsSubasta ExpedienteEstadoOrdinarioCsSubasta { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsAdjudicacion ExpedienteEstadoOrdinarioCsAdjudicacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsNegociacionPosesion ExpedienteEstadoOrdinarioCsNegociacionPosesion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsFinalizacion ExpedienteEstadoOrdinarioCsFinalizacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsJuicio ExpedienteEstadoOrdinarioCsJuicio { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsAutoAdmisionNotificacion ExpedienteEstadoOrdinarioCsAutoAdmisionNotificacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsEjecucionSentencia ExpedienteEstadoOrdinarioCsEjecucionSentencia { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsSentencia ExpedienteEstadoOrdinarioCsSentencia { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsAllanamientoTotal ExpedienteEstadoOrdinarioCsAllanamientoTotal { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsAllanamientoParcial ExpedienteEstadoOrdinarioCsAllanamientoParcial { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsAcuerdo ExpedienteEstadoOrdinarioCsAcuerdo { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoOrdinarioCsContestacionDemanda ExpedienteEstadoOrdinarioCsContestacionDemanda { get; set; }
 
         #endregion
@@ -733,178 +767,213 @@ namespace Solvtio.Models
         #region ExpedienteEstadoEjecutivo
 
         public virtual Ejc_ExpedienteEstadoAdjudicacion Ejc_ExpedienteEstadoAdjudicacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoEfectividadEmbargo Ejc_ExpedienteEstadoEfectividadEmbargo { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoFinalizacion Ejc_ExpedienteEstadoFinalizacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoNotificacion Ejc_ExpedienteEstadoNotificacion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoPresentacionDemanda Ejc_ExpedienteEstadoPresentacionDemanda { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoRecepcion Ejc_ExpedienteEstadoRecepcion { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoSolicitudSubasta Ejc_ExpedienteEstadoSolicitudSubasta { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoSubasta Ejc_ExpedienteEstadoSubasta { get; set; }
+        // // [ForeignKey("ExpedienteEstadoId")]
         public virtual Ejc_ExpedienteEstadoTramiteEmbargo Ejc_ExpedienteEstadoTramiteEmbargo { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual EjcExpedienteEstadoEnvioDemandaProcurador EjcExpedienteEstadoEnvioDemandaProcurador { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual EjcExpedienteEstadoPresentacionEscrito579 EjcExpedienteEstadoPresentacionEscrito579 { get; set; }
 
         #endregion
 
         #region JV
 
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual JvExpedienteEstadoRecepcion JvExpedienteEstadoRecepcion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual JvExpedienteEstadoPresentacionDemanda JvExpedienteEstadoPresentacionDemanda { get; set; }
 
         #endregion
 
         #region ExpedienteEstadoMonitorio
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoMonitorioRecepcion ExpedienteEstadoMonitorioRecepcion { get; set; }
-
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoMonitorioPresentacionDemanda ExpedienteEstadoMonitorioPresentacionDemanda { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoMonitorioTramitacionJuzgado ExpedienteEstadoMonitorioTramitacionJuzgado { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoMonitorioFinalizacion ExpedienteEstadoMonitorioFinalizacion { get; set; }
 
         #endregion
 
         #region ExpedienteEstadoVerbal
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoVerbalRecepcion ExpedienteEstadoVerbalRecepcion { get; set; }
-
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoVerbalPresentacionDemanda ExpedienteEstadoVerbalPresentacionDemanda { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoVerbalTramitacionJuzgado ExpedienteEstadoVerbalTramitacionJuzgado { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoVerbalFinalizacion ExpedienteEstadoVerbalFinalizacion { get; set; }
 
         #endregion
 
         #region ExpedienteEstadoSaneamiento
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoSaneamientoRecepcion ExpedienteEstadoSaneamientoRecepcion { get; set; }
         //public virtual ExpedienteEstadoSaneamientoPresentacionDemanda ExpedienteEstadoSaneamientoPresentacionDemanda { get; set; }
         //public virtual ExpedienteEstadoSaneamientoTramitacionJuzgado ExpedienteEstadoSaneamientoTramitacionJuzgado { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoSaneamientoFinalizacion ExpedienteEstadoSaneamientoFinalizacion { get; set; }
 
         #endregion
 
         #region ExpedienteEstadoCivil
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoCivilRecepcion ExpedienteEstadoCivilRecepcion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoCivilFinalizacion ExpedienteEstadoCivilFinalizacion { get; set; }
 
         #endregion
 
         #region ExpedienteEstadoPenal
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoPenalRecepcion ExpedienteEstadoPenalRecepcion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoPenalFinalizacion ExpedienteEstadoPenalFinalizacion { get; set; }
-        //[ForeignKey("ExpedienteEstadoId")]
+        
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoPenal ExpedienteEstadoPenal { get; set; }
 
         #endregion
 
         #region Alquiler 
 
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Alq_Expediente_EstadoAdjudicacion Alq_Expediente_EstadoAdjudicacion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Alq_Expediente_EstadoFinalizacion Alq_Expediente_EstadoFinalizacion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Alq_Expediente_EstadoLanzamiento Alq_Expediente_EstadoLanzamiento { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Alq_Expediente_EstadoPresentacionDemanda Alq_Expediente_EstadoPresentacionDemanda { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Alq_Expediente_EstadoRecepcion Alq_Expediente_EstadoRecepcion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Alq_Expediente_EstadoTramitaJuzgado Alq_Expediente_EstadoTramitaJuzgado { get; set; }
+        //// [ForeignKey("ExpedienteEstadoId")]
         public virtual AlqExpedienteEstadoEnervacion AlqExpedienteEstadoEnervacion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual AlqExpedienteEstadoProcesoParalizado AlqExpedienteEstadoProcesoParalizado { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual AlqExpedienteEstadoPresentacionDenuncia AlqExpedienteEstadoPresentacionDenuncia { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual AlqExpedienteEstadoTramitacionDenuncia AlqExpedienteEstadoTramitacionDenuncia { get; set; }
 
         #endregion
 
         #region Concursal
 
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Con_ExpedienteEstadoComun Con_ExpedienteEstadoComun { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Con_ExpedienteEstadoConvenio Con_ExpedienteEstadoConvenio { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Con_ExpedienteEstadoFinalizado Con_ExpedienteEstadoFinalizado { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual Con_ExpedienteEstadoLiquidacion Con_ExpedienteEstadoLiquidacion { get; set; }
 
         #endregion
 
         #region Conciliacion
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoConciliacionRecepcion ExpedienteEstadoConciliacionRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoConciliacionFinalizacion ExpedienteEstadoConciliacionFinalizacion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoConciliacionActo ExpedienteEstadoConciliacionActo { get; set; }
 
         #endregion
 
         #region JuraCuenta
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoJuraCuentaRecepcion ExpedienteEstadoJuraCuentaRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoJuraCuentaFinalizacion ExpedienteEstadoJuraCuentaFinalizacion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoJuraCuentaTramitacion ExpedienteEstadoJuraCuentaTramitacion { get; set; }
 
         #endregion
 
         #region MercantilInmobiliario
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoMercantilInmobiliarioRecepcion ExpedienteEstadoMercantilInmobiliarioRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoMercantilInmobiliarioFinalizacion ExpedienteEstadoMercantilInmobiliarioFinalizacion { get; set; }
 
         #endregion
 
         #region Ddl
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoDdlRecepcion ExpedienteEstadoDdlRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoDdlFinalizacion ExpedienteEstadoDdlFinalizacion { get; set; }
 
         #endregion
 
         #region ContenciosoAdministrativo
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoContenciosoAdministrativoRecepcion ExpedienteEstadoContenciosoAdministrativoRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoContenciosoAdministrativoFinalizacion ExpedienteEstadoContenciosoAdministrativoFinalizacion { get; set; }
 
         #endregion
 
         #region ContenciosoOrdinario
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoContenciosoOrdinarioRecepcion ExpedienteEstadoContenciosoOrdinarioRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoContenciosoOrdinarioFinalizacion ExpedienteEstadoContenciosoOrdinarioFinalizacion { get; set; }
 
         #endregion
 
         #region Cambiario
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoCambiarioRecepcion ExpedienteEstadoCambiarioRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoCambiarioFinalizacion ExpedienteEstadoCambiarioFinalizacion { get; set; }
 
         #endregion
 
         #region Fiscal
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoFiscalRecepcion ExpedienteEstadoFiscalRecepcion { get; set; }
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoFiscalFinalizacion ExpedienteEstadoFiscalFinalizacion { get; set; }
 
         #endregion
 
         #region ExpedienteEstadoMultiDivisa
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoMDRecepcion ExpedienteEstadoMDRecepcion { get; set; }
 
         //public virtual ExpedienteEstadoMultiDivisaPresentacionDemanda ExpedienteEstadoMultiDivisaPresentacionDemanda { get; set; }
@@ -915,36 +984,36 @@ namespace Solvtio.Models
 
         #region Bastanteo
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoBastanteoRecepcion ExpedienteEstadoBastanteoRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoBastanteoFinalizacion ExpedienteEstadoBastanteoFinalizacion { get; set; }
 
         #endregion
 
         #region Prelitigio
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoPrelitigioRecepcion ExpedienteEstadoPrelitigioRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoPrelitigioFinalizacion ExpedienteEstadoPrelitigioFinalizacion { get; set; }
 
         #endregion
 
         #region Testamentario
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoTestamentarioRecepcion ExpedienteEstadoTestamentarioRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoTestamentarioFinalizacion ExpedienteEstadoTestamentarioFinalizacion { get; set; }
 
         #endregion
 
         #region Tpn
 
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoTpnRecepcion ExpedienteEstadoTpnRecepcion { get; set; }
-        [ForeignKey("ExpedienteEstadoId")]
+        // [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstadoTpnFinalizacion ExpedienteEstadoTpnFinalizacion { get; set; }
 
         #endregion
@@ -988,10 +1057,10 @@ namespace Solvtio.Models
             Gnr_TipoEstado.ClientePhaseCoded;
 
         public bool IsEndOrPause => Gnr_TipoEstado != null && (Gnr_TipoEstado.Fin || Gnr_TipoEstado.Paralizado);
-        public Gnr_Abogado AbogadoActual => IdTipoSubFaseEstado.HasValue && IdTipoSubFaseEstado.OnHipSubasta() ? Abogado2 : Abogado;
+        //public Gnr_Abogado AbogadoActual => IdTipoSubFaseEstado.HasValue && IdTipoSubFaseEstado.OnHipSubasta() ? Abogado2 : Abogado;
         public int? IdAbogadoActual => IdTipoSubFaseEstado.HasValue && IdTipoSubFaseEstado.OnHipSubasta() ? IdAbogado2 : IdAbogado;
 
-        public bool HasAbogado => AbogadoActual != null;
+        public bool HasAbogado => IdAbogadoActual.HasValue;
         public ExpedienteEstadoTipo TipoEstadoValue => (ExpedienteEstadoTipo)IdTipoEstado;
 
         public DateTime? DemandaFechaPresentacion =>

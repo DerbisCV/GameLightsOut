@@ -9,7 +9,7 @@ namespace Solvtio.Models
         public Guid? UserId { get; set; }
         public byte[] PageSettings { get; set; }
         public System.DateTime LastUpdatedDate { get; set; }
-        public virtual aspnet_Paths aspnet_Paths { get; set; }
-        public virtual aspnet_Users aspnet_Users { get; set; }
+        //public virtual aspnet_Paths aspnet_Paths { get; set; }
+        //public virtual aspnet_Users aspnet_Users { get; set; }
     }
 }

@@ -8,6 +8,9 @@ namespace Solvtio.Models
         #region Properties
 
         public int ExpedienteEstadoId { get; set; }
+        [ForeignKey("ExpedienteEstadoId")]
+        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+
         public decimal? ActivoProvisional { get; set; }
         public decimal? PasivoProvisional { get; set; }
         public decimal? ActivoDefinitivo { get; set; }
@@ -54,12 +57,12 @@ namespace Solvtio.Models
         public int? DocumentoInformeAdministradorId { get; set; }
         public int? DocumentoAutoJuezId { get; set; }
 
-        public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
 
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+        
 
         #endregion
 

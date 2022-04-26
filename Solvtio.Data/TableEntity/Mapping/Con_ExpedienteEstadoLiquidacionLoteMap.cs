@@ -1,39 +1,39 @@
-using System.Data.Entity.ModelConfiguration;
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Solvtio.Models.Mapping
 {
-    public class Con_ExpedienteEstadoLiquidacionLoteMap : EntityTypeConfiguration<Con_ExpedienteEstadoLiquidacionLote>
+    public class Con_ExpedienteEstadoLiquidacionLoteMap : IEntityTypeConfiguration<Con_ExpedienteEstadoLiquidacionLote>
     {
-        public Con_ExpedienteEstadoLiquidacionLoteMap()
+        public void Configure(EntityTypeBuilder<Con_ExpedienteEstadoLiquidacionLote> builder)
         {
-            // Primary Key
-            HasKey(t => t.IdLote);
+            builder.HasKey(t => t.IdLote);
 
             // Properties
-            Property(t => t.Lote)
-                .HasMaxLength(50);
+            builder.Property(t => t.Lote)
+                 .HasMaxLength(50);
 
-            Property(t => t.Referencia)
-                .HasMaxLength(50);
+            builder.Property(t => t.Referencia)
+                 .HasMaxLength(50);
 
-            Property(t => t.Propiedad)
-                .HasMaxLength(500);
+            builder.Property(t => t.Propiedad)
+                 .HasMaxLength(500);
 
             // Table & Column Mappings
-            ToTable("Con_ExpedienteEstadoLiquidacionLote");
-            Property(t => t.IdLote).HasColumnName("IdLote");
-            Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
-            Property(t => t.Lote).HasColumnName("Lote");
-            Property(t => t.Referencia).HasColumnName("Referencia");
-            Property(t => t.FechaSubasta).HasColumnName("FechaSubasta");
-            Property(t => t.Propiedad).HasColumnName("Propiedad");
-            Property(t => t.ImporteAdjudicacion).HasColumnName("ImporteAdjudicacion");
-            Property(t => t.ImporteDeudaRemanente).HasColumnName("ImporteDeudaRemanente");
+            builder.ToTable("Con_ExpedienteEstadoLiquidacionLote");
+            builder.Property(t => t.IdLote).HasColumnName("IdLote");
+            builder.Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
+            builder.Property(t => t.Lote).HasColumnName("Lote");
+            builder.Property(t => t.Referencia).HasColumnName("Referencia");
+            builder.Property(t => t.FechaSubasta).HasColumnName("FechaSubasta");
+            builder.Property(t => t.Propiedad).HasColumnName("Propiedad");
+            builder.Property(t => t.ImporteAdjudicacion).HasColumnName("ImporteAdjudicacion");
+            builder.Property(t => t.ImporteDeudaRemanente).HasColumnName("ImporteDeudaRemanente");
 
             // Relationships
-            HasRequired(t => t.ExpedienteEstado)
-                .WithMany(t => t.Con_ExpedienteEstadoLiquidacionLote)
-                .HasForeignKey(d => d.ExpedienteEstadoId);
+            //HasRequired(t => t.ExpedienteEstado)
+            //  .WithMany(t => t.Con_ExpedienteEstadoLiquidacionLote)
+            //  .HasForeignKey(d => d.ExpedienteEstadoId);
 
         }
     }

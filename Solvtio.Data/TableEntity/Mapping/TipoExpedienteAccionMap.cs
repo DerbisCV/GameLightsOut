@@ -1,28 +1,28 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class TipoExpedienteAccionMap : EntityTypeConfiguration<TipoExpedienteAccion>
+    public class TipoExpedienteAccionMap : IEntityTypeConfiguration<TipoExpedienteAccion>
     {
         public TipoExpedienteAccionMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoExpedienteAccion);
+           } public void Configure(EntityTypeBuilder<TipoExpedienteAccion> builder) {
+           builder.HasKey(t => t.IdTipoExpedienteAccion);
 
             // Properties
             // Table & Column Mappings
-            ToTable("TipoExpedienteAccion");
-            Property(t => t.IdTipoExpedienteAccion).HasColumnName("IdTipoExpedienteAccion");
-            Property(t => t.IdTipoExpediente).HasColumnName("IdTipoExpediente");
-            Property(t => t.IdTipoAccion).HasColumnName("IdTipoAccion");
+           builder.ToTable("TipoExpedienteAccion");
+           builder.Property(t => t.IdTipoExpedienteAccion).HasColumnName("IdTipoExpedienteAccion");
+           builder.Property(t => t.IdTipoExpediente).HasColumnName("IdTipoExpediente");
+           builder.Property(t => t.IdTipoAccion).HasColumnName("IdTipoAccion");
 
             // Relationships
-            HasRequired(t => t.Gnr_TipoExpediente)
-                .WithMany(t => t.TipoExpedienteAccions)
-                .HasForeignKey(d => d.IdTipoExpediente);
-            HasRequired(t => t.TipoAccion)
-                .WithMany(t => t.TipoExpedienteAccions)
-                .HasForeignKey(d => d.IdTipoAccion);
+            //HasRequired(t => t.Gnr_TipoExpediente)
+                //  .WithMany(t => t.TipoExpedienteAccions)
+                //  .HasForeignKey(d => d.IdTipoExpediente);
+            //HasRequired(t => t.TipoAccion)
+                //  .WithMany(t => t.TipoExpedienteAccions)
+                //  .HasForeignKey(d => d.IdTipoAccion);
 
         }
     }

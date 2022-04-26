@@ -30,9 +30,10 @@ namespace Solvtio.Models
         public DateTime? ConclusionFechaOposicionRendicionCuentas { get; set; }
         public DateTime? ConclusionFechaAuto { get; set; }
 
-        public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
+        [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
         public DateTime? CalificacionFechaApertura { get; set; }

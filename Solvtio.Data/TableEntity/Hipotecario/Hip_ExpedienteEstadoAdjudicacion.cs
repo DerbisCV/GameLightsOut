@@ -8,6 +8,9 @@ namespace Solvtio.Models
 		#region Properties Before EF Migration
 
 		public int ExpedienteEstadoId { get; set; }
+        [ForeignKey("ExpedienteEstadoId")]
+        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+        
         public DateTime? FechaAdjudicacion { get; set; }
         public bool LiquidacionITP { get; set; }
         public DateTime? FechaLiquidacionITP { get; set; }
@@ -31,8 +34,8 @@ namespace Solvtio.Models
         public bool DocumentacionOriginalRecibida { get; set; }
         public string ObservacionesDocumentacionOriginal { get; set; }
         public int? ResultadoPosesion { get; set; }
-       
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+
+
 
 	    public int? DocumentoCertificadoInscripcionId { get; set; }
 	    public int? DocumentoDiligenciaPosesionId { get; set; }

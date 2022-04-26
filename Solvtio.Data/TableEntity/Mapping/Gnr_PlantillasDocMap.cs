@@ -1,48 +1,47 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Gnr_PlantillasDocMap : EntityTypeConfiguration<Gnr_PlantillasDoc>
+    public class Gnr_PlantillasDocMap : IEntityTypeConfiguration<Gnr_PlantillasDoc>
     {
-        public Gnr_PlantillasDocMap()
-        {
-            // Primary Key
-            HasKey(t => t.ID);
+     
+            public void Configure(EntityTypeBuilder<Gnr_PlantillasDoc> builder) {
+           builder.HasKey(t => t.ID);
 
             // Properties
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .HasMaxLength(50);
 
-            Property(t => t.Clave)
+           builder.Property(t => t.Clave)
                 .HasMaxLength(50);
 
-            Property(t => t.Detalle)
+           builder.Property(t => t.Detalle)
                 .HasMaxLength(2500);
 
-            Property(t => t.VistaBD)
+           builder.Property(t => t.VistaBD)
                 .HasMaxLength(100);
 
-            Property(t => t.DelimitadorCampos)
+           builder.Property(t => t.DelimitadorCampos)
                 .HasMaxLength(5);
 
-            Property(t => t.ListaCamposEnPlantilla)
+           builder.Property(t => t.ListaCamposEnPlantilla)
                 .HasMaxLength(1000);
 
-            Property(t => t.ListaCamposVistaBD)
+           builder.Property(t => t.ListaCamposVistaBD)
                 .HasMaxLength(1000);
 
             // Table & Column Mappings
-            ToTable("Gnr_PlantillasDoc");
-            Property(t => t.ID).HasColumnName("ID");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
-            Property(t => t.Clave).HasColumnName("Clave");
-            Property(t => t.Detalle).HasColumnName("Detalle");
-            Property(t => t.IdTipoFormato).HasColumnName("IdTipoFormato");
-            Property(t => t.VistaBD).HasColumnName("VistaBD");
-            Property(t => t.Documento).HasColumnName("Documento");
-            Property(t => t.DelimitadorCampos).HasColumnName("DelimitadorCampos");
-            Property(t => t.ListaCamposEnPlantilla).HasColumnName("ListaCamposEnPlantilla");
-            Property(t => t.ListaCamposVistaBD).HasColumnName("ListaCamposVistaBD");
+           builder.ToTable("Gnr_PlantillasDoc");
+           builder.Property(t => t.ID).HasColumnName("ID");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.Property(t => t.Clave).HasColumnName("Clave");
+           builder.Property(t => t.Detalle).HasColumnName("Detalle");
+           builder.Property(t => t.IdTipoFormato).HasColumnName("IdTipoFormato");
+           builder.Property(t => t.VistaBD).HasColumnName("VistaBD");
+           builder.Property(t => t.Documento).HasColumnName("Documento");
+           builder.Property(t => t.DelimitadorCampos).HasColumnName("DelimitadorCampos");
+           builder.Property(t => t.ListaCamposEnPlantilla).HasColumnName("ListaCamposEnPlantilla");
+           builder.Property(t => t.ListaCamposVistaBD).HasColumnName("ListaCamposVistaBD");
         }
     }
 }

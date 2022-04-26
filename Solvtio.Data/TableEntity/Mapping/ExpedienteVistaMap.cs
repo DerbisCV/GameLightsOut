@@ -1,30 +1,29 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class ExpedienteVistaMap : EntityTypeConfiguration<ExpedienteVista>
+    public class ExpedienteVistaMap : IEntityTypeConfiguration<ExpedienteVista>
     {
-        public ExpedienteVistaMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdExpedienteVista);
+   
+            public void Configure(EntityTypeBuilder<ExpedienteVista> builder) {
+           builder.HasKey(t => t.IdExpedienteVista);
 
             // Properties
             // Table & Column Mappings
-            ToTable("ExpedienteVista");
-            Property(t => t.IdExpedienteVista).HasColumnName("IdExpedienteVista");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.IdTipoVista).HasColumnName("IdTipoVista");
-            Property(t => t.Fecha).HasColumnName("Fecha");
-            Property(t => t.Observaciones).HasColumnName("Observaciones");
+           builder.ToTable("ExpedienteVista");
+           builder.Property(t => t.IdExpedienteVista).HasColumnName("IdExpedienteVista");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.IdTipoVista).HasColumnName("IdTipoVista");
+           builder.Property(t => t.Fecha).HasColumnName("Fecha");
+           builder.Property(t => t.Observaciones).HasColumnName("Observaciones");
 
             // Relationships
-            HasRequired(t => t.Expediente)
-                .WithMany(t => t.ExpedienteVistas)
-                .HasForeignKey(d => d.IdExpediente);
-            HasRequired(t => t.TipoVista)
-                .WithMany(t => t.ExpedienteVistas)
-                .HasForeignKey(d => d.IdTipoVista);
+            //HasRequired(t => t.Expediente)
+                //  .WithMany(t => t.ExpedienteVistas)
+                //  .HasForeignKey(d => d.IdExpediente);
+            //HasRequired(t => t.TipoVista)
+                //  .WithMany(t => t.ExpedienteVistas)
+                //  .HasForeignKey(d => d.IdTipoVista);
 
         }
     }

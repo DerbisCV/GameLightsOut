@@ -46,7 +46,8 @@ namespace Solvtio.Models
 		public DateTime FechaAlta { get; set; }
 
         public int? IdExpediente { get; set; }
-        public virtual Expediente Expediente { get; set; }
+		[ForeignKey("IdExpediente")]
+		public virtual Expediente Expediente { get; set; }
 	    public string UserName { get; set; }
 
         #endregion

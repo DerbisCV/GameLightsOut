@@ -34,20 +34,20 @@ namespace Solvtio.Models
         #region Properties ReadOnly
 
         public bool HasError => Errores.IsNotEmpty();
-        public Expediente Expediente => ExpedienteNegociacion.Expediente;
-        public Hip_Inmueble Inmueble => Expediente.Hip_Inmueble.FirstOrDefault();
-        public Usuario Gestor => ExpedienteNegociacion.Gestor;
+        //public Expediente Expediente => ExpedienteNegociacion.Expediente;
+        //public Hip_Inmueble Inmueble => Expediente.Hip_Inmueble.FirstOrDefault();
+        //public Usuario Gestor => ExpedienteNegociacion.Gestor;
 
-        public ExpedienteDeudor DeudorPrincipal
-        {
-            get
-            {
-                if (Expediente == null || Expediente.ExpedienteDeudors.IsEmpty()) return null;
-                return Expediente.ExpedienteDeudors.Any(x => x.IdTipoDeudor == 1) ? 
-                    Expediente.ExpedienteDeudors.First(x => x.IdTipoDeudor == 1) : 
-                    Expediente.ExpedienteDeudors.First();
-            }
-        }
+        //public ExpedienteDeudor DeudorPrincipal
+        //{
+        //    get
+        //    {
+        //        if (Expediente == null || Expediente.ExpedienteDeudors.IsEmpty()) return null;
+        //        return Expediente.ExpedienteDeudors.Any(x => x.IdTipoDeudor == 1) ? 
+        //            Expediente.ExpedienteDeudors.First(x => x.IdTipoDeudor == 1) : 
+        //            Expediente.ExpedienteDeudors.First();
+        //    }
+        //}
 
         #endregion
 
@@ -59,8 +59,8 @@ namespace Solvtio.Models
                 return false;
             }
 
-            if (Expediente == null) Errores.Add("Debe especificar el expediente.");
-            if (Inmueble == null) Errores.Add("Debe especificar al menos un inmueble.");
+            //if (Expediente == null) Errores.Add("Debe especificar el expediente.");
+            //if (Inmueble == null) Errores.Add("Debe especificar al menos un inmueble.");
 
             return !HasError;
         }

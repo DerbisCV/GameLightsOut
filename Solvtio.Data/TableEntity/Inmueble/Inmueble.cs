@@ -138,8 +138,8 @@ namespace Solvtio.Models
         public decimal OperativaTransformarSupConstGastosComerc { get; set; }
 
         public int? IdInmuebleEstadoLast { get; set; }
-        [ForeignKey("IdInmuebleEstadoLast")]
-        public virtual InmuebleEstado InmuebleEstadoLast { get; set; }
+        //[ForeignKey("IdInmuebleEstadoLast")]
+        //public virtual InmuebleEstado InmuebleEstadoLast { get; set; }
 
         public InmuebleOrigen Origen { get; set; }
 

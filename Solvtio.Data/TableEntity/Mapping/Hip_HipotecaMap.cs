@@ -1,88 +1,88 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Hip_HipotecaMap : EntityTypeConfiguration<Hip_Hipoteca>
+    public class Hip_HipotecaMap : IEntityTypeConfiguration<Hip_Hipoteca>
     {
         public Hip_HipotecaMap()
         {
-            // Primary Key
-            HasKey(t => t.IdHipoteca);
+           } public void Configure(EntityTypeBuilder<Hip_Hipoteca> builder) {
+           builder.HasKey(t => t.IdHipoteca);
 
             // Properties
-            Property(t => t.OficinaNoCuenta)
+           builder.Property(t => t.OficinaNoCuenta)
                 .IsRequired()
                 .HasMaxLength(4);
 
-            Property(t => t.NoCuentaPrestamo)
+           builder.Property(t => t.NoCuentaPrestamo)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            Property(t => t.ColegioNotarioFijacion)
+           builder.Property(t => t.ColegioNotarioFijacion)
                 .HasMaxLength(50);
 
-            Property(t => t.NotarioFijacion)
+           builder.Property(t => t.NotarioFijacion)
                 .HasMaxLength(500);
 
-            Property(t => t.Registro)
+           builder.Property(t => t.Registro)
                 .HasMaxLength(500);
 
-            Property(t => t.ReferenciaExterna)
+           builder.Property(t => t.ReferenciaExterna)
                 .HasMaxLength(50);
 
-            Property(t => t.EntidadOrigen)
+           builder.Property(t => t.EntidadOrigen)
                 .HasMaxLength(250);
 
-            Property(t => t.Usuario)
+           builder.Property(t => t.Usuario)
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            ToTable("Hip_Hipoteca");
-            Property(t => t.IdHipoteca).HasColumnName("IdHipoteca");
+           builder.ToTable("Hip_Hipoteca");
+           builder.Property(t => t.IdHipoteca).HasColumnName("IdHipoteca");
             //Property(t => t.IdValija).HasColumnName("IdValija");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.IdPeriodicidad).HasColumnName("IdPeriodicidad");
-            Property(t => t.IdTipoReferenciaHipotecaria).HasColumnName("IdTipoReferenciaHipotecaria");
-            Property(t => t.IdPartidoJudicial).HasColumnName("IdPartidoJudicial");
-            Property(t => t.IdPersona).HasColumnName("IdPersona");
-            Property(t => t.IdTipoArea).HasColumnName("IdTipoArea");
-            Property(t => t.IdJuzgado).HasColumnName("IdJuzgado");
-            Property(t => t.OficinaNoCuenta).HasColumnName("OficinaNoCuenta");
-            Property(t => t.NoCuentaPrestamo).HasColumnName("NoCuentaPrestamo");
-            Property(t => t.NoHipoteca).HasColumnName("NoHipoteca");
-            Property(t => t.DeudaCierreFijacion).HasColumnName("DeudaCierreFijacion");
-            Property(t => t.PrestamoCapital).HasColumnName("PrestamoCapital");
-            Property(t => t.ColegioNotarioFijacion).HasColumnName("ColegioNotarioFijacion");
-            Property(t => t.NotarioFijacion).HasColumnName("NotarioFijacion");
-            Property(t => t.Registro).HasColumnName("Registro");
-            Property(t => t.CuotasCantidad).HasColumnName("CuotasCantidad");
-            Property(t => t.CuotasValor).HasColumnName("CuotasValor");
-            Property(t => t.CuotasFechaPrimera).HasColumnName("CuotasFechaPrimera");
-            Property(t => t.CuotasFechaUltima).HasColumnName("CuotasFechaUltima");
-            Property(t => t.TipoInteresInicial).HasColumnName("TipoInteresInicial");
-            Property(t => t.TipoInteresUltimo).HasColumnName("TipoInteresUltimo");
-            Property(t => t.TipoInteresMoratorio).HasColumnName("TipoInteresMoratorio");
-            Property(t => t.FechaModificacionTipoInteres).HasColumnName("FechaModificacionTipoInteres");
-            Property(t => t.FechaPrimeraCuotaImpagada).HasColumnName("FechaPrimeraCuotaImpagada");
-            Property(t => t.FechaCierre).HasColumnName("FechaCierre");
-            Property(t => t.DemandaFecha).HasColumnName("DemandaFecha");
-            Property(t => t.Ejecutar).HasColumnName("Ejecutar");
-            Property(t => t.DiferencialIndiceReferenciaHipotecaria).HasColumnName("DiferencialIndiceReferenciaHipotecaria");
-            Property(t => t.DemandaSucesionBancaria).HasColumnName("DemandaSucesionBancaria");
-            Property(t => t.DemandaBurofaxNoNotificado).HasColumnName("DemandaBurofaxNoNotificado");
-            Property(t => t.NovacionFechaFinPeriodoCarencia).HasColumnName("NovacionFechaFinPeriodoCarencia");
-            Property(t => t.NovacionNoCuotas).HasColumnName("NovacionNoCuotas");
-            Property(t => t.NovacionFechaPeriodoAmortizacionInicio).HasColumnName("NovacionFechaPeriodoAmortizacionInicio");
-            Property(t => t.NovacionFechaPeriodoAmortizacionFin).HasColumnName("NovacionFechaPeriodoAmortizacionFin");
-            Property(t => t.NovacionComision).HasColumnName("NovacionComision");
-            Property(t => t.FechaActaFijacion).HasColumnName("FechaActaFijacion");
-            Property(t => t.Carencia).HasColumnName("Carencia");
-            Property(t => t.Diferencial).HasColumnName("Diferencial");
-            Property(t => t.ReferenciaExterna).HasColumnName("ReferenciaExterna");
-            Property(t => t.EntidadOrigen).HasColumnName("EntidadOrigen");
-            Property(t => t.Observaciones).HasColumnName("Observaciones");
-            Property(t => t.Usuario).HasColumnName("Usuario");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.IdPeriodicidad).HasColumnName("IdPeriodicidad");
+           builder.Property(t => t.IdTipoReferenciaHipotecaria).HasColumnName("IdTipoReferenciaHipotecaria");
+           builder.Property(t => t.IdPartidoJudicial).HasColumnName("IdPartidoJudicial");
+           builder.Property(t => t.IdPersona).HasColumnName("IdPersona");
+           builder.Property(t => t.IdTipoArea).HasColumnName("IdTipoArea");
+           builder.Property(t => t.IdJuzgado).HasColumnName("IdJuzgado");
+           builder.Property(t => t.OficinaNoCuenta).HasColumnName("OficinaNoCuenta");
+           builder.Property(t => t.NoCuentaPrestamo).HasColumnName("NoCuentaPrestamo");
+           builder.Property(t => t.NoHipoteca).HasColumnName("NoHipoteca");
+           builder.Property(t => t.DeudaCierreFijacion).HasColumnName("DeudaCierreFijacion");
+           builder.Property(t => t.PrestamoCapital).HasColumnName("PrestamoCapital");
+           builder.Property(t => t.ColegioNotarioFijacion).HasColumnName("ColegioNotarioFijacion");
+           builder.Property(t => t.NotarioFijacion).HasColumnName("NotarioFijacion");
+           builder.Property(t => t.Registro).HasColumnName("Registro");
+           builder.Property(t => t.CuotasCantidad).HasColumnName("CuotasCantidad");
+           builder.Property(t => t.CuotasValor).HasColumnName("CuotasValor");
+           builder.Property(t => t.CuotasFechaPrimera).HasColumnName("CuotasFechaPrimera");
+           builder.Property(t => t.CuotasFechaUltima).HasColumnName("CuotasFechaUltima");
+           builder.Property(t => t.TipoInteresInicial).HasColumnName("TipoInteresInicial");
+           builder.Property(t => t.TipoInteresUltimo).HasColumnName("TipoInteresUltimo");
+           builder.Property(t => t.TipoInteresMoratorio).HasColumnName("TipoInteresMoratorio");
+           builder.Property(t => t.FechaModificacionTipoInteres).HasColumnName("FechaModificacionTipoInteres");
+           builder.Property(t => t.FechaPrimeraCuotaImpagada).HasColumnName("FechaPrimeraCuotaImpagada");
+           builder.Property(t => t.FechaCierre).HasColumnName("FechaCierre");
+           builder.Property(t => t.DemandaFecha).HasColumnName("DemandaFecha");
+           builder.Property(t => t.Ejecutar).HasColumnName("Ejecutar");
+           builder.Property(t => t.DiferencialIndiceReferenciaHipotecaria).HasColumnName("DiferencialIndiceReferenciaHipotecaria");
+           builder.Property(t => t.DemandaSucesionBancaria).HasColumnName("DemandaSucesionBancaria");
+           builder.Property(t => t.DemandaBurofaxNoNotificado).HasColumnName("DemandaBurofaxNoNotificado");
+           builder.Property(t => t.NovacionFechaFinPeriodoCarencia).HasColumnName("NovacionFechaFinPeriodoCarencia");
+           builder.Property(t => t.NovacionNoCuotas).HasColumnName("NovacionNoCuotas");
+           builder.Property(t => t.NovacionFechaPeriodoAmortizacionInicio).HasColumnName("NovacionFechaPeriodoAmortizacionInicio");
+           builder.Property(t => t.NovacionFechaPeriodoAmortizacionFin).HasColumnName("NovacionFechaPeriodoAmortizacionFin");
+           builder.Property(t => t.NovacionComision).HasColumnName("NovacionComision");
+           builder.Property(t => t.FechaActaFijacion).HasColumnName("FechaActaFijacion");
+           builder.Property(t => t.Carencia).HasColumnName("Carencia");
+           builder.Property(t => t.Diferencial).HasColumnName("Diferencial");
+           builder.Property(t => t.ReferenciaExterna).HasColumnName("ReferenciaExterna");
+           builder.Property(t => t.EntidadOrigen).HasColumnName("EntidadOrigen");
+           builder.Property(t => t.Observaciones).HasColumnName("Observaciones");
+           builder.Property(t => t.Usuario).HasColumnName("Usuario");
+           builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
         }
     }
 }

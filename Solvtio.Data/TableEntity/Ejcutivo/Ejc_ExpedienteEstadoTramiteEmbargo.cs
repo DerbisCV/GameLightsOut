@@ -2,9 +2,10 @@ using System;
 
 namespace Solvtio.Models
 {
-    public class Ejc_ExpedienteEstadoTramiteEmbargo
+    public class Ejc_ExpedienteEstadoTramiteEmbargo : ExpedienteEstadoBase
     {
-        public int IdExpedienteEstado { get; set; }
+        //public int IdExpedienteEstado { get; set; }
+        //public virtual ExpedienteEstado ExpedienteEstado { get; set; }        
         public int IdExpediente { get; set; }
         public DateTime? FechaAveriguacion { get; set; }
         public bool AveriguacionBienesInmuebles { get; set; }
@@ -19,7 +20,7 @@ namespace Solvtio.Models
         public int? IdDocumentoAveriguacion { get; set; }
         public int? IdDocumentoDecretoEmbargo { get; set; }
 
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+
 		//public virtual ExpedienteDocumento ExpedienteDocumentoAveriguacion { get; set; }
 		//public virtual ExpedienteDocumento ExpedienteDocumentoDecretoEmbargo { get; set; }
     }

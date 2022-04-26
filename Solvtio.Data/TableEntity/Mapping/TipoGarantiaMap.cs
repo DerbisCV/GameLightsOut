@@ -1,24 +1,24 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class TipoGarantiaMap : EntityTypeConfiguration<TipoGarantia>
+    public class TipoGarantiaMap : IEntityTypeConfiguration<TipoGarantia>
     {
         public TipoGarantiaMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoGarantia);
+           } public void Configure(EntityTypeBuilder<TipoGarantia> builder) {
+           builder.HasKey(t => t.IdTipoGarantia);
 
             // Properties
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .IsRequired()
                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            ToTable("TipoGarantia");
-            Property(t => t.IdTipoGarantia).HasColumnName("IdTipoGarantia");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
-            Property(t => t.Activo).HasColumnName("Activo");
+           builder.ToTable("TipoGarantia");
+           builder.Property(t => t.IdTipoGarantia).HasColumnName("IdTipoGarantia");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.Property(t => t.Activo).HasColumnName("Activo");
         }
     }
 }

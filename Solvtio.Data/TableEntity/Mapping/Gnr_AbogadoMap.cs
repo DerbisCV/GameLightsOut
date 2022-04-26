@@ -1,34 +1,33 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Gnr_AbogadoMap : EntityTypeConfiguration<Gnr_Abogado>
+    public class Gnr_AbogadoMap : IEntityTypeConfiguration<Gnr_Abogado>
     {
-        public Gnr_AbogadoMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdPersona);
+  
+            public void Configure(EntityTypeBuilder<Gnr_Abogado> builder) {
+           builder.HasKey(t => t.IdPersona);
 
             // Properties
-            Property(t => t.IdPersona)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdPersona)
+                .ValueGeneratedNever();
 
-            Property(t => t.NoColegiado)
+           builder.Property(t => t.NoColegiado)
                 .IsRequired()
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            ToTable("Gnr_Abogado");
-            Property(t => t.IdPersona).HasColumnName("IdPersona");
-            Property(t => t.NoColegiado).HasColumnName("NoColegiado");
-            Property(t => t.PuedeFirmarDemanda).HasColumnName("PuedeFirmarDemanda");
-            Property(t => t.Activo).HasColumnName("Activo");
-            Property(t => t.EsAbogadoDeZona).HasColumnName("EsAbogadoDeZona");
+           builder.ToTable("Gnr_Abogado");
+           builder.Property(t => t.IdPersona).HasColumnName("IdPersona");
+           builder.Property(t => t.NoColegiado).HasColumnName("NoColegiado");
+           builder.Property(t => t.PuedeFirmarDemanda).HasColumnName("PuedeFirmarDemanda");
+           builder.Property(t => t.Activo).HasColumnName("Activo");
+           builder.Property(t => t.EsAbogadoDeZona).HasColumnName("EsAbogadoDeZona");
 
             // Relationships
-            HasRequired(t => t.Persona)
-                .WithOptional(t => t.Gnr_Abogado);
+            //HasRequired(t => t.Persona)
+                //  .WithOptional(t => t.Gnr_Abogado);
 
         }
     }

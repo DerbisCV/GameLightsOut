@@ -8,8 +8,12 @@ namespace Solvtio.Models
     public class EstadoRecepcionBase : IEstadoRecepcionBase
     {
 
+        //[ForeignKey("ExpedienteEstado")]
+        [Key]
         public int IdExpedienteEstado { get; set; }
+        [ForeignKey("IdExpedienteEstado")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+        
         public DateTime? FechaResolucionIncidenciaDocumental { get; set; }
     }
 
@@ -17,8 +21,9 @@ namespace Solvtio.Models
     public class EstadoBase
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [ForeignKey("ExpedienteEstado")]
+
         public int IdExpedienteEstado { get; set; }
+          [ForeignKey("IdExpedienteEstado")]      
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
     }
 }

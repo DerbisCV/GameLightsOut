@@ -1,33 +1,33 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Alq_Expediente_EstadoRecepcionMap : EntityTypeConfiguration<Alq_Expediente_EstadoRecepcion>
+    public class Alq_Expediente_EstadoRecepcionMap : IEntityTypeConfiguration<Alq_Expediente_EstadoRecepcion>
     {
-        public Alq_Expediente_EstadoRecepcionMap()
+        public void Configure(EntityTypeBuilder<Alq_Expediente_EstadoRecepcion> builder)
         {
-            // Primary Key
-            HasKey(t => t.IdExpedienteEstado);
+            // 
+           builder.HasKey(t => t.IdExpedienteEstado);
 
             // Properties
-            Property(t => t.ID)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+           builder.Property(t => t.ID)
+                .ValueGeneratedOnAdd();
 
-            Property(t => t.IdExpedienteEstado)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdExpedienteEstado)
+                .ValueGeneratedNever();
 
             // Table & Column Mappings
-            ToTable("Alq_Expediente_EstadoRecepcion");
-            Property(t => t.ID).HasColumnName("ID");
-            Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
-            Property(t => t.PendienteDocumentacion).HasColumnName("PendienteDocumentacion");
-            Property(t => t.BurofaxFiadores).HasColumnName("BurofaxFiadores");
-            Property(t => t.PagosACuenta).HasColumnName("PagosACuenta");
+           builder.ToTable("Alq_Expediente_EstadoRecepcion");
+           builder.Property(t => t.ID).HasColumnName("ID");
+           builder.Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
+           builder.Property(t => t.PendienteDocumentacion).HasColumnName("PendienteDocumentacion");
+           builder.Property(t => t.BurofaxFiadores).HasColumnName("BurofaxFiadores");
+           builder.Property(t => t.PagosACuenta).HasColumnName("PagosACuenta");
 
             // Relationships
-            HasRequired(t => t.ExpedienteEstado)
-                .WithOptional(t => t.Alq_Expediente_EstadoRecepcion);
+            //HasRequired(t => t.ExpedienteEstado)
+            //    .WithOptional(t => t.Alq_Expediente_EstadoRecepcion);
 
         }
     }

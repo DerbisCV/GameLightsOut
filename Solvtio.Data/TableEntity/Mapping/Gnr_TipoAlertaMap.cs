@@ -1,32 +1,32 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Gnr_TipoAlertaMap : EntityTypeConfiguration<Gnr_TipoAlerta>
+    public class Gnr_TipoAlertaMap : IEntityTypeConfiguration<Gnr_TipoAlerta>
     {
         public Gnr_TipoAlertaMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoAlerta);
+           } public void Configure(EntityTypeBuilder<Gnr_TipoAlerta> builder) {
+           builder.HasKey(t => t.IdTipoAlerta);
 
             // Properties
-            Property(t => t.IdTipoAlerta)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdTipoAlerta)
+                .ValueGeneratedNever();
 
-            Property(t => t.Nombre)
+           builder.Property(t => t.Nombre)
                 .IsRequired()
                 .HasMaxLength(150);
 
-            Property(t => t.Grupo)
+           builder.Property(t => t.Grupo)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            ToTable("Gnr_TipoAlerta");
-            Property(t => t.IdTipoAlerta).HasColumnName("IdTipoAlerta");
-            Property(t => t.Nombre).HasColumnName("Nombre");
-            Property(t => t.Grupo).HasColumnName("Grupo");
+           builder.ToTable("Gnr_TipoAlerta");
+           builder.Property(t => t.IdTipoAlerta).HasColumnName("IdTipoAlerta");
+           builder.Property(t => t.Nombre).HasColumnName("Nombre");
+           builder.Property(t => t.Grupo).HasColumnName("Grupo");
         }
     }
 }

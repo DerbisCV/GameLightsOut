@@ -1,31 +1,30 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Gnr_PersonaExpedienteMap : EntityTypeConfiguration<Gnr_PersonaExpediente>
+    public class Gnr_PersonaExpedienteMap : IEntityTypeConfiguration<Gnr_PersonaExpediente>
     {
-        public Gnr_PersonaExpedienteMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdPersonaExpediente);
+    
+            public void Configure(EntityTypeBuilder<Gnr_PersonaExpediente> builder) {
+           builder.HasKey(t => t.IdPersonaExpediente);
 
             // Properties
             // Table & Column Mappings
-            ToTable("Gnr_PersonaExpediente");
-            Property(t => t.IdPersonaExpediente).HasColumnName("IdPersonaExpediente");
-            Property(t => t.IdPersona).HasColumnName("IdPersona");
-            Property(t => t.IdTipoPersona).HasColumnName("IdTipoPersona");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
-            Property(t => t.FechaBaja).HasColumnName("FechaBaja");
+           builder.ToTable("Gnr_PersonaExpediente");
+           builder.Property(t => t.IdPersonaExpediente).HasColumnName("IdPersonaExpediente");
+           builder.Property(t => t.IdPersona).HasColumnName("IdPersona");
+           builder.Property(t => t.IdTipoPersona).HasColumnName("IdTipoPersona");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+           builder.Property(t => t.FechaBaja).HasColumnName("FechaBaja");
 
             // Relationships
-            HasRequired(t => t.Gnr_Persona)
-                .WithMany(t => t.Gnr_PersonaExpediente)
-                .HasForeignKey(d => d.IdPersona);
-            HasRequired(t => t.Gnr_TipoPersona)
-                .WithMany(t => t.Gnr_PersonaExpediente)
-                .HasForeignKey(d => d.IdTipoPersona);
+            //HasRequired(t => t.Gnr_Persona)
+                //  .WithMany(t => t.Gnr_PersonaExpediente)
+                //  .HasForeignKey(d => d.IdPersona);
+            //HasRequired(t => t.Gnr_TipoPersona)
+                //  .WithMany(t => t.Gnr_PersonaExpediente)
+                //  .HasForeignKey(d => d.IdTipoPersona);
 
         }
     }

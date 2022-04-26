@@ -42,8 +42,9 @@ namespace Solvtio.API.Start
                 var context = serviceScope.ServiceProvider.GetService<SolvtioDbContext>();
                 if (context != null && context.Database != null)
                 {
-                    context.Database.Migrate();
+                    //context.Database.Migrate();
                     context.SeedDataInitial();
+                    var caract = context.CaracteristicaBaseSet.Find(1);
                 }
             }
         }

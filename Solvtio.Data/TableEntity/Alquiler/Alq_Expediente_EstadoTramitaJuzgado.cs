@@ -94,8 +94,8 @@ namespace Solvtio.Models
 
 
 
-        public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
 
         #region Properties NotMapped
 

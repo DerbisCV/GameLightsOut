@@ -12,7 +12,7 @@ namespace Solvtio.Models
 
         DateTime Fecha { get; set; }
         int? IdAbogado { get; set; }
-        Gnr_Abogado Abogado { get; set; }
+        //Gnr_Abogado Abogado { get; set; }
         TipoFaseEstado? FaseEstado { get; set; }
 
         string Observacion { get; set; }

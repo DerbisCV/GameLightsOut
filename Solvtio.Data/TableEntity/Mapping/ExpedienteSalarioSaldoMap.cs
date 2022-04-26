@@ -1,10 +1,10 @@
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    //public class ExpedienteDeudorSalarioSaldoMap : EntityTypeConfiguration<ExpedienteDeudorSalarioSaldo>
+    //public class ExpedienteDeudorSalarioSaldoMap : IEntityTypeConfiguration<ExpedienteDeudorSalarioSaldo>
     //{
     //    public ExpedienteDeudorSalarioSaldoMap()
     //    {
-    //        // Primary Key
+    //        public void Configure(EntityTypeBuilder<object> builder) {
     //        this.HasKey(t => t.Id);
 
     //        // Properties
@@ -22,9 +22,9 @@ namespace Solvtio.Models.Mapping
     //        this.Property(t => t.Importe).HasColumnName("Importe");
 
     //        // Relationships
-    //        this.HasRequired(t => t.ExpedienteEstado)
-    //            .WithMany(t => t.ExpedienteDeudorSalarioSaldoes)
-    //            .HasForeignKey(d => d.IdExpedienteEstado);
+    //        this.//HasRequired(t => t.ExpedienteEstado)
+    //            //  .WithMany(t => t.ExpedienteDeudorSalarioSaldoes)
+    //            //  .HasForeignKey(d => d.IdExpedienteEstado);
 
     //    }
     //}

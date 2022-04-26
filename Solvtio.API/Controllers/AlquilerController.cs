@@ -4,6 +4,7 @@ using Solvtio.Data.Contracts;
 using Solvtio.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Solvtio.API.Controllers
@@ -12,19 +13,20 @@ namespace Solvtio.API.Controllers
     [ApiController]
     public class AlquilerController : ControllerBaseSolvtioApi
     {
-        private readonly IAlquilerRepository _repository;
+        //private readonly IAlquilerRepository _repository;
+        private readonly ICaracteristicaBaseRepository _repository;
 
-        public AlquilerController(ILogger<AlquilerController> logger, IAlquilerRepository repository) : base(logger)
+        public AlquilerController(ILogger<AlquilerController> logger, ICaracteristicaBaseRepository repository) : base(logger)
         {
             _repository = repository;
         }
 
-        [HttpPost("GetWithPagination")]
-        public async Task<ActionResult<List<Alq_Expediente>>> GetWithPagination(PaginationFilter paginationFilter)
+        [HttpGet]
+        public async Task<ActionResult<List<Alq_Expediente>>> GetAll()
         {
             try
             {
-                var result = await _repository.GetWithPagination(paginationFilter);
+                var result = _repository.GetAll().Take(10);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -33,6 +35,21 @@ namespace Solvtio.API.Controllers
                 return StatusCode(500, error);
             }
         }
+
+        //[HttpPost("GetWithPagination")]
+        //public async Task<ActionResult<List<Alq_Expediente>>> GetWithPagination(PaginationFilter paginationFilter)
+        //{
+        //    try
+        //    {
+        //        var result = await _repository.GetWithPagination(paginationFilter);
+        //        return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var error = LogError(ex, "Something went wrong inside GetAll: ");
+        //        return StatusCode(500, error);
+        //    }
+        //}
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Alq_Expediente>> Get(int id)
@@ -55,7 +72,7 @@ namespace Solvtio.API.Controllers
         {
             try
             {
-                _repository.Add(model);
+                //_repository.Add(model);
                 return Ok();
             }
             catch (Exception ex)
@@ -71,7 +88,7 @@ namespace Solvtio.API.Controllers
             try
             {
                 model.IdExpediente = id;
-                _repository.Update(model);
+                //_repository.Update(model);
                 return Ok();
             }
             catch (Exception ex)

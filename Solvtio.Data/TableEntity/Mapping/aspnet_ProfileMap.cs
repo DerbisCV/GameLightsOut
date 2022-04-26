@@ -1,36 +1,36 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class aspnet_ProfileMap : EntityTypeConfiguration<aspnet_Profile>
-    {
-        public aspnet_ProfileMap()
-        {
-            // Primary Key
-            HasKey(t => t.UserId);
+    //public class aspnet_ProfileMap : IEntityTypeConfiguration<aspnet_Profile>
+    //{
+    //    public aspnet_ProfileMap()
+    //    {
+    //        // public void Configure(EntityTypeBuilder<object> builder)
+    //       builder.HasKey(t => t.UserId);
 
-            // Properties
-            Property(t => t.PropertyNames)
-                .IsRequired();
+    //        // Properties
+    //       builder.Property(t => t.PropertyNames)
+    //            .IsRequired();
 
-            Property(t => t.PropertyValuesString)
-                .IsRequired();
+    //       builder.Property(t => t.PropertyValuesString)
+    //            .IsRequired();
 
-            Property(t => t.PropertyValuesBinary)
-                .IsRequired();
+    //       builder.Property(t => t.PropertyValuesBinary)
+    //            .IsRequired();
 
-            // Table & Column Mappings
-            ToTable("aspnet_Profile");
-            Property(t => t.UserId).HasColumnName("UserId");
-            Property(t => t.PropertyNames).HasColumnName("PropertyNames");
-            Property(t => t.PropertyValuesString).HasColumnName("PropertyValuesString");
-            Property(t => t.PropertyValuesBinary).HasColumnName("PropertyValuesBinary");
-            Property(t => t.LastUpdatedDate).HasColumnName("LastUpdatedDate");
+    //        // Table & Column Mappings
+    //       builder.ToTable("aspnet_Profile");
+    //       builder.Property(t => t.UserId).HasColumnName("UserId");
+    //       builder.Property(t => t.PropertyNames).HasColumnName("PropertyNames");
+    //       builder.Property(t => t.PropertyValuesString).HasColumnName("PropertyValuesString");
+    //       builder.Property(t => t.PropertyValuesBinary).HasColumnName("PropertyValuesBinary");
+    //       builder.Property(t => t.LastUpdatedDate).HasColumnName("LastUpdatedDate");
 
-            // Relationships
-            HasRequired(t => t.aspnet_Users)
-                .WithOptional(t => t.aspnet_Profile);
+    //        // Relationships
+    //        //HasRequired(t => t.aspnet_Users)
+    //        //    .WithOptional(t => t.aspnet_Profile);
 
-        }
-    }
+    //    }
+    //}
 }

@@ -16,7 +16,7 @@ namespace Solvtio.Models
         public string Usuario { get; set; }
         public System.DateTime FechaAlta { get; set; }
         public virtual Departamento Departamento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
         public virtual Gnr_Cliente Gnr_Cliente { get; set; }
         public virtual Hip_TipoPeriodicidad Hip_TipoPeriodicidad { get; set; }
     }

@@ -1,10 +1,14 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
     public class Ejc_ExpedienteEstadoNotificacion
     {
         public int IdExpedienteEstado { get; set; }
+        [ForeignKey("IdExpedienteEstado")]
+        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+
         public int IdExpediente { get; set; }
         public DateTime? AdmitidaFecha { get; set; }
         public string AdmitidaNoAuto { get; set; }
@@ -23,11 +27,11 @@ namespace Solvtio.Models
         public DateTime? ApelacionFecha { get; set; }
         public int? ApelacionPor { get; set; }
 
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoOposicion { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoOposicionVista { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoOposicionResolucion { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoAutoEjecucion { get; set; }
+        
+        //public virtual ExpedienteDocumento ExpedienteDocumentoOposicion { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoOposicionVista { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoOposicionResolucion { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoAutoEjecucion { get; set; }
 
     }
 }

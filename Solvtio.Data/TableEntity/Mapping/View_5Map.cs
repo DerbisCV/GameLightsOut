@@ -1,56 +1,56 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class View_5Map : EntityTypeConfiguration<View_5>
-    {
-        public View_5Map()
-        {
-            // Primary Key
-            HasKey(t => new { t.IdExpediente, t.NoExpediente, t.IdTipoExpediente, t.IdClienteOficina, t.Nombre, t.Descripcion, t.IdTipoEstado });
+    //public class View_5Map : IEntityTypeConfiguration<View_5>
+    //{
+    //    public View_5Map()
+    //    {
+    //       } public void Configure(EntityTypeBuilder<object> builder) {
+    //       builder.HasKey(t => new { t.IdExpediente, t.NoExpediente, t.IdTipoExpediente, t.IdClienteOficina, t.Nombre, t.Descripcion, t.IdTipoEstado });
 
-            // Properties
-            Property(t => t.IdExpediente)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //        // Properties
+    //       builder.Property(t => t.IdExpediente)
+    //            .ValueGeneratedNever();
 
-            Property(t => t.NoExpediente)
-                .IsRequired()
-                .HasMaxLength(20);
+    //       builder.Property(t => t.NoExpediente)
+    //            .IsRequired()
+    //            .HasMaxLength(20);
 
-            Property(t => t.ReferenciaExterna)
-                .HasMaxLength(50);
+    //       builder.Property(t => t.ReferenciaExterna)
+    //            .HasMaxLength(50);
 
-            Property(t => t.IdTipoExpediente)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.IdTipoExpediente)
+    //            .ValueGeneratedNever();
 
-            Property(t => t.IdClienteOficina)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.IdClienteOficina)
+    //            .ValueGeneratedNever();
 
-            Property(t => t.Nombre)
-                .IsRequired()
-                .HasMaxLength(50);
+    //       builder.Property(t => t.Nombre)
+    //            .IsRequired()
+    //            .HasMaxLength(50);
 
-            Property(t => t.Descripcion)
-                .IsRequired()
-                .HasMaxLength(50);
+    //       builder.Property(t => t.Descripcion)
+    //            .IsRequired()
+    //            .HasMaxLength(50);
 
-            Property(t => t.IdTipoEstado)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.IdTipoEstado)
+    //            .ValueGeneratedNever();
 
-            // Table & Column Mappings
-            ToTable("View_5");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.NoExpediente).HasColumnName("NoExpediente");
-            Property(t => t.ReferenciaExterna).HasColumnName("ReferenciaExterna");
-            Property(t => t.IdTipoExpediente).HasColumnName("IdTipoExpediente");
-            Property(t => t.IdClienteOficina).HasColumnName("IdClienteOficina");
-            Property(t => t.Nombre).HasColumnName("Nombre");
-            Property(t => t.FechaCierre).HasColumnName("FechaCierre");
-            Property(t => t.DeudaFinal).HasColumnName("DeudaFinal");
-            Property(t => t.IdTipoEstadoLast).HasColumnName("IdTipoEstadoLast");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
-            Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
-        }
-    }
+    //        // Table & Column Mappings
+    //       builder.ToTable("View_5");
+    //       builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+    //       builder.Property(t => t.NoExpediente).HasColumnName("NoExpediente");
+    //       builder.Property(t => t.ReferenciaExterna).HasColumnName("ReferenciaExterna");
+    //       builder.Property(t => t.IdTipoExpediente).HasColumnName("IdTipoExpediente");
+    //       builder.Property(t => t.IdClienteOficina).HasColumnName("IdClienteOficina");
+    //       builder.Property(t => t.Nombre).HasColumnName("Nombre");
+    //       builder.Property(t => t.FechaCierre).HasColumnName("FechaCierre");
+    //       builder.Property(t => t.DeudaFinal).HasColumnName("DeudaFinal");
+    //       builder.Property(t => t.IdTipoEstadoLast).HasColumnName("IdTipoEstadoLast");
+    //       builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
+    //       builder.Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
+    //    }
+    //}
 }

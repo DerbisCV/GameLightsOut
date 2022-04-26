@@ -1,21 +1,21 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class vw_aspnet_WebPartState_UserMap : EntityTypeConfiguration<vw_aspnet_WebPartState_User>
-    {
-        public vw_aspnet_WebPartState_UserMap()
-        {
-            // Primary Key
-            HasKey(t => t.LastUpdatedDate);
+    //public class vw_aspnet_WebPartState_UserMap : IEntityTypeConfiguration<vw_aspnet_WebPartState_User>
+    //{
+        //public vw_aspnet_WebPartState_UserMap()
+        //{
+        //    // public void Configure(EntityTypeBuilder<object> builder)
+        //   builder.HasKey(t => t.LastUpdatedDate);
 
-            // Properties
-            // Table & Column Mappings
-            ToTable("vw_aspnet_WebPartState_User");
-            Property(t => t.PathId).HasColumnName("PathId");
-            Property(t => t.UserId).HasColumnName("UserId");
-            Property(t => t.DataSize).HasColumnName("DataSize");
-            Property(t => t.LastUpdatedDate).HasColumnName("LastUpdatedDate");
-        }
-    }
+        //    // Properties
+        //    // Table & Column Mappings
+        //   builder.ToTable("vw_aspnet_WebPartState_User");
+        //   builder.Property(t => t.PathId).HasColumnName("PathId");
+        //   builder.Property(t => t.UserId).HasColumnName("UserId");
+        //   builder.Property(t => t.DataSize).HasColumnName("DataSize");
+        //   builder.Property(t => t.LastUpdatedDate).HasColumnName("LastUpdatedDate");
+        //}
+    //}
 }

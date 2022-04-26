@@ -10,6 +10,7 @@ namespace Solvtio.Models
         #region Properties 1
 
         public int ExpedienteEstadoId { get; set; }
+        [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
         public bool ConvenioAnticipado { get; set; }
@@ -18,8 +19,8 @@ namespace Solvtio.Models
 
         public int? DocumentoSentenciaConvenioId { get; set; }
         public int? DocumentoAutoJuezId { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
 
         #endregion
 

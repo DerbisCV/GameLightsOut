@@ -32,13 +32,16 @@ namespace Solvtio.Models
         public bool? EstaCompleto { get; set; }
         public string Usuario { get; set; }
         public DateTime? FechaAlta { get; set; }
+        
+        
         public virtual Alq_Expediente Alq_Expediente { get; set; }
         public virtual ICollection<Alq_Expediente_Contratos_Deuda_Lineas> Alq_Expediente_Contratos_Deuda_Lineas { get; set; }
         public virtual ICollection<Alq_Expediente_Contratos_PlanPagos_Lineas> Alq_Expediente_Contratos_PlanPagos_Lineas { get; set; }
-        public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores { get; set; }
-        public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores1 { get; set; }
-        public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores2 { get; set; }
-        public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores3 { get; set; }
+        
+        //public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores { get; set; }
+        //public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores1 { get; set; }
+        //public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores2 { get; set; }
+        //public virtual Gnr_ListasValores_Valores Gnr_ListasValores_Valores3 { get; set; }
 
         internal void RefreshBy(Alq_Expediente_Contrato model)
         {

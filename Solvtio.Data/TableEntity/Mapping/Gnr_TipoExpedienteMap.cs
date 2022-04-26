@@ -1,28 +1,30 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Gnr_TipoExpedienteMap : EntityTypeConfiguration<Gnr_TipoExpediente>
+    public class Gnr_TipoExpedienteMap : IEntityTypeConfiguration<Gnr_TipoExpediente>
     {
-        public Gnr_TipoExpedienteMap()
+        public void Configure(EntityTypeBuilder<Gnr_TipoExpediente> builder)
         {
-            HasKey(t => t.IdTipoExpediente);
+           builder.HasKey(t => t.IdTipoExpediente);
 
             // Properties
-            Property(t => t.Abreviado)
+           builder.Property(t => t.Abreviado)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .IsRequired()
                 .HasMaxLength(100);
 
             //// Table & Column Mappings
-            ToTable("Gnr_TipoExpediente");
+           builder.ToTable("Gnr_TipoExpediente");
             //Property(t => t.IdTipoExpediente).HasColumnName("IdTipoExpediente");
             //Property(t => t.Abreviado).HasColumnName("Abreviado");
             //Property(t => t.Descripcion).HasColumnName("Descripcion");
             //Property(t => t.Activo).HasColumnName("Activo");
         }
+
+  
     }
 }

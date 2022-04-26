@@ -1,36 +1,37 @@
-using System.Data.Entity.ModelConfiguration;
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Solvtio.Models.Mapping
 {
-    public class Ejc_ExpedienteEstadoRequerimientoPagoMap : EntityTypeConfiguration<Ejc_ExpedienteEstadoRequerimientoPago>
+    public class Ejc_ExpedienteEstadoRequerimientoPagoMap : IEntityTypeConfiguration<Ejc_ExpedienteEstadoRequerimientoPago>
     {
-        public Ejc_ExpedienteEstadoRequerimientoPagoMap()
+
+        public void Configure(EntityTypeBuilder<Ejc_ExpedienteEstadoRequerimientoPago> builder)
         {
-            // Primary Key
-            HasKey(t => t.IdExpedienteEstadoRequerimientoPago);
+            builder.HasKey(t => t.IdExpedienteEstadoRequerimientoPago);
 
             // Properties
-            Property(t => t.RequerimientoDeudor)
-                .IsRequired()
-                .HasMaxLength(250);
+            builder.Property(t => t.RequerimientoDeudor)
+                 .IsRequired()
+                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            ToTable("Ejc_ExpedienteEstadoRequerimientoPago");
-            Property(t => t.IdExpedienteEstadoRequerimientoPago).HasColumnName("IdExpedienteEstadoRequerimientoPago");
-            Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.FechaRequerimientoPago).HasColumnName("FechaRequerimientoPago");
-            Property(t => t.Positivo).HasColumnName("Positivo");
-            Property(t => t.RequerimientoDeudor).HasColumnName("RequerimientoDeudor");
-            Property(t => t.IdDocumentoRequerimientoPago).HasColumnName("IdDocumentoRequerimientoPago");
+            builder.ToTable("Ejc_ExpedienteEstadoRequerimientoPago");
+            builder.Property(t => t.IdExpedienteEstadoRequerimientoPago).HasColumnName("IdExpedienteEstadoRequerimientoPago");
+            builder.Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
+            builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+            builder.Property(t => t.FechaRequerimientoPago).HasColumnName("FechaRequerimientoPago");
+            builder.Property(t => t.Positivo).HasColumnName("Positivo");
+            builder.Property(t => t.RequerimientoDeudor).HasColumnName("RequerimientoDeudor");
+            builder.Property(t => t.IdDocumentoRequerimientoPago).HasColumnName("IdDocumentoRequerimientoPago");
 
             // Relationships
-            HasRequired(t => t.ExpedienteEstado)
-                .WithMany(t => t.Ejc_ExpedienteEstadoRequerimientoPago)
-                .HasForeignKey(d => d.IdExpedienteEstado);
-            HasOptional(t => t.ExpedienteDocumentoRequerimientoPago)
-                .WithMany(t => t.Ejc_ExpedienteEstadoRequerimientoPago)
-                .HasForeignKey(d => d.IdDocumentoRequerimientoPago);
+            //HasRequired(t => t.ExpedienteEstado)
+            //  .WithMany(t => t.Ejc_ExpedienteEstadoRequerimientoPago)
+            //  .HasForeignKey(d => d.IdExpedienteEstado);
+            //// HasOptional(t => t.ExpedienteDocumentoRequerimientoPago)
+            //    //  .WithMany(t => t.Ejc_ExpedienteEstadoRequerimientoPago)
+            //    //  .HasForeignKey(d => d.IdDocumentoRequerimientoPago);
 
         }
     }

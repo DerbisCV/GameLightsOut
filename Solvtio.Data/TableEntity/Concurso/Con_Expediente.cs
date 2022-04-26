@@ -31,6 +31,7 @@ namespace Solvtio.Models
         #region Properties
 
         public int IdExpediente { get; set; }
+        [ForeignKey("IdExpediente")]
         public virtual Expediente Expediente { get; set; }
 
         public DateTime FechaDeclaracion { get; set; }

@@ -1,38 +1,37 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class ExpedienteEstadoMap : EntityTypeConfiguration<ExpedienteEstado>
+    public class ExpedienteEstadoMap : IEntityTypeConfiguration<ExpedienteEstado>
     {
-        public ExpedienteEstadoMap()
-        {
-            // Primary Key
-            HasKey(t => t.ExpedienteEstadoId);
+  
+            public void Configure(EntityTypeBuilder<ExpedienteEstado> builder) {
+           builder.HasKey(t => t.ExpedienteEstadoId);
 
             // Properties
-            Property(t => t.Usuario)
+           builder.Property(t => t.Usuario)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            ToTable("ExpedienteEstado");
-            Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.Fecha).HasColumnName("Fecha");
-            Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
-            Property(t => t.Observacion).HasColumnName("Observacion");
-            Property(t => t.Usuario).HasColumnName("Usuario");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
-            Property(t => t.FechaFin).HasColumnName("FechaFin");
-            Property(t => t.ExpedienteEstadoIdSiguiente).HasColumnName("ExpedienteEstadoIdSiguiente");
+           builder.ToTable("ExpedienteEstado");
+           builder.Property(t => t.ExpedienteEstadoId).HasColumnName("ExpedienteEstadoId");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.Fecha).HasColumnName("Fecha");
+           builder.Property(t => t.IdTipoEstado).HasColumnName("IdTipoEstado");
+           builder.Property(t => t.Observacion).HasColumnName("Observacion");
+           builder.Property(t => t.Usuario).HasColumnName("Usuario");
+           builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+           builder.Property(t => t.FechaFin).HasColumnName("FechaFin");
+           builder.Property(t => t.ExpedienteEstadoIdSiguiente).HasColumnName("ExpedienteEstadoIdSiguiente");
 
             // Relationships
-            HasRequired(t => t.Expediente)
-                .WithMany(t => t.ExpedienteEstadoes)
-                .HasForeignKey(d => d.IdExpediente);
-            HasRequired(t => t.Gnr_TipoEstado)
-                .WithMany(t => t.ExpedienteEstadoes)
-                .HasForeignKey(d => d.IdTipoEstado);
+            //HasRequired(t => t.Expediente)
+                //  .WithMany(t => t.ExpedienteEstadoes)
+                //  .HasForeignKey(d => d.IdExpediente);
+            //HasRequired(t => t.Gnr_TipoEstado)
+                //  .WithMany(t => t.ExpedienteEstadoes)
+                //  .HasForeignKey(d => d.IdTipoEstado);
 
         }
     }

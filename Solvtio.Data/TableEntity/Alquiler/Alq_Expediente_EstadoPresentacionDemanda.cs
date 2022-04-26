@@ -24,11 +24,11 @@ namespace Solvtio.Models
 
         public string ParalizadoPor { get; set; }
 
-        public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento4 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento5 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento2 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento4 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento5 { get; set; }
     }
 }

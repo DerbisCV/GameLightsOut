@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Solvtio.Models
 {
     public class Hip_ExpedienteEstadoFinalizacion
     {
         public int ExpedienteEstadoId { get; set; }
+        [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
         public bool PagoDeuda { get; set; }

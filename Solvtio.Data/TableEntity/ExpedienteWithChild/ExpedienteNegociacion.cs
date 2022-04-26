@@ -36,11 +36,13 @@ namespace Solvtio.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdExpedienteNegociacion { get; set; }
 
-        [Index(IsUnique = true), ForeignKey("Expediente")]
+        //NegociacionIdExpedienteNegociacion
+        
+        //[Index(IsUnique = true), ForeignKey("Expediente")]
+        [Index(IsUnique = true)]
         public int IdExpediente { get; set; }
-        public virtual Expediente Expediente { get; set; }
-
-
+        //[ForeignKey("IdExpediente")]
+        //public virtual Expediente Expediente { get; set; }
 
         [Required]
         public DateTime FechaAlta { get; set; }
@@ -50,8 +52,8 @@ namespace Solvtio.Models
         #region Pre-Contencioso
 
         public int? IdGestor { get; set; }
-        [ForeignKey("IdGestor")]
-        public virtual Usuario Gestor { get; set; }
+        //[ForeignKey("IdGestor")]
+        //public virtual Usuario Gestor { get; set; }
 
         public DateTime? PrecontenciosoFechaInicio { get; set; }
         public DateTime? PrecontenciosoFechaFin { get; set; }

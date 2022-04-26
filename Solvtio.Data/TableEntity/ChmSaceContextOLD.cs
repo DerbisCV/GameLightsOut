@@ -101,17 +101,17 @@ namespace Solvtio.Models
 
         //    modelBuilder.Entity<JvExpedienteEstadoRecepcion>()
         //        .HasKey(t => t.IdExpedienteEstado)
-        //        .Property(t => t.IdExpedienteEstado).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+        //        .Property(t => t.IdExpedienteEstado).ValueGeneratedNever();
         //    modelBuilder.Entity<JvExpedienteEstadoRecepcion>()
-        //        .HasRequired(t => t.ExpedienteEstado)
-        //        .WithOptional(t => t.JvExpedienteEstadoRecepcion);
+        //        .//HasRequired(t => t.ExpedienteEstado)
+        //        //  .WithOptional(t => t.JvExpedienteEstadoRecepcion);
 
         //    modelBuilder.Entity<JvExpedienteEstadoPresentacionDemanda>()
         //        .HasKey(t => t.IdExpedienteEstado)
-        //        .Property(t => t.IdExpedienteEstado).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+        //        .Property(t => t.IdExpedienteEstado).ValueGeneratedNever();
         //    modelBuilder.Entity<JvExpedienteEstadoPresentacionDemanda>()
-        //        .HasRequired(t => t.ExpedienteEstado)
-        //        .WithOptional(t => t.JvExpedienteEstadoPresentacionDemanda);
+        //        .//HasRequired(t => t.ExpedienteEstado)
+        //        //  .WithOptional(t => t.JvExpedienteEstadoPresentacionDemanda);
 
         //    #endregion
 
@@ -733,7 +733,7 @@ namespace Solvtio.Models
         public DbSet<ExpedienteAcreedore> ExpedienteAcreedores { get; set; }
         public DbSet<ExpedienteAlerta> ExpedienteAlertas { get; set; }
         public DbSet<ExpedienteDeudor> ExpedienteDeudors { get; set; }
-        public DbSet<ExpedienteDocumento> ExpedienteDocumentoes { get; set; }
+        //public DbSet<ExpedienteDocumento> ExpedienteDocumentoes { get; set; }
         public DbSet<ExpedienteEstado> ExpedienteEstadoes { get; set; }
         public DbSet<ExpedienteFactura> ExpedienteFacturaSet { get; set; }
         public DbSet<ExpedienteGastoSuplido> ExpedienteGastoSuplidoSet { get; set; }
@@ -775,7 +775,7 @@ namespace Solvtio.Models
         public DbSet<Gnr_TipoPersona> Gnr_TipoPersona { get; set; }
         public DbSet<Gnr_TipoTelefono> Gnr_TipoTelefono { get; set; }
         public DbSet<Gnr_TipoTratamiento> Gnr_TipoTratamiento { get; set; }
-        public DbSet<Gnr_Valija> Gnr_Valija { get; set; }
+        //public DbSet<Gnr_Valija> Gnr_Valija { get; set; }
         public DbSet<Hip_Expediente> Hip_Expediente { get; set; }
         public DbSet<Hip_ExpedienteEstadoAdjudicacion> Hip_ExpedienteEstadoAdjudicacion { get; set; }
         public DbSet<Hip_ExpedienteEstadoDatoRequerimiento> Hip_ExpedienteEstadoDatoRequerimiento { get; set; }
@@ -934,11 +934,11 @@ namespace Solvtio.Models
         #endregion
     }
 
-    //public class ExpedienteOrdinarioMap : EntityTypeConfiguration<ExpedienteOrdinario>
+    //public class ExpedienteOrdinarioMap : IEntityTypeConfiguration<ExpedienteOrdinario>
     //{
     //    public ExpedienteOrdinarioMap()
     //    {
-    //        HasRequired(t => t.Expediente).WithOptional(t => t.ExpedienteOrdinario);
+    //        //HasRequired(t => t.Expediente)//  .WithOptional(t => t.ExpedienteOrdinario);
     //    }
     //}
 }

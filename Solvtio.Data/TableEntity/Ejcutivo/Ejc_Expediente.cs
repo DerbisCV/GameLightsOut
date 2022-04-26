@@ -29,8 +29,8 @@ namespace Solvtio.Models
             CuentaOficina = "-   ";
             CuentaNo = "-         ";
 
-            Alq_ExpedienteSet = new List<Alq_Expediente>();
-            Hip_Expediente1 = new List<Hip_Expediente>();
+            //Alq_ExpedienteSet = new List<Alq_Expediente>();
+            //Hip_Expediente1 = new List<Hip_Expediente>();
         }
 
         #endregion
@@ -51,8 +51,8 @@ namespace Solvtio.Models
         public virtual Gnr_Persona Gnr_Persona { get; set; }
 
         public int? IdExpedienteHip { get; set; }
-        [ForeignKey("IdExpedienteHip")]
-        public virtual Hip_Expediente ExpedienteHipotecario { get; set; }
+        //[ForeignKey("IdExpedienteHip")]
+        //public virtual Hip_Expediente ExpedienteHipotecario { get; set; }
 
         public int? IdExpedienteAlq { get; set; }
         [ForeignKey("IdExpedienteAlq")]
@@ -71,8 +71,8 @@ namespace Solvtio.Models
         public DateTime? ApelacionEjecutanteFechaInterposicion { get; set; }
         public DateTime? ApelacionEjecutanteFechaImpugnacion { get; set; }
 
-        public virtual ICollection<Alq_Expediente> Alq_ExpedienteSet { get; set; }
-        public virtual ICollection<Hip_Expediente> Hip_Expediente1 { get; set; }
+        //public virtual ICollection<Alq_Expediente> Alq_ExpedienteSet { get; set; }
+        //public virtual ICollection<Hip_Expediente> Hip_Expediente1 { get; set; }
         
         #endregion
 

@@ -1,33 +1,32 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
-
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class AlertaSupervisorMap : EntityTypeConfiguration<AlertaSupervisor>
+    public class AlertaSupervisorMap : IEntityTypeConfiguration<AlertaSupervisor>
     {
-        public AlertaSupervisorMap()
+        public void Configure(EntityTypeBuilder<AlertaSupervisor> builder)
         {
-            // Primary Key
-            HasKey(t => t.IdPersona);
+            builder
+                .ToTable("AlertaSupervisor")
+                .Property(t => t.IdPersona).ValueGeneratedNever();// .ValueGeneratedNever();
 
-            // Properties
-            Property(t => t.IdPersona)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            builder.HasKey(t => t.IdPersona);
 
-            Property(t => t.Departamento)
-                .IsFixedLength()
-                .HasMaxLength(100);
+
+
+            //Property(t => t.Departamento)
+            //    .IsFixedLength()
+            //    .HasMaxLength(100);
 
             // Table & Column Mappings
-            ToTable("AlertaSupervisor");
-            Property(t => t.IdPersona).HasColumnName("IdPersona");
-            Property(t => t.Departamento).HasColumnName("Departamento");
-            Property(t => t.EsEjecutivo).HasColumnName("EsEjecutivo");
+            //;
+            //Property(t => t.IdPersona).HasColumnName("IdPersona");
+            //Property(t => t.Departamento).HasColumnName("Departamento");
+            //Property(t => t.EsEjecutivo).HasColumnName("EsEjecutivo");
 
             // Relationships
-            HasRequired(t => t.Gnr_Persona)
-                .WithOptional(t => t.AlertaSupervisor);
+            ////HasRequired(t => t.Gnr_Persona)
+            //    //  .WithOptional(t => t.AlertaSupervisor);
 
         }
+
     }
 }

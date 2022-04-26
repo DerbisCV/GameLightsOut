@@ -1,12 +1,16 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
-    public partial class Ejc_ExpedienteEstadoAdjudicacion
+    public partial class Ejc_ExpedienteEstadoAdjudicacion : ExpedienteEstadoBase
     {
         #region Properties
 
-        public int IdExpedienteEstado { get; set; }
+        //public int IdExpedienteEstado { get; set; }
+        //[ForeignKey("IdExpedienteEstado")]
+        //public virtual ExpedienteEstado ExpedienteEstado { get; set; }
+
         public int IdExpediente { get; set; }
         public DateTime? FechaAdjudicacion { get; set; }
         public DateTime? FechaPosesion { get; set; }
@@ -30,14 +34,14 @@ namespace Solvtio.Models
         public int? IdDocumentoOcupantes { get; set; }
         public int? IdDocumentoOcupantesVista { get; set; }
 
-        public virtual ExpedienteEstado ExpedienteEstado { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoDecretoAdjudicacion { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoTestimonio { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoITP { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoInscripcion { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoPosesion { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoOcupantesVista { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoOcupantes { get; set; }
+
+        //public virtual ExpedienteDocumento ExpedienteDocumentoDecretoAdjudicacion { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoTestimonio { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoITP { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoInscripcion { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoPosesion { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoOcupantesVista { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoOcupantes { get; set; }
 
         #endregion
 

@@ -1,52 +1,52 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class vHipotecaPrincipalMap : EntityTypeConfiguration<vHipotecaPrincipal>
-    {
-        public vHipotecaPrincipalMap()
-        {
-            // Primary Key
-            HasKey(t => new { t.IdHipoteca, t.IdValija, t.IdTipoArea, t.OficinaNoCuenta, t.NoCuentaPrestamo, t.NoHipoteca, t.DeudaCierreFijacion, t.Ejecutar });
+    //public class vHipotecaPrincipalMap : IEntityTypeConfiguration<vHipotecaPrincipal>
+    //{
+    //    public vHipotecaPrincipalMap()
+    //    {
+    //       } public void Configure(EntityTypeBuilder<object> builder) {
+    //       builder.HasKey(t => new { t.IdHipoteca, t.IdValija, t.IdTipoArea, t.OficinaNoCuenta, t.NoCuentaPrestamo, t.NoHipoteca, t.DeudaCierreFijacion, t.Ejecutar });
 
-            // Properties
-            Property(t => t.IdHipoteca)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+    //        // Properties
+    //       builder.Property(t => t.IdHipoteca)
+    //            .ValueGeneratedOnAdd();
 
-            Property(t => t.IdValija)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.IdValija)
+    //            .ValueGeneratedNever();
 
-            Property(t => t.IdTipoArea)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.IdTipoArea)
+    //            .ValueGeneratedNever();
 
-            Property(t => t.OficinaNoCuenta)
-                .IsRequired()
-                .HasMaxLength(4);
+    //       builder.Property(t => t.OficinaNoCuenta)
+    //            .IsRequired()
+    //            .HasMaxLength(4);
 
-            Property(t => t.NoCuentaPrestamo)
-                .IsRequired()
-                .HasMaxLength(100);
+    //       builder.Property(t => t.NoCuentaPrestamo)
+    //            .IsRequired()
+    //            .HasMaxLength(100);
 
-            Property(t => t.NoHipoteca)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.NoHipoteca)
+    //            .ValueGeneratedNever();
 
-            Property(t => t.DeudaCierreFijacion)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+    //       builder.Property(t => t.DeudaCierreFijacion)
+    //            .ValueGeneratedNever();
 
-            // Table & Column Mappings
-            ToTable("vHipotecaPrincipal");
-            Property(t => t.IdHipoteca).HasColumnName("IdHipoteca");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.IdValija).HasColumnName("IdValija");
-            Property(t => t.IdPersona).HasColumnName("IdPersona");
-            Property(t => t.IdTipoArea).HasColumnName("IdTipoArea");
-            Property(t => t.OficinaNoCuenta).HasColumnName("OficinaNoCuenta");
-            Property(t => t.NoCuentaPrestamo).HasColumnName("NoCuentaPrestamo");
-            Property(t => t.NoHipoteca).HasColumnName("NoHipoteca");
-            Property(t => t.DeudaCierreFijacion).HasColumnName("DeudaCierreFijacion");
-            Property(t => t.Ejecutar).HasColumnName("Ejecutar");
-            Property(t => t.IdPartidoJudicial).HasColumnName("IdPartidoJudicial");
-        }
-    }
+    //        // Table & Column Mappings
+    //       builder.ToTable("vHipotecaPrincipal");
+    //       builder.Property(t => t.IdHipoteca).HasColumnName("IdHipoteca");
+    //       builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+    //       builder.Property(t => t.IdValija).HasColumnName("IdValija");
+    //       builder.Property(t => t.IdPersona).HasColumnName("IdPersona");
+    //       builder.Property(t => t.IdTipoArea).HasColumnName("IdTipoArea");
+    //       builder.Property(t => t.OficinaNoCuenta).HasColumnName("OficinaNoCuenta");
+    //       builder.Property(t => t.NoCuentaPrestamo).HasColumnName("NoCuentaPrestamo");
+    //       builder.Property(t => t.NoHipoteca).HasColumnName("NoHipoteca");
+    //       builder.Property(t => t.DeudaCierreFijacion).HasColumnName("DeudaCierreFijacion");
+    //       builder.Property(t => t.Ejecutar).HasColumnName("Ejecutar");
+    //       builder.Property(t => t.IdPartidoJudicial).HasColumnName("IdPartidoJudicial");
+    //    }
+    //}
 }

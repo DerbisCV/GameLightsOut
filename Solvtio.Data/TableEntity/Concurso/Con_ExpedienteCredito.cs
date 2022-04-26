@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
@@ -22,6 +23,7 @@ namespace Solvtio.Models
         public decimal? CuantiaReconocidoDefinitivo { get; set; }
         public decimal ImporteIntereses { get; set; }
         public decimal ImportePrincipal { get; set; }
+        [ForeignKey("IdExpediente")]
         public virtual Expediente Expediente { get; set; }
         public virtual ICollection<Con_ExpedienteCreditoCalificacion> Con_ExpedienteCreditoCalificacion { get; set; }
         public virtual ICollection<Con_ExpedienteCreditoGarantiaAvalista> Con_ExpedienteCreditoGarantiaAvalista { get; set; }

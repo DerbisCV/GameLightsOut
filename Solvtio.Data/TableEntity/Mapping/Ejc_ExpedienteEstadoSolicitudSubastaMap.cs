@@ -1,32 +1,31 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Ejc_ExpedienteEstadoSolicitudSubastaMap : EntityTypeConfiguration<Ejc_ExpedienteEstadoSolicitudSubasta>
+    public class Ejc_ExpedienteEstadoSolicitudSubastaMap : IEntityTypeConfiguration<Ejc_ExpedienteEstadoSolicitudSubasta>
     {
-        public Ejc_ExpedienteEstadoSolicitudSubastaMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdExpedienteEstado);
+
+            public void Configure(EntityTypeBuilder<Ejc_ExpedienteEstadoSolicitudSubasta> builder) {
+           builder.HasKey(t => t.IdExpedienteEstado);
 
             // Properties
-            Property(t => t.IdExpedienteEstado)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdExpedienteEstado)
+                .ValueGeneratedNever();
 
             // Table & Column Mappings
-            ToTable("Ejc_ExpedienteEstadoSolicitudSubasta");
-            Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.FechaSolicitudSubasta).HasColumnName("FechaSolicitudSubasta");
-            Property(t => t.IdDocumentoSolicitudSubasta).HasColumnName("IdDocumentoSolicitudSubasta");
+           builder.ToTable("Ejc_ExpedienteEstadoSolicitudSubasta");
+           builder.Property(t => t.IdExpedienteEstado).HasColumnName("IdExpedienteEstado");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.FechaSolicitudSubasta).HasColumnName("FechaSolicitudSubasta");
+           builder.Property(t => t.IdDocumentoSolicitudSubasta).HasColumnName("IdDocumentoSolicitudSubasta");
 
             // Relationships
-            HasRequired(t => t.ExpedienteEstado)
-                .WithOptional(t => t.Ejc_ExpedienteEstadoSolicitudSubasta);
-            HasOptional(t => t.ExpedienteDocumentoSolicitudSubasta)
-                .WithMany(t => t.Ejc_ExpedienteEstadoSolicitudSubasta)
-                .HasForeignKey(d => d.IdDocumentoSolicitudSubasta);
+            //HasRequired(t => t.ExpedienteEstado)
+                //  .WithOptional(t => t.Ejc_ExpedienteEstadoSolicitudSubasta);
+            //// HasOptional(t => t.ExpedienteDocumentoSolicitudSubasta)
+            //    //  .WithMany(t => t.Ejc_ExpedienteEstadoSolicitudSubasta)
+            //    //  .HasForeignKey(d => d.IdDocumentoSolicitudSubasta);
 
         }
     }

@@ -1,27 +1,27 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class RolePermissionMap : EntityTypeConfiguration<RolePermission>
+    public class RolePermissionMap : IEntityTypeConfiguration<RolePermission>
     {
         public RolePermissionMap()
         {
-            // Primary Key
-            HasKey(t => new { t.RoleName, t.PermissionId });
+           } public void Configure(EntityTypeBuilder<RolePermission> builder) {
+           builder.HasKey(t => new { t.RoleName, t.PermissionId });
 
             // Properties
-            Property(t => t.RoleName)
+           builder.Property(t => t.RoleName)
                 .IsRequired()
                 .HasMaxLength(128);
 
-            Property(t => t.PermissionId)
+           builder.Property(t => t.PermissionId)
                 .IsRequired()
                 .HasMaxLength(322);
 
             // Table & Column Mappings
-            ToTable("RolePermissions");
-            Property(t => t.RoleName).HasColumnName("RoleName");
-            Property(t => t.PermissionId).HasColumnName("PermissionId");
+           builder.ToTable("RolePermissions");
+           builder.Property(t => t.RoleName).HasColumnName("RoleName");
+           builder.Property(t => t.PermissionId).HasColumnName("PermissionId");
         }
     }
 }

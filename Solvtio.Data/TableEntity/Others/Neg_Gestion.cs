@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
@@ -26,6 +27,9 @@ namespace Solvtio.Models
         #region Properties
 
         public int IdExpediente { get; set; }
+        [ForeignKey("IdExpediente")]
+        public virtual Expediente Expediente { get; set; }
+        
         public int IdGestor { get; set; }
         public bool Plan30 { get; set; }
         public string Observacion { get; set; }
@@ -36,14 +40,10 @@ namespace Solvtio.Models
         public int? IdTipoEstadoLast { get; set; }
         public decimal? DeudaNegociacion { get; set; }
         public decimal? DeudaRecuperada { get; set; }
-        public virtual Expediente Expediente { get; set; }
+        
         public virtual Gnr_Persona Gnr_Persona { get; set; }
         public virtual ICollection<Neg_GestionEstado> Neg_GestionEstados { get; set; }
 
         #endregion
-
-
-
-
     }
 }

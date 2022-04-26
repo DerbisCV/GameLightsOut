@@ -28,6 +28,7 @@ namespace Solvtio.Models
         #region Properties Tramitacion
 
         public int ExpedienteEstadoId { get; set; }
+        [ForeignKey("ExpedienteEstadoId")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
         public DateTime? FechaCertificacionCargas { get; set; }

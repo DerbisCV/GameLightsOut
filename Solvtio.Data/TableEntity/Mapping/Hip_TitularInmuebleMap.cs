@@ -1,32 +1,32 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Hip_TitularInmuebleMap : EntityTypeConfiguration<Hip_TitularInmueble>
+    public class Hip_TitularInmuebleMap : IEntityTypeConfiguration<Hip_TitularInmueble>
     {
         public Hip_TitularInmuebleMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTitularInmueble);
+           } public void Configure(EntityTypeBuilder<Hip_TitularInmueble> builder) {
+           builder.HasKey(t => t.IdTitularInmueble);
 
             // Properties
-            Property(t => t.Observaciones)
+           builder.Property(t => t.Observaciones)
                 .HasMaxLength(1000);
 
             // Table & Column Mappings
-            ToTable("Hip_TitularInmueble");
-            Property(t => t.IdTitularInmueble).HasColumnName("IdTitularInmueble");
-            Property(t => t.IdInmueble).HasColumnName("IdInmueble");
-            Property(t => t.IdDeudor).HasColumnName("IdDeudor");
-            Property(t => t.Observaciones).HasColumnName("Observaciones");
+           builder.ToTable("Hip_TitularInmueble");
+           builder.Property(t => t.IdTitularInmueble).HasColumnName("IdTitularInmueble");
+           builder.Property(t => t.IdInmueble).HasColumnName("IdInmueble");
+           builder.Property(t => t.IdDeudor).HasColumnName("IdDeudor");
+           builder.Property(t => t.Observaciones).HasColumnName("Observaciones");
 
             // Relationships
-            HasRequired(t => t.Gnr_Persona)
-                .WithMany(t => t.Hip_TitularInmueble)
-                .HasForeignKey(d => d.IdDeudor);
-            HasRequired(t => t.Hip_Inmueble)
-                .WithMany(t => t.Hip_TitularInmueble)
-                .HasForeignKey(d => d.IdInmueble);
+            //HasRequired(t => t.Gnr_Persona)
+                //  .WithMany(t => t.Hip_TitularInmueble)
+                //  .HasForeignKey(d => d.IdDeudor);
+            //HasRequired(t => t.Hip_Inmueble)
+                //  .WithMany(t => t.Hip_TitularInmueble)
+                //  .HasForeignKey(d => d.IdInmueble);
 
         }
     }

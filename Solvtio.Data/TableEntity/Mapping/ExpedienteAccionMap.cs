@@ -1,36 +1,35 @@
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class ExpedienteAccionMap : EntityTypeConfiguration<ExpedienteAccion>
+    public class ExpedienteAccionMap : IEntityTypeConfiguration<ExpedienteAccion>
     {
-        public ExpedienteAccionMap()
-        {
-            // Primary Key
-            HasKey(t => t.IdExpedienteAccion);
+   
+            public void Configure(EntityTypeBuilder<ExpedienteAccion> builder) {
+           builder.HasKey(t => t.IdExpedienteAccion);
 
             // Properties
-            Property(t => t.Usuario)
+           builder.Property(t => t.Usuario)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            ToTable("ExpedienteAccion");
-            Property(t => t.IdExpedienteAccion).HasColumnName("IdExpedienteAccion");
-            Property(t => t.IdExpediente).HasColumnName("IdExpediente");
-            Property(t => t.Fecha).HasColumnName("Fecha");
-            Property(t => t.IdTipoAccion).HasColumnName("IdTipoAccion");
-            Property(t => t.Observacion).HasColumnName("Observacion");
-            Property(t => t.Usuario).HasColumnName("Usuario");
-            Property(t => t.FechaAlta).HasColumnName("FechaAlta");
+           builder.ToTable("ExpedienteAccion");
+           builder.Property(t => t.IdExpedienteAccion).HasColumnName("IdExpedienteAccion");
+           builder.Property(t => t.IdExpediente).HasColumnName("IdExpediente");
+           builder.Property(t => t.Fecha).HasColumnName("Fecha");
+           builder.Property(t => t.IdTipoAccion).HasColumnName("IdTipoAccion");
+           builder.Property(t => t.Observacion).HasColumnName("Observacion");
+           builder.Property(t => t.Usuario).HasColumnName("Usuario");
+           builder.Property(t => t.FechaAlta).HasColumnName("FechaAlta");
 
             // Relationships
-            HasRequired(t => t.Hip_Expediente)
-                .WithMany(t => t.ExpedienteAccions)
-                .HasForeignKey(d => d.IdExpediente);
-            HasRequired(t => t.TipoAccion)
-                .WithMany(t => t.ExpedienteAccions)
-                .HasForeignKey(d => d.IdTipoAccion);
+            //HasRequired(t => t.Hip_Expediente)
+                //  .WithMany(t => t.ExpedienteAccions)
+                //  .HasForeignKey(d => d.IdExpediente);
+            //HasRequired(t => t.TipoAccion)
+                //  .WithMany(t => t.ExpedienteAccions)
+                //  .HasForeignKey(d => d.IdTipoAccion);
 
         }
     }

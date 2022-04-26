@@ -1,34 +1,34 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Solvtio.Models.Mapping
+using Microsoft.EntityFrameworkCore; using Microsoft.EntityFrameworkCore.Metadata.Builders; namespace Solvtio.Models.Mapping
 {
-    public class Gnr_TipoExpedienteDocumentoMap : EntityTypeConfiguration<Gnr_TipoExpedienteDocumento>
+    public class Gnr_TipoExpedienteDocumentoMap : IEntityTypeConfiguration<Gnr_TipoExpedienteDocumento>
     {
         public Gnr_TipoExpedienteDocumentoMap()
         {
-            // Primary Key
-            HasKey(t => t.IdTipoDocumento);
+           } public void Configure(EntityTypeBuilder<Gnr_TipoExpedienteDocumento> builder) {
+           builder.HasKey(t => t.IdTipoDocumento);
 
             // Properties
-            Property(t => t.IdTipoDocumento)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+           builder.Property(t => t.IdTipoDocumento)
+                .ValueGeneratedNever();
 
-            Property(t => t.Descripcion)
+           builder.Property(t => t.Descripcion)
                 .IsRequired()
                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            ToTable("Gnr_TipoExpedienteDocumento");
-            Property(t => t.IdTipoDocumento).HasColumnName("IdTipoDocumento");
-            Property(t => t.Descripcion).HasColumnName("Descripcion");
-            Property(t => t.Inactivo).HasColumnName("Inactivo");
-            Property(t => t.IdTipoExpediente).HasColumnName("IdTipoExpediente");
+           builder.ToTable("Gnr_TipoExpedienteDocumento");
+           builder.Property(t => t.IdTipoDocumento).HasColumnName("IdTipoDocumento");
+           builder.Property(t => t.Descripcion).HasColumnName("Descripcion");
+           builder.Property(t => t.Inactivo).HasColumnName("Inactivo");
+           builder.Property(t => t.IdTipoExpediente).HasColumnName("IdTipoExpediente");
 
             // Relationships
-            HasOptional(t => t.Gnr_TipoExpediente)
-                .WithMany(t => t.Gnr_TipoExpedienteDocumento)
-                .HasForeignKey(d => d.IdTipoExpediente);
+            // HasOptional(t => t.Gnr_TipoExpediente)
+                //  .WithMany(t => t.Gnr_TipoExpedienteDocumento)
+                //  .HasForeignKey(d => d.IdTipoExpediente);
 
         }
     }

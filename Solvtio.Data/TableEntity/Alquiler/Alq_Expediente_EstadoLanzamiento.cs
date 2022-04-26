@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Solvtio.Models.Model;
 
 namespace Solvtio.Models
@@ -8,6 +9,7 @@ namespace Solvtio.Models
         #region Properties
 
         public int IdExpedienteEstado { get; set; }
+        [ForeignKey("IdExpedienteEstado")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
         public DateTime? FechaSolicitudLanzamiento { get; set; }
@@ -45,15 +47,15 @@ namespace Solvtio.Models
         #endregion
 
         #region Properties ExpedienteDocumento OLD
-        public virtual ExpedienteDocumento ExpedienteDocumentoActa { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoCelebracion1 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumentoCelebracion2 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento4 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento5 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento6 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento7 { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento8 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoActa { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoCelebracion1 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumentoCelebracion2 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento3 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento4 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento5 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento6 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento7 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento8 { get; set; }
         //public virtual ExpedienteDocumento ExpedienteDocumento9 { get; set; }
 
         public int? DocumentoSolicitudLanzamientoId { get; set; }

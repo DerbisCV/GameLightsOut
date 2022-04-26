@@ -39,8 +39,8 @@ namespace Solvtio.Models
 
         public int? DocumentoDemandaId { get; set; }
         public int? DocumentoSentenciaId { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
-        public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento { get; set; }
+        //public virtual ExpedienteDocumento ExpedienteDocumento1 { get; set; }
 
 
     }
