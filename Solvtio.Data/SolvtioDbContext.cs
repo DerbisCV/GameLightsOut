@@ -17,13 +17,21 @@ namespace Solvtio.Data
         //public SolvtioDbContext() { }
         public SolvtioDbContext(DbContextOptions<SolvtioDbContext> options) : base(options) { }
 
+
+
+
+
+
+
+        
+
         #endregion
 
         #region DbSet
 
-//        Message	"A relationship cycle involving the primary keys of the following enitity types was detected:
-//        'AlqExpedienteEstadoEnervacion -> ExpedienteEstado'.
-//        This would prevent any entity to be inserted without violating the store constraints. Review the foreign keys defined on the primary keys and either remove or use other properties for at least one of them."	string
+        //        Message	"A relationship cycle involving the primary keys of the following enitity types was detected:
+        //        'AlqExpedienteEstadoEnervacion -> ExpedienteEstado'.
+        //        This would prevent any entity to be inserted without violating the store constraints. Review the foreign keys defined on the primary keys and either remove or use other properties for at least one of them."	string
 
 
         public DbSet<Configuracion> ConfiguracionSet { get; set; }

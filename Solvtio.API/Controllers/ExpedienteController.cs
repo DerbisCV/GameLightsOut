@@ -21,7 +21,7 @@ namespace Solvtio.API.Controllers
         }
 
         [HttpPost("GetWithPagination")]
-        public async Task<ActionResult<List<Alq_Expediente>>> GetWithPagination(PaginationFilter paginationFilter)
+        public async Task<ActionResult<SearchExpediente>> GetWithPagination(PaginationFilter paginationFilter)
         {
             try
             {

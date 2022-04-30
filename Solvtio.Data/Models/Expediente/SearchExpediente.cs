@@ -1,33 +1,34 @@
-﻿namespace Solvtio.Models
+﻿using System.Collections.Generic;
+
+namespace Solvtio.Models
 {
     public class SearchExpediente
     {
         #region Constructors
-        public SearchExpediente() {}
-
-        public SearchExpediente(Expediente exp) : this()
+        
+        public SearchExpediente() 
         {
+            PaginationFilter = new PaginationFilter();
+        }
+
+        public SearchExpediente(PaginationFilter paginationFilter) : this()
+        {
+            PaginationFilter = paginationFilter;
         }
 
         #endregion
 
         #region Properties
 
-        //public int IdExpediente { get; set; }
-        //public string NoExpediente { get; set; }
-        //public string ReferenciaExterna { get; set; }
-        //public TipoExpedienteEnum TipoExpediente { get; set; }
-        ////public ModelClienteOficina ClienteOficina { get; set; }
-        ////public ModelPersona DeudorPrincipal { get; set; }
-        ////public DateTime FechaAlta { get; set; }
-        ////public ModelMoney Importe { get; set; }
-        ////public ModelTipoEstado TipoEstadoActual { get; set; }
-        //public string ClienteOficina { get; set; }
+        public PaginationFilter PaginationFilter { get; set; }
+        public List<ModelExpediente> Results { get; set; }
 
         #endregion
 
         #region Properties ReadOnly
-        //private int? _subastasSenaladasTotal;
+
+        public bool HasResults => Results != null && Results.Count > 0;
+        
         //public int SubastasSenaladasTotal
         //{
         //    get

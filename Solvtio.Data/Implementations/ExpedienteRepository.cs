@@ -31,16 +31,43 @@ namespace Solvtio.Data.Implementations
         {
             var result = await _solvtioDbContext.ExpedienteSet
                 .Where(x => x.IdExpediente == id)
-                .Select(x => new ModelExpediente 
+                .Select(x => new ModelExpediente
                 {
                     IdExpediente = id,
                     NoExpediente = x.NoExpediente,
                     ReferenciaExterna = x.ReferenciaExterna,
                     TipoExpediente = x.TipoExpediente,
-                    ClienteOficina = x.Gnr_ClienteOficina.Nombre                    
+                    ClienteOficina = x.Gnr_ClienteOficina.Nombre
                 })
                 .FirstOrDefaultAsync();
 
+            return result;
+        }
+
+        public async Task<SearchExpediente> GetWithPagination(PaginationFilter paginationFilter)
+        {
+            var result = new SearchExpediente(paginationFilter);
+
+            var query = _solvtioDbContext.ExpedienteSet.AsNoTracking()
+                .Select(x => new ModelExpediente
+                {
+                    IdExpediente = x.IdExpediente,
+                    NoExpediente = x.NoExpediente,
+                    ReferenciaExterna = x.ReferenciaExterna,
+                    TipoExpediente = x.TipoExpediente,
+                    ClienteOficina = x.Gnr_ClienteOficina.Nombre
+                });
+
+            if (!string.IsNullOrWhiteSpace(paginationFilter.Filter.Code1))
+                query = query.Where(x => x.NoExpediente.Contains(paginationFilter.Filter.Code1));
+            if (!string.IsNullOrWhiteSpace(paginationFilter.Filter.Code2))
+                query = query.Where(x => x.ReferenciaExterna.Contains(paginationFilter.Filter.Code2));
+
+            result.Results = await query
+                .Skip(paginationFilter.Pagination.Rows2Skip)
+                .Take(paginationFilter.Pagination.PageLimit)
+                .ToListAsync();
+            
             return result;
         }
 
