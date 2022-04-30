@@ -8,9 +8,6 @@ using System.Linq;
 using System.Text;
 using Solvtio.Models;
 
-//--[e].[NegociacionIdExpedienteNegociacion], 
-//--[e].[Gnr_ValijaIdValija], 
-
 namespace Solvtio.Models
 {
     public class Expediente : BaseValues //AuditableMin
@@ -520,7 +517,7 @@ namespace Solvtio.Models
         [NotMapped]
         public ExpedienteNota NotaEstadoLast { get; set; }
 
-        public ExpedienteNota NotaEstadoLastCalculada => ExpedienteNotaSet.OrderByDescending(x => x.Fecha).FirstOrDefault();
+        public ExpedienteNota NotaEstadoLastCalculada => ExpedienteNotaSet?.OrderByDescending(x => x.Fecha).FirstOrDefault();
 
         [NotMapped]
         public ExpedienteHito HitoLast { get; set; }
@@ -681,7 +678,7 @@ namespace Solvtio.Models
             }
         }
 
-        public Impulso ImpulsoLast => ImpulsoSet.OrderBy(x => x.Fecha).ThenBy(x => x.IdImpulso).LastOrDefault();
+        public Impulso ImpulsoLast => ImpulsoSet?.OrderBy(x => x.Fecha).ThenBy(x => x.IdImpulso).LastOrDefault();
 
         public bool HasPosesionPositiva =>
             ExpedienteVistas == null ? false :
@@ -1534,7 +1531,6 @@ namespace Solvtio.Models
         }
 
         #endregion
-
     }
 
     public class ModelEtapa

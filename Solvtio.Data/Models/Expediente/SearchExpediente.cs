@@ -21,13 +21,17 @@ namespace Solvtio.Models
         #region Properties
 
         public PaginationFilter PaginationFilter { get; set; }
-        public List<ModelExpediente> Results { get; set; }
+        public List<ModelExpediente> Result { get; set; }
+
+        public int CurrentPage { get; set; }
+        public int ItemsPerPage { get; set; }
+            
 
         #endregion
 
         #region Properties ReadOnly
 
-        public bool HasResults => Results != null && Results.Count > 0;
+        public bool HasResults => Result != null && Result.Count > 0;
         
         //public int SubastasSenaladasTotal
         //{

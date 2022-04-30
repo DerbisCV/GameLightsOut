@@ -9,6 +9,11 @@ const routes: Routes = [
         (m) => m.CaracteristicaBaseModule
       ),
   },
+  {
+    path: 'expediente',
+    loadChildren: () =>
+      import('../modules/expedientes/module').then((m) => m.ExpedienteModule),
+  },
 ];
 
 @NgModule({

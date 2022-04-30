@@ -1,0 +1,199 @@
+<div class="px-4">
+    <ng-container *ngIf="formData">
+        <form (ngSubmit)="saveData()" [formGroup]="formData">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">Nº Exp: {{ expediente.noExpediente }}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3 align-items-center mb-3">
+                                <div class="col-auto col-2">
+                                    <label for="referenciaExterna" class="form-label">Ref.Ext.1:</label>
+                                    <input type="text" class="form-control" placeholder="referencia externa..." formControlName="referenciaExterna">
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="referenciaExterna" class="form-label">Ref.Ext.2:</label>
+                                    <input type="text" class="form-control" placeholder="referencia externa..." formControlName="referencia2">
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="referenciaExterna" class="form-label">Ref.Judicial:</label>
+                                    <input type="text" class="form-control" placeholder="referencia externa..." formControlName="referenciaJudicial">
+                                </div>
+
+                                <div class="col-auto col-2">
+                                    <label for="referenciaExterna" class="form-label">Inicio:</label>
+                                    <input type="text" class="form-control" formControlName="inicio" readonly>
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="referenciaExterna" class="form-label">Fin:</label>
+                                    <input type="text" class="form-control" formControlName="fin" readonly>
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="referenciaExterna" class="form-label">Fin Prev.:</label>
+                                    <input type="text" class="form-control" formControlName="finPrevisto" readonly>
+                                </div>
+
+                                <div class="col-auto col-8">
+                                    <label for="referenciaExterna" class="form-label">Cliente / Oficina:</label>
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+
+
+                                <!-- <div class="col-auto col-2">
+                                    <label for="orden" class="form-label">Orden:</label>
+                                    <input type="text" class="form-control" formControlName="orden">
+                                </div>
+                                <div class="col-auto col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="activo" formControlName="activo">
+                                        <label class="form-check-label" for="activo">Activo</label>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <!-- 
+                            <div class="form-group">
+
+                            </div>
+                            <div class="form-group">
+                                @Html.DcvFormGroupItemBaseBaseFor("col-sm-8", "Cliente/Oficina:", Html.DcvSelectBootstrapClienteOficina(Model.IdClienteOficina, "IdClienteOficina", null, false, null, true)) @Html.DcvFormGroupItemBaseBaseFor("col-sm-2", "Tipo Área:", Html.DcvSelectBootstrapTipoArea(Model.IdTipoArea))
+                                @Html.DcvFormGroupItemDisabledFor("col-sm-2", "Ref.Kmaleon:", Model.RefKmaleon) @Html.DcvFormGroupItemCheckBoxFor("col-sm-2", "Servicio Integral", Model.ServicioIntegral, "ServicioIntegral")
+                            </div>
+                            <div class="form-group">
+                                @Html.DcvFormGroupItemBaseBaseFor("col-sm-6", "Pagador:", Html.DcvSelectBootstrapPagador(Model.IdPagador, "IdPagador", Model.IdClienteOficina, true)) @Html.DcvFormGroupItemBaseBaseFor("col-sm-6", "Abogado:", Html.DcvSelectBootstrapAbogadoBtnAction(Model.IdAbogado,
+                                "IdAbogado", true, true, subjectMail))
+                            </div>
+                            <div class="form-group">
+                                @if (Model.TipoExpediente == TipoExpedienteEnum.Alquiler) { @Html.DcvFormGroupItemTextEditFor("col-sm-5", "Gestor Cliente:", Model.GestorCliente, "GestorCliente") @Html.DcvFormGroupItemBaseBaseFor("col-sm-3", "Acción Propuesta:", Html.DcvSelectBootstrapListasValoresPorLista(Model.IdAccionPropuesta,
+                                "IdAccionPropuesta", "TipoAccionPropuesta")) } else { @Html.DcvFormGroupItemTextEditFor("col-sm-8", "Gestor Cliente:", Model.GestorCliente, "GestorCliente") } @Html.DcvFormGroupItemBaseBaseFor("col-sm-4", "Subtipo:", Html.DcvSelectBootstrapCaracteristicaBaseByGrupo("Exp-Subtipo-Procedimiento",
+                                Model.IdSubTipoProcedimiento, "IdSubTipoProcedimiento"))
+                            </div>
+                            <div class="form-group">
+                                @Html.DcvFormGroupItemBaseBaseFor("col-sm-8", "Procurador:", Html.DcvSelectBootstrapProcuradorByPartidoJudicialBtnAction(Model.IdProcurador, "IdProcurador", Model.IdPartidoJudicial, true, true, subjectMail)) @Html.DcvFormGroupItemTextEditFor("col-sm-4",
+                                "REOCO:", Model.ReferenciaReoco, "ReferenciaReoco")
+                            </div>
+                            <div class="form-group">
+                                @Html.DcvFormGroupItemAutocompleForJuzgado("col-md-8", "Juzgado:", Model.Juzgado == null ? "" : Model.Juzgado.Nombre, Model.IdJuzgado, "IdJuzgado", Html.GenerateUrl(MVC.Nomenclador.GetJuzgadosSearch())) @Html.DcvFormGroupItemTextEditFor("col-sm-4", "Nº
+                                Auto:", Model.NoAuto, "NoAuto")
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @Html.DcvFormGroupItemBaseBaseFor("col-sm-12", "Partido Judicial:", Html.DcvSelectBootstrapPartidoJudicial(Model.IdPartidoJudicial)) @Html.DcvFormGroupItemBaseBaseFor("col-sm-12", "Cartera:", Html.DcvSelectBootstrapCartera(Model.IdCartera, "IdCartera",
+                                        true, Model.TipoExpediente, incluirCarterasSinProcedimiento))
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.DcvFormGroupItemCheckBoxFor("col-md-4", "Inactivo Int.", Model.InactivoInterno, "InactivoInterno") @Html.DcvFormGroupItemCheckBoxTwo("col-md-4", "Relevante", Model.EsRelevante, "EsRelevante", "Confidencial", Model.EsConfidencial, "EsConfidencial")
+                                        @Html.DcvFormGroupItemBaseBaseForByCheck("col-md-4 text-left", "Venia/Hito", Model.EsHeredado, "EsHeredado", Html.DcvSelectBootstrapCaracteristicaBaseByGrupo("Exp-VeniadoHitoFacturacion", Model.IdVeniadoHitoFacturacion,
+                                        "IdVeniadoHitoFacturacion"))
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.DcvFormGroupItemTextEditFor("col-sm-8", "Aviso Importante:", Model.AvisoImportante, "AvisoImportante") @Html.DcvFormGroupItemDisabledFor("col-sm-2", "Origen:", Model.Origen)
+                            </div>
+
+                            <div class="form-group">
+                                @if (Model.TipoExpediente != TipoExpedienteEnum.OrdinarioCs && Model.TipoExpediente != TipoExpedienteEnum.Concurso) { @Html.DcvFormGroupItemCurrencyFor("col-sm-4", "Importe Demanda:", Model.DeudaFinal, "DeudaFinal") @Html.DcvFormGroupItemDateEditFor("col-sm-3",
+                                "F. Cierre:", Model.FechaCierre, "FechaCierre", false); } @if (Model.TipoExpediente != TipoExpedienteEnum.Concurso) { @Html.DcvFormGroupItemDateEditFor("col-sm-3", "F.Carga Cliente:", Model.FechaCargaAppCliente, "FechaCargaAppCliente")
+                                } @Html.DcvFormGroupItemTextEditFor("col-sm-2", "NIC:", Model.Nic, "Nic")
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-3" id="btnActionGroup"></div>
+                                <div class="col-lg-3 text-center">
+                                    <a class='btn btn-primary' href='@Url.Action(MVC.Procuras.ProcuraEditOrCreateByExp(Model.IdExpediente))' target="_blank"><i class='icon-legal'></i> Procura</a>
+                                </div>
+                                <div class="col-lg-3 text-center">
+                                    @if (showParalizadoActionParalizar) {
+                                    <a class='btn btn-danger' href='@Url.Action(MVC.Expedientes.ExpedienteParalizadoParalizar(Model.IdExpediente))'><i
+                                            class='icon-pause'></i> Paralizar</a> } else if (showParalizadoActionReanudar) {
+                                    <a class='btn btn-danger' href='@Url.Action(MVC.Expedientes.ExpedienteParalizadoFinalizar(Model.IdExpediente))'><i
+                                            class='icon-play'></i> Reanudar</a> } @if (Model.IdExpedienteFather.HasValue) {
+                                    <a class='btn btn-info' href='@Url.Action(MVC.Expedientes.Edit(Model.IdExpedienteFather.Value))' target="_blank"><i class='icon-briefcase'></i> Exp. Padre</a> } @if (Model.IdExpedienteSon.HasValue) {
+                                    <a class='btn btn-info' href='@Url.Action(MVC.Expedientes.Edit(Model.IdExpedienteSon.Value))' target="_blank"><i class='icon-briefcase'></i> Exp. Hijo</a> }
+                                </div>
+                                <div class="col-lg-3" style="text-align:right;">
+                                    <button id="btnSave" class="btn btn-danger" type="submit">Guardar</button>
+                                    <a id="btnCancel" class="btn btn-default" href="@Url.Action(MVC.Expedientes.Edit(Model.IdExpediente))">Cancelar</a>
+                                </div>
+                            </div>
+
+
+ -->
+
+
+
+                        </div>
+                        <div class="card-footer text-muted d-md-flex justify-content-md-end">
+                            <a class="btn btn-outline-secondary px-4" href="expediente" style="margin-right: 8px;">Cancelar</a>
+                            <button type="submit" class="btn btn-outline-success px-4">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">Estado Actual</h6>
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">Datos Adicionales</h6>
+                        </div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Estados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Deudores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inmuebles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <hr>
+        <pre>
+        Estado del formulario: {{ formData.valid }}
+        <br>
+        Status:{{ formData.status }}
+        </pre>
+        <pre>
+            {{formData.value | json}}
+        </pre> 
+ <div cdkDrag cdkDragRootElement=".modal-content">
+    <div class="modal-body">
+        <pre>{{caracteristicaBase | json}}</pre>
+    </div>
+</div>    
+    -->
+
+
+
+
+    </ng-container>
+</div>

@@ -51,7 +51,7 @@ namespace Solvtio.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ModelExpediente>> Get(int id)
+        public async Task<ActionResult<ModelExpedienteEdit>> Get(int id)
         {
             try
             {
@@ -82,11 +82,11 @@ namespace Solvtio.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, CaracteristicaBase model)
+        public IActionResult Update(int id, Expediente model)
         {
             try
             {
-                model.Id = id;
+                model.IdExpediente = id;
                 //_repository.Update(model);
                 return Ok();
             }

@@ -16,7 +16,9 @@
     {
         public int PageLimit { get; set; } = 10;
         public int PageNumber { get; set; } = 1;
-        public int RecordCount { get; set; } = 0;
+        
+        public int TotalElements { get; set; } = 0;
+        public int TotalPages => PageLimit == 0 ? 0 : (TotalElements / PageLimit);
 
         public int Rows2Skip => (PageNumber-1)*PageLimit;
     }

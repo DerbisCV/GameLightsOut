@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
+using Solvtio.Data;
 
 namespace Solvtio.API
 {
@@ -22,6 +24,12 @@ namespace Solvtio.API
             services.AddDependencies(Configuration);
             services.AddDbContext(Configuration);
 
+            var mappingConfig = new MapperConfiguration(cfg => {
+                cfg.AddProfile<AutoMapperProfile>();
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -38,7 +46,7 @@ namespace Solvtio.API
             });
 
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

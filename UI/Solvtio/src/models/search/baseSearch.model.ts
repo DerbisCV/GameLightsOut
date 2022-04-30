@@ -15,6 +15,7 @@ export class BaseSearch<TResult> extends HasEnvironment {
   public sortBy: string = '';
   public sortAsc: boolean = true;
   public filter: any = {};
+  public filterBase: FilterBase = new FilterBase();
 
   protected clear(obj: any) {
     delete obj.environment;
@@ -77,4 +78,29 @@ export class SearchPageActionsModel {
       );
     }
   }
+}
+export class FilterBase {
+  public code1: string = '';
+  public code2: string = '';
+  public code3: string = '';
+
+  public idTipo1?: number | null = null;
+  public idTipo2?: number | null = null;
+  public idTipo3?: number | null = null;
+
+  constructor(item?: Partial<FilterBase>) {
+    if (!!item) Object.assign(this, item);
+  }
+}
+
+export class PaginationBase {
+  pageNumber: number = 0;
+  pageLimit: number = 5;
+  totalElements: number = 0;
+  totalPages: number = 0;
+}
+
+export class PaginationFilter {
+  public filter: FilterBase = new FilterBase();
+  public pagination: PaginationBase = new PaginationBase();
 }
