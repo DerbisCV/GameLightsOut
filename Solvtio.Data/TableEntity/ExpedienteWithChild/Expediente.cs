@@ -1,12 +1,10 @@
 ﻿using Solvtio.Common;
-using Solvtio.Models.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
-using Solvtio.Models;
 
 namespace Solvtio.Models
 {
@@ -153,7 +151,7 @@ namespace Solvtio.Models
 
         [Index]
         public int IdTipoExpediente { get; set; }
-        
+
         public int IdTipoArea { get; set; }
         [Index]
         public int IdClienteOficina { get; set; }
@@ -1078,8 +1076,7 @@ namespace Solvtio.Models
                 {
                     if (HipotecaEnEjecucion.Gnr_Persona.Gnr_Procurador != null)
                     {
-                        _procuradorNombreCompleto = HipotecaEnEjecucion.Gnr_Persona.Gnr_Procurador.NombreCompleto;
-
+                        _procuradorNombreCompleto = HipotecaEnEjecucion.Gnr_Persona.Gnr_Procurador.Nombre;
                     }
                     else
                     {
@@ -1475,6 +1472,12 @@ namespace Solvtio.Models
             }
         }
 
+        public void RefreshBy(ModelExpedienteEdit model)
+        {
+            ReferenciaExterna = model.ReferenciaExterna;
+            Referencia2 = model.Referencia2;
+        }
+
         public void RefreshBy(Expediente model)
         {
             ReferenciaExterna = model.ReferenciaExterna;
@@ -1521,7 +1524,7 @@ namespace Solvtio.Models
             IdAreaNegocio = IdAreaNegocioReadOnly;
             ImpFacturableExtrajudicial = model.ImpFacturableExtrajudicial;
 
-            if (IdTipoExpediente == 4) //Consursal CyM
+            if (IdTipoExpediente == 4)
                 ImpFacturableH6 = model.ImpFacturableH6;
 
             ReferenciaReoco = model.ReferenciaReoco;

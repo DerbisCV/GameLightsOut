@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Solvtio.Data.Contracts;
 using Solvtio.Data.Implementations;
+using Solvtio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace Solvtio.Data.Implementations.Tests
 
 
 
-            _repository = new ExpedienteRepository(solvtioDbContext);
+            _repository = new ExpedienteRepository(solvtioDbContext, null);
 
         }
 
@@ -53,7 +54,7 @@ namespace Solvtio.Data.Implementations.Tests
             //_mocker.GetMock<IHttpClient>().Setup(x => x.GetAsync<List<Expediente>>(It.IsAny<string>()))
             //    .Returns(Task.FromResult(new List<Expediente>() { new Expediente() }));
 
-            var actual = _repository.GetWithPagination(new Models.PaginationFilter());
+            var actual = _repository.GetWithPagination(new PaginationFilter());
 
         }
 

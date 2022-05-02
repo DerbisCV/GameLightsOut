@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Solvtio.Models.Model;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
@@ -22,8 +21,11 @@ namespace Solvtio.Models
         [Key]
         public int IdTipoEstado { get; set; }
         public string Descripcion { get; set; }
+        
         public int IdTipoExpediente { get; set; }
+        [ForeignKey("IdTipoExpediente")]
         public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
+            
         public string Clave { get; set; }
         public bool Inactivo { get; set; }
         public bool Inicio { get; set; }
@@ -55,6 +57,9 @@ namespace Solvtio.Models
         #endregion
 
         #region Properties ReadOnly
+
+        public int Id => IdTipoExpediente;
+        public string Nombre => Descripcion;
 
         public TipoExpedienteEnum TipoExpediente => (TipoExpedienteEnum)IdTipoExpediente;
         public ExpedienteEstadoTipo? TipoEstado => (ExpedienteEstadoTipo?)IdTipoEstado;

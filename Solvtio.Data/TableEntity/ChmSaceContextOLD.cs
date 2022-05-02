@@ -752,6 +752,7 @@ namespace Solvtio.Models
         public DbSet<ClienteObjetivo> ClienteObjetivoSet { get; set; }
         public DbSet<Gnr_ClienteOficina> Gnr_ClienteOficina { get; set; }
         public DbSet<Pagador> PagadorSet { get; set; }
+        
         public DbSet<ClienteTipoExpedienteConfiguracion> ClienteTipoExpedienteConfiguracionSet { get; set; }
         public DbSet<Gnr_ListasValores_Listas> Gnr_ListasValores_ListasSet { get; set; }
         public DbSet<Gnr_ListasValores_Valores> Gnr_ListasValores_Valores { get; set; }

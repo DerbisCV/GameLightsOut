@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
-    public class Gnr_Cliente
+    public class Gnr_Cliente : INombre
     {
         #region Constructors
 
@@ -89,6 +89,12 @@ namespace Solvtio.Models
 
         #endregion
 
+        #region Properties Readonly
+
+        public int Id => IdCliente;
+
+        #endregion
+
         #region Properties virtual ICollection
 
         public virtual ICollection<Factura> Facturas { get; set; }
@@ -98,7 +104,9 @@ namespace Solvtio.Models
         public virtual ICollection<PropuestaComercial> PropuestaComercials { get; set; }
 
         public virtual ICollection<ClienteFacturaHitoProcesal> ClienteFacturaHitoProcesalSet { get; set; }
-        public virtual ICollection<Pagador> Pagadores { get; set; }
+        
+        //public virtual ICollection<Pagador> Pagadores { get; set; }
+        public virtual ICollection<PagadorCliente> PagadorClienteSet { get; set; }
 
         public virtual ICollection<ClienteTipoExpedienteConfiguracion> ClienteTipoExpedienteConfiguracionSet { get; set; }
         public virtual ICollection<ClienteObjetivo> ClienteObjetivoSet { get; set; }

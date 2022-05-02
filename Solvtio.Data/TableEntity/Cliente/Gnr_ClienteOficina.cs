@@ -1,11 +1,10 @@
 using Solvtio.Models.Common;
-using Solvtio.Models.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
-    public partial class Gnr_ClienteOficina : Auditable, INombre, IDireccion
+    public partial class Gnr_ClienteOficina : Auditable, INombre, IDireccion //Invalid column name 'Gnr_ClienteIdCliente'.
     {
         #region Constructors
 
@@ -39,9 +38,11 @@ namespace Solvtio.Models
 
 
         public int IdCliente { get; set; }
+        [ForeignKey("IdCliente")]
         public virtual Gnr_Cliente Gnr_Cliente { get; set; }
 
         public int? IdTipoExpediente { get; set; }
+        [ForeignKey("IdTipoExpediente")]
         public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
 
         public TipoInstirucionReligiosa? TipoInstirucionReligiosa { get; set; }
@@ -104,10 +105,14 @@ namespace Solvtio.Models
         //public virtual ICollection<Gnr_Valija> Gnr_Valija { get; set; }
         public virtual ICollection<SlaOficina> SlaOficinaSet { get; set; }
         public virtual ICollection<Contacto> ContactoSet { get; set; }
-
         public virtual ICollection<Nota> NotaSet { get; set; }
-
         public virtual ICollection<Contrato> ContratoSet { get; set; }
+
+        #endregion
+
+        #region Properties Readonly
+
+        public int Id => IdClienteOficina;
 
         #endregion
 

@@ -56,13 +56,15 @@ namespace Solvtio.Models
         public virtual ICollection<ExpedienteVista> ExpedienteVistaSet { get; set; }
         public virtual ICollection<Alq_Expediente_EstadoTramitaJuzgado_Actuacion> AlqEstadoTramitaJuzgadoActuacionSet { get; set; }
         public virtual ICollection<AbogadoFacturacion> AbogadoFacturacionSet { get; set; }
-        
+
         #endregion
 
         #region Properties ReadOnly
 
+        public int Id => IdPersona;
+
         private string _nombreCompleto;
-        public string NombreCompleto
+        public string Nombre
         {
             get
             {

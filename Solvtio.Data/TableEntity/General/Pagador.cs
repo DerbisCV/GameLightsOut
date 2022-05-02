@@ -36,7 +36,9 @@ namespace Solvtio.Models
 
         #region Properties ICollection
 
-        public virtual ICollection<Gnr_Cliente> ClienteSet { get; set; }
+        public virtual ICollection<PagadorCliente> PagadorClienteSet { get; set; }
+        
+        //public virtual ICollection<Gnr_Cliente> ClienteSet { get; set; }
         public virtual ICollection<Expediente> ExpedienteSet { get; set; }
 
         #endregion
@@ -47,5 +49,18 @@ namespace Solvtio.Models
         public int? IdClienteNew { get; set; }
 
         #endregion
+    }
+
+    [Table("PagadorCliente")]
+    public class PagadorCliente
+    {
+        public int IdPagador { get; set; }
+        public int IdCliente { get; set; }
+
+        [ForeignKey("IdPagador")]
+        public Pagador Pagador { get; set; }
+        
+        [ForeignKey("IdCliente")]
+        public Gnr_Cliente Cliente { get; set; }       
     }
 }

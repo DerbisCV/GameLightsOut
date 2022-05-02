@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Solvtio.Data.Contracts;
+using Solvtio.Data.Models.Dtos;
 using Solvtio.Models;
 using System;
 using System.Collections.Generic;
@@ -82,13 +83,13 @@ namespace Solvtio.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Expediente model)
+        public async Task<IActionResult> Update(int id, ModelExpedienteEdit model)
         {
             try
             {
                 model.IdExpediente = id;
-                //_repository.Update(model);
-                return Ok();
+                var result = await _repository.Update(model);
+                return result.HasError ? BadRequest(result.ErrorMessage) : Ok();
             }
             catch (Exception ex)
             {
@@ -111,5 +112,37 @@ namespace Solvtio.API.Controllers
                 return StatusCode(500, error);
             }            
         }
+
+
+        [HttpGet("GetEstadoActual")]
+        public async Task<ActionResult<ExpedienteEstadoDto>> GetEstadoActual(int id)
+        {
+            try
+            {
+                var result = await _repository.GetEstadoActual(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetEstadoActual: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet("GetNotas")]
+        public async Task<ActionResult<List<ExpedienteNotaDto>>> GetNotas(int idExpediente)
+        {
+            try
+            {
+                var result = await _repository.GetNotas(idExpediente);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetNotas: ");
+                return StatusCode(500, error);
+            }
+        }
+
     }
 }

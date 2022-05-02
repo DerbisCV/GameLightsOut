@@ -5,7 +5,13 @@
 
 ///api/Expediente/GetWithPagination
 
-import { Expediente, ExpedienteSearch, PaginationFilter } from 'src/models';
+import {
+  Expediente,
+  ExpedienteEstadoDto,
+  ExpedienteNotaDto,
+  ExpedienteSearch,
+  PaginationFilter,
+} from 'src/models';
 import { ApiService } from '../api.service';
 
 export class ExpedienteApiService {
@@ -31,11 +37,6 @@ export class ExpedienteApiService {
     return new ExpedienteSearch(
       await this.api.post(`${this.pathApi}/GetWithPagination`, paginationFilter)
     );
-
-    // return new ExpedienteSearch({
-    //   ...new ExpedienteSearch(),
-    //   ...{ result: await this.api.get(this.pathApi) },
-    // });
   }
 
   public async getById(id: string): Promise<Expediente> {
@@ -48,6 +49,8 @@ export class ExpedienteApiService {
   }
 
   public async udpate(item: Expediente) {
+    console.log('ready for update Expediente:');
+
     return this.api.put<Expediente>(
       `${this.pathApi}/${item.idExpediente}`,
       item
@@ -60,5 +63,19 @@ export class ExpedienteApiService {
 
   public async delete(id: string) {
     return this.api.delete(`${this.pathApi}/${id}`);
+  }
+
+  public async getEstadoActual(
+    idExpediente: number
+  ): Promise<ExpedienteEstadoDto> {
+    return await this.api.get(
+      `${this.pathApi}/GetEstadoActual?id=${idExpediente}`
+    );
+  }
+
+  public async getNotas(idExpediente: number): Promise<ExpedienteNotaDto[]> {
+    return await this.api.get(
+      `${this.pathApi}/GetNotas?idExpediente=${idExpediente}`
+    );
   }
 }

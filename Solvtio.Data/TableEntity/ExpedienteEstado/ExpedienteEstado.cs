@@ -615,6 +615,7 @@ namespace Solvtio.Models
         [Index("IX_IdTipoEstadoAndIdAbogado", 1)]
         [Index]
         public int IdTipoEstado { get; set; }
+        [ForeignKey("IdTipoEstado")]
         public virtual Gnr_TipoEstado Gnr_TipoEstado { get; set; }
 
         [Index("IX_ExpedienteFecha", 2)]
@@ -636,7 +637,7 @@ namespace Solvtio.Models
         //public virtual Gnr_Abogado Abogado { get; set; }
 
         public int? IdAbogado2 { get; set; }
-        //[ForeignKey("IdAbogado2")]
+        //
         //public virtual Gnr_Abogado Abogado2 { get; set; }
 
         public TipoFaseEstado? FaseEstado { get; set; }

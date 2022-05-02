@@ -11,3 +11,11 @@ export class CaracteristicaBase {
     if (!!item) Object.assign(this, item);
   }
 }
+export class ModelDtoNombre {
+  id: number = 0;
+  nombre: string = '';
+
+  constructor(item?: Partial<ModelDtoNombre>) {
+    if (!!item) Object.assign(this, item);
+  }
+}

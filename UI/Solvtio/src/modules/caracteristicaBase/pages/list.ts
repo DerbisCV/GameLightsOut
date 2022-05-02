@@ -16,6 +16,8 @@ import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { DialogService } from 'src/services/dialog/dialog.service';
 import { NotificationsService } from 'src/services/notifications.service';
 
+// import { DataTable } from 'simple-datatables';
+
 @Component({
   selector: 'page-caracteristicaBase-list',
   templateUrl: './list.html',
@@ -60,6 +62,8 @@ export class CaracteristicaBaseListComponent implements OnInit {
     this.configuration = { ...DefaultConfig };
     this.configuration.searchEnabled = true;
     this.configuration.paginationMaxSize = 15;
+
+    // const dataTable = new DataTable('#dataTableExample');
   }
 
   async getAllCaracteristicasBase() {

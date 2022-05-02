@@ -1,7 +1,7 @@
 import { Expediente, ModelExpediente } from '../Expediente.model';
 import { BaseSearch, FilterBase, PaginationFilter } from './baseSearch.model';
 
-export class ExpedienteSearch extends BaseSearch<Expediente> {
+export class ExpedienteSearch extends BaseSearch<ModelExpediente> {
   public paginationFilter: PaginationFilter = new PaginationFilter();
 
   constructor(item?: Partial<ExpedienteSearch>) {

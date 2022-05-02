@@ -697,9 +697,9 @@ namespace Solvtio.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder
-            //    .Entity<LightsOutSetting>()
-            //    .HasData(new LightsOutSetting("BoardSize", "5"));
+            // Create the Composite Key
+            modelBuilder.Entity<PagadorCliente>().HasKey(e => new { e.IdPagador, e.IdCliente });
+            
 
             #region Evaluacion del Desempeño
 
@@ -751,9 +751,9 @@ namespace Solvtio.Data
                 //.WillCascadeOnDelete(false)
                 ;
 
-            modelBuilder.Entity<Pagador>()
-                .HasMany(p => p.ClienteSet)
-                .WithMany(c => c.Pagadores)
+            //modelBuilder.Entity<Pagador>()
+            //    .HasMany(p => p.ClienteSet)
+            //    .WithMany(c => c.Pagadores)
                 //.Map(pc =>
                 //{
                 //    pc.MapLeftKey("IdPagador");

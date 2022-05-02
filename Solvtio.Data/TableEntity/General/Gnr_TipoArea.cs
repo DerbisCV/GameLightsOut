@@ -13,6 +13,12 @@ namespace Solvtio.Models
         public string Nombre { get; set; }
 		public bool Inactivo { get; set; }
 
+        #region Properties Readonly
+
+        public int Id => IdTipoArea;
+
+        #endregion
+
         public virtual ICollection<Expediente> Expedientes { get; set; }
     }
 }

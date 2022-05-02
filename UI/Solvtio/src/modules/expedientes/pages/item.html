@@ -24,88 +24,179 @@
 
                                 <div class="col-auto col-2">
                                     <label for="referenciaExterna" class="form-label">Inicio:</label>
-                                    <input type="text" class="form-control" formControlName="inicio" readonly>
+                                    <input type="date" class="form-control" formControlName="inicio" readonly>
                                 </div>
                                 <div class="col-auto col-2">
                                     <label for="referenciaExterna" class="form-label">Fin:</label>
-                                    <input type="text" class="form-control" formControlName="fin" readonly>
+                                    <input type="date" class="form-control" formControlName="fin" readonly>
                                 </div>
                                 <div class="col-auto col-2">
-                                    <label for="referenciaExterna" class="form-label">Fin Prev.:</label>
-                                    <input type="text" class="form-control" formControlName="finPrevisto" readonly>
+                                    <label for="finPrevisto" class="form-label">Fin Prev.:</label>
+                                    <input type="date" class="form-control" formControlName="finPrevisto" readonly>
                                 </div>
 
                                 <div class="col-auto col-8">
                                     <label for="referenciaExterna" class="form-label">Cliente / Oficina:</label>
-                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select formControlName="idClienteOficina" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona Oficina</option>
+                                        <option *ngFor="let item of oficinas" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="referenciaExterna" class="form-label">Tipo Área:</label>
+                                    <select formControlName="idTipoArea" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione un elemento</option>
+                                        <option *ngFor="let item of oficinas" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="refKmaleon" class="form-label">Ref.Kmaleon:</label>
+                                    <input type="text" class="form-control" formControlName="refKmaleon" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-auto col-6">
+                                    <label for="idAbogado" class="form-label">Abogado:</label>
+                                    <select formControlName="idAbogado" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona Abogado</option>
+                                        <option *ngFor="let item of abogados" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-6">
+                                    <label for="idPagador" class="form-label">Pagador:</label>
+                                    <select formControlName="idPagador" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of pagadores" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
                                     </select>
                                 </div>
 
+                                <div class="col-auto col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="servicioIntegral" formControlName="servicioIntegral">
+                                        <label class="form-check-label" for="servicioIntegral">Servicio Integral</label>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6">
+                                    <label for="idProcurador" class="form-label">Procurador:</label>
+                                    <select formControlName="idProcurador" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of procuradores" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="gestorCliente" class="form-label">Gestor Cliente:</label>
+                                    <input type="text" class="form-control" formControlName="gestorCliente">
+                                </div>
 
-                                <!-- <div class="col-auto col-2">
-                                    <label for="orden" class="form-label">Orden:</label>
-                                    <input type="text" class="form-control" formControlName="orden">
+                                <div class="col-auto col-4">
+                                    <label for="idSubTipoProcedimiento" class="form-label">Subtipo:</label>
+                                    <select formControlName="idSubTipoProcedimiento" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of subTipoProcedimiento" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-8">
+                                    <label for="idProcurador" class="form-label">Procurador:</label>
+                                    <select formControlName="idProcurador" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of procuradores" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-auto col-8">
+                                    <label for="idJuzgado" class="form-label">Juzgado:</label>
+                                    <select formControlName="idJuzgado" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of juzgados" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="noAuto" class="form-label">No Auto:</label>
+                                    <input type="text" class="form-control" formControlName="noAuto">
+                                </div>
+
+                                <div class="col-auto col-6">
+                                    <label for="idPartidoJudicial" class="form-label">Partido Judicial:</label>
+                                    <select formControlName="idPartidoJudicial" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of partidosJudiciales" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-6">
+                                    <label for="idCartera" class="form-label">Cartera:</label>
+                                    <select formControlName="idCartera" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of carteras" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-auto col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="inactivoInterno">
+                                        <label class="form-check-label" for="inactivoInterno">Inactivo Int.</label>
+                                    </div>
                                 </div>
                                 <div class="col-auto col-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="activo" formControlName="activo">
-                                        <label class="form-check-label" for="activo">Activo</label>
+                                        <input class="form-check-input" type="checkbox" formControlName="esRelevante">
+                                        <label class="form-check-label" for="esRelevante">Relevante</label>
                                     </div>
-                                </div> -->
+                                </div>
+                                <div class="col-auto col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="esConfidencial">
+                                        <label class="form-check-label" for="esConfidencial">Confidencial</label>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6">
+                                    <label for="idVeniadoHitoFacturacion" class="form-label">Venia/Hito:</label>
+                                    <select formControlName="idVeniadoHitoFacturacion" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione...</option>
+                                        <option *ngFor="let item of hitosFacturacion" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-auto col-10">
+                                    <label for="avisoImportante" class="form-label">Aviso Importante:</label>
+                                    <input type="text" class="form-control" formControlName="avisoImportante">
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="origen" class="form-label">Origen:</label>
+                                    <input type="text" class="form-control" formControlName="origen" readonly>
+                                </div>
+
+                                <div class="col-auto col-3">
+                                    <label for="nic" class="form-label">NIC:</label>
+                                    <input type="text" class="form-control" formControlName="nic">
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="deudaFinal" class="form-label">Importe Demanda:</label>
+                                    <input type="text" class="form-control" formControlName="deudaFinal">
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="fechaCierre" class="form-label">F. Cierre:</label>
+                                    <input type="date" class="form-control" formControlName="fechaCierre" readonly>
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente:</label>
+                                    <input type="date" class="form-control" formControlName="fechaCargaAppCliente">
+                                </div>
                             </div>
 
                             <!-- 
-                            <div class="form-group">
-
-                            </div>
-                            <div class="form-group">
-                                @Html.DcvFormGroupItemBaseBaseFor("col-sm-8", "Cliente/Oficina:", Html.DcvSelectBootstrapClienteOficina(Model.IdClienteOficina, "IdClienteOficina", null, false, null, true)) @Html.DcvFormGroupItemBaseBaseFor("col-sm-2", "Tipo Área:", Html.DcvSelectBootstrapTipoArea(Model.IdTipoArea))
-                                @Html.DcvFormGroupItemDisabledFor("col-sm-2", "Ref.Kmaleon:", Model.RefKmaleon) @Html.DcvFormGroupItemCheckBoxFor("col-sm-2", "Servicio Integral", Model.ServicioIntegral, "ServicioIntegral")
-                            </div>
-                            <div class="form-group">
-                                @Html.DcvFormGroupItemBaseBaseFor("col-sm-6", "Pagador:", Html.DcvSelectBootstrapPagador(Model.IdPagador, "IdPagador", Model.IdClienteOficina, true)) @Html.DcvFormGroupItemBaseBaseFor("col-sm-6", "Abogado:", Html.DcvSelectBootstrapAbogadoBtnAction(Model.IdAbogado,
-                                "IdAbogado", true, true, subjectMail))
-                            </div>
-                            <div class="form-group">
-                                @if (Model.TipoExpediente == TipoExpedienteEnum.Alquiler) { @Html.DcvFormGroupItemTextEditFor("col-sm-5", "Gestor Cliente:", Model.GestorCliente, "GestorCliente") @Html.DcvFormGroupItemBaseBaseFor("col-sm-3", "Acción Propuesta:", Html.DcvSelectBootstrapListasValoresPorLista(Model.IdAccionPropuesta,
-                                "IdAccionPropuesta", "TipoAccionPropuesta")) } else { @Html.DcvFormGroupItemTextEditFor("col-sm-8", "Gestor Cliente:", Model.GestorCliente, "GestorCliente") } @Html.DcvFormGroupItemBaseBaseFor("col-sm-4", "Subtipo:", Html.DcvSelectBootstrapCaracteristicaBaseByGrupo("Exp-Subtipo-Procedimiento",
-                                Model.IdSubTipoProcedimiento, "IdSubTipoProcedimiento"))
-                            </div>
-                            <div class="form-group">
-                                @Html.DcvFormGroupItemBaseBaseFor("col-sm-8", "Procurador:", Html.DcvSelectBootstrapProcuradorByPartidoJudicialBtnAction(Model.IdProcurador, "IdProcurador", Model.IdPartidoJudicial, true, true, subjectMail)) @Html.DcvFormGroupItemTextEditFor("col-sm-4",
-                                "REOCO:", Model.ReferenciaReoco, "ReferenciaReoco")
-                            </div>
-                            <div class="form-group">
-                                @Html.DcvFormGroupItemAutocompleForJuzgado("col-md-8", "Juzgado:", Model.Juzgado == null ? "" : Model.Juzgado.Nombre, Model.IdJuzgado, "IdJuzgado", Html.GenerateUrl(MVC.Nomenclador.GetJuzgadosSearch())) @Html.DcvFormGroupItemTextEditFor("col-sm-4", "Nº
-                                Auto:", Model.NoAuto, "NoAuto")
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        @Html.DcvFormGroupItemBaseBaseFor("col-sm-12", "Partido Judicial:", Html.DcvSelectBootstrapPartidoJudicial(Model.IdPartidoJudicial)) @Html.DcvFormGroupItemBaseBaseFor("col-sm-12", "Cartera:", Html.DcvSelectBootstrapCartera(Model.IdCartera, "IdCartera",
-                                        true, Model.TipoExpediente, incluirCarterasSinProcedimiento))
-                                    </div>
-                                    <div class="col-sm-6">
-                                        @Html.DcvFormGroupItemCheckBoxFor("col-md-4", "Inactivo Int.", Model.InactivoInterno, "InactivoInterno") @Html.DcvFormGroupItemCheckBoxTwo("col-md-4", "Relevante", Model.EsRelevante, "EsRelevante", "Confidencial", Model.EsConfidencial, "EsConfidencial")
-                                        @Html.DcvFormGroupItemBaseBaseForByCheck("col-md-4 text-left", "Venia/Hito", Model.EsHeredado, "EsHeredado", Html.DcvSelectBootstrapCaracteristicaBaseByGrupo("Exp-VeniadoHitoFacturacion", Model.IdVeniadoHitoFacturacion,
-                                        "IdVeniadoHitoFacturacion"))
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.DcvFormGroupItemTextEditFor("col-sm-8", "Aviso Importante:", Model.AvisoImportante, "AvisoImportante") @Html.DcvFormGroupItemDisabledFor("col-sm-2", "Origen:", Model.Origen)
-                            </div>
-
-                            <div class="form-group">
-                                @if (Model.TipoExpediente != TipoExpedienteEnum.OrdinarioCs && Model.TipoExpediente != TipoExpedienteEnum.Concurso) { @Html.DcvFormGroupItemCurrencyFor("col-sm-4", "Importe Demanda:", Model.DeudaFinal, "DeudaFinal") @Html.DcvFormGroupItemDateEditFor("col-sm-3",
-                                "F. Cierre:", Model.FechaCierre, "FechaCierre", false); } @if (Model.TipoExpediente != TipoExpedienteEnum.Concurso) { @Html.DcvFormGroupItemDateEditFor("col-sm-3", "F.Carga Cliente:", Model.FechaCargaAppCliente, "FechaCargaAppCliente")
-                                } @Html.DcvFormGroupItemTextEditFor("col-sm-2", "NIC:", Model.Nic, "Nic")
-                            </div>
-                            <div class="form-group">
+                  
+                            
                                 <div class="col-lg-3" id="btnActionGroup"></div>
                                 <div class="col-lg-3 text-center">
                                     <a class='btn btn-primary' href='@Url.Action(MVC.Procuras.ProcuraEditOrCreateByExp(Model.IdExpediente))' target="_blank"><i class='icon-legal'></i> Procura</a>
@@ -140,9 +231,32 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="card-title mb-0">Estado Actual</h6>
+                            <div class="row">
+                                <h6 class="card-title mb-0 col-8">{{ estadoActual.tipoEstado.nombre }}</h6>
+                                <div class="card-title mb-0 col-4 text-end">{{ estadoActual.fecha | date: 'dd/MM/yyyy' }}
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
+
+                            <table class="table table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Nota</th>
+                                        <th scope="col">Usuario</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of notas">
+                                        <td class="col">{{ item.fecha | date: 'dd/MM/yyyy'}}</td>
+                                        <td class="col">{{ item.nota | slice:0:20 }}</td>
+                                        <td class="col">{{ item.usuario }}</td>
+                                        <td class="col"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
                         </div>
                     </div>
