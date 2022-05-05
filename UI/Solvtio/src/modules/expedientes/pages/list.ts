@@ -16,6 +16,7 @@ import { ApiService } from '../../../services/api.service';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { DialogService } from 'src/services/dialog/dialog.service';
 import { NotificationsService } from 'src/services/notifications.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface EventObject {
   event: string;
@@ -34,12 +35,18 @@ interface EventObject {
 })
 export class ExpedienteListComponent implements OnInit {
   @ViewChild('actionTpl') actionTpl!: TemplateRef<any>;
+  @ViewChild('tplNoExp') tplNoExp!: TemplateRef<any>;
   @ViewChild('tplFechaAlta') tplFechaAlta!: TemplateRef<any>;
 
+  formGroupFilter: FormGroup = this.fb.group({
+    noExpediente: [''],
+    refExterna: [''],
+    deudor: [''],
+  });
   expedienteSearch: ExpedienteSearch = new ExpedienteSearch();
   configuration = { ...DefaultConfig };
   public columns = [
-    { key: 'noExpediente', title: 'No Exp.' },
+    { key: 'noExpediente', title: 'No Exp.', cellTemplate: this.tplNoExp },
     { key: 'referenciaExterna', title: 'Ref.Externa' },
     { key: 'clienteOficina', title: 'Oficina' },
     { key: 'tipoExpediente', title: 'Tipo' },
@@ -64,10 +71,10 @@ export class ExpedienteListComponent implements OnInit {
   constructor(
     private api: ApiService,
     private dialogService: DialogService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private fb: FormBuilder
   ) {
-    // this.page.pageNumber = 0;
-    // this.page.size = 20;
+    this.createFormGroup();
   }
 
   ngOnInit(): void {
@@ -91,6 +98,46 @@ export class ExpedienteListComponent implements OnInit {
     //   },
     // });
   }
+
+  createFormGroup() {
+    this.formGroupFilter = this.fb.group({
+      noExpediente: [''],
+      refExterna: [''],
+      deudor: [''],
+      idOficina: [''],
+      idCartera: [''],
+      idProcurador: [''],
+      idTipoExpediente: [''],
+      idTipoArea: [''],
+      paralizado: [''],
+    });
+  }
+
+  async filtrar() {
+    console.log(this.formGroupFilter.getRawValue());
+
+    let paginationFilter = new PaginationFilter();
+    paginationFilter.pagination.pageNumber = 1;
+    paginationFilter.pagination.pageLimit = this.pagination.limit;
+    paginationFilter.filter.code1 =
+      this.formGroupFilter.controls['noExpediente'].value;
+    //debugger;
+    console.log(paginationFilter.filter.code1);
+
+    this.expedienteSearch = await this.api.srvApiExpediente.getPaginated(
+      paginationFilter
+    );
+
+    this.tableRefresh();
+    this.configTableColumns();
+  }
+  // public code1: string = '';
+  // public code2: string = '';
+  // public code3: string = '';
+
+  // public idTipo1?: number | null = null;
+  // public idTipo2?: number | null = null;
+  // public idTipo3?: number | null = null;
 
   eventEmitted($event: { event: string; value: any }): void {
     if ($event.event !== 'onClick') {
@@ -125,10 +172,7 @@ export class ExpedienteListComponent implements OnInit {
     console.log(this.expedienteSearch);
     console.log(this.expedienteSearch.paginationFilter.pagination);
 
-    // this.data = this.expedienteSearch.result;
     this.tableRefresh();
-
-    //this.pagination. = this.expedienteSearch.paginationFilter.pagination.totalElements;
     this.configTableColumns();
   }
 
@@ -136,6 +180,8 @@ export class ExpedienteListComponent implements OnInit {
     this.pagination.count =
       this.expedienteSearch.paginationFilter.pagination.totalElements;
     this.data = this.expedienteSearch.result;
+    this.pagination.count =
+      this.expedienteSearch.paginationFilter.pagination.totalElements;
   }
 
   // /**
@@ -163,7 +209,7 @@ export class ExpedienteListComponent implements OnInit {
 
   configTableColumns() {
     this.columns = [
-      { key: 'noExpediente', title: 'No Exp.' },
+      { key: 'noExpediente', title: 'No Exp.', cellTemplate: this.tplNoExp },
       { key: 'referenciaExterna', title: 'Ref.Externa' },
       { key: 'clienteOficina', title: 'Oficina' },
       { key: 'tipoExpediente', title: 'Tipo' },

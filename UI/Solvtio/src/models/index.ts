@@ -6,3 +6,4 @@ export { PaginationFilter } from 'src/models/search/baseSearch.model';
 export { ModelDtoNombre } from 'src/models/CaracteristicaBase.model';
 export { ExpedienteEstadoDto } from 'src/models/estado/ExpedienteEstadoDto.model';
 export { ExpedienteNotaDto } from 'src/models/expedienteChildren/expChildren.model';
+export { DtoIdNombre } from 'src/models/common.model';

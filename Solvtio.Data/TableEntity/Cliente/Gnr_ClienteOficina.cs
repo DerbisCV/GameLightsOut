@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
-    public partial class Gnr_ClienteOficina : Auditable, INombre, IDireccion //Invalid column name 'Gnr_ClienteIdCliente'.
+    public partial class Gnr_ClienteOficina : Auditable, IName, IDireccion //Invalid column name 'Gnr_ClienteIdCliente'.
     {
         #region Constructors
 

@@ -6,7 +6,7 @@ using System.Linq;
 namespace Solvtio.Models
 {
     [Table("Juzgado")]
-    public class Juzgado : INombre
+    public class Juzgado : IName
     {
         #region Constructors
 
@@ -53,6 +53,7 @@ namespace Solvtio.Models
 
         #region Properties ReadOnly
 
+        public int Id => IdJuzgado;
         public int? TotalDiasTramiteJudicialHip => JuzgadoTramiteJudicialSet?
             .Where(x => x.TramiteJudicial.Activo && x.TramiteJudicial.IdEstado.HasValue && x.TramiteJudicial.Estado.IdTipoExpediente == 1)
             .GroupBy(x => x.TramiteJudicial.IdEstado)

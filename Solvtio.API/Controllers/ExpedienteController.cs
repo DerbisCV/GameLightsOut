@@ -144,5 +144,20 @@ namespace Solvtio.API.Controllers
             }
         }
 
+        [HttpGet("GetIdExpedienteByNo")]
+        public ActionResult<int?> GetIdExpedienteByNo(string noExpediente)
+        {
+            try
+            {
+                var result = _repository.GetIdExpedienteByNo(noExpediente);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetIdExpedienteByNo: ");
+                return StatusCode(500, error);
+            }
+        }
+
     }
 }

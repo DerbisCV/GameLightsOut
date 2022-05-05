@@ -6,6 +6,11 @@ namespace Solvtio.Models
     {
         string Nombre { get; set; }
     }
+    public interface IName : INombre
+    {
+        int Id { get; }
+        string Nombre { get; set; }
+    }
 
     public interface ITitulo
     {

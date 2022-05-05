@@ -19,6 +19,7 @@ namespace Solvtio.Models
         public virtual ICollection<ExpedienteDeudor> ExpedienteDeudors { get; set; }
         public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
 
+        public int Id => IdTipoDeudor;
         public string NombreParaDemanda => string.IsNullOrEmpty(DescripcionDemanda) ? Descripcion : DescripcionDemanda;
     }
 }

@@ -62,7 +62,7 @@ namespace Solvtio.API.Start
     {
         public AutoMapperProfile()
         {
-            CreateMap<Expediente, ModelExpedienteEdit>().ReverseMap();
+            //CreateMap<Expediente, ModelExpedienteEdit>().ReverseMap();
 
             CreateMap<ExpedienteEstado, ExpedienteEstadoDto>();
             CreateMap<ExpedienteNota, ExpedienteNotaDto>();
@@ -91,8 +91,13 @@ namespace Solvtio.API.Start
 
         private void AutoMapperCustom()
         {
-            //CreateMap<ClientSQL, Client>()
-            //   .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            CreateMap<Expediente, ModelExpedienteEdit>()
+               .ForMember(dest => dest.TipoExpediente, opt => opt.MapFrom(src => new DtoIdNombre(src.Gnr_TipoExpediente)))
+               .ForMember(dest => dest.Deudor, opt => opt.MapFrom(src => new DtoIdNombre(src.Gnr_Persona)))
+               .ForMember(dest => dest.Abogado, opt => opt.MapFrom(src => new DtoIdNombre(src.Gnr_Abogado)))
+               .ForMember(dest => dest.Oficina, opt => opt.MapFrom(src => new DtoIdNombre(src.Gnr_ClienteOficina)))
+               .ForMember(dest => dest.Juzgado, opt => opt.MapFrom(src => new DtoIdNombre(src.Juzgado)))
+               ;
             //   .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive))
 
             //   .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))

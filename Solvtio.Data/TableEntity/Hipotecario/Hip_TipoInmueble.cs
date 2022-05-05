@@ -25,6 +25,8 @@ namespace Solvtio.Models
         [ForeignKey("IdTipologia")]
         public virtual CaracteristicaBase Tipologia { get; set; }
 
+        public int Id => IdTipoInmueble;
+
         #endregion
 
         #region Properties One Many

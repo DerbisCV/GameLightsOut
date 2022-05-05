@@ -1,3 +1,5 @@
+import { DtoIdNombre } from './common.model';
+
 export class Expediente {
   idExpediente: number = 0;
   noExpediente: string = '';
@@ -85,15 +87,37 @@ export class Expediente {
 
 export class ModelExpediente {
   idExpediente: number = 0;
+  deudaFinal: number = 0;
+  idEstadoLast: number = 0;
+
   noExpediente: string = '';
   referenciaExterna: string = '';
-  clienteOficina: string = '';
-  tipoExpediente: number = 1;
-  // activo: boolean = false;
+  noAuto: string = '';
+
   inicio: Date | undefined;
   fin: Date | undefined;
+  fechaAlta: Date | undefined;
 
-  constructor(item?: Partial<Expediente>) {
+  clienteOficina!: DtoIdNombre;
+  deudor!: DtoIdNombre;
+  abogado!: DtoIdNombre;
+  oficina!: DtoIdNombre;
+  tipoExpediente!: DtoIdNombre;
+  juzgado!: DtoIdNombre;
+
+  estado!: EstadoDtoMin;
+
+  constructor(item?: Partial<ModelExpediente>) {
+    if (!!item) Object.assign(this, item);
+  }
+}
+
+export class EstadoDtoMin {
+  idExpedienteEstado: number = 0;
+  fecha: Date | undefined;
+  tipo!: DtoIdNombre;
+
+  constructor(item?: Partial<EstadoDtoMin>) {
     if (!!item) Object.assign(this, item);
   }
 }

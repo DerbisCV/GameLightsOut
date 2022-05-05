@@ -2,6 +2,7 @@
 {
     public interface IDescripcion
 	{
+		int Id { get; }
 		string Descripcion { get; set; }
 	}
 

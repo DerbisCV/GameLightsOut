@@ -46,6 +46,9 @@ namespace Solvtio.Models
         #endregion
 
         #region Properties ReadOnly
+
+        public int Id => IdNotificacionMailTimeline;
+        
         #endregion
 
         #region Properties NotMapped

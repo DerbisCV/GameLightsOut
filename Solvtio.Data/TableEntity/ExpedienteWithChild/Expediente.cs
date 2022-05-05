@@ -155,7 +155,7 @@ namespace Solvtio.Models
         public int IdTipoArea { get; set; }
         [Index]
         public int IdClienteOficina { get; set; }
-        public int? IdProcurador { get; set; }
+        
         public DateTime? FechaCierre { get; set; }
         public DateTime? Inicio { get; set; }
         public DateTime? Fin { get; set; }
@@ -418,10 +418,17 @@ namespace Solvtio.Models
         public int? IdAbogado { get; set; }
         [ForeignKey("IdAbogado")]
         public virtual Gnr_Abogado Gnr_Abogado { get; set; }
+        
+        
         [ForeignKey("IdClienteOficina")]
         public virtual Gnr_ClienteOficina Gnr_ClienteOficina { get; set; }
+
+
+        public int? IdProcurador { get; set; }
         [ForeignKey("IdProcurador")]
         public virtual Gnr_Procurador Gnr_Procurador { get; set; }
+        
+        
         //public virtual Gnr_Valija Gnr_Valija { get; set; }
         [ForeignKey("IdPartidoJudicial")]
         public virtual PartidoJudicial Hip_PartidoJudicial { get; set; }

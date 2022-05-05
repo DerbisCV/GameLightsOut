@@ -1,7 +1,31 @@
-﻿using System;
+﻿using Solvtio.Models;
+using System;
 
 namespace Solvtio.Data.Models.Dtos
 {
+    public class EstadoDtoMin
+    {
+        public EstadoDtoMin() { }
+        public EstadoDtoMin(ExpedienteEstado model)
+        {
+            if (model == null) return;
+            
+            IdExpedienteEstado = model.ExpedienteEstadoId;
+            Fecha = model.Fecha;
+            Tipo = new DtoIdNombre(model.IdTipoEstado, model.Gnr_TipoEstado.Nombre);
+        }
+
+        public int IdExpedienteEstado { get; set; }
+        public DateTime Fecha { get; set; }
+        public DtoIdNombre Tipo { get; set; }
+    }
+
+    public class EstadoDto : EstadoDtoMin
+    {
+        public int IdExpediente { get; set; }
+    }
+
+
     public class ExpedienteEstadoDto
     {
 
@@ -9,7 +33,7 @@ namespace Solvtio.Data.Models.Dtos
 
         public int ExpedienteEstadoId { get; set; }
         public int IdExpedienteEstado => ExpedienteEstadoId;
-        
+
         public int IdExpediente { get; set; }
         public DateTime Fecha { get; set; }
         public ModelDtoNombre TipoEstado { get; set; }

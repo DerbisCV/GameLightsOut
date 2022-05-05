@@ -12,5 +12,7 @@ namespace Solvtio.Models
         public int IdFase { get; set; }
         public string Descripcion { get; set; }
         public virtual ICollection<Con_ExpedienteIncidente> Con_ExpedienteIncidente { get; set; }
+
+        public int Id => IdFase;
     }
 }

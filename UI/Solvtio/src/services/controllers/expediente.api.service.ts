@@ -44,6 +44,12 @@ export class ExpedienteApiService {
     return new Expediente(item);
   }
 
+  public async getIdExpedienteByNo(noExp: string): Promise<number> {
+    return await this.api.get(
+      `${this.pathApi}/GetIdExpedienteByNo?noExpediente=${noExp}`
+    );
+  }
+
   public async create(item: Expediente) {
     return this.api.post<Expediente>(this.pathApi, item);
   }

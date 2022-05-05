@@ -34,41 +34,75 @@ namespace Solvtio.Data.Implementations
         public async Task<ModelExpedienteEdit> GetModelExpediente(int id)
         {
             var result = await _solvtioDbContext.ExpedienteSet
-                .Where(x => x.IdExpediente == id)
-                .FirstOrDefaultAsync();
-            
+                .Include(x => x.Gnr_TipoExpediente)
+                .Include(x => x.Gnr_ClienteOficina)
+                .Include(x => x.Juzgado)
+                .Include(x => x.Gnr_Persona)
+                .Include(x => x.Gnr_Abogado.Persona)
+                .FirstOrDefaultAsync(x => x.IdExpediente == id);
+
             return _mapper.Map<ModelExpedienteEdit>(result);
         }
 
         public async Task<SearchExpediente> GetWithPagination(PaginationFilter paginationFilter)
         {
-            var result = new SearchExpediente(paginationFilter);
+            try
+            {
+                var result = new SearchExpediente(paginationFilter);
 
-            var query = _solvtioDbContext.ExpedienteSet.AsNoTracking()
-                .Select(x => new ModelExpediente
+                var query = _solvtioDbContext.ExpedienteSet
+                    .Include(x => x.Gnr_Abogado.Persona)
+                    .Include(x => x.Gnr_TipoExpediente)
+                    .Include(x => x.Gnr_TipoArea)
+                    .Include(x => x.Gnr_ClienteOficina)
+                    .Include(x => x.Juzgado)
+                    .Include(x => x.Gnr_Persona)
+                    //.Include(x => x.ExpedienteEstadoLast.Gnr_TipoEstado)                
+                    .Select(x => new ModelExpediente
+                    {
+                        IdExpediente = x.IdExpediente,
+                        NoExpediente = x.NoExpediente,
+                        ReferenciaExterna = x.ReferenciaExterna,
+                        NoAuto = x.NoAuto,
+                        Abogado = new DtoIdNombre(x.Gnr_Abogado),
+                        Oficina = new DtoIdNombre(x.Gnr_ClienteOficina), 
+                        TipoExpediente = new DtoIdNombre(x.Gnr_TipoExpediente),
+                        Juzgado = new DtoIdNombre(x.Juzgado),
+                        Deudor = new DtoIdNombre(x.Gnr_Persona),
+                        IdEstadoLast = x.IdEstadoLast,
+                        DeudaFinal = x.DeudaFinal,
+                        FechaAlta = x.FechaAlta,
+                        Inicio = x.Inicio,
+                        Fin = x.Fin
+                    });
+
+                if (!string.IsNullOrWhiteSpace(paginationFilter.Filter.Code1))
+                    query = query.Where(x => x.NoExpediente.Contains(paginationFilter.Filter.Code1));
+                if (!string.IsNullOrWhiteSpace(paginationFilter.Filter.Code2))
+                    query = query.Where(x => x.ReferenciaExterna.Contains(paginationFilter.Filter.Code2));
+
+                result.Result = await query
+                    .Skip(paginationFilter.Pagination.Rows2Skip)
+                    .Take(paginationFilter.Pagination.PageLimit)
+                    .ToListAsync();
+
+                foreach (var item in result.Result)
                 {
-                    IdExpediente = x.IdExpediente,
-                    NoExpediente = x.NoExpediente,
-                    ReferenciaExterna = x.ReferenciaExterna,
-                    TipoExpediente = x.TipoExpediente,
-                    ClienteOficina = x.Gnr_ClienteOficina.Nombre,
-                    Inicio = x.Inicio,
-                    Fin = x.Fin
-                });
+                    item.Estado = new EstadoDtoMin(_solvtioDbContext.ExpedienteEstadoes.Include(x => x.Gnr_TipoEstado).FirstOrDefault(x => x.ExpedienteEstadoId == item.IdEstadoLast));
+                }
 
-            if (!string.IsNullOrWhiteSpace(paginationFilter.Filter.Code1))
-                query = query.Where(x => x.NoExpediente.Contains(paginationFilter.Filter.Code1));
-            if (!string.IsNullOrWhiteSpace(paginationFilter.Filter.Code2))
-                query = query.Where(x => x.ReferenciaExterna.Contains(paginationFilter.Filter.Code2));
+                result.PaginationFilter.Pagination.TotalElements = await query.CountAsync();
 
-            result.Result = await query
-                .Skip(paginationFilter.Pagination.Rows2Skip)
-                .Take(paginationFilter.Pagination.PageLimit)
-                .ToListAsync();
-
-            result.PaginationFilter.Pagination.TotalElements = await query.CountAsync();
-
-            return result;
+                return result;
+            }
+            catch (Microsoft.Data.SqlClient.SqlException ex)
+            {
+                throw ex;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<ModelResult> Update(ModelExpedienteEdit model)
@@ -100,7 +134,7 @@ namespace Solvtio.Data.Implementations
 
             return estadoDto;
         }
-        
+
         public async Task<List<ExpedienteNotaDto>> GetNotas(int idExpediente)
         {
             var result = await _solvtioDbContext.ExpedienteNotaSet
@@ -109,7 +143,12 @@ namespace Solvtio.Data.Implementations
 
             return _mapper.Map<List<ExpedienteNotaDto>>(result);
         }
-        
+
+        public int? GetIdExpedienteByNo(string noExpediente)
+        {
+            return _solvtioDbContext.ExpedienteSet.FirstOrDefault(x => x.NoExpediente == noExpediente)?.IdExpediente;
+        }
+
 
         //public IEnumerable<Configuracion> GetAllConfiguracion()
         //{

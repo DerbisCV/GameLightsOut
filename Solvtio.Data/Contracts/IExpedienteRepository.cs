@@ -14,5 +14,7 @@ namespace Solvtio.Data.Contracts
 
         Task<ExpedienteEstadoDto> GetEstadoActual(int idExpediente);
         Task<List<ExpedienteNotaDto>> GetNotas(int idExpediente);
+
+        int? GetIdExpedienteByNo(string noExpediente);
     }
 }

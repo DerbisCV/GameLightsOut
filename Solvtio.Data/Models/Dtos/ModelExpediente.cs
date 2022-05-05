@@ -1,4 +1,5 @@
 ﻿using Solvtio.Common;
+using Solvtio.Data.Models.Dtos;
 using System;
 
 namespace Solvtio.Models
@@ -138,16 +139,23 @@ namespace Solvtio.Models
         public int IdExpediente { get; set; }
         public string NoExpediente { get; set; }
         public string ReferenciaExterna { get; set; }
-        public TipoExpedienteEnum TipoExpediente { get; set; }
-        //public ModelClienteOficina ClienteOficina { get; set; }
-        //public ModelPersona DeudorPrincipal { get; set; }
-        //public DateTime FechaAlta { get; set; }
-        //public ModelMoney Importe { get; set; }
-        //public ModelTipoEstado TipoEstadoActual { get; set; }
-        public string ClienteOficina { get; set; }
+        public string NoAuto { get; set; }
+
         public DateTime? Inicio { get; set; }
         public DateTime? Fin { get; set; }
+        public DateTime? FechaAlta { get; set; }
 
+        public decimal? DeudaFinal { get; set; }
+        
+        public int? IdEstadoLast { get; set; }
+        public EstadoDtoMin Estado { get; set; }
+        
+        public DtoIdNombre Deudor { get; set; }
+        public DtoIdNombre Abogado { get; set; }
+        public DtoIdNombre Oficina { get; set; }
+        public DtoIdNombre TipoExpediente { get; set; }
+        public DtoIdNombre Juzgado { get; set; }
+        
         #endregion
 
         #region Properties ReadOnly

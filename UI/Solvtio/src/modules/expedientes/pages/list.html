@@ -1,70 +1,69 @@
 <div class="container-fluid">
-    <div class="row mb-1">
-        <div class="col-8">
-            <h4>Expedientes</h4>
-        </div>
-        <div class="col-4 text-end"><a role="button" class="btn btn-success" [routerLink]="['create']">Nuevo</a>
-        </div>
-    </div>
-    <div class="row">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+            <!-- <li class="breadcrumb-item"><a href="#">Expedientes</a></li> -->
+            <li class="breadcrumb-item active" aria-current="page">Expedientes</li>
+        </ol>
+    </nav>
 
-        <!-- <div class="column col-12">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <div class="col-3 col-sm-12 col-ml-auto">
-                  <input
-                    class="form-input"
-                    type="text"
-                    id="globalSearch"
-                    (input)="onChange($event)"
-                    placeholder="Search"
-                  />
+    <div class="card">
+        <div class="card-header">
+            <form [formGroup]="formGroupFilter" (ngSubmit)="filtrar()">
+                <div class="form-group row">
+                    <div class="col-1">
+                        <input formControlName="noExpediente" placeholder="No Exp..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-1">
+                        <input formControlName="referenciaExterna" placeholder="Ref.Ext / Auto" class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-1">
+                        <input formControlName="deudor" placeholder="Deudor..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-2">
+                        <input formControlName="idOficina" placeholder="Oficina..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-1">
+                        <input formControlName="idCartera" placeholder="Cartera..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-2">
+                        <input formControlName="idProcurador" placeholder="Procurador..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-1">
+                        <input formControlName="idTipoExpediente" placeholder="Tipo Exp..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-1">
+                        <input formControlName="paralizado" placeholder="Paralizado..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-1">
+                        <input formControlName="idTipoArea" placeholder="Tipo Area..." class="form-control form-control-sm" type="text" />
+                    </div>
+                    <div class="col-1 text-end">
+                        <button type="submit" class="btn btn-primary btn-sm me-2">Filtrar</button>
+                        <a class="btn btn-success btn-sm me-2" [routerLink]="['create']">Nuevo</a>
+                    </div>
                 </div>
-              </div>
             </form>
-          </div> -->
+        </div>
+        <div class="card-body">
+            <ngx-table [configuration]="configuration" [data]="data" [columns]="columns" [pagination]="pagination" (event)="eventEmitted($event)">
+            </ngx-table>
 
-        <ngx-table [configuration]="configuration" [data]="data" [columns]="columns" [pagination]="pagination" (event)="eventEmitted($event)">
-        </ngx-table>
-
-        <ng-template #actionTpl let-row let-rowIndex="rowIndex">
-            <div class="text-end">
-                <!-- <button class="btn btn-sm btn-danger " (click)="remove(row.idExpediente)">Remove</button> -->
-                <a class="btn btn-sm btn-primary mx-1" [routerLink]="['update', row.idExpediente ]">Editar</a>
-            </div>
-        </ng-template>
-        <ng-template #tplFechaAlta let-row let-rowIndex="rowIndex">
-            {{ row.fechaAlta | date : "dd/MM/yyyy" }}
-        </ng-template>
-    </div>
-
-
-
-
-
-    <!-- <div class="columns">
-        <div class="column col-2">
-            <button (click)="addRow()" id="add-row-button" class="btn btn-primary">Add row</button>
+            <ng-template #tplNoExp let-row let-rowIndex="rowIndex">
+                <div class="text-center">
+                    <a class="" [routerLink]="['update', row.idExpediente ]">{{ row.noExpediente }}</a>
+                </div>
+            </ng-template>
+            <ng-template #actionTpl let-row let-rowIndex="rowIndex">
+                <div class="text-end">
+                    <!-- <button class="btn btn-sm btn-danger " (click)="remove(row.idExpediente)">Remove</button> -->
+                    <a class="btn btn-sm btn-primary mx-1" [routerLink]="['update', row.idExpediente ]">{{
+                        row.noExpediente }}</a>
+                </div>
+            </ng-template>
+            <ng-template #tplFechaAlta let-row let-rowIndex="rowIndex">
+                {{ row.fechaAlta | date : "dd/MM/yyyy" }}
+            </ng-template>
         </div>
     </div>
-    <div class="columns">
-        <div class="column col-12">
-            <ngx-table [configuration]="configuration" [data]="data" [columns]="columns"> </ngx-table>
-        </div>
-    </div> -->
-
-
-
-
-    <!-- <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    </table> -->
-
-
 </div>
-
-<!-- <script>
-    $(document).ready(function() {
-        // $('#example').DataTable();
-        alert('Prueba 123');
-    });
-</script> -->

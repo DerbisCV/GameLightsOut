@@ -25,6 +25,7 @@ namespace Solvtio.Models
 
         #region Properties Readonly
 
+        public int Id => IdInmueble;
 
         #endregion
 

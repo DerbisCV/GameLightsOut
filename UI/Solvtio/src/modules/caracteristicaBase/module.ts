@@ -8,6 +8,7 @@ import {
 import { RoutingModule } from './routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    TabsModule.forRoot(),
   ],
   exports: [CaracteristicaBaseListComponent, CaracteristicaBaseItemComponent],
   providers: [],

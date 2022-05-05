@@ -25,16 +25,18 @@ namespace Solvtio.Models
         [ForeignKey("IdTipoEstado")]
         public virtual Gnr_TipoEstado Gnr_TipoEstado { get; set; }
 
+        public int Id => IdMotivo;
+
         #endregion
 
         #region Properties One To Many
 
-  //      public virtual ICollection<Ejc_ExpedienteEstadoFinalizacion> Ejc_ExpedienteEstadoFinalizacion { get; set; }
-  //      public virtual ICollection<Hip_ExpedienteEstadoFinalizacion> Hip_ExpedienteEstadoFinalizacion { get; set; }
-  //      public virtual ICollection<Hip_ExpedienteEstadoProcesoParalizado> Hip_ExpedienteEstadoProcesoParalizado { get; set; }
-		//public virtual ICollection<Hip_ExpedienteEstadoSubasta> Hip_ExpedienteEstadoSubastaSet { get; set; }
-  //      public virtual ICollection<ExpedienteEstadoParalizado> ExpedienteEstadoParalizadoSet { get; set; }
-  //      public virtual ICollection<Alq_Expediente_EstadoFinalizacion> AlqExpedienteEstadoFinalizacionSet { get; set; }
+        //      public virtual ICollection<Ejc_ExpedienteEstadoFinalizacion> Ejc_ExpedienteEstadoFinalizacion { get; set; }
+        //      public virtual ICollection<Hip_ExpedienteEstadoFinalizacion> Hip_ExpedienteEstadoFinalizacion { get; set; }
+        //      public virtual ICollection<Hip_ExpedienteEstadoProcesoParalizado> Hip_ExpedienteEstadoProcesoParalizado { get; set; }
+        //public virtual ICollection<Hip_ExpedienteEstadoSubasta> Hip_ExpedienteEstadoSubastaSet { get; set; }
+        //      public virtual ICollection<ExpedienteEstadoParalizado> ExpedienteEstadoParalizadoSet { get; set; }
+        //      public virtual ICollection<Alq_Expediente_EstadoFinalizacion> AlqExpedienteEstadoFinalizacionSet { get; set; }
 
         #endregion
     }

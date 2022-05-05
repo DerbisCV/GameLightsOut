@@ -1,4 +1,11 @@
-<div class="px-4">
+<div class="px-4 container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="expediente">Expedientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ficha</li>
+        </ol>
+    </nav>
     <ng-container *ngIf="formData">
         <form (ngSubmit)="saveData()" [formGroup]="formData">
             <div class="row">
@@ -273,6 +280,21 @@
 
         <div class="row mt-4">
             <div class="col-12">
+
+                <div class="m-4">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Messages</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Estados</a>
