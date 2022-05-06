@@ -63,16 +63,25 @@ namespace Solvtio.API.Start
         public AutoMapperProfile()
         {
             //CreateMap<Expediente, ModelExpedienteEdit>().ReverseMap();
+            CreateMap<ExpedienteNota, ExpedienteNotaDto>().ReverseMap();
+            //CreateMap<ExpedienteDeudor, ExpedienteDeudorDto>().ReverseMap();
+            CreateMap<ExpedienteDeudor, ExpedienteDeudorDto>()
+                .ForMember(dest => dest.Persona, opt => opt.MapFrom(src => src.Gnr_Persona));
+            CreateMap<Gnr_Persona, PersonaDto>().ReverseMap();
+            //      CreateMap<Gnr_Persona, PersonaDto>()
+            //
 
             CreateMap<ExpedienteEstado, ExpedienteEstadoDto>();
-            CreateMap<ExpedienteNota, ExpedienteNotaDto>();
 
             CreateMap<Gnr_Cliente, ModelDtoNombre>();
             CreateMap<Gnr_ClienteOficina, ModelDtoNombre>();
             CreateMap<Gnr_TipoArea, ModelDtoNombre>();
             CreateMap<Gnr_Abogado, ModelDtoNombre>();
-            CreateMap<Gnr_Procurador, ModelDtoNombre>();            
+            CreateMap<Gnr_Procurador, ModelDtoNombre>();
             CreateMap<Gnr_TipoEstado, ModelDtoNombre>();
+            CreateMap<Gnr_TipoDeudor, ModelDtoNombre>();
+            CreateMap<Provincia, ModelDtoNombre>();
+
 
             //public async Task<ExpedienteEstadoDto> GetEstadoActual(int idExpediente) 
             //{
@@ -98,6 +107,7 @@ namespace Solvtio.API.Start
                .ForMember(dest => dest.Oficina, opt => opt.MapFrom(src => new DtoIdNombre(src.Gnr_ClienteOficina)))
                .ForMember(dest => dest.Juzgado, opt => opt.MapFrom(src => new DtoIdNombre(src.Juzgado)))
                ;
+
             //   .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive))
 
             //   .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
@@ -128,5 +138,5 @@ namespace Solvtio.API.Start
         }
 
     }
-    
+
 }

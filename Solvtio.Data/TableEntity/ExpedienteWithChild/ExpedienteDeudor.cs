@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Solvtio.Models.Model;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
@@ -61,12 +60,11 @@ namespace Solvtio.Models
         [ForeignKey("IdTipoGarantia")]
         public virtual CaracteristicaBase TipoGarantia { get; set; }
 
-        public int? IdTipoResponsabilidad{ get; set; }
+        public int? IdTipoResponsabilidad { get; set; }
         [ForeignKey("IdTipoResponsabilidad")]
         public virtual CaracteristicaBase TipoResponsabilidad { get; set; }
 
         public string Observaciones { get; set; }
-
 
         public string AbogadoNombre { get; set; }
         public string AbogadoDespacho { get; set; }
@@ -104,12 +102,18 @@ namespace Solvtio.Models
         public int IdExpedienteDeudor { get; set; }
         [Index]
         public int IdExpediente { get; set; }
-        public int IdPersona { get; set; }
-        public int IdTipoDeudor { get; set; }
-        public string DomicilioNotificacion { get; set; }
+        [ForeignKey("IdExpediente")]
         public virtual Expediente Expediente { get; set; }
+
+        public int IdPersona { get; set; }
+        [ForeignKey("IdPersona")]
         public virtual Gnr_Persona Gnr_Persona { get; set; }
+
+        public int IdTipoDeudor { get; set; }
+        [ForeignKey("IdTipoDeudor")]
         public virtual Gnr_TipoDeudor Gnr_TipoDeudor { get; set; }
+
+        public string DomicilioNotificacion { get; set; }
 
         #endregion
 

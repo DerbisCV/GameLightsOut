@@ -7,6 +7,7 @@
 
 import {
   Expediente,
+  ExpedienteDeudorDto,
   ExpedienteEstadoDto,
   ExpedienteNotaDto,
   ExpedienteSearch,
@@ -62,10 +63,6 @@ export class ExpedienteApiService {
       item
     );
   }
-  // public async udpate(item: Expediente, id: number) {
-  //   item.id = id;
-  //   return this.api.put<Expediente>(`${this.pathApi}/${id}`, item);
-  // }
 
   public async delete(id: string) {
     return this.api.delete(`${this.pathApi}/${id}`);
@@ -83,5 +80,36 @@ export class ExpedienteApiService {
     return await this.api.get(
       `${this.pathApi}/GetNotas?idExpediente=${idExpediente}`
     );
+  }
+
+  public async getDeudores(
+    idExpediente: number
+  ): Promise<ExpedienteDeudorDto[]> {
+    const url = `${this.pathApi}/GetDeudores?idExpediente=${idExpediente}`;
+    console.log(url);
+    return await this.api.get(url);
+
+    //.then(function (clientData) {
+    //     let clientWithType = Object.assign(new Array<ExpedienteDeudorDto>(), clientData);
+    //     retutn clientWithType;
+    //   });
+
+    // this.api.get(url)
+    // // .fetch("data.json")
+    // // .then(response => response.json())
+    // .then((data: ExpedienteDeudorDto[]) => {
+    //   data.forEach(agency => (agency.steps = mapLoadedSteps(agency.steps)));
+
+    //   this.agencies = data;
+    // });
+
+    // service.getClientFromAPI().then(clientData => {
+
+    //   // Here the client data from API only have the "name" field
+    //   // If we want to use the Client class methods on this data object we need to:
+    //   let clientWithType = Object.assign(new Client(), clientData)
+
+    //   clientWithType.displayName()
+    // })
   }
 }

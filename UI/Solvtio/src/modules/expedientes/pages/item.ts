@@ -13,6 +13,13 @@ import { DialogService } from '../../../services/dialog/dialog.service';
 // import { DatePipe } from '@angular/common';
 import { ExpedienteNotaDto } from '../../../models/expedienteChildren/expChildren.model';
 
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { deLocale } from 'ngx-bootstrap/locale';
+defineLocale('es', deLocale);
+
+// import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'page-expediente-list',
   templateUrl: './item.html',
@@ -37,14 +44,22 @@ export class ExpedienteItemComponent implements OnInit {
   hitosFacturacion = new Array<ModelDtoNombre>();
   subTipoProcedimiento = new Array<ModelDtoNombre>();
 
+  datePickerConfig = {
+    dateInputFormat: 'DD.MM.yyyy',
+    isAnimated: true,
+    adaptivePosition: true,
+  };
+
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
     private route: ActivatedRoute,
     public elementRef: ElementRef,
     private dialogService: DialogService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private localeService: BsLocaleService
   ) {
+    //this.localeService.use('es');
     this.idExpediente = this.route.snapshot.params['id'];
 
     this.createFormData();
@@ -53,11 +68,8 @@ export class ExpedienteItemComponent implements OnInit {
   }
 
   async ngOnInit() {
-    // console.log('ngOnInit id=' + this.route.snapshot.params['id']);
-    // const id = this.route.snapshot.params['id'];
-    // this.expediente = !!id
-    //   ? await this.api.srvApiExpediente.getById(id)
-    //   : new Expediente();
+    console.log('ngOnInit form');
+    this.idExpediente = this.route.snapshot.params['id'];
   }
 
   async createFormData() {
@@ -65,6 +77,8 @@ export class ExpedienteItemComponent implements OnInit {
     this.expediente = !!id
       ? await this.api.srvApiExpediente.getById(id)
       : new Expediente();
+
+    //this.expediente.fechaCargaAppCliente = new Date(2022, 7, 31);
 
     const validations: any = {
       nombre: [Validators.required, Validators.minLength(3)],
@@ -78,6 +92,8 @@ export class ExpedienteItemComponent implements OnInit {
     this.formData = this.fb.group(controlsConfig);
 
     console.log(this.expediente);
+    console.log(controlsConfig);
+    console.log(this.formData);
   }
 
   async getDataAux() {

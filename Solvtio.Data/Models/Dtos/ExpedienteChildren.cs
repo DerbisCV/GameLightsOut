@@ -18,6 +18,5 @@ namespace Solvtio.Data.Models.Dtos
         public DateTime Fecha { get; set; }
 
         #endregion
-
     }
 }

@@ -196,35 +196,41 @@
                                     <input type="date" class="form-control" formControlName="fechaCierre" readonly>
                                 </div>
                                 <div class="col-auto col-3">
-                                    <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente:</label>
-                                    <input type="date" class="form-control" formControlName="fechaCargaAppCliente">
+                                    <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente1:</label>
+                                    <input type="date" class="form-control" formControlName="fechaCargaAppCliente" value="{{ expediente.fechaCargaAppCliente | date:'dd-MM-yyyy' }}">
                                 </div>
+
+                                <div class="col-auto col-3">
+                                    <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente 3:</label>
+                                    <input type="text" class="form-control" formControlName="fechaCargaAppCliente" value="{{ expediente.fechaCargaAppCliente | date:'yyyy-MM-dd' }}" readonly>
+                                </div>
+
+                                <div class="col-auto col-3">
+                                    <label for="fechaCargaAppCliente" class="form-label">bsDatepicker:</label>
+                                    <!-- <input type="date" class="form-control mb-3" placeholder="Datepicker..." bsDatepicker formControlName="fechaCargaAppCliente" /> -->
+                                    <input type="text" class="form-control mb-3" placeholder="Datepicker" bsDatepicker formControlName="fechaCargaAppCliente" />
+                                    <pre *ngIf="formData?.value?.fechaCargaAppCliente" class="code-preview">{{formData?.value?.fechaCargaAppCliente | date}}</pre>
+
+                                    <input class="form-control" placeholder="End date" bsDatepicker #dp_end="bsDatepicker" formControlName="fechaCargaAppCliente" value="{{formData.controls['fechaCargaAppCliente'].value | date: 'dd/MM/yyyy'}}" [bsConfig]="datePickerConfig">
+
+                                    <input placeholder="Datepicker" type="text" class="form-control" bsDatepicker #dp="bsDatepicker" value="{{formData.controls['fechaCargaAppCliente'].value | date: 'dd/MM/yyyy'}}">
+
+                                </div>
+
+                                <!--  -->
+                                <!-- <div class="mb-3">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="expediente.fechaCargaAppCliente" ngbDatepicker #d="ngbDatepicker">
+                                        <button class="input-group-text" type="button" (click)="d.toggle()">
+                                            <i class="feather icon-calendar icon-md text-muted"></i>
+                                        </button>
+                                    </div>
+                                </div> -->
+
+
                             </div>
 
-                            <!-- 
-                  
-                            
-                                <div class="col-lg-3" id="btnActionGroup"></div>
-                                <div class="col-lg-3 text-center">
-                                    <a class='btn btn-primary' href='@Url.Action(MVC.Procuras.ProcuraEditOrCreateByExp(Model.IdExpediente))' target="_blank"><i class='icon-legal'></i> Procura</a>
-                                </div>
-                                <div class="col-lg-3 text-center">
-                                    @if (showParalizadoActionParalizar) {
-                                    <a class='btn btn-danger' href='@Url.Action(MVC.Expedientes.ExpedienteParalizadoParalizar(Model.IdExpediente))'><i
-                                            class='icon-pause'></i> Paralizar</a> } else if (showParalizadoActionReanudar) {
-                                    <a class='btn btn-danger' href='@Url.Action(MVC.Expedientes.ExpedienteParalizadoFinalizar(Model.IdExpediente))'><i
-                                            class='icon-play'></i> Reanudar</a> } @if (Model.IdExpedienteFather.HasValue) {
-                                    <a class='btn btn-info' href='@Url.Action(MVC.Expedientes.Edit(Model.IdExpedienteFather.Value))' target="_blank"><i class='icon-briefcase'></i> Exp. Padre</a> } @if (Model.IdExpedienteSon.HasValue) {
-                                    <a class='btn btn-info' href='@Url.Action(MVC.Expedientes.Edit(Model.IdExpedienteSon.Value))' target="_blank"><i class='icon-briefcase'></i> Exp. Hijo</a> }
-                                </div>
-                                <div class="col-lg-3" style="text-align:right;">
-                                    <button id="btnSave" class="btn btn-danger" type="submit">Guardar</button>
-                                    <a id="btnCancel" class="btn btn-default" href="@Url.Action(MVC.Expedientes.Edit(Model.IdExpediente))">Cancelar</a>
-                                </div>
-                            </div>
-
-
- -->
+                            -->
 
 
 
@@ -272,6 +278,9 @@
                             <h6 class="card-title mb-0">Datos Adicionales</h6>
                         </div>
                         <div class="card-body">
+                            <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list>
+                            <hr>
+                            <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list>
                         </div>
                     </div>
                 </div>
@@ -280,35 +289,15 @@
 
         <div class="row mt-4">
             <div class="col-12">
-
-                <div class="m-4">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Messages</a>
-                        </li>
-                    </ul>
+                <div>
+                    <tabset>
+                        <tab heading="Estados" id="tab1">Estados ...</tab>
+                        <tab heading="Deudores">
+                            <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list>
+                        </tab>
+                        <tab heading="Inmuebles">Basic content 2</tab>
+                    </tabset>
                 </div>
-
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Estados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Deudores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Inmuebles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
             </div>
         </div>
 
@@ -320,12 +309,12 @@
         </pre>
         <pre>
             {{formData.value | json}}
-        </pre> 
+        </pre>
  <div cdkDrag cdkDragRootElement=".modal-content">
     <div class="modal-body">
         <pre>{{caracteristicaBase | json}}</pre>
     </div>
-</div>    
+</div>
     -->
 
 

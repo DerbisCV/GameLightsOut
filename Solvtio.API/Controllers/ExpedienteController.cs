@@ -129,6 +129,22 @@ namespace Solvtio.API.Controllers
             }
         }
 
+        [HttpGet("GetIdExpedienteByNo")]
+        public ActionResult<int?> GetIdExpedienteByNo(string noExpediente)
+        {
+            try
+            {
+                var result = _repository.GetIdExpedienteByNo(noExpediente);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetIdExpedienteByNo: ");
+                return StatusCode(500, error);
+            }
+        }
+
+
         [HttpGet("GetNotas")]
         public async Task<ActionResult<List<ExpedienteNotaDto>>> GetNotas(int idExpediente)
         {
@@ -144,20 +160,21 @@ namespace Solvtio.API.Controllers
             }
         }
 
-        [HttpGet("GetIdExpedienteByNo")]
-        public ActionResult<int?> GetIdExpedienteByNo(string noExpediente)
+        [HttpGet("GetDeudores")]
+        public async Task<ActionResult<List<ExpedienteDeudorDto>>> GetDeudores(int idExpediente)
         {
             try
             {
-                var result = _repository.GetIdExpedienteByNo(noExpediente);
+                var result = await _repository.GetGetDeudores(idExpediente);
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                var error = LogError(ex, "Something went wrong inside GetIdExpedienteByNo: ");
+                var error = LogError(ex, "Something went wrong inside GetNotas: ");
                 return StatusCode(500, error);
             }
         }
+
 
     }
 }

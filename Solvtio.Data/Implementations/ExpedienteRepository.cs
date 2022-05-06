@@ -65,7 +65,7 @@ namespace Solvtio.Data.Implementations
                         ReferenciaExterna = x.ReferenciaExterna,
                         NoAuto = x.NoAuto,
                         Abogado = new DtoIdNombre(x.Gnr_Abogado),
-                        Oficina = new DtoIdNombre(x.Gnr_ClienteOficina), 
+                        Oficina = new DtoIdNombre(x.Gnr_ClienteOficina),
                         TipoExpediente = new DtoIdNombre(x.Gnr_TipoExpediente),
                         Juzgado = new DtoIdNombre(x.Juzgado),
                         Deudor = new DtoIdNombre(x.Gnr_Persona),
@@ -119,6 +119,11 @@ namespace Solvtio.Data.Implementations
             return result;
         }
 
+        public int? GetIdExpedienteByNo(string noExpediente)
+        {
+            return _solvtioDbContext.ExpedienteSet.FirstOrDefault(x => x.NoExpediente == noExpediente)?.IdExpediente;
+        }
+
         public async Task<ExpedienteEstadoDto> GetEstadoActual(int idExpediente)
         {
             var idEstadoLast = _solvtioDbContext.ExpedienteSet.First(x => x.IdExpediente == idExpediente)?.IdEstadoLast;
@@ -144,21 +149,30 @@ namespace Solvtio.Data.Implementations
             return _mapper.Map<List<ExpedienteNotaDto>>(result);
         }
 
-        public int? GetIdExpedienteByNo(string noExpediente)
+        public async Task<List<ExpedienteDeudorDto>> GetGetDeudores(int idExpediente)
         {
-            return _solvtioDbContext.ExpedienteSet.FirstOrDefault(x => x.NoExpediente == noExpediente)?.IdExpediente;
+            try
+            {
+                var result = await _solvtioDbContext.ExpedienteDeudors
+                    .Include(x => x.Gnr_TipoDeudor)
+                    .Include(x => x.Provincia)
+                    .Include(x => x.Gnr_Persona)
+                    .Where(x => x.IdExpediente == idExpediente)
+                    .ToListAsync();
+
+                return _mapper.Map<List<ExpedienteDeudorDto>>(result);
+            }
+            catch (Microsoft.Data.SqlClient.SqlException ex)
+            {
+                throw ex;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            //Invalid column name 'Gnr_TipoExpedienteIdTipoExpediente'.            
         }
 
-
-        //public IEnumerable<Configuracion> GetAllConfiguracion()
-        //{
-        //    return _solvtioDbContext.ConfiguracionSet.ToList();
-        //}
-
-        //public async Task<Configuracion> GetConfiguracionByNameAsync(string settingName)
-        //{
-        //    return await _solvtioDbContext.ConfiguracionSet.FindAsync(settingName);
-        //}
 
     }
 }

@@ -1483,6 +1483,7 @@ namespace Solvtio.Models
         {
             ReferenciaExterna = model.ReferenciaExterna;
             Referencia2 = model.Referencia2;
+            FechaCargaAppCliente = model.FechaCargaAppCliente?.Date;
         }
 
         public void RefreshBy(Expediente model)

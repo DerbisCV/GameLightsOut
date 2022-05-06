@@ -1,0 +1,27 @@
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Listado de Notas</h6>
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of notas">
+                            <td class="col">{{ item.fecha | date: 'dd/MM/yyyy'}}</td>
+                            <td class="col">{{ item.nota | slice:0:20 }}</td>
+                            <td class="col">{{ item.usuario }}</td>
+                            <td class="col"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

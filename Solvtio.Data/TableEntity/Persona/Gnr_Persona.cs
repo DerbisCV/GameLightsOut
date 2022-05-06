@@ -1,4 +1,3 @@
-using Solvtio.Models.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -152,19 +151,19 @@ namespace Solvtio.Models
         #region Properties virtual (One to One)
 
         public virtual Gnr_Abogado Gnr_Abogado { get; set; }
-        
-        
+
+
         //[ForeignKey("IdProcurador")]
         public virtual Gnr_Procurador Gnr_Procurador { get; set; }
-        
-        
+
+
         [ForeignKey("IdTipoIdentidad")]
         public virtual Gnr_TipoIdentidad Gnr_TipoIdentidad { get; set; }
-        
+
         [ForeignKey("IdTipoTratamiento")]
         public virtual Gnr_TipoTratamiento Gnr_TipoTratamiento { get; set; }
 
-        
+
         //public virtual AlertaDestinatario AlertaDestinatario { get; set; }
         //public virtual AlertaSupervisor AlertaSupervisor { get; set; }
         //public virtual aspnet_Users aspnet_Users { get; set; }

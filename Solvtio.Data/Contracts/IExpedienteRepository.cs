@@ -13,8 +13,13 @@ namespace Solvtio.Data.Contracts
         Task<ModelResult> Update(ModelExpedienteEdit entity);
 
         Task<ExpedienteEstadoDto> GetEstadoActual(int idExpediente);
-        Task<List<ExpedienteNotaDto>> GetNotas(int idExpediente);
+        
 
         int? GetIdExpedienteByNo(string noExpediente);
+
+        Task<List<ExpedienteNotaDto>> GetNotas(int idExpediente);
+        Task<List<ExpedienteDeudorDto>> GetGetDeudores(int idExpediente);
+
+        
     }
 }

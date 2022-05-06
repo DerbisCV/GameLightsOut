@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Solvtio.Models
 {
     [Table("Provincia")]
-    public class Provincia : INombre
+    public class Provincia : IName
     {
         #region Constructors
 
@@ -36,6 +36,8 @@ namespace Solvtio.Models
         #endregion
 
         #region Properties ReadOnly
+
+        public int Id => IdProvincia;
 
         #endregion
 

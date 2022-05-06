@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
@@ -14,10 +15,14 @@ namespace Solvtio.Models
         public string Descripcion { get; set; }
         public string DescripcionDemanda { get; set; }
         public bool Activo { get; set; }
+        
         public int? IdTipoExpediente { get; set; }
+        [ForeignKey("IdTipoExpediente")]
+        public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
+
         public virtual ICollection<Con_ExpedienteCreditoGarantiaAvalista> Con_ExpedienteCreditoGarantiaAvalista { get; set; }
         public virtual ICollection<ExpedienteDeudor> ExpedienteDeudors { get; set; }
-        public virtual Gnr_TipoExpediente Gnr_TipoExpediente { get; set; }
+        
 
         public int Id => IdTipoDeudor;
         public string NombreParaDemanda => string.IsNullOrEmpty(DescripcionDemanda) ? Descripcion : DescripcionDemanda;
