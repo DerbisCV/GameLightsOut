@@ -12,11 +12,17 @@ namespace Solvtio.Data.Contracts
         Task<IList<ModelDtoNombre>> GetJuzgados();
         Task<IList<ModelDtoNombre>> GetPartidoJudiciales();
         Task<IList<ModelDtoNombre>> GetCarteras();
-        
+        Task<IList<ModelDtoNombre>> TipoDeudorGetAll();
+
+        Task<IList<ModelDtoNombre>> GetProvincias();
+        Task<IList<ModelDtoNombre>> GetMunicipiosByProvincia(int? idProvincia);
+
         Task<IList<ModelDtoNombre>> GetCaracteristicaBaseByGrupo(string grupo, bool soloActivos = false);
         Task<IList<ModelDtoNombre>> GetPagadoresPorOficina(int? idClienteOficina);
+
+        //Task<IList<ModelDtoNombre>> TipoNotaGetAll();
     }
-    
+
     public interface IClienteOficinaRepository : IGenericRepository<Gnr_ClienteOficina>
     {
     }
@@ -35,5 +41,14 @@ namespace Solvtio.Data.Contracts
     public interface IProcuradorRepository : IGenericRepository<Gnr_Procurador>
     {
     }
-    
+
+    public interface IExpedienteNotaRepository : IGenericRepository<ExpedienteNota>
+    {
+    }
+    public interface IExpedienteDeudorRepository : IGenericRepository<ExpedienteDeudor>
+    {
+    }
+    public interface IExpedienteEstadoRepository : IGenericRepository<ExpedienteEstado>
+    {
+    }
 }

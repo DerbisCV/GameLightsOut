@@ -5,6 +5,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   Expediente,
@@ -72,6 +73,7 @@ export class ExpedienteListComponent implements OnInit {
     private api: ApiService,
     private dialogService: DialogService,
     private notificationsService: NotificationsService,
+    private cdr: ChangeDetectorRef,
     private fb: FormBuilder
   ) {
     this.createFormGroup();
@@ -84,19 +86,7 @@ export class ExpedienteListComponent implements OnInit {
 
     this.getPaginatedData();
     this.tableRefresh();
-
-    // event: string;
-    // value: {
-    //   limit: number;
-    //   page: number;
-    // };
-
-    // this.parseEvent({
-    //   value: {
-    //     limit: 5,
-    //     page: 1,
-    //   },
-    // });
+    this.cdr.detectChanges();
   }
 
   createFormGroup() {
@@ -114,7 +104,7 @@ export class ExpedienteListComponent implements OnInit {
   }
 
   async filtrar() {
-    console.log(this.formGroupFilter.getRawValue());
+    //console.log(this.formGroupFilter.getRawValue());
 
     let paginationFilter = new PaginationFilter();
     paginationFilter.pagination.pageNumber = 1;
@@ -122,7 +112,7 @@ export class ExpedienteListComponent implements OnInit {
     paginationFilter.filter.code1 =
       this.formGroupFilter.controls['noExpediente'].value;
     //debugger;
-    console.log(paginationFilter.filter.code1);
+    //console.log(paginationFilter.filter.code1);
 
     this.expedienteSearch = await this.api.srvApiExpediente.getPaginated(
       paginationFilter
@@ -130,6 +120,7 @@ export class ExpedienteListComponent implements OnInit {
 
     this.tableRefresh();
     this.configTableColumns();
+    this.cdr.detectChanges();
   }
   // public code1: string = '';
   // public code2: string = '';

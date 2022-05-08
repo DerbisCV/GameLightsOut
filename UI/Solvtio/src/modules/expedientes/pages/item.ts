@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   OnInit,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,6 +17,8 @@ import { ExpedienteNotaDto } from '../../../models/expedienteChildren/expChildre
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { ExpedienteNotaItemComponent } from 'src/modules/components/expedienteNota/item';
 defineLocale('es', deLocale);
 
 // import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -50,6 +53,8 @@ export class ExpedienteItemComponent implements OnInit {
     adaptivePosition: true,
   };
 
+  modalRef?: BsModalRef;
+
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
@@ -57,7 +62,8 @@ export class ExpedienteItemComponent implements OnInit {
     public elementRef: ElementRef,
     private dialogService: DialogService,
     private notificationsService: NotificationsService,
-    private localeService: BsLocaleService
+    private localeService: BsLocaleService,
+    private modalService: BsModalService
   ) {
     //this.localeService.use('es');
     this.idExpediente = this.route.snapshot.params['id'];
@@ -125,7 +131,7 @@ export class ExpedienteItemComponent implements OnInit {
     this.estadoActual = await this.api.srvApiExpediente.getEstadoActual(
       this.idExpediente
     );
-    this.notas = await this.api.srvApiExpediente.getNotas(this.idExpediente);
+    //this.notas = await this.api.srvApiExpediente.getNotas(this.idExpediente);
   }
 
   saveData() {
@@ -154,4 +160,20 @@ export class ExpedienteItemComponent implements OnInit {
     this.createFormData();
     this.getDataAux();
   }
+
+  // openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
+  // openModalWithComponent() {
+  //   const initialState: ModalOptions = {
+  //     initialState: {
+  //       idExpediente: this.idExpediente,
+  //     },
+  //   };
+  //   this.modalRef = this.modalService.show(
+  //     ExpedienteNotaItemComponent,
+  //     initialState
+  //   );
+  //   this.modalRef.content.closeBtnName = 'Close';
+  // }
 }

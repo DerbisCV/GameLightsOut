@@ -96,8 +96,6 @@ namespace Solvtio.Common
 
 
 
-
-
         public static List<TEnum> ToEnumList<TEnum>(this TEnum enumObj)
             where TEnum : struct, IComparable, IFormattable, IConvertible
         {

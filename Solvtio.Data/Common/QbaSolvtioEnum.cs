@@ -731,14 +731,14 @@ namespace Solvtio.Models.Common
             //}
         }
 
-        public static bool IsNegociacion(this NoteType noteType)
-        {
-            return (int)noteType >= 50 && (int)noteType <= 59;
-        }
-        public static bool IsNegociacion(this NoteType? noteType)
-        {
-            return noteType.HasValue && noteType.Value.IsNegociacion();
-        }
+        //public static bool IsNegociacion(this NoteType noteType)
+        //{
+        //    return (int)noteType >= 50 && (int)noteType <= 59;
+        //}
+        //public static bool IsNegociacion(this NoteType? noteType)
+        //{
+        //    return noteType.HasValue && noteType.Value.IsNegociacion();
+        //}
 
         public static bool MustInheritLawyer(this TipoExpedienteEnum tipoExpediente)
         {

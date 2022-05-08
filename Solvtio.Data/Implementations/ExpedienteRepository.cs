@@ -149,7 +149,7 @@ namespace Solvtio.Data.Implementations
             return _mapper.Map<List<ExpedienteNotaDto>>(result);
         }
 
-        public async Task<List<ExpedienteDeudorDto>> GetGetDeudores(int idExpediente)
+        public async Task<List<ExpedienteDeudorDto>> GetDeudores(int idExpediente)
         {
             try
             {

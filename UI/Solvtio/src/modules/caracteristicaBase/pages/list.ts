@@ -5,6 +5,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CaracteristicaBaseSearch } from 'src/models';
 import { ApiService } from '../../../services/api.service';
@@ -51,6 +52,7 @@ export class CaracteristicaBaseListComponent implements OnInit {
   constructor(
     private api: ApiService,
     private dialogService: DialogService,
+    private cdr: ChangeDetectorRef,
     private notificationsService: NotificationsService
   ) {
     //this.configTableColumns();
@@ -72,6 +74,7 @@ export class CaracteristicaBaseListComponent implements OnInit {
     );
     this.data = this.caracteristicaBaseSearch.result;
     this.configTableColumns();
+    this.cdr.detectChanges();
   }
 
   configTableColumns() {

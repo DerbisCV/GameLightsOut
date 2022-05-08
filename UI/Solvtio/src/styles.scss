@@ -1,4 +1,5 @@
-body, html  {
+body,
+html {
     height: 100%;
     padding: 0;
     margin: 0;
@@ -12,8 +13,14 @@ body, html  {
         margin-top: 4px;
     }
     .ngx-dropdown.ngx-menu {
-        padding: 0!important;
-        width: 70px!important;
+        padding: 0 !important;
+        width: 70px !important;
     }
 }
-    
+
+.btn-group-xs>.btn,
+.btn-xs {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.2rem;
+}

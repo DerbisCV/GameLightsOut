@@ -29,7 +29,13 @@ namespace Solvtio.API.Start
                 .AddTransient<IAbogadoRepository, AbogadoRepository>()
                 .AddTransient<IProcuradorRepository, ProcuradorRepository>()
                 .AddTransient<INomencladorReadOnlyRepository, NomencladorReadOnlyRepository>()
+
+                .AddTransient<IExpedienteNotaRepository, ExpedienteNotaRepository>()
+                .AddTransient<IExpedienteDeudorRepository, ExpedienteDeudorRepository>()
+                .AddTransient<IExpedienteEstadoRepository, ExpedienteEstadoRepository>()
+
                 ; //INomencladorReadOnlyRepository
+
 
             return services;
         }
@@ -72,6 +78,7 @@ namespace Solvtio.API.Start
             //
 
             CreateMap<ExpedienteEstado, ExpedienteEstadoDto>();
+            CreateMap<ExpedienteNota, ExpedienteNotaDto>();
 
             CreateMap<Gnr_Cliente, ModelDtoNombre>();
             CreateMap<Gnr_ClienteOficina, ModelDtoNombre>();

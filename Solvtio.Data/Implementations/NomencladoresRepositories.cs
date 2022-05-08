@@ -19,8 +19,8 @@ namespace Solvtio.Data.Implementations
             _context = solvtioDbContext;
             _mapper = mapper;
         }
-        
-        public async Task<IList<ModelDtoNombre>> GetProcuradores() 
+
+        public async Task<IList<ModelDtoNombre>> GetProcuradores()
         {
             return await _context.Gnr_Procurador.Select(x => new ModelDtoNombre
             {
@@ -41,6 +41,7 @@ namespace Solvtio.Data.Implementations
                 .ToListAsync();
         }
 
+
         public async Task<IList<ModelDtoNombre>> GetPagadoresPorOficina(int? idClienteOficina)
         {
             var query = _context.PagadorSet
@@ -52,7 +53,7 @@ namespace Solvtio.Data.Implementations
                 if (oficina != null)
                     query = query.Where(x => x.PagadorClienteSet.Any(c => c.IdCliente == oficina.IdCliente));
             }
-            
+
             return await query
                 .Select(x => new ModelDtoNombre
                 {
@@ -89,6 +90,43 @@ namespace Solvtio.Data.Implementations
             }).ToListAsync();
         }
 
+        public async Task<IList<ModelDtoNombre>> TipoDeudorGetAll()
+        {
+            return await _context.Gnr_TipoDeudor.Select(x => new ModelDtoNombre
+            {
+                Id = x.IdTipoDeudor,
+                Nombre = x.Descripcion,
+            }).ToListAsync();
+        }
+
+        #region Provincia Municipio
+
+        public async Task<IList<ModelDtoNombre>> GetProvincias()
+        {
+            return await _context.ProvinciaSet
+                .OrderBy(x => x.Nombre)
+                .Select(x => new ModelDtoNombre
+                {
+                    Id = x.IdProvincia,
+                    Nombre = x.Nombre,
+                }).ToListAsync();
+        }
+
+        public async Task<IList<ModelDtoNombre>> GetMunicipiosByProvincia(int? idProvincia)
+        {
+            return await _context.MunicipioSet
+                .Where(x => x.IdProvincia == idProvincia)
+                .OrderBy(x => x.Nombre)
+                .Select(x => new ModelDtoNombre
+                {
+                    Id = x.IdMunicipio,
+                    Nombre = x.Nombre,
+                }).ToListAsync();
+        }
+
+        #endregion
+
+
         public async Task<IList<ModelDtoNombre>> GetCaracteristicaBaseByGrupo(string grupo, bool soloActivos = false)
         {
             var query = _context.CaracteristicaBaseSet.Where(x => x.Grupo.Equals(grupo));
@@ -98,11 +136,11 @@ namespace Solvtio.Data.Implementations
             {
                 Id = x.Id,
                 Nombre = x.Nombre,
-            }).ToListAsync();            
+            }).ToListAsync();
         }
-        
+
     }
-    
+
     public class ClienteRepository : GenericRepository<Gnr_Cliente>, IClienteRepository
     {
         public ClienteRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext) { }
@@ -115,7 +153,7 @@ namespace Solvtio.Data.Implementations
     {
         public TipoAreaRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext) { }
     }
-        
+
     public class AbogadoRepository : GenericRepository<Gnr_Abogado>, IAbogadoRepository
     {
         public AbogadoRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext) { }
@@ -134,4 +172,24 @@ namespace Solvtio.Data.Implementations
             return _context.Gnr_Procurador.Include(x => x.Gnr_Persona);
         }
     }
+
+
+    public class ExpedienteNotaRepository : GenericRepository<ExpedienteNota>, IExpedienteNotaRepository
+    {
+        public ExpedienteNotaRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext) { }
+    }
+    public class ExpedienteDeudorRepository : GenericRepository<ExpedienteDeudor>, IExpedienteDeudorRepository
+    {
+        public ExpedienteDeudorRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext) { }
+    }
+    public class ExpedienteEstadoRepository : GenericRepository<ExpedienteEstado>, IExpedienteEstadoRepository
+    {
+        public ExpedienteEstadoRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext) { }
+
+        public override IEnumerable<ExpedienteEstado> GetAll()
+        {
+            return _context.ExpedienteEstadoes.Include(x => x.Gnr_TipoEstado);
+        }
+    }
+
 }

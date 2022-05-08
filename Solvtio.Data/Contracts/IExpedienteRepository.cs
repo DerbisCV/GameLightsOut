@@ -18,7 +18,7 @@ namespace Solvtio.Data.Contracts
         int? GetIdExpedienteByNo(string noExpediente);
 
         Task<List<ExpedienteNotaDto>> GetNotas(int idExpediente);
-        Task<List<ExpedienteDeudorDto>> GetGetDeudores(int idExpediente);
+        Task<List<ExpedienteDeudorDto>> GetDeudores(int idExpediente);
 
         
     }

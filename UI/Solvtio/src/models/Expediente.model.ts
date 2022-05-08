@@ -48,25 +48,24 @@ export class Expediente {
   origen: string = '';
   contratoRef: string = '';
 
-  inicio: Date | undefined;
-  fin?: Date | undefined;
-  finPrevisto?: Date | undefined;
+  inicio!: Date | null;
+  fin!: Date | null;
+  finPrevisto!: Date | null;
   fechaAlta: Date = new Date();
   fechaModificacion: Date = new Date();
-
-  archivado?: Date | undefined;
-  fechaCierre?: Date | undefined;
-  fechaHitoInicio?: Date | undefined;
-  fechaHitoFin?: Date | undefined;
-  fechaHito1?: Date | undefined;
-  fechaHito2?: Date | undefined;
-  fechaHito3?: Date | undefined;
-  sucesionPresentada?: Date | undefined;
-  sucesionAcordada?: Date | undefined;
-  sucesionCopiaSellada?: Date | undefined;
-  sucesionDenegada?: Date | undefined;
-  sucesionRecurrida?: Date | undefined;
-  fechaCargaAppCliente?: Date | undefined;
+  archivado!: Date | null;
+  fechaCierre!: Date | null;
+  fechaHitoInicio!: Date | null;
+  fechaHitoFin!: Date | null;
+  fechaHito1!: Date | null;
+  fechaHito2!: Date | null;
+  fechaHito3!: Date | null;
+  sucesionPresentada!: Date | null;
+  sucesionAcordada!: Date | null;
+  sucesionCopiaSellada!: Date | null;
+  sucesionDenegada!: Date | null;
+  sucesionRecurrida!: Date | null;
+  fechaCargaAppCliente!: Date | null;
 
   servicioIntegral: boolean = false;
   paralizado: boolean = false;
@@ -79,7 +78,19 @@ export class Expediente {
   sucesionOposicion: boolean = false;
 
   constructor(item?: Partial<Expediente>) {
-    if (!!item) Object.assign(this, item);
+    if (!!item) {
+      Object.assign(this, item);
+
+      assignDate(this.inicio, item.inicio);
+      assignDate(this.fin, item.fin);
+      assignDate(this.finPrevisto, item.finPrevisto);
+
+      this.fechaCargaAppCliente = !!item.fechaCargaAppCliente
+        ? new Date(item.fechaCargaAppCliente)
+        : null;
+
+      // this.inicio = !!item.inicio ? new Date(item.inicio) : null;
+    }
   }
 }
 
@@ -120,4 +131,8 @@ export class EstadoDtoMin {
   constructor(item?: Partial<EstadoDtoMin>) {
     if (!!item) Object.assign(this, item);
   }
+}
+
+function assignDate(obj: Date | null, objWithVal: Date | null | undefined) {
+  obj = !!objWithVal ? new Date(objWithVal) : null;
 }

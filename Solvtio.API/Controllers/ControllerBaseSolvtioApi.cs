@@ -19,5 +19,7 @@ namespace Solvtio.API.Controllers
             _logger.LogError(msg);
             return msg;
         }
+
+        public string UserIdentityName => User?.Identity?.Name;
     }
 }

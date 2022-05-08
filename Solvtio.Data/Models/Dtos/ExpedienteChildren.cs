@@ -1,4 +1,5 @@
-﻿using Solvtio.Models;
+﻿using Solvtio.Common;
+using Solvtio.Models;
 using System;
 
 namespace Solvtio.Data.Models.Dtos
@@ -16,6 +17,8 @@ namespace Solvtio.Data.Models.Dtos
         public NoteType NoteType { get; set; }
         public string Usuario { get; set; }
         public DateTime Fecha { get; set; }
+
+        public DtoIdNombre Tipo => new DtoIdNombre((int) NoteType, NoteType.GetDescription());
 
         #endregion
     }

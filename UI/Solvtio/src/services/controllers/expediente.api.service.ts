@@ -82,34 +82,72 @@ export class ExpedienteApiService {
     );
   }
 
+  public async getNotaById(
+    idExpedienteNota: number
+  ): Promise<ExpedienteNotaDto> {
+    if (idExpedienteNota == 0) return new ExpedienteNotaDto();
+    //http://localhost:40274/api/Expediente/NotaGetById?idExpedienteNota=1
+
+    const item: ExpedienteNotaDto = await this.api.get(
+      `${this.pathApi}/NotaGetById?idExpedienteNota=${idExpedienteNota}`
+    );
+    return new ExpedienteNotaDto(item);
+  }
+
+  public async notaUdpate(item: ExpedienteNotaDto) {
+    ///api/Expediente/NotaUpdate
+    console.log('ready for update ExpedienteNotaDto:');
+
+    return this.api.put<ExpedienteNotaDto>(`${this.pathApi}/NotaUpdate`, item);
+  }
+
+  public async notaAdd(idExpediente: number, item: ExpedienteNotaDto) {
+    item.idExpediente = idExpediente;
+    return this.api.post<ExpedienteNotaDto>(`${this.pathApi}/NotaAdd`, item);
+  }
+
+  public async notaDelete(id: number) {
+    //http://localhost:40274/api/Expediente/NotaDelete?idExpedienteNota=-1
+    return this.api.delete(`${this.pathApi}/NotaDelete?idExpedienteNota=${id}`);
+  }
+
   public async getDeudores(
     idExpediente: number
   ): Promise<ExpedienteDeudorDto[]> {
-    const url = `${this.pathApi}/GetDeudores?idExpediente=${idExpediente}`;
-    console.log(url);
-    return await this.api.get(url);
+    return await this.api.get(
+      `${this.pathApi}/GetDeudores?idExpediente=${idExpediente}`
+    );
+  }
 
-    //.then(function (clientData) {
-    //     let clientWithType = Object.assign(new Array<ExpedienteDeudorDto>(), clientData);
-    //     retutn clientWithType;
-    //   });
+  public async getDeudorById(
+    idExpedienteDeudor: number
+  ): Promise<ExpedienteDeudorDto> {
+    if (idExpedienteDeudor == 0) return new ExpedienteDeudorDto();
 
-    // this.api.get(url)
-    // // .fetch("data.json")
-    // // .then(response => response.json())
-    // .then((data: ExpedienteDeudorDto[]) => {
-    //   data.forEach(agency => (agency.steps = mapLoadedSteps(agency.steps)));
+    const item: ExpedienteDeudorDto = await this.api.get(
+      `${this.pathApi}/DeudorGetById?idExpedienteDeudor=${idExpedienteDeudor}`
+    );
+    return new ExpedienteDeudorDto(item);
+  }
 
-    //   this.agencies = data;
-    // });
+  public async deudorUdpate(item: ExpedienteDeudorDto) {
+    return this.api.put<ExpedienteDeudorDto>(
+      `${this.pathApi}/DeudorUpdate`,
+      item
+    );
+  }
 
-    // service.getClientFromAPI().then(clientData => {
+  public async deudorAdd(idExpediente: number, item: ExpedienteDeudorDto) {
+    item.idExpediente = idExpediente;
+    return this.api.post<ExpedienteDeudorDto>(
+      `${this.pathApi}/DeudorAdd`,
+      item
+    );
+  }
 
-    //   // Here the client data from API only have the "name" field
-    //   // If we want to use the Client class methods on this data object we need to:
-    //   let clientWithType = Object.assign(new Client(), clientData)
-
-    //   clientWithType.displayName()
-    // })
+  public async deudorDelete(id: number) {
+    return this.api.delete(
+      `${this.pathApi}/DeudorDelete?idExpedienteDeudor=${id}`
+    );
   }
 }

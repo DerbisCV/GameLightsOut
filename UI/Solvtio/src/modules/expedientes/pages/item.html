@@ -31,15 +31,15 @@
 
                                 <div class="col-auto col-2">
                                     <label for="referenciaExterna" class="form-label">Inicio:</label>
-                                    <input type="date" class="form-control" formControlName="inicio" readonly>
+                                    <input type="text" class="form-control" value="{{ expediente.inicio | date}}" readonly>
                                 </div>
                                 <div class="col-auto col-2">
                                     <label for="referenciaExterna" class="form-label">Fin:</label>
-                                    <input type="date" class="form-control" formControlName="fin" readonly>
+                                    <input type="text" class="form-control" value="{{ expediente.fin | date}}" readonly>
                                 </div>
                                 <div class="col-auto col-2">
                                     <label for="finPrevisto" class="form-label">Fin Prev.:</label>
-                                    <input type="date" class="form-control" formControlName="finPrevisto" readonly>
+                                    <input type="text" class="form-control" value="{{ expediente.finPrevisto | date}}" readonly>
                                 </div>
 
                                 <div class="col-auto col-8">
@@ -81,13 +81,8 @@
                                     </select>
                                 </div>
 
-                                <div class="col-auto col-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="servicioIntegral" formControlName="servicioIntegral">
-                                        <label class="form-check-label" for="servicioIntegral">Servicio Integral</label>
-                                    </div>
-                                </div>
-                                <div class="col-auto col-6">
+
+                                <div class="col-auto col-7">
                                     <label for="idProcurador" class="form-label">Procurador:</label>
                                     <select formControlName="idProcurador" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Seleccione...</option>
@@ -95,7 +90,7 @@
                                             {{item.nombre}}</option>
                                     </select>
                                 </div>
-                                <div class="col-auto col-4">
+                                <div class="col-auto col-5">
                                     <label for="gestorCliente" class="form-label">Gestor Cliente:</label>
                                     <input type="text" class="form-control" formControlName="gestorCliente">
                                 </div>
@@ -108,14 +103,14 @@
                                             {{item.nombre}}</option>
                                     </select>
                                 </div>
-                                <div class="col-auto col-8">
+                                <!-- <div class="col-auto col-8">
                                     <label for="idProcurador" class="form-label">Procurador:</label>
                                     <select formControlName="idProcurador" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Seleccione...</option>
                                         <option *ngFor="let item of procuradores" [ngValue]="item.id">
                                             {{item.nombre}}</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <div class="col-auto col-8">
                                     <label for="idJuzgado" class="form-label">Juzgado:</label>
@@ -125,12 +120,12 @@
                                             {{item.nombre}}</option>
                                     </select>
                                 </div>
-                                <div class="col-auto col-4">
+                                <div class="col-auto col-2">
                                     <label for="noAuto" class="form-label">No Auto:</label>
                                     <input type="text" class="form-control" formControlName="noAuto">
                                 </div>
 
-                                <div class="col-auto col-6">
+                                <div class="col-auto col-5">
                                     <label for="idPartidoJudicial" class="form-label">Partido Judicial:</label>
                                     <select formControlName="idPartidoJudicial" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Seleccione...</option>
@@ -138,13 +133,20 @@
                                             {{item.nombre}}</option>
                                     </select>
                                 </div>
-                                <div class="col-auto col-6">
+                                <div class="col-auto col-5">
                                     <label for="idCartera" class="form-label">Cartera:</label>
                                     <select formControlName="idCartera" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Seleccione...</option>
                                         <option *ngFor="let item of carteras" [ngValue]="item.id">
                                             {{item.nombre}}</option>
                                     </select>
+                                </div>
+
+                                <div class="col-auto col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="servicioIntegral" formControlName="servicioIntegral">
+                                        <label class="form-check-label" for="servicioIntegral">Servicio Integral</label>
+                                    </div>
                                 </div>
 
                                 <div class="col-auto col-2">
@@ -165,7 +167,7 @@
                                         <label class="form-check-label" for="esConfidencial">Confidencial</label>
                                     </div>
                                 </div>
-                                <div class="col-auto col-6">
+                                <div class="col-auto col-4">
                                     <label for="idVeniadoHitoFacturacion" class="form-label">Venia/Hito:</label>
                                     <select formControlName="idVeniadoHitoFacturacion" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Seleccione...</option>
@@ -193,29 +195,25 @@
                                 </div>
                                 <div class="col-auto col-3">
                                     <label for="fechaCierre" class="form-label">F. Cierre:</label>
-                                    <input type="date" class="form-control" formControlName="fechaCierre" readonly>
+                                    <input type="text" class="form-control" value="{{ expediente.fechaCierre | date}}" readonly>
                                 </div>
-                                <div class="col-auto col-3">
-                                    <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente1:</label>
-                                    <input type="date" class="form-control" formControlName="fechaCargaAppCliente" value="{{ expediente.fechaCargaAppCliente | date:'dd-MM-yyyy' }}">
-                                </div>
+                                <!-- <div class="col-auto col-3">
+                                    <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente 123:</label>
+                                    <input type="date" class="form-control" formControlName="fechaCargaAppCliente">
+                                </div> -->
 
-                                <div class="col-auto col-3">
+                                <!-- <div class="col-auto col-3">
                                     <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente 3:</label>
                                     <input type="text" class="form-control" formControlName="fechaCargaAppCliente" value="{{ expediente.fechaCargaAppCliente | date:'yyyy-MM-dd' }}" readonly>
-                                </div>
+                                </div> -->
 
                                 <div class="col-auto col-3">
-                                    <label for="fechaCargaAppCliente" class="form-label">bsDatepicker:</label>
-                                    <!-- <input type="date" class="form-control mb-3" placeholder="Datepicker..." bsDatepicker formControlName="fechaCargaAppCliente" /> -->
-                                    <input type="text" class="form-control mb-3" placeholder="Datepicker" bsDatepicker formControlName="fechaCargaAppCliente" />
-                                    <pre *ngIf="formData?.value?.fechaCargaAppCliente" class="code-preview">{{formData?.value?.fechaCargaAppCliente | date}}</pre>
-
-                                    <input class="form-control" placeholder="End date" bsDatepicker #dp_end="bsDatepicker" formControlName="fechaCargaAppCliente" value="{{formData.controls['fechaCargaAppCliente'].value | date: 'dd/MM/yyyy'}}" [bsConfig]="datePickerConfig">
-
-                                    <input placeholder="Datepicker" type="text" class="form-control" bsDatepicker #dp="bsDatepicker" value="{{formData.controls['fechaCargaAppCliente'].value | date: 'dd/MM/yyyy'}}">
-
+                                    <label for="fechaCargaAppCliente" class="form-label">F.Carga Cliente:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="fechaCargaAppCliente" />
                                 </div>
+
+
+
 
                                 <!--  -->
                                 <!-- <div class="mb-3">
@@ -230,7 +228,7 @@
 
                             </div>
 
-                            -->
+
 
 
 
@@ -251,26 +249,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-
-                            <table class="table table-sm">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">Nota</th>
-                                        <th scope="col">Usuario</th>
-                                        <th scope="col">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of notas">
-                                        <td class="col">{{ item.fecha | date: 'dd/MM/yyyy'}}</td>
-                                        <td class="col">{{ item.nota | slice:0:20 }}</td>
-                                        <td class="col">{{ item.usuario }}</td>
-                                        <td class="col"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                            <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list>
                         </div>
                     </div>
                     <div class="card mt-4">
@@ -279,10 +258,19 @@
                         </div>
                         <div class="card-body">
                             <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list>
-                            <hr>
-                            <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list>
                         </div>
                     </div>
+
+                    <hr>
+                    <!--   <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list> -->
+                    <tabset>
+                        <tab heading="Estados" id="tab1">Estados ...</tab>
+                        <tab heading="Deudores">
+                            <expediente-deudor-list [idExpediente]="expediente.idExpediente">
+                            </expediente-deudor-list>
+                        </tab>
+                        <tab heading="Inmuebles">Basic content 2</tab>
+                    </tabset>
                 </div>
             </div>
         </form>
@@ -290,32 +278,18 @@
         <div class="row mt-4">
             <div class="col-12">
                 <div>
-                    <tabset>
+                    <!-- <tabset>
                         <tab heading="Estados" id="tab1">Estados ...</tab>
                         <tab heading="Deudores">
                             <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list>
                         </tab>
                         <tab heading="Inmuebles">Basic content 2</tab>
-                    </tabset>
+                    </tabset> -->
                 </div>
             </div>
         </div>
 
-        <!-- <hr>
-        <pre>
-        Estado del formulario: {{ formData.valid }}
-        <br>
-        Status:{{ formData.status }}
-        </pre>
-        <pre>
-            {{formData.value | json}}
-        </pre>
- <div cdkDrag cdkDragRootElement=".modal-content">
-    <div class="modal-body">
-        <pre>{{caracteristicaBase | json}}</pre>
-    </div>
-</div>
-    -->
+
 
 
 

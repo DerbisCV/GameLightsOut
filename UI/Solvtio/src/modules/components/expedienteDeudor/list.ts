@@ -4,28 +4,32 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy,
   Input,
+  TemplateRef,
 } from '@angular/core';
 import { ExpedienteDeudorDto } from 'src/models';
 import { ApiService } from '../../../services/api.service';
 import { DialogService } from 'src/services/dialog/dialog.service';
 import { NotificationsService } from 'src/services/notifications.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'expediente-deudor-list',
   templateUrl: './list.html',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpedienteDeudorListComponent implements OnInit {
   @Input() idExpediente: number = 0;
 
   deudores = new Array<ExpedienteDeudorDto>();
   data = new Array<any>();
+  modalRef?: BsModalRef;
+  idToEdit: number = -1;
 
   constructor(
     private api: ApiService,
     private dialogService: DialogService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private modalService: BsModalService
   ) {
     console.log('component - constructor');
     console.log(this.idExpediente);
@@ -74,5 +78,21 @@ export class ExpedienteDeudorListComponent implements OnInit {
     //       'Ha ocurrido un error, el registro no han podido ser eliminado.'
     //     )
     //   );
+  }
+
+  openModalItemNew(template: TemplateRef<any>) {
+    this.openModalItemEdit(template, 0);
+  }
+  openModalItemEdit(template: TemplateRef<any>, idExpedienteNota: number) {
+    this.idToEdit = idExpedienteNota;
+
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray modal-lg' })
+    );
+  }
+  onChildChange() {
+    this.modalRef?.hide();
+    this.getData();
   }
 }

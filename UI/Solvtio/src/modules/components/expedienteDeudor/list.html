@@ -1,8 +1,17 @@
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h6 class="card-title">Listado de Deudores</h6>
+            <div class="d-flex align-items-center justify-content-between p-300 border-bottom tx-16">
+                <div class="d-flex align-items-center">
+                    <h6 class="card-title">Listado de Deudores</h6>
+                </div>
+                <div class="d-flex">
+                    <button type="button" (click)="openModalItemNew(template)" class="btn btn-outline-success btn-xs mb-2" title="Nuevo registro"><i
+                            class="fa-regular fa-file"></i> Nuevo</button>
+                </div>
+            </div>
             <div class="table-responsive">
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -12,17 +21,17 @@
                             <th class="v-align text-left">Domicilio a efectos de notificación</th>
                             <th class="v-align text-left">Abogado / Tel.</th>
                             <th class="v-align text-center">Provincia</th>
-                            <!-- <th class="v-align text-right"><span class="label label-primary pull-right">{{ deudores.length }} Model.LstExpedienteDeudor.Count</span></th> -->
+                            <th class="v-align text-right text-end">
+                                <span class="label label-primary pull-right">{{ deudores.length }}</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of deudores">
-                            <td class="v-align text-left">
-                                <!-- {{ item.gnr_TipoDeudor.nombre }} -->
-                                {{ item.idExpedienteDeudor }}
+                            <td class="v-align">
+                                {{ item.gnr_TipoDeudor.nombre }} {{ item.idExpedienteDeudor }}
                             </td>
-                            <td colspan="5">5</td>
-                            <!-- <td class="v-align text-left">
+                            <td class="v-align text-left">
                                 <strong>{{ item.persona?.noDocumento }} - {{ item.persona?.nombreApellidos
                                     }}</strong><br> {{ item.persona?.telefonosTodos }}
 
@@ -33,19 +42,55 @@
                                 <strong>{{ item.abogadoNombre }}</strong><br> {{ item.abogadoDespacho }} <br> {{ item.abogadoTelefono }}
 
                             </td>
-                            <td class="v-align text-center">{{ item.provincia?.nombre }}</td> -->
-                            <!--   <td class="v-align">
+                            <td class="v-align text-center">{{ item.provincia?.nombre }}</td>
+                            <td class="v-align">
                                 <div class="pull-right hidden-phone">
-                                    <a href="@Url.Action(MVC.Expedientes.ExpedienteDeudorEdit(item.IdExpedienteDeudor))" target="_blank" class="btn btn-primary btn-xs" title="Editar registro"><i class="icon-pencil"></i></a>
-                                    <a href="@Url.Action(MVC.Expedientes.ExpedienteDeudorDelete(item.IdExpedienteDeudor, item.IdExpediente))" class="btn btn-danger btn-xs"><i class="icon-trash" title="Eliminar registro"></i></a>
-                                </div> 
-                            </td>-->
+                                    <button (click)="false" class="btn btn-primary btn-xs" title="Editar registro"><i
+                                            class="fa-regular fa-pen-to-square"></i></button>
+                                    <button (click)="remove(item.idExpedienteDeudor)" class="btn btn-danger btn-xs ms-1" title="Eliminar registro">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button>
+                                    <!-- <a href="@Url.Action(MVC.Expedientes.ExpedienteDeudorEdit(item.IdExpedienteDeudor))" target="_blank" class="btn btn-primary btn-xs" title="Editar registro"><i
+                                            class="icon-pencil"></i></a>
+                                    <a href="@Url.Action(MVC.Expedientes.ExpedienteDeudorDelete(item.IdExpedienteDeudor, item.IdExpediente))" class="btn btn-danger btn-xs"><i class="icon-trash"
+                                            title="Eliminar registro"></i></a> -->
+                                </div>
+                            </td>
                         </tr>
 
 
                     </tbody>
                 </table>
+
+                <pre>{{ deudores | json }}</pre>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #template>
+    <expediente-deudor-item [idExpediente]="idExpediente" [idExpedienteDeudor]="idToEdit" (childChanged)="onChildChange()">
+    </expediente-deudor-item>
+</ng-template>
+
+
+
+
+
+<!-- 
+            <tr *ngFor="let item of notas">
+                <td class="col">{{ item.fecha | date: 'dd/MM/yyyy'}}</td>
+                <td class="col">{{ item.nota | slice:0:40 }}</td>
+                <td class="col">{{ item.usuario }}</td>
+                <td class="col v-align text-end">
+                    <div class="pull-right hidden-phone">
+                        <button type="button" (click)="openModalItemEdit(template, item.idExpedienteNota)" class="btn btn-primary btn-xs" title="Editar registro"><i
+                                class="fa-regular fa-pen-to-square"></i></button>
+                        <button type="button" (click)="remove(item.idExpedienteNota)" class="btn btn-danger btn-xs ms-1" title="Eliminar registro">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+ -->

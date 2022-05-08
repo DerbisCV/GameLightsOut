@@ -1907,63 +1907,63 @@ namespace Solvtio.Models
         SolicitudAdjudicacionLimite = 1
     }
 
-    public enum NoteType
-    {
-        [Description("-")]
-        None = 0,
+    //public enum NoteType
+    //{
+    //    [Description("-")]
+    //    None = 0,
 
-        [Description("Llamada del contrario")]
-        LlamadaDemandadoChavarri = 31,
-        [Description("Llamada al demandado")]
-        LlamadaChavarriDemandado = 32,
-        [Description("Instrucciones de cliente")]
-        InstruccionesCliente = 33,
-        [Description("Consulta de cliente")]
-        ConsultaCliente = 34,
-        [Description("Datos de contacto del demandado")]
-        DatosContactoDemandado = 35,
-        [Description("Datos de contacto del letrado contrario")]
-        DatosContactoLetradoContrario = 36,
+    //    [Description("Llamada del contrario")]
+    //    LlamadaDemandadoChavarri = 31,
+    //    [Description("Llamada al demandado")]
+    //    LlamadaChavarriDemandado = 32,
+    //    [Description("Instrucciones de cliente")]
+    //    InstruccionesCliente = 33,
+    //    [Description("Consulta de cliente")]
+    //    ConsultaCliente = 34,
+    //    [Description("Datos de contacto del demandado")]
+    //    DatosContactoDemandado = 35,
+    //    [Description("Datos de contacto del letrado contrario")]
+    //    DatosContactoLetradoContrario = 36,
 
-        [Description("ReI - Antecedentes a la asignación")]
-        ReiAntecedentes = 401,
-        [Description("ReI - Hitos procesales")]
-        ReiHitos = 402,
-        [Description("ReI - Estrategia")]
-        ReiEstrategia = 403,
-        [Description("ReI - Fase común")]
-        ReiFaseComun = 404,
-        [Description("ReI - Fase Convenio")]
-        ReiFaseConvenio = 405,
-        [Description("ReI - Fase de Liquidación")]
-        ReiFaseLiquidacion = 406,
-        [Description("ReI - Propuesta Convenio o Plan de Litigación")]
-        ReiPropuestaConvenio = 407,
+    //    [Description("ReI - Antecedentes a la asignación")]
+    //    ReiAntecedentes = 401,
+    //    [Description("ReI - Hitos procesales")]
+    //    ReiHitos = 402,
+    //    [Description("ReI - Estrategia")]
+    //    ReiEstrategia = 403,
+    //    [Description("ReI - Fase común")]
+    //    ReiFaseComun = 404,
+    //    [Description("ReI - Fase Convenio")]
+    //    ReiFaseConvenio = 405,
+    //    [Description("ReI - Fase de Liquidación")]
+    //    ReiFaseLiquidacion = 406,
+    //    [Description("ReI - Propuesta Convenio o Plan de Litigación")]
+    //    ReiPropuestaConvenio = 407,
 
-        [Description("Negociación - Localización Deudor")]
-        NegociacionLocalizacionDeudor = 51,
-        [Description("Negociación - Interesado Propuesta")]
-        NegociacionInteresadoPropuesta = 52,
-        [Description("Negociación - Interesado Quita")]
-        NegociacionInteresadoQuita = 53,
-        [Description("Negociación - Acepta Propuesta")]
-        NegociacionAceptaPropuesta = 54,
+    //    [Description("Negociación - Localización Deudor")]
+    //    NegociacionLocalizacionDeudor = 51,
+    //    [Description("Negociación - Interesado Propuesta")]
+    //    NegociacionInteresadoPropuesta = 52,
+    //    [Description("Negociación - Interesado Quita")]
+    //    NegociacionInteresadoQuita = 53,
+    //    [Description("Negociación - Acepta Propuesta")]
+    //    NegociacionAceptaPropuesta = 54,
 
-        [Description("Llamada al Titular")]
-        LlamadaTitular = 2901,
-        [Description("Llamada al Abogado")]
-        LlamadaAbogado = 2902,
-        [Description("Llamada del Titular")]
-        LlamadaDelTitular = 2903,
-        [Description("Llamada del Abogado")]
-        LlamadaDelAbogado = 2904,
+    //    [Description("Llamada al Titular")]
+    //    LlamadaTitular = 2901,
+    //    [Description("Llamada al Abogado")]
+    //    LlamadaAbogado = 2902,
+    //    [Description("Llamada del Titular")]
+    //    LlamadaDelTitular = 2903,
+    //    [Description("Llamada del Abogado")]
+    //    LlamadaDelAbogado = 2904,
 
 
-        [Description("Observación del Estado")]
-        Estado = 81,
+    //    [Description("Observación del Estado")]
+    //    Estado = 81,
 
-        Otras = 99
-    }
+    //    Otras = 99
+    //}
 
     public enum TipoNotaInmueble
     {

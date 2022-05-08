@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Solvtio.Data.Contracts;
 using Solvtio.Data.Models.Dtos;
@@ -13,12 +14,21 @@ namespace Solvtio.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class ExpedienteController : ControllerBaseSolvtioApi
-    {        
+    {
+        private readonly IMapper _mapper;
         private readonly IExpedienteRepository _repository;
+        private readonly IExpedienteNotaRepository _repositoryExpedienteNota;
+        private readonly IExpedienteDeudorRepository _repositoryExpedienteDeudor;
 
-        public ExpedienteController(ILogger<ExpedienteController> logger, IExpedienteRepository repository) : base(logger)
+        public ExpedienteController(ILogger<ExpedienteController> logger, IMapper mapper, 
+            IExpedienteRepository repository, 
+            IExpedienteNotaRepository repositoryExpedienteNota,
+            IExpedienteDeudorRepository repositoryExpedienteDeudor) : base(logger)
         {
+            _mapper = mapper;
             _repository = repository;
+            _repositoryExpedienteNota = repositoryExpedienteNota;
+            _repositoryExpedienteDeudor = repositoryExpedienteDeudor;
         }
 
         [HttpPost("GetWithPagination")]
@@ -145,6 +155,12 @@ namespace Solvtio.API.Controllers
         }
 
 
+
+
+
+
+        #region Notas
+
         [HttpGet("GetNotas")]
         public async Task<ActionResult<List<ExpedienteNotaDto>>> GetNotas(int idExpediente)
         {
@@ -160,13 +176,13 @@ namespace Solvtio.API.Controllers
             }
         }
 
-        [HttpGet("GetDeudores")]
-        public async Task<ActionResult<List<ExpedienteDeudorDto>>> GetDeudores(int idExpediente)
+        [HttpGet("NotaGetById")]
+        public async Task<ActionResult<ExpedienteNotaDto>> NotaGetById(int idExpedienteNota)
         {
             try
             {
-                var result = await _repository.GetGetDeudores(idExpediente);
-                return Ok(result);
+                var result = await _repositoryExpedienteNota.Get(idExpedienteNota);
+                return Ok(_mapper.Map<ExpedienteNotaDto>(result));
             }
             catch (Exception ex)
             {
@@ -174,6 +190,134 @@ namespace Solvtio.API.Controllers
                 return StatusCode(500, error);
             }
         }
+
+        [HttpPost("NotaAdd")]
+        public IActionResult NotaAdd(ExpedienteNotaDto model)
+        {
+            try
+            {
+                _repositoryExpedienteNota.Add(new ExpedienteNota(model) { Usuario = UserIdentityName });
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside NotaAdd: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpPut("NotaUpdate")]
+        public IActionResult NotaUpdate(ExpedienteNotaDto model)
+        {
+            try
+            {
+                _repositoryExpedienteNota.Update(new ExpedienteNota(model) { Usuario = UserIdentityName });
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside NotaUpdate: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpDelete("NotaDelete")]
+        public IActionResult NotaDelete(int idExpedienteNota)
+        {
+            try
+            {
+                _repositoryExpedienteNota.Delete(new ExpedienteNota() { IdExpedienteNota = idExpedienteNota });
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside NotaDelete: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        #endregion
+
+
+        #region Deudores
+
+        [HttpGet("GetDeudores")]
+        public async Task<ActionResult<List<ExpedienteDeudorDto>>> GetDeudores(int idExpediente)
+        {
+            try
+            {
+                var result = await _repository.GetDeudores(idExpediente);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetDeudores: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet("DeudorGetById")]
+        public async Task<ActionResult<ExpedienteDeudorDto>> DeudorGetById(int idExpedienteDeudor)
+        {
+            try
+            {
+                var result = await _repositoryExpedienteDeudor.Get(idExpedienteDeudor);
+                return Ok(_mapper.Map<ExpedienteDeudorDto>(result));
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetDeudores: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpPost("DeudorAdd")]
+        public IActionResult DeudorAdd(ExpedienteDeudorDto model)
+        {
+            try
+            {
+                _repositoryExpedienteDeudor.Add(new ExpedienteDeudor(model));
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside DeudorAdd: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpPut("DeudorUpdate")]
+        public IActionResult DeudorUpdate(ExpedienteDeudorDto model)
+        {
+            try
+            {
+                _repositoryExpedienteDeudor.Update(new ExpedienteDeudor(model));
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside DeudorUpdate: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpDelete("DeudorDelete")]
+        public IActionResult DeudorDelete(int idExpedienteDeudor)
+        {
+            try
+            {
+                _repositoryExpedienteDeudor.Delete(new ExpedienteDeudor() { IdExpedienteDeudor = idExpedienteDeudor });
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside DeudorDelete: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        #endregion
+
 
 
     }

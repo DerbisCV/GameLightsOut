@@ -1,0 +1,54 @@
+<!-- <div class="px-4"></div> -->
+<ng-container *ngIf="formData">
+    <form (ngSubmit)="saveData()" [formGroup]="formData">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">{{ title }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3000 align-items-center mb-3000">
+                    <div class="col-auto col-3">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                        <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="fecha" />
+                    </div>
+                    <div class="col-auto col-9">
+                        <label for="noteType" class="form-label">Tipo:</label>
+                        <select formControlName="noteType" class="form-select form-select-sm00" aria-label=".form-select-sm example">
+                            <option [ngValue]="null" disabled>Seleccione un elemento</option>
+                            <option *ngFor="let item of tipos" [ngValue]="item.id">
+                                {{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-auto col-12 mt-3">
+                        <label for="nota" class="form-label">Nota:</label>
+                        <textarea type="text" class="form-control" placeholder="escriba la nota..." formControlName="nota" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted d-md-flex justify-content-md-end">
+                <!-- <a class="btn btn-outline-secondary px-4" href="caracteristicabase" style="margin-right: 8px;">Cancelar</a> -->
+                <button type="submit" class="btn btn-outline-success px-4">{{'Ok'}}</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- <hr>
+        <pre>
+        Estado del formulario: {{ formData.valid }}
+        <br>
+        Status:{{ formData.status }}
+        </pre>
+        <pre>
+            {{formData.value | json}}
+        </pre> 
+ <div cdkDrag cdkDragRootElement=".modal-content">
+    <div class="modal-body">
+        <pre>{{caracteristicaBase | json}}</pre>
+    </div>
+</div>    
+    -->
+
+
+
+
+</ng-container>

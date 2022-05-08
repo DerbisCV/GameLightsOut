@@ -29,6 +29,9 @@ export class NomencladorApiService {
   public async carteraGetAll(): Promise<ModelDtoNombre[]> {
     return await this.api.get(`${this.pathApi}/CarteraGetAll`);
   }
+  public async tipoNotaGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(`${this.pathApi}/TipoNotaGetAll`); //http://localhost:40274/api/Nomenclador/TipoNotaGetAll
+  }
 
   public async getCaracteristicaBaseByGrupo(
     grupo: string,

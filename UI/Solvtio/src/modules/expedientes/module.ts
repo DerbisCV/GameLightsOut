@@ -9,14 +9,18 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ExpedienteDeudorListComponent } from '../components/expedienteDeudor/list';
 import { ExpedienteNotaListComponent } from '../components/expedienteNota/list';
+import { ExpedienteNotaItemComponent } from '../components/expedienteNota/item';
+import { ExpedienteDeudorItemComponent } from '../components/expedienteDeudor/item';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     ExpedienteListComponent,
     ExpedienteItemComponent,
-    ExpedienteDeudorListComponent,
     ExpedienteNotaListComponent,
+    ExpedienteNotaItemComponent,
+    ExpedienteDeudorListComponent,
+    ExpedienteDeudorItemComponent,
   ],
   imports: [
     CommonModule,
@@ -32,8 +36,10 @@ import { ExpedienteNotaListComponent } from '../components/expedienteNota/list';
   exports: [
     ExpedienteListComponent,
     ExpedienteItemComponent,
-    ExpedienteDeudorListComponent,
     ExpedienteNotaListComponent,
+    ExpedienteNotaItemComponent,
+    ExpedienteDeudorListComponent,
+    ExpedienteDeudorItemComponent,
   ],
   providers: [],
 })

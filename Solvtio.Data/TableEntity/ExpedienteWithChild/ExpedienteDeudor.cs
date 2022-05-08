@@ -1,3 +1,4 @@
+using Solvtio.Data.Models.Dtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,6 +37,18 @@ namespace Solvtio.Models
         public ExpedienteDeudor(Gnr_Persona basePersona, DeudorTipo tipoDeudor, int idExpediente) : this(basePersona.IdPersona, tipoDeudor, basePersona.Direccion)
         {
             IdExpediente = idExpediente;
+        }
+
+        public ExpedienteDeudor(ExpedienteDeudorDto model) : this()
+        {
+            IdExpediente = model.IdExpediente;
+            IdTipoDeudor = model.IdTipoDeudor;
+            //Deudor = model.Deudor;
+            //NoteType = model.NoteType;
+            //Usuario = model.Usuario;
+
+            //if (model.IdExpedienteDeudor > 0) IdExpedienteDeudor = model.IdExpedienteDeudor;
+            //if (model.IdExpedienteEstado > 0) IdExpedienteEstado = model.IdExpedienteEstado;
         }
 
         #endregion

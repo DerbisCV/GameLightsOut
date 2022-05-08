@@ -3,7 +3,10 @@
     public class ExpedienteDeudorDto
     {
         public int IdExpedienteDeudor { get; set; }
+        
+        public int IdTipoDeudor { get; set; }       
         public DtoIdNombre Gnr_TipoDeudor { get; set; }
+
         public DtoIdNombre Provincia { get; set; }
         public PersonaDto Persona { get; set; } //TelefonosTodos EmailsTodos
         public int IdExpediente { get; set; }

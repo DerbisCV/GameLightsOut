@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Solvtio.Common;
+using Solvtio.Data.Models.Dtos;
 using Solvtio.Models.Model;
 
 namespace Solvtio.Models
@@ -32,6 +33,17 @@ namespace Solvtio.Models
             Nota = estado.Nota;
             Usuario = estado.NotaUsuario;
             NoteType = NoteType.Estado;
+        }
+        public ExpedienteNota(ExpedienteNotaDto model) : this()
+        {
+            IdExpediente = model.IdExpediente;
+            Fecha = model.Fecha;
+            Nota = model.Nota;
+            NoteType = model.NoteType;
+            Usuario = model.Usuario;
+
+            if (model.IdExpedienteNota > 0) IdExpedienteNota = model.IdExpedienteNota;
+            if (model.IdExpedienteEstado > 0) IdExpedienteEstado = model.IdExpedienteEstado;
         }
 
         private void CreateBase()

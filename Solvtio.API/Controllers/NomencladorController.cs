@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Solvtio.Common;
 using Solvtio.Data.Contracts;
 using Solvtio.Data.Models.Dtos;
 using Solvtio.Models;
@@ -54,7 +55,7 @@ namespace Solvtio.API.Controllers
             try
             {
                 var result = _repositoryClienteOficina.GetAll();
-                return Ok(_mapper.Map< List<ModelDtoNombre>>(result)); 
+                return Ok(_mapper.Map<List<ModelDtoNombre>>(result));
             }
             catch (Exception ex)
             {
@@ -241,6 +242,25 @@ namespace Solvtio.API.Controllers
             }
         }
 
+
+
+
+        [HttpGet("TipoDeudorGetAll")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> TipoDeudorGetAll()
+        {
+            try
+            {
+                var result = await _nomencladorReadOnlyRepository.TipoDeudorGetAll();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside TipoDeudorGetAll: ");
+                return StatusCode(500, error);
+            }
+        }
+
+
         [HttpGet("GetCaracteristicaBaseByGrupo")]
         public async Task<ActionResult<List<ModelDtoNombre>>> GetCaracteristicaBaseByGrupo(string grupo, bool soloActivos = false)
         {
@@ -270,7 +290,28 @@ namespace Solvtio.API.Controllers
                 return StatusCode(500, error);
             }
         }
-        
+
+        #endregion
+
+        #region Nomencladores - Enum
+
+        [HttpGet("TipoNotaGetAll")]
+        public ActionResult<List<ModelDtoNombre>> TipoNotaGetAll()
+        {
+            try
+            {
+                var lstAll = NoteType.None.ToEnumList<NoteType>()
+                    .Select(x => new ModelDtoNombre() { Id = (int)x, Nombre = x.GetDescription() })
+                    .ToList();
+                return Ok(lstAll);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside TipoNotaGetAll: ");
+                return StatusCode(500, error);
+            }
+        }
+
         #endregion
 
         #region Other
