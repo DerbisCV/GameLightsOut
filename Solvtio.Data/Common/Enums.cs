@@ -2,6 +2,1053 @@
 
 namespace Solvtio.Models
 {
+
+    //public enum TipoIndicadorQa
+    //{
+    //    #region Hipotecario
+
+    //    #region Hipotecario - Indicadores
+
+    //    [Description("Hipotecario - Pendiente Preparación de Demanda")]
+    //    HipotecarioPendientePreparacionDemanda = 101,
+    //    //[Description("Hipotecario - Pendiente Auto de Admisión")]
+    //    //HipotecarioPendienteAutoAdmision = 102,
+    //    [Description("Hipotecario - Pendiente Demanda Admitida")]
+    //    HipotecarioPendienteDemandaAdmitida = 102,
+    //    [Description("Hipotecario - Pendiente Certificación de Cargas")]
+    //    HipotecarioPendienteCertificacionCargas = 103,
+    //    [Description("Hipotecario - Pendiente Notificación")]
+    //    HipotecarioPendienteNotificacion = 104,
+    //    [Description("Hipotecario - Pendiente Solicitar Subasta")]
+    //    HipotecarioPendienteSolicitarSubasta = 105,
+    //    [Description("Hipotecario - Pendiente Convocatoria Subasta")]
+    //    HipotecarioPendienteConvocatoriaSubasta = 106,
+    //    [Description("Hipotecario - Pendiente Presentación de Demanda")]
+    //    HipotecarioPendientePresentacionDemanda = 107,
+    //    [Description("Hipotecario - Pendiente Adjudicación")]
+    //    HipotecarioPendienteAdjudicacion = 108,
+    //    [Description("Hipotecario - Pendiente Testimonio Adjudicación")]
+    //    HipotecarioPendienteTestimonioAdjudicacion = 109,
+    //    [Description("Hipotecario - Pendiente Solicitud Posesión")]
+    //    HipotecarioPendienteSolicitudPosesion = 110,
+    //    [Description("Hipotecario - Pendiente Lanzamiento")]
+    //    HipotecarioPendienteLanzamiento = 111,
+    //    [Description("Hipotecario - Pendiente Negociación Posesión")]
+    //    HipotecarioPendienteNegociacionPosesion = 112,
+    //    [Description("Hipotecario - Pendiente Requerimiento de Pago")]
+    //    HipotecarioPendienteRequerimientoPago = 113,
+    //    [Description("Hipotecario - Testimonios Pendiente Inscripción")]
+    //    HipotecarioPendienteTestimoniosInscripcion = 114,
+    //    [Description("Hipotecario - Suspensión Decreto")]
+    //    HipotecarioPendienteSuspensionDecreto = 115,
+    //    [Description("Hipotecario - Subastas Suspendidas")]
+    //    HipotecarioPendienteSubastasSuspendidas = 116,
+    //    [Description("Hipotecario - Ley 1/2013")]
+    //    HipotecarioPendienteAdjudicacionLey12013 = 117,
+    //    //[Description("Hipotecario - Notificaciones sin Tramitar")]
+    //    //HipotecarioNotificacionesSinTramitar = 118,
+    //    [Description("Hipotecario - Decreto Convocatoria Subasta")]
+    //    HipotecarioDecretoConvocatoriaSubasta = 119,
+    //    [Description("Hipotecario - Incidencias Decretos Ajdudicación")]
+    //    HipotecarioIncidenciaDecretoAjdudicacion = 120,
+    //    [Description("Hipotecario - Jurisdicción Voluntaria")]
+    //    HipotecarioJurisdiccionVoluntaria = 121,
+    //    [Description("Hipotecario - Autos Pendientes de Subsanación")]
+    //    HipotecarioAutosIncompletoErroneo = 122,
+    //    [Description("Hipotecario - Expedientes Inactivos")]
+    //    HipotecarioInactivo = 123,
+    //    [Description("Hipotecario - Expedientes Incidentados")]
+    //    HipotecarioIncidenciaDocumental = 124,
+    //    [Description("Hipotecario - Expedientes en Revisión No Veniados")]
+    //    HipotecarioEnRevisionNoVeniados = 125,
+    //    [Description("Hipotecario - Expedientes en Revisión Veniados")]
+    //    HipotecarioEnRevisionVeniados = 126,
+    //    [Description("Hipotecario - Calificación Negativa")]
+    //    HipotecarioCalificacionNegativa = 127,
+    //    [Description("Hipotecario - Liquidación ITP")]
+    //    HipotecarioLiquidacionItp = 128,
+
+    //    [Description("Hipotecario - Testimonio Pdte. Inscripción")]
+    //    HipTestimonioPdteInscripcion = 129,
+
+    //    #endregion
+
+    //    #region Hipotecario - Alarmas
+
+    //    [Description("Hipotecario - KPI - Expedientes Incidentados")]
+    //    HipotecarioAlarmaIncidentados = 161,
+    //    [Description("Hipotecario - KPI - Admisión de Demanda")]
+    //    HipotecarioAlarmaAdmisionDemanda = 151,
+    //    [Description("Hipotecario - KPI - Inadmisión de Demanda")]
+    //    HipotecarioAlarmaInadmisionDemanda = 165,
+    //    [Description("Hipotecario - KPI - Certificación de Cargas")]
+    //    HipotecarioAlarmaCertificacionCargas = 152,
+    //    [Description("Hipotecario - KPI - Requerimiento de Pago")]
+    //    HipotecarioAlarmaRequerimientoPago = 153,
+    //    [Description("Hipotecario - KPI - Solicitud de Subasta")]
+    //    HipotecarioAlarmaSolicitudSubasta = 154,
+    //    [Description("Hipotecario - KPI - Decreto de Convocatoria")]
+    //    HipotecarioAlarmaDecretoConvocatoria = 163,
+    //    [Description("Hipotecario - KPI - Decreto de Adjudicación")]
+    //    HipotecarioAlarmaDecretoAdjudicacion = 156,
+    //    [Description("Hipotecario - KPI - Posesión")]
+    //    HipotecarioAlarmaPosesion = 158,
+    //    [Description("Hipotecario - KPI - Testimonio Pdte. Inscripción")]
+    //    HipotecarioAlarmaTestimonio = 157,
+    //    [Description("Hip - KPI - Sucesión Copia Sellada")]
+    //    HipotecarioAlarmaSucesionCopiaSellada = 100101,
+
+    //    [Description("SLA - Solic.Cierre - Título ejecutivo")]
+    //    HipotecarioAlarmaRecepcionSolicitudCierre01 = 100201,
+    //    [Description("SLA - Solic.Cierre - Burofax 1")]
+    //    HipotecarioAlarmaRecepcionSolicitudCierre02 = 100202,
+    //    [Description("SLA - Solic.Cierre - Liquidación Saldo")]
+    //    HipotecarioAlarmaRecepcionSolicitudCierre03 = 100203,
+    //    [Description("SLA - Solic.Cierre - Firma Certificado")]
+    //    HipotecarioAlarmaRecepcionSolicitudCierre04 = 100204,
+    //    [Description("SLA - Solic.Cierre - Burofax 2")]
+    //    HipotecarioAlarmaRecepcionSolicitudCierre05 = 100205,
+
+
+
+
+    //    //[Description("Hipotecario - KPI - Convocatoria de Subasta")]
+    //    //HipotecarioAlarmaConvocatoriaSubasta = 155,
+    //    //[Description("Hipotecario - KPI - Lanzamiento")]
+    //    //HipotecarioAlarmaLanzamiento = 159,
+    //    //[Description("Hipotecario - KPI - Resolución de Apelación")]
+    //    //HipotecarioAlarmaResolucionApelacion = 160,        
+    //    //[Description("Hipotecario - KPI - Pdte. Solicitud Adjudicación")]
+    //    //HipotecarioAlarmaSolicitudAdjudicacion = 162,        
+    //    //[Description("Hipotecario - KPI - Pdte. Recepción de Demanda Sellada")]
+    //    //HipotecarioAlarmaRecepcionDemandaSellada = 164,
+
+    //    #endregion
+
+    //    #region Hipotecario - Facturas
+
+    //    [Description("Hito 1 (En prueba)")]
+    //    FacturaHito1 = 1,
+    //    [Description("Hito 2 (En prueba)")]
+    //    FacturaHito2 = 2,
+    //    [Description("Hito 3 (En prueba)")]
+    //    FacturaHito3 = 3,
+    //    [Description("Hito 4 (En prueba)")]
+    //    FacturaHito4 = 4,
+    //    [Description("Hito 5 (En prueba)")]
+    //    FacturaHito5 = 5,
+    //    [Description("Hito 6 (En prueba)")]
+    //    FacturaHito6 = 6,
+
+    //    //[Description("Alq - Hito 1 (En prueba)")]
+    //    //FacturaHito1Alq = 51,
+    //    //[Description("Alq - Hito 2 (En prueba)")]
+    //    //FacturaHito2Alq = 52,
+    //    //[Description("Alq - Hito 3 (En prueba)")]
+    //    //FacturaHito3Alq = 53,
+    //    //[Description("Alq - Hito 4 (En prueba)")]
+    //    //FacturaHito4Alq = 54,
+    //    //[Description("Alq - Hito 5 (En prueba)")]
+    //    //FacturaHito5Alq = 55,
+    //    //[Description("Alq - Hito 6 (En prueba)")]
+    //    //FacturaHito6Alq = 56,
+
+
+
+    //    [Description("Hip - Factura - Sabadell - Cierre de Subasta")]
+    //    HipotecarioFacturaSabadellHito1 = 101001,
+    //    [Description("Hip - Factura - Sabadell - Testimonio Inscrito + Posesión")]
+    //    HipotecarioFacturaSabadellHito2 = 101002,
+    //    [Description("Hip - Factura - Sabadell - Motivos de Finalización")]
+    //    HipotecarioFacturaSabadellHito3 = 101003,
+    //    [Description("Hip - Factura - Sabadell - Paralizados")]
+    //    HipotecarioFacturaSabadellHito4 = 101004,
+
+    //    [Description("Hip - Factura - Solvia - Presentación de Demanda")]
+    //    HipotecarioFacturaSolviaHito1 = 102001,
+    //    [Description("Hip - Factura - Solvia - Decreto de Adjudicación")]
+    //    HipotecarioFacturaSolviaHito2 = 102002,
+    //    [Description("Hip - Factura - Solvia - Fecha Toma Posesión ")]
+    //    HipotecarioFacturaSolviaHito3 = 102003,
+    //    [Description("Hip - Factura - Solvia - Otros")]
+    //    HipotecarioFacturaSolviaHito4 = 102004,
+
+    //    [Description("Hip - Factura - Anticipa - Decreto de Adjudicación")]
+    //    HipotecarioFacturaAnticipaHito1 = 103001,
+    //    [Description("Hip - Factura - Anticipa - Testimonio Inscrito + Posesión")]
+    //    HipotecarioFacturaAnticipaHito2 = 103002,
+    //    [Description("Hip - Factura - Anticipa - Otros")]
+    //    HipotecarioFacturaAnticipaHito3 = 103003,
+
+    //    [Description("Hip - Factura - Sareb - Testimonio Inscrito + Posesión")]
+    //    HipotecarioFacturaSarebHito1 = 104001,
+    //    [Description("Hip - Factura - Sareb - Finalización")]
+    //    HipotecarioFacturaSarebHito2 = 104002,
+    //    [Description("Hip - Factura - Sareb - Otros")]
+    //    HipotecarioFacturaSarebHito3 = 104003,
+
+    //    [Description("Hip - Factura - Post-Ejc - Finalización")]
+    //    HipotecarioFacturaPostEjcHito1 = 105001,
+
+    //    [Description("Hip - Factura - Bankia - Cierre de Subasta")]
+    //    HipotecarioFacturaBankiaHito1 = 106001,
+    //    [Description("Hip - Factura - Bankia - Testimonio Inscrito + Posesión")]
+    //    HipotecarioFacturaBankiaHito2a = 106002,
+    //    [Description("Hip - Factura - Bankia - Finalización")]
+    //    HipotecarioFacturaBankiaHito2b = 106003,
+
+    //    [Description("Hip - Fact - Aliseda No Veniado - Decreto Adjudicación")]
+    //    HipotecarioFacturaAlisedaNoVeniadoHito1 = 107001,
+    //    [Description("Hip - Fact - Aliseda No Veniado - Testimonio Inscrito + Posesión")]
+    //    HipotecarioFacturaAlisedaNoVeniadoHito2 = 107002,
+    //    [Description("Hip - Fact - Aliseda No Veniado - Finalizados Pdte. Facturar")]
+    //    HipotecarioFacturaAlisedaNoVeniadoFinalizadosPdteFacturar = 107003,
+
+    //    [Description("Hip - Fact - Aliseda Veniado - Carga Cliente")]
+    //    HipotecarioFacturaAlisedaVeniadoHito1 = 107011,
+    //    [Description("Hip - Fact - Aliseda Veniado - Testimonio Inscrito + Posesión")]
+    //    HipotecarioFacturaAlisedaVeniadoHito2 = 107012,
+    //    [Description("Hip - Fact - Aliseda Veniado - Finalizados Pdte. Facturar")]
+    //    HipotecarioFacturaAlisedaVeniadoFinalizadosPdteFacturar = 107013,
+
+    //    [Description("Hip - Factura - Abanca - Testimonio de Adjudicación")]
+    //    HipotecarioFacturaAbancaHito1 = 108001,
+    //    [Description("Hip - Factura - Abanca - Testimonio Inscrito + Posesión")]
+    //    HipotecarioFacturaAbancaHito2 = 108002,
+    //    [Description("Hip - Factura - Abanca - Finalización")]
+    //    HipotecarioFacturaAbancaHito3 = 108003,
+
+
+    //    [Description("Hip - Fact - Voyager-Altamira No Veniado - Presentación Demanda")]
+    //    HipotecarioFacturaVoyagerAltamiraNoVeniadoHito1 = 109001,
+    //    [Description("Hip - Fact - VoyagerAltamira No Veniado - Cierre Subasta")]
+    //    HipotecarioFacturaVoyagerAltamiraNoVeniadoHito2 = 109002,
+    //    [Description("Hip - Fact - VoyagerAltamira No Veniado - Finalización")]
+    //    HipotecarioFacturaVoyagerAltamiraNoVeniadoHitoFinalizacion = 109003,
+
+    //    [Description("Hip - Fact - VoyagerAltamira Veniado - Cierre Subasta")]
+    //    HipotecarioFacturaVoyagerAltamiraVeniadoHito1 = 109011,
+    //    //[Description("Hip - Fact - VoyagerAltamira Veniado - Testimonio Inscrito + Posesión")]
+    //    //HipotecarioFacturaVoyagerAltamiraVeniadoHito2 = 109012,
+    //    [Description("Hip - Fact - VoyagerAltamira Veniado - Finalización")]
+    //    HipotecarioFacturaVoyagerAltamiraVeniadoHitoFinalizacion = 109013,
+
+
+    //    [Description("Hip - Finalizado Sin Factura")]
+    //    HipotecarioFinalizadoSinFactura = 108088,
+    //    [Description("Alq - Finalizado Sin Factura")]
+    //    AlquilerFinalizadoSinFactura = 508088,
+    //    [Description("Ord - Finalizado Sin Factura")]
+    //    OrdinarioFinalizadoSinFactura = 148088,
+    //    [Description("Ejc - Finalizado Sin Factura")]
+    //    EjecutivoFinalizadoSinFactura = 308088,
+
+    //    #endregion
+
+    //    #region Hipotecario - SLA
+
+    //    HipotecarioSlaPresentacionDemandaBankia = 101502,
+
+    //    #endregion
+
+    //    #region Hipotecario - QaDatos
+
+    //    [Description("Hipotecario - Expedientes sin inmuebles")]
+    //    ExpHipQaDatosSinInmueble = 1010801,
+    //    [Description("Hipotecario - Expedientes sin fecha de demanda")]
+    //    ExpHipQaDatosSinFechaDemanda = 1010802,
+    //    [Description("Hipotecario - Expedientes sin partido judicial")]
+    //    ExpHipQaDatosSinPartidoJudicial = 1010803,
+    //    [Description("Hipotecario - Expedientes sin No.Auto")]
+    //    ExpHipQaDatosSinNoAuto = 1010804,
+
+    //    [Description("Hipotecario - Expedientes sin juzgado")]
+    //    ExpHipQaDatosSinJuzgado = 1010805,
+    //    [Description("Hipotecario - Expedientes sin Demanda Admitida")]
+    //    ExpHipQaDatosSinDemandaAdmitida = 1010806,
+    //    [Description("Hipotecario - Expedientes Adjudicación Incompletos")]
+    //    ExpHipQaDatosAdjudicacionIncompletos = 1010807,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Alquiler
+
+    //    #region Alquiler - Indicadores
+
+    //    [Description("Alquiler - Pendiente Presentación Demanda")]
+    //    AlquilerPendientePresentacionDemanda = 501,
+    //    [Description("Alquiler - Pendiente Demanda Admitida")]
+    //    AlquilerPendienteDemandaAdmitida = 502,
+    //    [Description("Alquiler - Recursos de Apelación")]
+    //    AlquilerRecursosApelacion = 503, //
+    //    [Description("Alquiler - Ejecución Dineraria")]
+    //    AlquilerPendienteEjecucionDineraria = 504,
+    //    [Description("Alquiler - Pendiente Ejecución Lanzamiento")]
+    //    AlquilerPendienteEjecucionLanzamiento = 505,
+    //    [Description("Alquiler - Pendiente Transferir Cantidad Consiganada")]
+    //    AlquilerPendienteTransferirCantidadConsiganada = 506,
+    //    [Description("Alquiler - Pendiente Expediente Ejecución")]
+    //    AlquilerPendienteExpedienteEjecucion = 507,
+    //    [Description("Alquiler - Pendiente Demanda Ejecución")]
+    //    AlquilerPendienteDemandaEjecucion = 508,
+    //    [Description("Alquiler - Pdte. Solicitar Decreto Fin")]
+    //    AlquilerPendienteSolicitarDecretoFin = 509,
+    //    [Description("Alquiler - Pendiente Mediación")]
+    //    AlquilerPendienteMediacion = 510,
+    //    [Description("Alquiler - Pendiente Preparación Demanda")]
+    //    AlquilerPendientePreparacion = 511,
+
+    //    [Description("Alquiler - Expedientes Inactivos")]
+    //    AlquilerInactivo = 512,
+
+    //    [Description("Alquiler - Facturas Pendientes")]
+    //    AlquilerFacturasPendientes = 513,
+    //    [Description("Alquiler - Expedientes Incidentados")]
+    //    AlquilerIncidenciaDocumental = 514,
+    //    [Description("Alquiler - Pdte. Oficios/Edictos")]
+    //    AlquilerPendienteOficiosEdictos = 515,
+    //    [Description("Alquiler - Expedientes en Revisión")]
+    //    AlquilerEnRevision = 516,
+    //    [Description("Alquiler - Pendiente Instrucciones")]
+    //    AlquilerPendienteInstrucciones = 517,
+    //    [Description("Alquiler - Pte. Revisión Ejecutivo")]
+    //    AlquilerPendienteRevisionEjecutivo = 518,
+    //    [Description("Alquiler - Derivado a Concursal")]
+    //    AlquilerDerivadoConcursal = 519,
+
+    //    [Description("Alquiler - Decreto Fin Sin Exp. Ejec.")]
+    //    AlquilerDecretoFinSinEjecutivo = 520,
+
+    //    #endregion
+
+    //    #region Alquiler - Alarmas
+
+    //    [Description("Alquiler - KPI - Presentación de Demanda")]
+    //    AlquilerAlarmaPresentacionDemanda = 551,
+    //    [Description("Alquiler - KPI - Demanda Admitida")]
+    //    AlquilerAlarmaDemandaAdmitida = 552,
+    //    [Description("Alquiler - KPI - Pdte. de Notificación")]
+    //    AlquilerAlarmaPendienteNotificacion = 553,
+    //    [Description("Alquiler - KPI - Pdte. Decreto de Fin")]
+    //    AlquilerAlarmaPendienteDecretoFin = 554,
+    //    [Description("Alquiler - KPI - Pdte. Toma de Posesión")]
+    //    AlquilerAlarmaPendienteTomaPosesion = 555,
+    //    [Description("Alquiler - KPI - Pdte. Enervación")]
+    //    AlquilerAlarmaPendienteEnervacion = 556,
+    //    [Description("Alquiler - KPI - Pdte. Recepción de Demanda Sellada")]
+    //    AlquilerAlarmaRecepcionDemandaSellada = 557,
+    //    [Description("Alquiler - KPI - Pdte. AJG")]
+    //    AlquilerAlarmaPendienteAjg = 558,
+    //    [Description("Alquiler - KPI - Pdte. Acuerdo")]
+    //    AlquilerAlarmaPendienteAcuerdo = 559,
+    //    [Description("Alquiler - KPI - Pdte. Instrucciones Cliente")]
+    //    AlquilerAlarmaPendienteInstruccionesCliente = 560,
+
+    //    [Description("Alquiler - KPI - Pdte. Resolución Incidencia")]
+    //    AlquilerAlarmaPdteFechaResolucionIncidencia = 561,
+    //    [Description("Alquiler - KPI - Ejecutar Decreto Fin y Sentencia")]
+    //    AlquilerAlarmaEjecutarDecretoFinSentencia = 562,
+
+    //    [Description("Alquiler - KPI - Impulso Pdte. Aplc. Cliente")]
+    //    AlquilerAlarmaImpulsoPendienteAplicativoCliente = 5050,
+
+    //    [Description("Alquiler - KPI - Pdte. Recepción de Demanda (Ord)")]
+    //    AlquilerAlarmaRecepcionDemandaSelladaOrd = 5051,
+    //    [Description("Alquiler - KPI - Pdte. Recepción de Demanda (Ejc)")]
+    //    AlquilerAlarmaRecepcionDemandaSelladaEjc = 5052,
+    //    [Description("Alquiler - KPI - Pdte. Recepción de Demanda (MN)")]
+    //    AlquilerAlarmaRecepcionDemandaSelladaMn = 5053,
+    //    [Description("Alquiler - KPI - Pdte. Recepción de Denuncia")]
+    //    AlquilerAlarmaRecepcionDenuncia = 5054,
+
+    //    #endregion
+
+    //    #region Alquiler - Facturas
+
+    //    [Description("Alq - Factura - Hito Presentación Demanda")]
+    //    AlquilerFacturasHito1 = 50301,
+    //    [Description("Alq - Factura - Hito Finalizado")]
+    //    AlquilerFacturasHito2 = 50302,
+
+    //    [Description("Alq - Factura - Altamira H1")] //Hitos de Altamira Santander un solo hito a la finalización por posesión o por Enervación Judicial o por Sentencia estimatoria (crear este check en finalización de alquileres que no está)
+    //    AlquilerFacturaAltamiraHito1 = 501001,
+    //    [Description("Ejc - Factura - Altamira H1")]
+    //    AlquilerFacturaEjcAltamiraHito1 = 501006,
+    //    //[Description("Alq - Factura - Luri 4 H1")]
+    //    //AlquilerFacturaLuri4Hito1 = 502004,
+    //    //[Description("Alq - Factura - Luri 6 H1")]
+    //    //AlquilerFacturaLuri6Hito1 = 502005,
+    //    //[Description("Ejc - Factura - Luri 4 H1")]
+    //    //AlquilerFacturaEjcLuri4Hito1 = 502007,
+    //    //[Description("Ejc - Factura - Luri 6 H1")]
+    //    //AlquilerFacturaEjcLuri6Hito1 = 502008,
+    //    //[Description("Alq - Factura - Pdte Altamira/Luri")]
+    //    //AlquilerFacturaPdteAltamiraLuri46 = 502009,
+
+    //    #region Llogatalia
+
+    //    [Description("Alq - Factura - Llogatalia H1")]
+    //    AlquilerFacturaLlogataliaHito1 = 502001,
+    //    [Description("Alq - Factura - Llogatalia H2")]
+    //    AlquilerFacturaLlogataliaHito2 = 502010,
+    //    [Description("Ejc - Factura - Llogatalia H1")]
+    //    AlquilerFacturaEjcLlogataliaHito1 = 502011,
+    //    [Description("Alq - Factura - Pdte Llogatalia")]
+    //    AlquilerFacturaPdteLlogatalia = 502012,
+
+    //    #endregion
+
+    //    #region Aliseda
+
+    //    [Description("Alq - Factura - Aliseda H1")]
+    //    AlquilerFacturaAlisedaHito1 = 502013,
+    //    [Description("Alq - Factura - Aliseda H2")]
+    //    AlquilerFacturaAlisedaHito2 = 502014,
+    //    [Description("Ejc - Factura - Aliseda H1")]
+    //    AlquilerFacturaEjcAlisedaHito1 = 502015,
+    //    [Description("Alq - Factura - Pdte Aliseda")]
+    //    AlquilerFacturaPdteAliseda = 502016,
+
+    //    #endregion
+
+    //    #region Fidere
+
+    //    [Description("Alq - Factura - Fidere H1")]
+    //    AlquilerFacturaFidereHito1 = 502017,
+    //    [Description("Alq - Factura - Fidere H2")]
+    //    AlquilerFacturaFidereHito2 = 502018,
+    //    [Description("Ejc - Factura - Fidere H1")]
+    //    AlquilerFacturaEjcFidereHito1 = 502019,
+    //    [Description("Alq - Factura - Pdte Fidere")]
+    //    AlquilerFacturaPdteFidere = 502020,
+
+    //    #endregion
+
+    //    #region MerlinRetail
+
+    //    [Description("Alq - Factura - Merlin Retail H1")]
+    //    AlquilerFacturaMerlinRetailHito1 = 502021,
+    //    [Description("Alq - Factura - Merlin Retail H2")]
+    //    AlquilerFacturaMerlinRetailHito2 = 502022,
+    //    [Description("Ejc - Factura - Merlin Retail H1")]
+    //    AlquilerFacturaEjcMerlinRetailHito1 = 502023,
+    //    [Description("Alq - Factura - Pdte Merlin Retail")]
+    //    AlquilerFacturaPdteMerlinRetail = 502024,
+
+    //    #endregion
+
+    //    #region Solvia Hoteles
+
+    //    [Description("Alq - Factura - Solvia Hoteles H1")]
+    //    AlquilerFacturaSolviaHotelesHito1,
+    //    [Description("Alq - Factura - Solvia Hoteles H2")]
+    //    AlquilerFacturaSolviaHotelesHito2,
+    //    [Description("Ejc - Factura - Solvia Hoteles H1")]
+    //    AlquilerFacturaEjcSolviaHotelesHito1,
+    //    [Description("Alq - Factura - Pdte Solvia Hoteles")]
+    //    AlquilerFacturaPdteSolviaHoteles,
+
+    //    #endregion
+
+    //    #region Azzam / Homes
+
+    //    [Description("Alq - Factura - Azzam H1")]
+    //    AlquilerFacturaAzzamHito1,
+    //    [Description("Alq - Factura - Azzam H2")]
+    //    AlquilerFacturaAzzamHito2,
+    //    [Description("Ejc - Factura - Azzam H1")]
+    //    AlquilerFacturaEjcAzzamHito1,
+
+
+    //    [Description("Alq - Factura - Homes H1")]
+    //    AlquilerFacturaHomesHito1,
+    //    [Description("Alq - Factura - Homes H2")]
+    //    AlquilerFacturaHomesHito2,
+    //    [Description("Ejc - Factura - Homes H1")]
+    //    AlquilerFacturaEjcHomesHito1,
+
+    //    #endregion
+
+    //    #region Anticipa
+
+    //    [Description("Alq - Factura - Anticipa H1")]
+    //    AlquilerFacturaAnticipaHito1,
+    //    [Description("Alq - Factura - Anticipa H2")]
+    //    AlquilerFacturaAnticipaHito2,
+    //    [Description("Ejc - Factura - Anticipa H1")]
+    //    AlquilerFacturaEjcAnticipaHito1,
+
+    //    #endregion
+
+    //    #region Ahora Asset Management
+
+    //    [Description("Alq - Factura - Ahora AM H1")]
+    //    AlquilerFacturaAhoraAssetManagementHito1,
+    //    [Description("Alq - Factura - Ahora AM H2")]
+    //    AlquilerFacturaAhoraAssetManagementHito2,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Concursal (ReI, MyC)
+
+    //    #region Concursal - Indicadores
+
+    //    #endregion
+
+    //    #region Concursal - Alarmas
+
+    //    [Description("MyC - KPI - Hito 1 Pdte. Facturar")]
+    //    ConcursoAlarmaCumplidoHito01 = 40051,
+
+    //    [Description("MyC - KPI - Hito 57 Pdte. Facturar")]
+    //    ConcursoAlarmaCumplidoHito57 = 40052,
+
+    //    [Description("MyC - KPI - Hito 14 Facturar (18 meses)")]
+    //    ConcursoAlarmaCumplidoHito14_18 = 40053,
+    //    [Description("MyC - KPI - Hito 14 Facturar (48 meses)")]
+    //    ConcursoAlarmaCumplidoHito14_48 = 40054,
+
+    //    [Description("MyC - KPI - Hito 73 Pdte. Facturar")]
+    //    ConcursoAlarmaCumplidoHito73 = 40055,
+
+    //    [Description("MyC - KPI - Hito 74 Pdte. Facturar")]
+    //    ConcursoAlarmaCumplidoHito74 = 40056,
+
+    //    [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 01)")]
+    //    ConcursoAlarmaProcedeFacturacion_01 = 40057,
+    //    [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 57)")]
+    //    ConcursoAlarmaProcedeFacturacion_57 = 40058,
+    //    [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 14: 18 meses)")]
+    //    ConcursoAlarmaProcedeFacturacion_14_18m = 40059,
+    //    [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 14: 48 meses)")]
+    //    ConcursoAlarmaProcedeFacturacion_14_48m = 40060,
+    //    [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 74)")]
+    //    ConcursoAlarmaProcedeFacturacion_74 = 40061,
+    //    [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 78)")]
+    //    ConcursoAlarmaProcedeFacturacion_78 = 40062,
+    //    [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 79)")]
+    //    ConcursoAlarmaProcedeFacturacion_79 = 40063,
+
+    //    [Description("MyC - KPI - Facturación Hito 73")]
+    //    ConcursoAlarmaProcedeFacturacion_73 = 40064,
+    //    [Description("MyC - KPI - Facturación Hito 52")]
+    //    ConcursoAlarmaProcedeFacturacion_52 = 40065,
+    //    [Description("MyC - KPI - Facturación Hito 54")]
+    //    ConcursoAlarmaProcedeFacturacion_54 = 40066,
+    //    [Description("MyC - KPI - Facturación Hito 55")]
+    //    ConcursoAlarmaProcedeFacturacion_55 = 40067,
+    //    [Description("MyC - KPI - Facturación Hito 56")]
+    //    ConcursoAlarmaProcedeFacturacion_56 = 40068,
+    //    [Description("MyC - KPI - Facturación Hito 63")]
+    //    ConcursoAlarmaProcedeFacturacion_63 = 40069,
+    //    [Description("MyC - KPI - Facturación Hito 64")]
+    //    ConcursoAlarmaProcedeFacturacion_64 = 40070,
+
+    //    #endregion
+
+    //    #region Concursal - Facturas
+
+    //    //[Description("MyC - Facturas Pendientes Hito 1")]
+    //    //JcFacturasPendientesHito1 = 24011,
+    //    //[Description("MyC - Facturas Sin H1 y con H2")]
+    //    //JcFacturasPendientesHito1ConHito2 = 24012,
+
+    //    [Description("MyC - Facturas Pendientes Hito Fin")]
+    //    MyCFacturasPendientesHito1 = 40001,
+
+    //    [Description("MyC - Facturas Abanca Hito 52")]
+    //    MyCFacturasAbanca52 = 404152,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Ejecutivo
+
+    //    #region Ejecutivo - Indicadores
+
+    //    [Description("Ejecutivo - Pdte. Preparación Demanda")]
+    //    EjecutivoPendientePreparacionDemanda = 301,
+    //    [Description("Ejecutivo - Pdte. Demanda Admitida")]
+    //    EjecutivoPendienteDemandaAdmitida = 302,
+    //    [Description("Ejecutivo - Con Oposición")]
+    //    EjecutivoConOposicion = 303,
+    //    [Description("Ejecutivo - Expedientes Incidentados")]
+    //    EjecutivoIncidenciaDocumental = 304,
+    //    [Description("Ejecutivo - Expedientes Inactivos")]
+    //    EjecutivoInactivo = 305,
+    //    //[Description("Hipotecario - Pdte. Demanda Admitida")]
+    //    //EjecutivoPendienteDemandaAdmitida = 102,
+
+    //    //[Description("Ejecutivo - Pdte. Notificación")]
+    //    //EjecutivoPendienteNotificacion = 304,
+    //    [Description("Ejecutivo - Pdte. Solicitar Subasta")]
+    //    EjecutivoPendienteSolicitarSubasta = 308,
+    //    //[Description("Ejecutivo - Pdte. Convocatoria Subasta")]
+    //    //EjecutivoPendienteConvocatoriaSubasta = 306,
+    //    //[Description("Ejecutivo - Pdte. Acta de Subasta")]
+    //    //EjecutivoPendienteActaSubasta = 307,
+    //    [Description("Ejecutivo - Pdte. Adjudicación")]
+    //    EjecutivoPendienteAdjudicacion = 331,
+    //    [Description("Ejecutivo - Pdte. Testimonio Adjudicación")]
+    //    EjecutivoPendienteTestimonioAdjudicacion = 309,
+    //    [Description("Ejecutivo - Pdte. Solicitud Posesión")]
+    //    EjecutivoPendienteSolicitudPosesion = 310,
+    //    [Description("Ejecutivo - Pdte. Lanzamiento")]
+    //    EjecutivoPendienteLanzamiento = 311,
+    //    //[Description("Ejecutivo - Pdte. Negociación Posesión")]
+    //    //EjecutivoPendienteNegociacionPosesion = 312,
+    //    [Description("Ejecutivo - Pdte. Requerimiento de Pago")]
+    //    EjecutivoPendienteRequerimientoPago = 313,
+    //    //[Description("Ejecutivo - Testimonios Pendiente Inscripción")]
+    //    //EjecutivoPendienteTestimoniosInscripcion = 314,
+    //    //[Description("Ejecutivo - Suspensión Decreto")]
+    //    //EjecutivoPendienteSuspensionDecreto = 315,
+    //    [Description("Ejecutivo - Subastas Suspendidas")]
+    //    EjecutivoPendienteSubastasSuspendidas = 316,
+
+    //    //[Description("Ejecutivo - Ley 1/2013")]
+    //    //EjecutivoPendienteAdjudicacionLey12013 = 317,
+    //    //[Description("Ejecutivo - Notificaciones sin Tramitar")]
+    //    //EjecutivoNotificacionesSinTramitar = 318,
+    //    [Description("Ejecutivo - Decreto Convocatoria Subasta")]
+    //    EjecutivoDecretoConvocatoriaSubasta = 319,
+
+    //    //[Description("Ejecutivo - Incidencias Decretos Ajdudicación")]
+    //    //EjecutivoIncidenciaDecretoAjdudicacion = 320,
+    //    //[Description("Ejecutivo - Jurisdicción Voluntaria")]
+    //    //EjecutivoJurisdiccionVoluntaria = 321,
+    //    //[Description("Ejecutivo - Autos Pendientes de Subsanación")]
+    //    //EjecutivoAutosIncompletoErroneo = 322,
+    //    //[Description("Ejecutivo - Expedientes Inactivos")]
+    //    //EjecutivoInactivo = 323,
+    //    //[Description("Ejecutivo - Expedientes Incidentados")]
+    //    //EjecutivoIncidenciaDocumental = 324,
+    //    //[Description("Ejecutivo - Expedientes en Revisión No Veniados")]
+    //    //EjecutivoEnRevisionNoVeniados = 325,
+
+    //    [Description("Ejecutivo - Prórroga de embargo")]
+    //    EjecutivoProrrogaEmbargo = 341,
+
+    //    [Description("Ejecutivo - Pendiente de Avalúo")]
+    //    EjecutivoPendienteAvaluo = 342,
+
+    //    #endregion
+
+    //    #region Ejecutivo - Alarmas
+
+    //    [Description("Ejecutivo - KPI - Pdte. Recepción de Demanda Sellada")]
+    //    EjecutivoAlarmaRecepcionDemandaSellada = 351,
+    //    [Description("Ejecutivo - KPI - Admisión Demanda")]
+    //    EjecutivoAlarmaAdmisionDemanda = 352,
+
+    //    //[Description("Ejecutivo - KPI - Pdte. Recepción de Demanda Sellada")]
+    //    //EjecutivoAlarmaRecepcionDemandaSellada = 354,
+
+    //    [Description("Ejecutivo - KPI - Requerimiento de Pago")]
+    //    EjecutivoAlarmaRequerimientoPago = 355,
+    //    [Description("Ejecutivo - KPI - Averiguación Patrimonial")]
+    //    EjecutivoAlarmaAveriguacionPatrimonial = 356,
+    //    [Description("Ejecutivo - KPI - Mejora de Embargo")]
+    //    EjecutivoAlarmaMejoraEmbargo = 357,
+    //    [Description("Ejecutivo - KPI - Decreto de Embargo")]
+    //    EjecutivoAlarmaDecretoEmbargo = 358,
+
+    //    [Description("Ejecutivo - KPI - Prórroga de embargo")]
+    //    EjecutivoAlarmaProrrogaEmbargo = 359,
+
+    //    [Description("Ejc - KPI - Sucesión Copia Sellada")]
+    //    EjecutivoAlarmaSucesionCopiaSellada = 360,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Negociacion - Indicadores (13)
+
+    //    [Description("TPA Pendiente Asignar")]
+    //    NegociacionTpaPendienteAsignar = 1301,
+    //    [Description("TPA")]
+    //    NegociacionTpa = 1302,
+
+    //    TpaFallidas = 1303,
+    //    PropuestaAceptada = 1304,
+    //    PropuestaDenegada = 1305,
+    //    PagoDeuda = 1306,
+    //    EntregaInmueble = 1307,
+    //    Inviables = 1308,
+    //    Ilocalizable = 1309,
+
+    //    [Description("Alquiler Precontencioso")]
+    //    NegociacionAlquilerPrecontencioso = 1333,
+    //    [Description("Alquiler Precontencioso Pendiente Asignar")]
+    //    NegociacionAlquilerPrecontenciosoPendienteAsignar = 1323,
+
+    //    [Description("Precontencioso")]
+    //    NegociacionPrecontencioso = 1331,
+    //    [Description("Precontencioso Pendiente Asignar")]
+    //    NegociacionPrecontenciosoPendienteAsignar = 1321,
+
+    //    [Description("Contencioso")]
+    //    NegociacionContencioso = 1332,
+    //    [Description("Contencioso Pendiente Asignar")]
+    //    NegociacionContenciosoPendienteAsignar = 1322,
+    //    [Description("Contencioso con F. Testimonio")]
+    //    NegociacionContenciosoFechaTestimonio = 1338,
+
+    //    [Description("Precontencioso Finalizado")]
+    //    NegociacionPrecontenciosoFinalizada = 1334,
+    //    [Description("Contencioso Finalizado")]
+    //    NegociacionContenciosoFinalizada = 1335,
+
+    //    [Description("Alquiler Contencioso")]
+    //    NegociacionAlquilerContencioso = 1336,
+    //    [Description("Alquiler Contencioso Pendiente Asignar")]
+    //    NegociacionAlquilerContenciosoPendienteAsignar = 1337,
+
+    //    #endregion
+
+    //    #region Negociacion - Alarmas
+
+    //    [Description("Negociación - KPI - Expirado Tiempo Negociación de Alquiler")]
+    //    NegociacionAlarmaExpiradoTiempoNegAlquiler = 1351,
+    //    [Description("Negociación - KPI - Expirado Tiempo Negociación Precontencioso")]
+    //    NegociacionAlarmaExpiradoTiempoNegPrecontencioso = 1352,
+
+
+    //    #endregion
+
+    //    #region Ordinario
+
+    //    #region Ordinario - Indicadores
+
+    //    [Description("Ordinario - Expedientes Inactivos")]
+    //    OrdinarioInactivo = 1401,
+    //    [Description("Ordinario - Expedientes Incidentados")]
+    //    OrdinarioIncidenciaDocumental = 1424,
+    //    [Description("Ordinario - Pdte. Preparación Demanda")]
+    //    OrdinarioPendientePreparacionDemanda = 1403,
+    //    [Description("Ordinario - Pdte. Decreto de Admisión")]
+    //    OrdinarioPendienteDecretoAdmision = 1404,
+    //    [Description("Ordinario - Audiencia Previa")]
+    //    OrdinarioAudienciaPrevia = 1405,
+    //    [Description("Ordinario - Juicio")]
+    //    OrdinarioJuicio = 1406,
+    //    [Description("Ordinario - Sentencia")]
+    //    OrdinarioSentencia = 1407,
+    //    [Description("Ordinario - Recursos de Apelación")]
+    //    OrdinarioRecursoApelacion = 1408,
+    //    [Description("Ordinario - Casación por Infracción Procesal")]
+    //    OrdinarioCasacionInfraccionProcesal = 1409,
+    //    [Description("Ordinario - Ejecución Sentencia")]
+    //    OrdinarioEjecucionSentencia = 1410,
+    //    [Description("Ordinario - Pdte. Firmeza Sent. Estimatoria")]
+    //    OrdinarioPendienteFirmezaSentenciaEstimatoria = 1411,
+
+    //    #endregion
+
+    //    #region Ordinario - Alarmas
+
+    //    [Description("Ord- KPI - Pendiante Demanda")]
+    //    OrdinarioAlarmaPdteDemanda = 1451,
+    //    [Description("Ord- KPI - Decreto Admisión")]
+    //    OrdinarioAlarmaDecretoAdmision = 1452,
+    //    [Description("Ord- KPI - Emplazamiento Positivo")]
+    //    OrdinarioAlarmaEmplazamientoPositivo = 1453,
+    //    [Description("Ord- KPI - Emplazamiento Negativo / Rebeldia")]
+    //    OrdinarioAlarmaEmplazamientoNegativo = 1454,
+    //    [Description("Ord- KPI - Audiencia Previa")]
+    //    OrdinarioAlarmaAudienciaPrevia = 1455,
+    //    [Description("Ord- KPI - Juicio")]
+    //    OrdinarioAlarmaJuicio = 1456,
+    //    [Description("Ord- KPI - Sentencia")]
+    //    OrdinarioAlarmaSentencia = 1457,
+    //    [Description("Ord- KPI - Pdte. Sentencia")]
+    //    OrdinarioAlarmaPdteSentencia = 1458,
+    //    [Description("Ord- KPI - Pdte. Recepción de Demanda Sellada")]
+    //    OrdinarioAlarmaRecepcionDemandaSellada = 1459,
+
+
+    //    [Description("Ord - KPI - Sucesión Copia Sellada")]
+    //    OrdinarioAlarmaSucesionCopiaSellada = 1460,
+
+
+
+    //    #endregion
+
+    //    #region Ordinario - Facturas
+
+    //    [Description("Ord - Factura - Hito 1 (Caixa)")]
+    //    OrdinarioFacturasHito1Caixa = 1430101,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region OrdinarioCs
+
+    //    #region OrdinarioCs - Indicadores / Facturas
+
+    //    [Description("Cláusula Suelo - Facturas Banco Popular Hito 1")]
+    //    OrdinarioCsFacturasBancoPopularHito1 = 150131,
+    //    [Description("Cláusula Suelo - Facturas Banco Popular Hito 2")]
+    //    OrdinarioCsFacturasBancoPopularHito2 = 150132,
+    //    [Description("Cláusula Suelo - Facturas Hito 2 (Pendiente Finalizar)")]
+    //    OrdinarioCsFacturasHito2PendienteFinalizar = 150133,
+
+    //    #endregion
+
+    //    #region OrdinarioCs - Alarmas
+
+    //    [Description("Cláusula Suelo - KPI - Vencimiento Allanamiento")]
+    //    OrdinarioCsAlarmaVencimientoAllanamiento = 1551,
+
+    //    [Description("Cláusula Suelo - KPI - Pdte. Copia Sellada Allanamiento")]
+    //    OrdinarioCsAlarmaPendienteCopiaSelladaAllanamiento = 1556,
+    //    [Description("Cláusula Suelo - KPI - Sentencia")]
+    //    OrdinarioCsAlarmaSentencia = 1557,
+    //    [Description("Cláusula Suelo - KPI - Costas No Abonadas")]
+    //    OrdinarioCsAlarmaSentenciaSinCostasAbonadas = 1558,
+
+
+    //    [Description("Cláusula Suelo - KPI - Pendiente Finalización")]
+    //    OrdinarioCsAlarmaPendienteFinalizacion = 1592,
+
+    //    #endregion
+
+
+    //    #region JV - Alarmas 
+
+    //    [Description("JV - KPI - Pendiente Admisión")]
+    //    JvAlarmaPdteAdmision = 1751,
+    //    [Description("JV - KPI - Pendiente Notificación")]
+    //    JvAlarmaPdteNotificacion = 1752,
+    //    [Description("JV - KPI - Librado Mandamiento")]
+    //    JvAlarmaPdteLibradoMandamiento = 1753,
+    //    [Description("JV - KPI - Pdte. Recepción de  Escritura")]
+    //    JvAlarmaPdteRecepcionEscritura = 1754,
+
+    //    [Description("JV - KPI - Pdte. Recepción de Demanda Sellada")]
+    //    JvAlarmaRecepcionDemandaSellada = 1755,
+
+    //    #endregion
+
+
+    //    #endregion
+
+    //    #region TPA
+
+    //    #region TPA - Indicadores / Facturas
+
+    //    [Description("TPA - Facturas Pendientes Hito 1")]
+    //    TpaFacturasPendientesHito1 = 16011,
+    //    [Description("TPA - Facturas Pendientes Hito 2")]
+    //    TpaFacturasPendientesHito2 = 16012,
+
+    //    #endregion
+
+    //    #region TPA - Alarmas
+
+    //    //[Description("Cláusula Suelo - KPI - Vencimiento Allanamiento")]
+    //    //OrdinarioCsAlarmaVencimientoAllanamiento = 1551,
+
+    //    //[Description("Cláusula Suelo - KPI - Pdte. Copia Sellada Allanamiento")]
+    //    //OrdinarioCsAlarmaPendienteCopiaSelladaAllanamiento = 1556,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region JC
+
+    //    #region JC - Indicadores / Facturas
+
+    //    [Description("JC - Facturas Pendientes Hito 1")]
+    //    JcFacturasPendientesHito1 = 24011,
+    //    [Description("JC - Facturas Sin H1 y con H2")]
+    //    JcFacturasPendientesHito1ConHito2 = 24012,
+    //    [Description("JC - Facturas Pendientes Hito 2")]
+    //    JcFacturasPendientesHito2 = 24013,
+
+    //    //[Description("JC - Facturas Pendientes Hito 2")]
+    //    //JcFacturasPendientesHito2 = 24012,
+
+    //    #endregion
+
+    //    #region JC - Alarmas
+
+    //    //[Description("Cláusula Suelo - KPI - Vencimiento Allanamiento")]
+    //    //OrdinarioCsAlarmaVencimientoAllanamiento = 1551,
+
+    //    //[Description("Cláusula Suelo - KPI - Pdte. Copia Sellada Allanamiento")]
+    //    //OrdinarioCsAlarmaPendienteCopiaSelladaAllanamiento = 1556,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Monitorio Monitorio
+
+    //    #region Monitorio - Indicadores
+
+    //    [Description("MN - Pdte. Exp. Verbal")]
+    //    MonitorioPdteExpVerbal = 20001,
+    //    [Description("MN - Pdte. Exp. Ordinario")]
+    //    MonitorioPdteExpOrdinario = 20002,
+    //    [Description("MN - Pdte. Exp. Ejecutivo")]
+    //    MonitorioPdteExpEjecutivo = 20003,
+
+    //    #endregion
+
+    //    #region Monitorio - Alarmas
+
+    //    [Description("MN - KPI - Pdte. Recepción de Demanda Sellada")]
+    //    MonitorioAlarmaRecepcionDemandaSellada = 20051,
+
+    //    [Description("MN - KPI - Sucesión Copia Sellada")]
+    //    MonitorioAlarmaSucesionCopiaSellada = 20052,
+
+    //    #endregion
+
+    //    #region Monitorio - Facturas
+
+    //    [Description("MN - Factura - H1")]
+    //    MonitorioFacturaHito1 = 200101,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Real Estate
+
+    //    [Description("Real Estate - Residencial")]
+    //    RealEstateResidencial = 8801,
+    //    [Description("Real Estate - Terciarios")]
+    //    RealEstateTerciarios = 8802,
+    //    [Description("Real Estate - Dotacional")]
+    //    RealEstateDotacional = 8803,
+    //    [Description("Real Estate - Suelos")]
+    //    RealEstateSuelos = 8804,
+    //    [Description("Real Estate - NPLs")]
+    //    RealEstateNpls = 8805,
+    //    [Description("Real Estate - REOS")]
+    //    RealEstateReos = 8806,
+    //    [Description("Real Estate - Concursos")]
+    //    RealEstateConcursos = 8807,
+
+    //    #endregion
+
+    //    #region Conciliacion
+
+    //    #region Conciliacion - Facturas
+
+    //    [Description("Ccl - Factura - Hito 1")]
+    //    ConciliacionFacturasHito1 = 23301,
+
+    //    [Description("Ccl - Factura - Hito 1 (Caixa)")]
+    //    ConciliacionFacturasHito1Caixa = 2330101,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region MultiDivisa
+
+    //    #region MultiDivisa - Indicadores
+
+    //    [Description("MultiDivisa - Pendiente Contacto")]
+    //    MultiDivisaPendienteContacto = 29101,
+    //    [Description("MultiDivisa - Contacto en Negociación")]
+    //    MultiDivisaContactoEnNegociacion = 29102,
+    //    [Description("MultiDivisa - Contacto con Acuerdo")]
+    //    MultiDivisaContactoConAcuerdo = 29103,
+
+
+    //    [Description("MultiDivisa - Finalizado con éxito")]
+    //    MultiDivisaFinalizadoConExito = 29104,
+    //    [Description("MultiDivisa - Finalizado Localizado sin acuerdo")]
+    //    MultiDivisaFinalizadoLocalizado = 29105,
+    //    [Description("MultiDivisa - Finalizado No localizado")]
+    //    MultiDivisaFinalizadoNoLocalizado = 29106,
+    //    [Description("MultiDivisa - Finalizado Excluidos")]
+    //    MultiDivisaFinalizadoExcluido = 29107,
+
+    //    #endregion
+
+
+    //    #region MultiDivisa - Facturas
+
+    //    //[Description("Ccl - Factura - Hito 1")]
+    //    //MultiDivisaFacturasHito1 = 29301,
+
+    //    //[Description("Ccl - Factura - Hito 1 (Caixa)")]
+    //    //MultiDivisaFacturasHito1Caixa = 2930101,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Procura
+
+    //    #region Procura - Indicadores
+
+    //    //[Description("Procura - Pendiente Contacto")]
+    //    //ProcuraPendienteContacto = 30101,
+    //    //[Description("Procura - Contacto en Negociación")]
+    //    //ProcuraContactoEnNegociacion = 30102,
+    //    //[Description("Procura - Contacto con Acuerdo")]
+    //    //ProcuraContactoConAcuerdo = 30103,
+
+
+    //    //[Description("Procura - Finalizado con éxito")]
+    //    //ProcuraFinalizadoConExito = 30104,
+    //    //[Description("Procura - Finalizado Localizado sin acuerdo")]
+    //    //ProcuraFinalizadoLocalizado = 30105,
+    //    //[Description("Procura - Finalizado No localizado")]
+    //    //ProcuraFinalizadoNoLocalizado = 30106,
+    //    //[Description("Procura - Finalizado Excluidos")]
+    //    //ProcuraFinalizadoExcluido = 30107,
+
+    //    #endregion
+
+    //    #region Procura - Facturas
+
+    //    [Description("PRC - Factura - Hito 1")]
+    //    ProcuraFacturasHito1 = 30301,
+
+    //    //[Description("Ccl - Factura - Hito 1 (Caixa)")]
+    //    //ProcuraFacturasHito1Caixa = 3030101,
+
+    //    #endregion
+
+    //    #endregion
+
+    //    #region Generico o Persona
+
+    //    [Description("Exp. Activos")]
+    //    ExpedientesActivos,
+    //    [Description("Alarmas")]
+    //    AlarmasActivos,
+
+    //    [Description("Facturas")]
+    //    FacturasActivos,
+    //    [Description("Vistas")]
+    //    VistasActivos,
+    //    [Description("Vencimientos")]
+    //    VencimientosActivos,
+    //    [Description("Notificaciones")]
+    //    TotalNotificacionesActivos,
+
+
+    //    #endregion
+    //}
+    
     public enum BurofaxType
     {
         Burofax30 = 30,
@@ -695,1051 +1742,6 @@ namespace Solvtio.Models
     }
 
 
-    public enum TipoIndicadorQa
-    {
-        #region Hipotecario
-
-        #region Hipotecario - Indicadores
-
-        [Description("Hipotecario - Pendiente Preparación de Demanda")]
-        HipotecarioPendientePreparacionDemanda = 101,
-        //[Description("Hipotecario - Pendiente Auto de Admisión")]
-        //HipotecarioPendienteAutoAdmision = 102,
-        [Description("Hipotecario - Pendiente Demanda Admitida")]
-        HipotecarioPendienteDemandaAdmitida = 102,
-        [Description("Hipotecario - Pendiente Certificación de Cargas")]
-        HipotecarioPendienteCertificacionCargas = 103,
-        [Description("Hipotecario - Pendiente Notificación")]
-        HipotecarioPendienteNotificacion = 104,
-        [Description("Hipotecario - Pendiente Solicitar Subasta")]
-        HipotecarioPendienteSolicitarSubasta = 105,
-        [Description("Hipotecario - Pendiente Convocatoria Subasta")]
-        HipotecarioPendienteConvocatoriaSubasta = 106,
-        [Description("Hipotecario - Pendiente Presentación de Demanda")]
-        HipotecarioPendientePresentacionDemanda = 107,
-        [Description("Hipotecario - Pendiente Adjudicación")]
-        HipotecarioPendienteAdjudicacion = 108,
-        [Description("Hipotecario - Pendiente Testimonio Adjudicación")]
-        HipotecarioPendienteTestimonioAdjudicacion = 109,
-        [Description("Hipotecario - Pendiente Solicitud Posesión")]
-        HipotecarioPendienteSolicitudPosesion = 110,
-        [Description("Hipotecario - Pendiente Lanzamiento")]
-        HipotecarioPendienteLanzamiento = 111,
-        [Description("Hipotecario - Pendiente Negociación Posesión")]
-        HipotecarioPendienteNegociacionPosesion = 112,
-        [Description("Hipotecario - Pendiente Requerimiento de Pago")]
-        HipotecarioPendienteRequerimientoPago = 113,
-        [Description("Hipotecario - Testimonios Pendiente Inscripción")]
-        HipotecarioPendienteTestimoniosInscripcion = 114,
-        [Description("Hipotecario - Suspensión Decreto")]
-        HipotecarioPendienteSuspensionDecreto = 115,
-        [Description("Hipotecario - Subastas Suspendidas")]
-        HipotecarioPendienteSubastasSuspendidas = 116,
-        [Description("Hipotecario - Ley 1/2013")]
-        HipotecarioPendienteAdjudicacionLey12013 = 117,
-        //[Description("Hipotecario - Notificaciones sin Tramitar")]
-        //HipotecarioNotificacionesSinTramitar = 118,
-        [Description("Hipotecario - Decreto Convocatoria Subasta")]
-        HipotecarioDecretoConvocatoriaSubasta = 119,
-        [Description("Hipotecario - Incidencias Decretos Ajdudicación")]
-        HipotecarioIncidenciaDecretoAjdudicacion = 120,
-        [Description("Hipotecario - Jurisdicción Voluntaria")]
-        HipotecarioJurisdiccionVoluntaria = 121,
-        [Description("Hipotecario - Autos Pendientes de Subsanación")]
-        HipotecarioAutosIncompletoErroneo = 122,
-        [Description("Hipotecario - Expedientes Inactivos")]
-        HipotecarioInactivo = 123,
-        [Description("Hipotecario - Expedientes Incidentados")]
-        HipotecarioIncidenciaDocumental = 124,
-        [Description("Hipotecario - Expedientes en Revisión No Veniados")]
-        HipotecarioEnRevisionNoVeniados = 125,
-        [Description("Hipotecario - Expedientes en Revisión Veniados")]
-        HipotecarioEnRevisionVeniados = 126,
-        [Description("Hipotecario - Calificación Negativa")]
-        HipotecarioCalificacionNegativa = 127,
-        [Description("Hipotecario - Liquidación ITP")]
-        HipotecarioLiquidacionItp = 128,
-
-        [Description("Hipotecario - Testimonio Pdte. Inscripción")]
-        HipTestimonioPdteInscripcion = 129,
-
-        #endregion
-
-        #region Hipotecario - Alarmas
-
-        [Description("Hipotecario - KPI - Expedientes Incidentados")]
-        HipotecarioAlarmaIncidentados = 161,
-        [Description("Hipotecario - KPI - Admisión de Demanda")]
-        HipotecarioAlarmaAdmisionDemanda = 151,
-        [Description("Hipotecario - KPI - Inadmisión de Demanda")]
-        HipotecarioAlarmaInadmisionDemanda = 165,
-        [Description("Hipotecario - KPI - Certificación de Cargas")]
-        HipotecarioAlarmaCertificacionCargas = 152,
-        [Description("Hipotecario - KPI - Requerimiento de Pago")]
-        HipotecarioAlarmaRequerimientoPago = 153,
-        [Description("Hipotecario - KPI - Solicitud de Subasta")]
-        HipotecarioAlarmaSolicitudSubasta = 154,
-        [Description("Hipotecario - KPI - Decreto de Convocatoria")]
-        HipotecarioAlarmaDecretoConvocatoria = 163,
-        [Description("Hipotecario - KPI - Decreto de Adjudicación")]
-        HipotecarioAlarmaDecretoAdjudicacion = 156,
-        [Description("Hipotecario - KPI - Posesión")]
-        HipotecarioAlarmaPosesion = 158,
-        [Description("Hipotecario - KPI - Testimonio Pdte. Inscripción")]
-        HipotecarioAlarmaTestimonio = 157,
-        [Description("Hip - KPI - Sucesión Copia Sellada")]
-        HipotecarioAlarmaSucesionCopiaSellada = 100101,
-
-        [Description("SLA - Solic.Cierre - Título ejecutivo")]
-        HipotecarioAlarmaRecepcionSolicitudCierre01 = 100201,
-        [Description("SLA - Solic.Cierre - Burofax 1")]
-        HipotecarioAlarmaRecepcionSolicitudCierre02 = 100202,
-        [Description("SLA - Solic.Cierre - Liquidación Saldo")]
-        HipotecarioAlarmaRecepcionSolicitudCierre03 = 100203,
-        [Description("SLA - Solic.Cierre - Firma Certificado")]
-        HipotecarioAlarmaRecepcionSolicitudCierre04 = 100204,
-        [Description("SLA - Solic.Cierre - Burofax 2")]
-        HipotecarioAlarmaRecepcionSolicitudCierre05 = 100205,
-
-
-
-
-        //[Description("Hipotecario - KPI - Convocatoria de Subasta")]
-        //HipotecarioAlarmaConvocatoriaSubasta = 155,
-        //[Description("Hipotecario - KPI - Lanzamiento")]
-        //HipotecarioAlarmaLanzamiento = 159,
-        //[Description("Hipotecario - KPI - Resolución de Apelación")]
-        //HipotecarioAlarmaResolucionApelacion = 160,        
-        //[Description("Hipotecario - KPI - Pdte. Solicitud Adjudicación")]
-        //HipotecarioAlarmaSolicitudAdjudicacion = 162,        
-        //[Description("Hipotecario - KPI - Pdte. Recepción de Demanda Sellada")]
-        //HipotecarioAlarmaRecepcionDemandaSellada = 164,
-
-        #endregion
-
-        #region Hipotecario - Facturas
-
-        [Description("Hito 1 (En prueba)")]
-        FacturaHito1 = 1,
-        [Description("Hito 2 (En prueba)")]
-        FacturaHito2 = 2,
-        [Description("Hito 3 (En prueba)")]
-        FacturaHito3 = 3,
-        [Description("Hito 4 (En prueba)")]
-        FacturaHito4 = 4,
-        [Description("Hito 5 (En prueba)")]
-        FacturaHito5 = 5,
-        [Description("Hito 6 (En prueba)")]
-        FacturaHito6 = 6,
-
-        //[Description("Alq - Hito 1 (En prueba)")]
-        //FacturaHito1Alq = 51,
-        //[Description("Alq - Hito 2 (En prueba)")]
-        //FacturaHito2Alq = 52,
-        //[Description("Alq - Hito 3 (En prueba)")]
-        //FacturaHito3Alq = 53,
-        //[Description("Alq - Hito 4 (En prueba)")]
-        //FacturaHito4Alq = 54,
-        //[Description("Alq - Hito 5 (En prueba)")]
-        //FacturaHito5Alq = 55,
-        //[Description("Alq - Hito 6 (En prueba)")]
-        //FacturaHito6Alq = 56,
-
-
-
-        [Description("Hip - Factura - Sabadell - Cierre de Subasta")]
-        HipotecarioFacturaSabadellHito1 = 101001,
-        [Description("Hip - Factura - Sabadell - Testimonio Inscrito + Posesión")]
-        HipotecarioFacturaSabadellHito2 = 101002,
-        [Description("Hip - Factura - Sabadell - Motivos de Finalización")]
-        HipotecarioFacturaSabadellHito3 = 101003,
-        [Description("Hip - Factura - Sabadell - Paralizados")]
-        HipotecarioFacturaSabadellHito4 = 101004,
-
-        [Description("Hip - Factura - Solvia - Presentación de Demanda")]
-        HipotecarioFacturaSolviaHito1 = 102001,
-        [Description("Hip - Factura - Solvia - Decreto de Adjudicación")]
-        HipotecarioFacturaSolviaHito2 = 102002,
-        [Description("Hip - Factura - Solvia - Fecha Toma Posesión ")]
-        HipotecarioFacturaSolviaHito3 = 102003,
-        [Description("Hip - Factura - Solvia - Otros")]
-        HipotecarioFacturaSolviaHito4 = 102004,
-
-        [Description("Hip - Factura - Anticipa - Decreto de Adjudicación")]
-        HipotecarioFacturaAnticipaHito1 = 103001,
-        [Description("Hip - Factura - Anticipa - Testimonio Inscrito + Posesión")]
-        HipotecarioFacturaAnticipaHito2 = 103002,
-        [Description("Hip - Factura - Anticipa - Otros")]
-        HipotecarioFacturaAnticipaHito3 = 103003,
-
-        [Description("Hip - Factura - Sareb - Testimonio Inscrito + Posesión")]
-        HipotecarioFacturaSarebHito1 = 104001,
-        [Description("Hip - Factura - Sareb - Finalización")]
-        HipotecarioFacturaSarebHito2 = 104002,
-        [Description("Hip - Factura - Sareb - Otros")]
-        HipotecarioFacturaSarebHito3 = 104003,
-
-        [Description("Hip - Factura - Post-Ejc - Finalización")]
-        HipotecarioFacturaPostEjcHito1 = 105001,
-
-        [Description("Hip - Factura - Bankia - Cierre de Subasta")]
-        HipotecarioFacturaBankiaHito1 = 106001,
-        [Description("Hip - Factura - Bankia - Testimonio Inscrito + Posesión")]
-        HipotecarioFacturaBankiaHito2a = 106002,
-        [Description("Hip - Factura - Bankia - Finalización")]
-        HipotecarioFacturaBankiaHito2b = 106003,
-
-        [Description("Hip - Fact - Aliseda No Veniado - Decreto Adjudicación")]
-        HipotecarioFacturaAlisedaNoVeniadoHito1 = 107001,
-        [Description("Hip - Fact - Aliseda No Veniado - Testimonio Inscrito + Posesión")]
-        HipotecarioFacturaAlisedaNoVeniadoHito2 = 107002,
-        [Description("Hip - Fact - Aliseda No Veniado - Finalizados Pdte. Facturar")]
-        HipotecarioFacturaAlisedaNoVeniadoFinalizadosPdteFacturar = 107003,
-
-        [Description("Hip - Fact - Aliseda Veniado - Carga Cliente")]
-        HipotecarioFacturaAlisedaVeniadoHito1 = 107011,
-        [Description("Hip - Fact - Aliseda Veniado - Testimonio Inscrito + Posesión")]
-        HipotecarioFacturaAlisedaVeniadoHito2 = 107012,
-        [Description("Hip - Fact - Aliseda Veniado - Finalizados Pdte. Facturar")]
-        HipotecarioFacturaAlisedaVeniadoFinalizadosPdteFacturar = 107013,
-
-        [Description("Hip - Factura - Abanca - Testimonio de Adjudicación")]
-        HipotecarioFacturaAbancaHito1 = 108001,
-        [Description("Hip - Factura - Abanca - Testimonio Inscrito + Posesión")]
-        HipotecarioFacturaAbancaHito2 = 108002,
-        [Description("Hip - Factura - Abanca - Finalización")]
-        HipotecarioFacturaAbancaHito3 = 108003,
-
-
-        [Description("Hip - Fact - Voyager-Altamira No Veniado - Presentación Demanda")]
-        HipotecarioFacturaVoyagerAltamiraNoVeniadoHito1 = 109001,
-        [Description("Hip - Fact - VoyagerAltamira No Veniado - Cierre Subasta")]
-        HipotecarioFacturaVoyagerAltamiraNoVeniadoHito2 = 109002,
-        [Description("Hip - Fact - VoyagerAltamira No Veniado - Finalización")]
-        HipotecarioFacturaVoyagerAltamiraNoVeniadoHitoFinalizacion = 109003,
-
-        [Description("Hip - Fact - VoyagerAltamira Veniado - Cierre Subasta")]
-        HipotecarioFacturaVoyagerAltamiraVeniadoHito1 = 109011,
-        //[Description("Hip - Fact - VoyagerAltamira Veniado - Testimonio Inscrito + Posesión")]
-        //HipotecarioFacturaVoyagerAltamiraVeniadoHito2 = 109012,
-        [Description("Hip - Fact - VoyagerAltamira Veniado - Finalización")]
-        HipotecarioFacturaVoyagerAltamiraVeniadoHitoFinalizacion = 109013,
-
-
-        [Description("Hip - Finalizado Sin Factura")]
-        HipotecarioFinalizadoSinFactura = 108088,
-        [Description("Alq - Finalizado Sin Factura")]
-        AlquilerFinalizadoSinFactura = 508088,
-        [Description("Ord - Finalizado Sin Factura")]
-        OrdinarioFinalizadoSinFactura = 148088,
-        [Description("Ejc - Finalizado Sin Factura")]
-        EjecutivoFinalizadoSinFactura = 308088,
-
-        #endregion
-
-        #region Hipotecario - SLA
-
-        HipotecarioSlaPresentacionDemandaBankia = 101502,
-
-        #endregion
-
-        #region Hipotecario - QaDatos
-
-        [Description("Hipotecario - Expedientes sin inmuebles")]
-        ExpHipQaDatosSinInmueble = 1010801,
-        [Description("Hipotecario - Expedientes sin fecha de demanda")]
-        ExpHipQaDatosSinFechaDemanda = 1010802,
-        [Description("Hipotecario - Expedientes sin partido judicial")]
-        ExpHipQaDatosSinPartidoJudicial = 1010803,
-        [Description("Hipotecario - Expedientes sin No.Auto")]
-        ExpHipQaDatosSinNoAuto = 1010804,
-
-        [Description("Hipotecario - Expedientes sin juzgado")]
-        ExpHipQaDatosSinJuzgado = 1010805,
-        [Description("Hipotecario - Expedientes sin Demanda Admitida")]
-        ExpHipQaDatosSinDemandaAdmitida = 1010806,
-        [Description("Hipotecario - Expedientes Adjudicación Incompletos")]
-        ExpHipQaDatosAdjudicacionIncompletos = 1010807,
-
-        #endregion
-
-        #endregion
-
-        #region Alquiler
-
-        #region Alquiler - Indicadores
-
-        [Description("Alquiler - Pendiente Presentación Demanda")]
-        AlquilerPendientePresentacionDemanda = 501,
-        [Description("Alquiler - Pendiente Demanda Admitida")]
-        AlquilerPendienteDemandaAdmitida = 502,
-        [Description("Alquiler - Recursos de Apelación")]
-        AlquilerRecursosApelacion = 503, //
-        [Description("Alquiler - Ejecución Dineraria")]
-        AlquilerPendienteEjecucionDineraria = 504,
-        [Description("Alquiler - Pendiente Ejecución Lanzamiento")]
-        AlquilerPendienteEjecucionLanzamiento = 505,
-        [Description("Alquiler - Pendiente Transferir Cantidad Consiganada")]
-        AlquilerPendienteTransferirCantidadConsiganada = 506,
-        [Description("Alquiler - Pendiente Expediente Ejecución")]
-        AlquilerPendienteExpedienteEjecucion = 507,
-        [Description("Alquiler - Pendiente Demanda Ejecución")]
-        AlquilerPendienteDemandaEjecucion = 508,
-        [Description("Alquiler - Pdte. Solicitar Decreto Fin")]
-        AlquilerPendienteSolicitarDecretoFin = 509,
-        [Description("Alquiler - Pendiente Mediación")]
-        AlquilerPendienteMediacion = 510,
-        [Description("Alquiler - Pendiente Preparación Demanda")]
-        AlquilerPendientePreparacion = 511,
-
-        [Description("Alquiler - Expedientes Inactivos")]
-        AlquilerInactivo = 512,
-
-        [Description("Alquiler - Facturas Pendientes")]
-        AlquilerFacturasPendientes = 513,
-        [Description("Alquiler - Expedientes Incidentados")]
-        AlquilerIncidenciaDocumental = 514,
-        [Description("Alquiler - Pdte. Oficios/Edictos")]
-        AlquilerPendienteOficiosEdictos = 515,
-        [Description("Alquiler - Expedientes en Revisión")]
-        AlquilerEnRevision = 516,
-        [Description("Alquiler - Pendiente Instrucciones")]
-        AlquilerPendienteInstrucciones = 517,
-        [Description("Alquiler - Pte. Revisión Ejecutivo")]
-        AlquilerPendienteRevisionEjecutivo = 518,
-        [Description("Alquiler - Derivado a Concursal")]
-        AlquilerDerivadoConcursal = 519,
-
-        [Description("Alquiler - Decreto Fin Sin Exp. Ejec.")]
-        AlquilerDecretoFinSinEjecutivo = 520,
-
-        #endregion
-
-        #region Alquiler - Alarmas
-
-        [Description("Alquiler - KPI - Presentación de Demanda")]
-        AlquilerAlarmaPresentacionDemanda = 551,
-        [Description("Alquiler - KPI - Demanda Admitida")]
-        AlquilerAlarmaDemandaAdmitida = 552,
-        [Description("Alquiler - KPI - Pdte. de Notificación")]
-        AlquilerAlarmaPendienteNotificacion = 553,
-        [Description("Alquiler - KPI - Pdte. Decreto de Fin")]
-        AlquilerAlarmaPendienteDecretoFin = 554,
-        [Description("Alquiler - KPI - Pdte. Toma de Posesión")]
-        AlquilerAlarmaPendienteTomaPosesion = 555,
-        [Description("Alquiler - KPI - Pdte. Enervación")]
-        AlquilerAlarmaPendienteEnervacion = 556,
-        [Description("Alquiler - KPI - Pdte. Recepción de Demanda Sellada")]
-        AlquilerAlarmaRecepcionDemandaSellada = 557,
-        [Description("Alquiler - KPI - Pdte. AJG")]
-        AlquilerAlarmaPendienteAjg = 558,
-        [Description("Alquiler - KPI - Pdte. Acuerdo")]
-        AlquilerAlarmaPendienteAcuerdo = 559,
-        [Description("Alquiler - KPI - Pdte. Instrucciones Cliente")]
-        AlquilerAlarmaPendienteInstruccionesCliente = 560,
-
-        [Description("Alquiler - KPI - Pdte. Resolución Incidencia")]
-        AlquilerAlarmaPdteFechaResolucionIncidencia = 561,
-        [Description("Alquiler - KPI - Ejecutar Decreto Fin y Sentencia")]
-        AlquilerAlarmaEjecutarDecretoFinSentencia = 562,
-
-        [Description("Alquiler - KPI - Impulso Pdte. Aplc. Cliente")]
-        AlquilerAlarmaImpulsoPendienteAplicativoCliente = 5050,
-
-        [Description("Alquiler - KPI - Pdte. Recepción de Demanda (Ord)")]
-        AlquilerAlarmaRecepcionDemandaSelladaOrd = 5051,
-        [Description("Alquiler - KPI - Pdte. Recepción de Demanda (Ejc)")]
-        AlquilerAlarmaRecepcionDemandaSelladaEjc = 5052,
-        [Description("Alquiler - KPI - Pdte. Recepción de Demanda (MN)")]
-        AlquilerAlarmaRecepcionDemandaSelladaMn = 5053,
-        [Description("Alquiler - KPI - Pdte. Recepción de Denuncia")]
-        AlquilerAlarmaRecepcionDenuncia = 5054,
-
-        #endregion
-
-        #region Alquiler - Facturas
-
-        [Description("Alq - Factura - Hito Presentación Demanda")]
-        AlquilerFacturasHito1 = 50301,
-        [Description("Alq - Factura - Hito Finalizado")]
-        AlquilerFacturasHito2 = 50302,
-
-        [Description("Alq - Factura - Altamira H1")] //Hitos de Altamira Santander un solo hito a la finalización por posesión o por Enervación Judicial o por Sentencia estimatoria (crear este check en finalización de alquileres que no está)
-        AlquilerFacturaAltamiraHito1 = 501001,
-        [Description("Ejc - Factura - Altamira H1")]
-        AlquilerFacturaEjcAltamiraHito1 = 501006,
-        //[Description("Alq - Factura - Luri 4 H1")]
-        //AlquilerFacturaLuri4Hito1 = 502004,
-        //[Description("Alq - Factura - Luri 6 H1")]
-        //AlquilerFacturaLuri6Hito1 = 502005,
-        //[Description("Ejc - Factura - Luri 4 H1")]
-        //AlquilerFacturaEjcLuri4Hito1 = 502007,
-        //[Description("Ejc - Factura - Luri 6 H1")]
-        //AlquilerFacturaEjcLuri6Hito1 = 502008,
-        //[Description("Alq - Factura - Pdte Altamira/Luri")]
-        //AlquilerFacturaPdteAltamiraLuri46 = 502009,
-
-        #region Llogatalia
-
-        [Description("Alq - Factura - Llogatalia H1")]
-        AlquilerFacturaLlogataliaHito1 = 502001,
-        [Description("Alq - Factura - Llogatalia H2")]
-        AlquilerFacturaLlogataliaHito2 = 502010,
-        [Description("Ejc - Factura - Llogatalia H1")]
-        AlquilerFacturaEjcLlogataliaHito1 = 502011,
-        [Description("Alq - Factura - Pdte Llogatalia")]
-        AlquilerFacturaPdteLlogatalia = 502012,
-
-        #endregion
-
-        #region Aliseda
-
-        [Description("Alq - Factura - Aliseda H1")]
-        AlquilerFacturaAlisedaHito1 = 502013,
-        [Description("Alq - Factura - Aliseda H2")]
-        AlquilerFacturaAlisedaHito2 = 502014,
-        [Description("Ejc - Factura - Aliseda H1")]
-        AlquilerFacturaEjcAlisedaHito1 = 502015,
-        [Description("Alq - Factura - Pdte Aliseda")]
-        AlquilerFacturaPdteAliseda = 502016,
-
-        #endregion
-
-        #region Fidere
-
-        [Description("Alq - Factura - Fidere H1")]
-        AlquilerFacturaFidereHito1 = 502017,
-        [Description("Alq - Factura - Fidere H2")]
-        AlquilerFacturaFidereHito2 = 502018,
-        [Description("Ejc - Factura - Fidere H1")]
-        AlquilerFacturaEjcFidereHito1 = 502019,
-        [Description("Alq - Factura - Pdte Fidere")]
-        AlquilerFacturaPdteFidere = 502020,
-
-        #endregion
-
-        #region MerlinRetail
-
-        [Description("Alq - Factura - Merlin Retail H1")]
-        AlquilerFacturaMerlinRetailHito1 = 502021,
-        [Description("Alq - Factura - Merlin Retail H2")]
-        AlquilerFacturaMerlinRetailHito2 = 502022,
-        [Description("Ejc - Factura - Merlin Retail H1")]
-        AlquilerFacturaEjcMerlinRetailHito1 = 502023,
-        [Description("Alq - Factura - Pdte Merlin Retail")]
-        AlquilerFacturaPdteMerlinRetail = 502024,
-
-        #endregion
-
-        #region Solvia Hoteles
-
-        [Description("Alq - Factura - Solvia Hoteles H1")]
-        AlquilerFacturaSolviaHotelesHito1,
-        [Description("Alq - Factura - Solvia Hoteles H2")]
-        AlquilerFacturaSolviaHotelesHito2,
-        [Description("Ejc - Factura - Solvia Hoteles H1")]
-        AlquilerFacturaEjcSolviaHotelesHito1,
-        [Description("Alq - Factura - Pdte Solvia Hoteles")]
-        AlquilerFacturaPdteSolviaHoteles,
-
-        #endregion
-
-        #region Azzam / Homes
-
-        [Description("Alq - Factura - Azzam H1")]
-        AlquilerFacturaAzzamHito1,
-        [Description("Alq - Factura - Azzam H2")]
-        AlquilerFacturaAzzamHito2,
-        [Description("Ejc - Factura - Azzam H1")]
-        AlquilerFacturaEjcAzzamHito1,
-
-
-        [Description("Alq - Factura - Homes H1")]
-        AlquilerFacturaHomesHito1,
-        [Description("Alq - Factura - Homes H2")]
-        AlquilerFacturaHomesHito2,
-        [Description("Ejc - Factura - Homes H1")]
-        AlquilerFacturaEjcHomesHito1,
-
-        #endregion
-
-        #region Anticipa
-
-        [Description("Alq - Factura - Anticipa H1")]
-        AlquilerFacturaAnticipaHito1,
-        [Description("Alq - Factura - Anticipa H2")]
-        AlquilerFacturaAnticipaHito2,
-        [Description("Ejc - Factura - Anticipa H1")]
-        AlquilerFacturaEjcAnticipaHito1,
-
-        #endregion
-
-        #region Ahora Asset Management
-
-        [Description("Alq - Factura - Ahora AM H1")]
-        AlquilerFacturaAhoraAssetManagementHito1,
-        [Description("Alq - Factura - Ahora AM H2")]
-        AlquilerFacturaAhoraAssetManagementHito2,
-
-        #endregion
-
-        #endregion
-
-        #endregion
-
-        #region Concursal (ReI, MyC)
-
-        #region Concursal - Indicadores
-
-        #endregion
-
-        #region Concursal - Alarmas
-
-        [Description("MyC - KPI - Hito 1 Pdte. Facturar")]
-        ConcursoAlarmaCumplidoHito01 = 40051,
-
-        [Description("MyC - KPI - Hito 57 Pdte. Facturar")]
-        ConcursoAlarmaCumplidoHito57 = 40052,
-
-        [Description("MyC - KPI - Hito 14 Facturar (18 meses)")]
-        ConcursoAlarmaCumplidoHito14_18 = 40053,
-        [Description("MyC - KPI - Hito 14 Facturar (48 meses)")]
-        ConcursoAlarmaCumplidoHito14_48 = 40054,
-
-        [Description("MyC - KPI - Hito 73 Pdte. Facturar")]
-        ConcursoAlarmaCumplidoHito73 = 40055,
-
-        [Description("MyC - KPI - Hito 74 Pdte. Facturar")]
-        ConcursoAlarmaCumplidoHito74 = 40056,
-
-        [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 01)")]
-        ConcursoAlarmaProcedeFacturacion_01 = 40057,
-        [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 57)")]
-        ConcursoAlarmaProcedeFacturacion_57 = 40058,
-        [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 14: 18 meses)")]
-        ConcursoAlarmaProcedeFacturacion_14_18m = 40059,
-        [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 14: 48 meses)")]
-        ConcursoAlarmaProcedeFacturacion_14_48m = 40060,
-        [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 74)")]
-        ConcursoAlarmaProcedeFacturacion_74 = 40061,
-        [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 78)")]
-        ConcursoAlarmaProcedeFacturacion_78 = 40062,
-        [Description("MyC - KPI - ¿Procede facturación parte fija? (Hito 79)")]
-        ConcursoAlarmaProcedeFacturacion_79 = 40063,
-
-        [Description("MyC - KPI - Facturación Hito 73")]
-        ConcursoAlarmaProcedeFacturacion_73 = 40064,
-        [Description("MyC - KPI - Facturación Hito 52")]
-        ConcursoAlarmaProcedeFacturacion_52 = 40065,
-        [Description("MyC - KPI - Facturación Hito 54")]
-        ConcursoAlarmaProcedeFacturacion_54 = 40066,
-        [Description("MyC - KPI - Facturación Hito 55")]
-        ConcursoAlarmaProcedeFacturacion_55 = 40067,
-        [Description("MyC - KPI - Facturación Hito 56")]
-        ConcursoAlarmaProcedeFacturacion_56 = 40068,
-        [Description("MyC - KPI - Facturación Hito 63")]
-        ConcursoAlarmaProcedeFacturacion_63 = 40069,
-        [Description("MyC - KPI - Facturación Hito 64")]
-        ConcursoAlarmaProcedeFacturacion_64 = 40070,
-
-        #endregion
-
-        #region Concursal - Facturas
-
-        //[Description("MyC - Facturas Pendientes Hito 1")]
-        //JcFacturasPendientesHito1 = 24011,
-        //[Description("MyC - Facturas Sin H1 y con H2")]
-        //JcFacturasPendientesHito1ConHito2 = 24012,
-
-        [Description("MyC - Facturas Pendientes Hito Fin")]
-        MyCFacturasPendientesHito1 = 40001,
-
-        [Description("MyC - Facturas Abanca Hito 52")]
-        MyCFacturasAbanca52 = 404152,
-
-        #endregion
-
-        #endregion
-
-        #region Ejecutivo
-
-        #region Ejecutivo - Indicadores
-
-        [Description("Ejecutivo - Pdte. Preparación Demanda")]
-        EjecutivoPendientePreparacionDemanda = 301,
-        [Description("Ejecutivo - Pdte. Demanda Admitida")]
-        EjecutivoPendienteDemandaAdmitida = 302,
-        [Description("Ejecutivo - Con Oposición")]
-        EjecutivoConOposicion = 303,
-        [Description("Ejecutivo - Expedientes Incidentados")]
-        EjecutivoIncidenciaDocumental = 304,
-        [Description("Ejecutivo - Expedientes Inactivos")]
-        EjecutivoInactivo = 305,
-        //[Description("Hipotecario - Pdte. Demanda Admitida")]
-        //EjecutivoPendienteDemandaAdmitida = 102,
-
-        //[Description("Ejecutivo - Pdte. Notificación")]
-        //EjecutivoPendienteNotificacion = 304,
-        [Description("Ejecutivo - Pdte. Solicitar Subasta")]
-        EjecutivoPendienteSolicitarSubasta = 308,
-        //[Description("Ejecutivo - Pdte. Convocatoria Subasta")]
-        //EjecutivoPendienteConvocatoriaSubasta = 306,
-        //[Description("Ejecutivo - Pdte. Acta de Subasta")]
-        //EjecutivoPendienteActaSubasta = 307,
-        [Description("Ejecutivo - Pdte. Adjudicación")]
-        EjecutivoPendienteAdjudicacion = 331,
-        [Description("Ejecutivo - Pdte. Testimonio Adjudicación")]
-        EjecutivoPendienteTestimonioAdjudicacion = 309,
-        [Description("Ejecutivo - Pdte. Solicitud Posesión")]
-        EjecutivoPendienteSolicitudPosesion = 310,
-        [Description("Ejecutivo - Pdte. Lanzamiento")]
-        EjecutivoPendienteLanzamiento = 311,
-        //[Description("Ejecutivo - Pdte. Negociación Posesión")]
-        //EjecutivoPendienteNegociacionPosesion = 312,
-        [Description("Ejecutivo - Pdte. Requerimiento de Pago")]
-        EjecutivoPendienteRequerimientoPago = 313,
-        //[Description("Ejecutivo - Testimonios Pendiente Inscripción")]
-        //EjecutivoPendienteTestimoniosInscripcion = 314,
-        //[Description("Ejecutivo - Suspensión Decreto")]
-        //EjecutivoPendienteSuspensionDecreto = 315,
-        [Description("Ejecutivo - Subastas Suspendidas")]
-        EjecutivoPendienteSubastasSuspendidas = 316,
-
-        //[Description("Ejecutivo - Ley 1/2013")]
-        //EjecutivoPendienteAdjudicacionLey12013 = 317,
-        //[Description("Ejecutivo - Notificaciones sin Tramitar")]
-        //EjecutivoNotificacionesSinTramitar = 318,
-        [Description("Ejecutivo - Decreto Convocatoria Subasta")]
-        EjecutivoDecretoConvocatoriaSubasta = 319,
-
-        //[Description("Ejecutivo - Incidencias Decretos Ajdudicación")]
-        //EjecutivoIncidenciaDecretoAjdudicacion = 320,
-        //[Description("Ejecutivo - Jurisdicción Voluntaria")]
-        //EjecutivoJurisdiccionVoluntaria = 321,
-        //[Description("Ejecutivo - Autos Pendientes de Subsanación")]
-        //EjecutivoAutosIncompletoErroneo = 322,
-        //[Description("Ejecutivo - Expedientes Inactivos")]
-        //EjecutivoInactivo = 323,
-        //[Description("Ejecutivo - Expedientes Incidentados")]
-        //EjecutivoIncidenciaDocumental = 324,
-        //[Description("Ejecutivo - Expedientes en Revisión No Veniados")]
-        //EjecutivoEnRevisionNoVeniados = 325,
-
-        [Description("Ejecutivo - Prórroga de embargo")]
-        EjecutivoProrrogaEmbargo = 341,
-
-        [Description("Ejecutivo - Pendiente de Avalúo")]
-        EjecutivoPendienteAvaluo = 342,
-
-        #endregion
-
-        #region Ejecutivo - Alarmas
-
-        [Description("Ejecutivo - KPI - Pdte. Recepción de Demanda Sellada")]
-        EjecutivoAlarmaRecepcionDemandaSellada = 351,
-        [Description("Ejecutivo - KPI - Admisión Demanda")]
-        EjecutivoAlarmaAdmisionDemanda = 352,
-
-        //[Description("Ejecutivo - KPI - Pdte. Recepción de Demanda Sellada")]
-        //EjecutivoAlarmaRecepcionDemandaSellada = 354,
-
-        [Description("Ejecutivo - KPI - Requerimiento de Pago")]
-        EjecutivoAlarmaRequerimientoPago = 355,
-        [Description("Ejecutivo - KPI - Averiguación Patrimonial")]
-        EjecutivoAlarmaAveriguacionPatrimonial = 356,
-        [Description("Ejecutivo - KPI - Mejora de Embargo")]
-        EjecutivoAlarmaMejoraEmbargo = 357,
-        [Description("Ejecutivo - KPI - Decreto de Embargo")]
-        EjecutivoAlarmaDecretoEmbargo = 358,
-
-        [Description("Ejecutivo - KPI - Prórroga de embargo")]
-        EjecutivoAlarmaProrrogaEmbargo = 359,
-
-        [Description("Ejc - KPI - Sucesión Copia Sellada")]
-        EjecutivoAlarmaSucesionCopiaSellada = 360,
-
-        #endregion
-
-        #endregion
-
-        #region Negociacion - Indicadores (13)
-
-        [Description("TPA Pendiente Asignar")]
-        NegociacionTpaPendienteAsignar = 1301,
-        [Description("TPA")]
-        NegociacionTpa = 1302,
-
-        TpaFallidas = 1303,
-        PropuestaAceptada = 1304,
-        PropuestaDenegada = 1305,
-        PagoDeuda = 1306,
-        EntregaInmueble = 1307,
-        Inviables = 1308,
-        Ilocalizable = 1309,
-
-        [Description("Alquiler Precontencioso")]
-        NegociacionAlquilerPrecontencioso = 1333,
-        [Description("Alquiler Precontencioso Pendiente Asignar")]
-        NegociacionAlquilerPrecontenciosoPendienteAsignar = 1323,
-
-        [Description("Precontencioso")]
-        NegociacionPrecontencioso = 1331,
-        [Description("Precontencioso Pendiente Asignar")]
-        NegociacionPrecontenciosoPendienteAsignar = 1321,
-
-        [Description("Contencioso")]
-        NegociacionContencioso = 1332,
-        [Description("Contencioso Pendiente Asignar")]
-        NegociacionContenciosoPendienteAsignar = 1322,
-        [Description("Contencioso con F. Testimonio")]
-        NegociacionContenciosoFechaTestimonio = 1338,
-
-        [Description("Precontencioso Finalizado")]
-        NegociacionPrecontenciosoFinalizada = 1334,
-        [Description("Contencioso Finalizado")]
-        NegociacionContenciosoFinalizada = 1335,
-
-        [Description("Alquiler Contencioso")]
-        NegociacionAlquilerContencioso = 1336,
-        [Description("Alquiler Contencioso Pendiente Asignar")]
-        NegociacionAlquilerContenciosoPendienteAsignar = 1337,
-
-        #endregion
-
-        #region Negociacion - Alarmas
-
-        [Description("Negociación - KPI - Expirado Tiempo Negociación de Alquiler")]
-        NegociacionAlarmaExpiradoTiempoNegAlquiler = 1351,
-        [Description("Negociación - KPI - Expirado Tiempo Negociación Precontencioso")]
-        NegociacionAlarmaExpiradoTiempoNegPrecontencioso = 1352,
-
-
-        #endregion
-
-        #region Ordinario
-
-        #region Ordinario - Indicadores
-
-        [Description("Ordinario - Expedientes Inactivos")]
-        OrdinarioInactivo = 1401,
-        [Description("Ordinario - Expedientes Incidentados")]
-        OrdinarioIncidenciaDocumental = 1424,
-        [Description("Ordinario - Pdte. Preparación Demanda")]
-        OrdinarioPendientePreparacionDemanda = 1403,
-        [Description("Ordinario - Pdte. Decreto de Admisión")]
-        OrdinarioPendienteDecretoAdmision = 1404,
-        [Description("Ordinario - Audiencia Previa")]
-        OrdinarioAudienciaPrevia = 1405,
-        [Description("Ordinario - Juicio")]
-        OrdinarioJuicio = 1406,
-        [Description("Ordinario - Sentencia")]
-        OrdinarioSentencia = 1407,
-        [Description("Ordinario - Recursos de Apelación")]
-        OrdinarioRecursoApelacion = 1408,
-        [Description("Ordinario - Casación por Infracción Procesal")]
-        OrdinarioCasacionInfraccionProcesal = 1409,
-        [Description("Ordinario - Ejecución Sentencia")]
-        OrdinarioEjecucionSentencia = 1410,
-        [Description("Ordinario - Pdte. Firmeza Sent. Estimatoria")]
-        OrdinarioPendienteFirmezaSentenciaEstimatoria = 1411,
-
-        #endregion
-
-        #region Ordinario - Alarmas
-
-        [Description("Ord- KPI - Pendiante Demanda")]
-        OrdinarioAlarmaPdteDemanda = 1451,
-        [Description("Ord- KPI - Decreto Admisión")]
-        OrdinarioAlarmaDecretoAdmision = 1452,
-        [Description("Ord- KPI - Emplazamiento Positivo")]
-        OrdinarioAlarmaEmplazamientoPositivo = 1453,
-        [Description("Ord- KPI - Emplazamiento Negativo / Rebeldia")]
-        OrdinarioAlarmaEmplazamientoNegativo = 1454,
-        [Description("Ord- KPI - Audiencia Previa")]
-        OrdinarioAlarmaAudienciaPrevia = 1455,
-        [Description("Ord- KPI - Juicio")]
-        OrdinarioAlarmaJuicio = 1456,
-        [Description("Ord- KPI - Sentencia")]
-        OrdinarioAlarmaSentencia = 1457,
-        [Description("Ord- KPI - Pdte. Sentencia")]
-        OrdinarioAlarmaPdteSentencia = 1458,
-        [Description("Ord- KPI - Pdte. Recepción de Demanda Sellada")]
-        OrdinarioAlarmaRecepcionDemandaSellada = 1459,
-
-
-        [Description("Ord - KPI - Sucesión Copia Sellada")]
-        OrdinarioAlarmaSucesionCopiaSellada = 1460,
-
-
-
-        #endregion
-
-        #region Ordinario - Facturas
-
-        [Description("Ord - Factura - Hito 1 (Caixa)")]
-        OrdinarioFacturasHito1Caixa = 1430101,
-
-        #endregion
-
-        #endregion
-
-        #region OrdinarioCs
-
-        #region OrdinarioCs - Indicadores / Facturas
-
-        [Description("Cláusula Suelo - Facturas Banco Popular Hito 1")]
-        OrdinarioCsFacturasBancoPopularHito1 = 150131,
-        [Description("Cláusula Suelo - Facturas Banco Popular Hito 2")]
-        OrdinarioCsFacturasBancoPopularHito2 = 150132,
-        [Description("Cláusula Suelo - Facturas Hito 2 (Pendiente Finalizar)")]
-        OrdinarioCsFacturasHito2PendienteFinalizar = 150133,
-
-        #endregion
-
-        #region OrdinarioCs - Alarmas
-
-        [Description("Cláusula Suelo - KPI - Vencimiento Allanamiento")]
-        OrdinarioCsAlarmaVencimientoAllanamiento = 1551,
-
-        [Description("Cláusula Suelo - KPI - Pdte. Copia Sellada Allanamiento")]
-        OrdinarioCsAlarmaPendienteCopiaSelladaAllanamiento = 1556,
-        [Description("Cláusula Suelo - KPI - Sentencia")]
-        OrdinarioCsAlarmaSentencia = 1557,
-        [Description("Cláusula Suelo - KPI - Costas No Abonadas")]
-        OrdinarioCsAlarmaSentenciaSinCostasAbonadas = 1558,
-
-
-        [Description("Cláusula Suelo - KPI - Pendiente Finalización")]
-        OrdinarioCsAlarmaPendienteFinalizacion = 1592,
-
-        #endregion
-
-
-        #region JV - Alarmas 
-
-        [Description("JV - KPI - Pendiente Admisión")]
-        JvAlarmaPdteAdmision = 1751,
-        [Description("JV - KPI - Pendiente Notificación")]
-        JvAlarmaPdteNotificacion = 1752,
-        [Description("JV - KPI - Librado Mandamiento")]
-        JvAlarmaPdteLibradoMandamiento = 1753,
-        [Description("JV - KPI - Pdte. Recepción de  Escritura")]
-        JvAlarmaPdteRecepcionEscritura = 1754,
-
-        [Description("JV - KPI - Pdte. Recepción de Demanda Sellada")]
-        JvAlarmaRecepcionDemandaSellada = 1755,
-
-        #endregion
-
-
-        #endregion
-
-        #region TPA
-
-        #region TPA - Indicadores / Facturas
-
-        [Description("TPA - Facturas Pendientes Hito 1")]
-        TpaFacturasPendientesHito1 = 16011,
-        [Description("TPA - Facturas Pendientes Hito 2")]
-        TpaFacturasPendientesHito2 = 16012,
-
-        #endregion
-
-        #region TPA - Alarmas
-
-        //[Description("Cláusula Suelo - KPI - Vencimiento Allanamiento")]
-        //OrdinarioCsAlarmaVencimientoAllanamiento = 1551,
-
-        //[Description("Cláusula Suelo - KPI - Pdte. Copia Sellada Allanamiento")]
-        //OrdinarioCsAlarmaPendienteCopiaSelladaAllanamiento = 1556,
-
-        #endregion
-
-        #endregion
-
-        #region JC
-
-        #region JC - Indicadores / Facturas
-
-        [Description("JC - Facturas Pendientes Hito 1")]
-        JcFacturasPendientesHito1 = 24011,
-        [Description("JC - Facturas Sin H1 y con H2")]
-        JcFacturasPendientesHito1ConHito2 = 24012,
-        [Description("JC - Facturas Pendientes Hito 2")]
-        JcFacturasPendientesHito2 = 24013,
-
-        //[Description("JC - Facturas Pendientes Hito 2")]
-        //JcFacturasPendientesHito2 = 24012,
-
-        #endregion
-
-        #region JC - Alarmas
-
-        //[Description("Cláusula Suelo - KPI - Vencimiento Allanamiento")]
-        //OrdinarioCsAlarmaVencimientoAllanamiento = 1551,
-
-        //[Description("Cláusula Suelo - KPI - Pdte. Copia Sellada Allanamiento")]
-        //OrdinarioCsAlarmaPendienteCopiaSelladaAllanamiento = 1556,
-
-        #endregion
-
-        #endregion
-
-        #region Monitorio Monitorio
-
-        #region Monitorio - Indicadores
-
-        [Description("MN - Pdte. Exp. Verbal")]
-        MonitorioPdteExpVerbal = 20001,
-        [Description("MN - Pdte. Exp. Ordinario")]
-        MonitorioPdteExpOrdinario = 20002,
-        [Description("MN - Pdte. Exp. Ejecutivo")]
-        MonitorioPdteExpEjecutivo = 20003,
-
-        #endregion
-
-        #region Monitorio - Alarmas
-
-        [Description("MN - KPI - Pdte. Recepción de Demanda Sellada")]
-        MonitorioAlarmaRecepcionDemandaSellada = 20051,
-
-        [Description("MN - KPI - Sucesión Copia Sellada")]
-        MonitorioAlarmaSucesionCopiaSellada = 20052,
-
-        #endregion
-
-        #region Monitorio - Facturas
-
-        [Description("MN - Factura - H1")]
-        MonitorioFacturaHito1 = 200101,
-
-        #endregion
-
-        #endregion
-
-        #region Real Estate
-
-        [Description("Real Estate - Residencial")]
-        RealEstateResidencial = 8801,
-        [Description("Real Estate - Terciarios")]
-        RealEstateTerciarios = 8802,
-        [Description("Real Estate - Dotacional")]
-        RealEstateDotacional = 8803,
-        [Description("Real Estate - Suelos")]
-        RealEstateSuelos = 8804,
-        [Description("Real Estate - NPLs")]
-        RealEstateNpls = 8805,
-        [Description("Real Estate - REOS")]
-        RealEstateReos = 8806,
-        [Description("Real Estate - Concursos")]
-        RealEstateConcursos = 8807,
-
-        #endregion
-
-        #region Conciliacion
-
-        #region Conciliacion - Facturas
-
-        [Description("Ccl - Factura - Hito 1")]
-        ConciliacionFacturasHito1 = 23301,
-
-        [Description("Ccl - Factura - Hito 1 (Caixa)")]
-        ConciliacionFacturasHito1Caixa = 2330101,
-
-        #endregion
-
-        #endregion
-
-        #region MultiDivisa
-
-        #region MultiDivisa - Indicadores
-
-        [Description("MultiDivisa - Pendiente Contacto")]
-        MultiDivisaPendienteContacto = 29101,
-        [Description("MultiDivisa - Contacto en Negociación")]
-        MultiDivisaContactoEnNegociacion = 29102,
-        [Description("MultiDivisa - Contacto con Acuerdo")]
-        MultiDivisaContactoConAcuerdo = 29103,
-
-
-        [Description("MultiDivisa - Finalizado con éxito")]
-        MultiDivisaFinalizadoConExito = 29104,
-        [Description("MultiDivisa - Finalizado Localizado sin acuerdo")]
-        MultiDivisaFinalizadoLocalizado = 29105,
-        [Description("MultiDivisa - Finalizado No localizado")]
-        MultiDivisaFinalizadoNoLocalizado = 29106,
-        [Description("MultiDivisa - Finalizado Excluidos")]
-        MultiDivisaFinalizadoExcluido = 29107,
-
-        #endregion
-
-
-        #region MultiDivisa - Facturas
-
-        //[Description("Ccl - Factura - Hito 1")]
-        //MultiDivisaFacturasHito1 = 29301,
-
-        //[Description("Ccl - Factura - Hito 1 (Caixa)")]
-        //MultiDivisaFacturasHito1Caixa = 2930101,
-
-        #endregion
-
-        #endregion
-
-        #region Procura
-
-        #region Procura - Indicadores
-
-        //[Description("Procura - Pendiente Contacto")]
-        //ProcuraPendienteContacto = 30101,
-        //[Description("Procura - Contacto en Negociación")]
-        //ProcuraContactoEnNegociacion = 30102,
-        //[Description("Procura - Contacto con Acuerdo")]
-        //ProcuraContactoConAcuerdo = 30103,
-
-
-        //[Description("Procura - Finalizado con éxito")]
-        //ProcuraFinalizadoConExito = 30104,
-        //[Description("Procura - Finalizado Localizado sin acuerdo")]
-        //ProcuraFinalizadoLocalizado = 30105,
-        //[Description("Procura - Finalizado No localizado")]
-        //ProcuraFinalizadoNoLocalizado = 30106,
-        //[Description("Procura - Finalizado Excluidos")]
-        //ProcuraFinalizadoExcluido = 30107,
-
-        #endregion
-
-        #region Procura - Facturas
-
-        [Description("PRC - Factura - Hito 1")]
-        ProcuraFacturasHito1 = 30301,
-
-        //[Description("Ccl - Factura - Hito 1 (Caixa)")]
-        //ProcuraFacturasHito1Caixa = 3030101,
-
-        #endregion
-
-        #endregion
-
-        #region Generico o Persona
-
-        [Description("Exp. Activos")]
-        ExpedientesActivos,
-        [Description("Alarmas")]
-        AlarmasActivos,
-
-        [Description("Facturas")]
-        FacturasActivos,
-        [Description("Vistas")]
-        VistasActivos,
-        [Description("Vencimientos")]
-        VencimientosActivos,
-        [Description("Notificaciones")]
-        TotalNotificacionesActivos,
-
-
-        #endregion
-    }
 
     public enum HitoFacturacionValue
     {

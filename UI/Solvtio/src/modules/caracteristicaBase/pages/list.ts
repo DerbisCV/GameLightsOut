@@ -16,6 +16,7 @@ import { CaracteristicaBase } from '../../../models/CaracteristicaBase.model';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { DialogService } from 'src/services/dialog/dialog.service';
 import { NotificationsService } from 'src/services/notifications.service';
+import { ActivatedRoute } from '@angular/router';
 
 // import { DataTable } from 'simple-datatables';
 
@@ -30,7 +31,8 @@ export class CaracteristicaBaseListComponent implements OnInit {
   @ViewChild('actionTpl') actionTpl!: TemplateRef<any>;
   @ViewChild('tplFechaAlta') tplFechaAlta!: TemplateRef<any>;
 
-  caracteristicaBaseSearch!: CaracteristicaBaseSearch;
+  caracteristicaBaseSearch: CaracteristicaBaseSearch =
+    new CaracteristicaBaseSearch();
   configuration = { ...DefaultConfig };
   public columns = [
     { key: 'nombre', title: 'Nombre' },
@@ -47,12 +49,14 @@ export class CaracteristicaBaseListComponent implements OnInit {
     },
   ];
 
+  grupo: string = '';
   public data: CaracteristicaBase[] = [];
 
   constructor(
     private api: ApiService,
     private dialogService: DialogService,
     private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
     private notificationsService: NotificationsService
   ) {
     //this.configTableColumns();
@@ -69,10 +73,22 @@ export class CaracteristicaBaseListComponent implements OnInit {
   }
 
   async getAllCaracteristicasBase() {
-    this.caracteristicaBaseSearch = await this.api.srvApiCaracteristicaBase.get(
-      new CaracteristicaBaseSearch()
-    );
+    this.grupo = this.route.snapshot.params['id'];
+
+    console.clear();
+    console.log(this.grupo);
+
+    if (this.grupo) {
+      this.caracteristicaBaseSearch.result =
+        await this.api.srvApiCaracteristicaBase.getByGrup(this.grupo);
+    } else {
+      this.caracteristicaBaseSearch =
+        await this.api.srvApiCaracteristicaBase.get(
+          new CaracteristicaBaseSearch()
+        );
+    }
     this.data = this.caracteristicaBaseSearch.result;
+
     this.configTableColumns();
     this.cdr.detectChanges();
   }

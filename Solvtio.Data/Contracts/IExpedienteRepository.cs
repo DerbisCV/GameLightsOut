@@ -20,6 +20,8 @@ namespace Solvtio.Data.Contracts
         Task<List<ExpedienteNotaDto>> GetNotas(int idExpediente);
         Task<List<ExpedienteDeudorDto>> GetDeudores(int idExpediente);
 
-        
+        Task<ModelDashboardAlarmas> GetModelDashboardAlarmas(FilterBase filter, bool quitarLosResultadosConGestionReciente = false);
+
+        Task<ExpedienteHipDto> GetExpedienteByTypeHip(int idExpediente);
     }
 }

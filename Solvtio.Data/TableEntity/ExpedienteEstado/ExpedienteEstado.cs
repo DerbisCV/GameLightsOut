@@ -1,3 +1,4 @@
+using Solvtio.Data.Models.Dtos;
 using Solvtio.Models.Model;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,19 @@ namespace Solvtio.Models
             IdTipoEstado = (int)tipoExpEstado;
             Usuario = usuario;
 
+            CreateEntityByType(tipoExpEstado);
+        }
+
+        public ExpedienteEstado(ExpedienteEstadoDto model) : this()
+        {
+            IdTipoEstado = model.IdTipoEstado;
+            IdExpediente = model.IdExpediente;
+            Fecha = model.Fecha;            
+            Observacion = model.Observacion;
+            Usuario = model.Usuario;
+            //TODO: ....
+
+            var tipoExpEstado = (ExpedienteEstadoTipo)(model.IdTipoEstado);
             CreateEntityByType(tipoExpEstado);
         }
 
@@ -589,6 +603,8 @@ namespace Solvtio.Models
             }
         }
 
+
+
         public string FaseEstadoGetDescription()
         {
             if (!IdTipoSubFaseEstado.HasValue) return string.Empty;
@@ -1072,6 +1088,7 @@ namespace Solvtio.Models
             null;
 
         private TipoExpedienteEnum? _tipoExpediente;
+
         //[NotMapped]
         public TipoExpedienteEnum TipoExpedienteEnum
         {
@@ -1095,35 +1112,63 @@ namespace Solvtio.Models
 
         #region Methods
 
-        internal void RefreshBy(ExpedienteEstado model)
+        internal void RefreshBy(ExpedienteEstadoDto model)
         {
             if (IdTipoSubFaseEstado != model.IdTipoSubFaseEstado)
                 AddLogEstadoSubfase(model);
 
-            //2020 04 16
-            if (IdTipoSubFaseEstado != model.IdTipoSubFaseEstado)
-            {
-                if (ExpedienteEstadoAbogadoHistoricoSet == null) ExpedienteEstadoAbogadoHistoricoSet = new List<ExpedienteEstadoAbogadoHistorico>();
-                ExpedienteEstadoAbogadoHistoricoSet.Add(new ExpedienteEstadoAbogadoHistorico(this, model.IdTipoSubFaseEstado, model.Usuario));
-            }
-
             #region Actualizar Datos
 
             Fecha = model.Fecha;
-            if (!string.IsNullOrWhiteSpace(model.Nota))
-                Observacion = model.Nota;
+            if (!string.IsNullOrWhiteSpace(model.Observacion))
+                Observacion = model.Observacion;
 
             IdTipoSubFaseCliente = model.IdTipoSubFaseCliente;
             IdTipoSubFaseEstado = model.IdTipoSubFaseEstado;
             IdTipoIncidenciaEstado = model.IdTipoIncidenciaEstado;
             IncidenciaFechaResolucion = model.IncidenciaFechaResolucion;
-            Nota = model.Nota;
-            NotaUsuario = model.NotaUsuario;
-            DateTimeInitWork = model.DateTimeInitWork;
+            //Observacion = model.Observacion;
+            //NotaUsuario = model.NotaUsuario;
+            //DateTimeInitWork = model.DateTimeInitWork;
             if (!string.IsNullOrWhiteSpace(model.Usuario) && string.IsNullOrWhiteSpace(Usuario))
                 Usuario = model.Usuario;
 
             FechaModificado = DateTime.Now;
+
+            #endregion
+
+
+        }
+
+        internal void RefreshBy(ExpedienteEstado model)
+        {
+            //if (IdTipoSubFaseEstado != model.IdTipoSubFaseEstado)
+            //    AddLogEstadoSubfase(model);
+
+            ////2020 04 16
+            //if (IdTipoSubFaseEstado != model.IdTipoSubFaseEstado)
+            //{
+            //    if (ExpedienteEstadoAbogadoHistoricoSet == null) ExpedienteEstadoAbogadoHistoricoSet = new List<ExpedienteEstadoAbogadoHistorico>();
+            //    ExpedienteEstadoAbogadoHistoricoSet.Add(new ExpedienteEstadoAbogadoHistorico(this, model.IdTipoSubFaseEstado, model.Usuario));
+            //}
+
+            #region Actualizar Datos
+
+            //Fecha = model.Fecha;
+            //if (!string.IsNullOrWhiteSpace(model.Nota))
+            //    Observacion = model.Nota;
+
+            //IdTipoSubFaseCliente = model.IdTipoSubFaseCliente;
+            //IdTipoSubFaseEstado = model.IdTipoSubFaseEstado;
+            //IdTipoIncidenciaEstado = model.IdTipoIncidenciaEstado;
+            //IncidenciaFechaResolucion = model.IncidenciaFechaResolucion;
+            //Nota = model.Nota;
+            //NotaUsuario = model.NotaUsuario;
+            //DateTimeInitWork = model.DateTimeInitWork;
+            //if (!string.IsNullOrWhiteSpace(model.Usuario) && string.IsNullOrWhiteSpace(Usuario))
+            //    Usuario = model.Usuario;
+
+            //FechaModificado = DateTime.Now;
 
             #endregion
 
@@ -1184,7 +1229,7 @@ namespace Solvtio.Models
             #endregion
         }
 
-        private void AddLogEstadoSubfase(ExpedienteEstado model)
+        private void AddLogEstadoSubfase(ExpedienteEstadoDto model)
         {
             var logEstadoSubfase = new LogEstadoSubfase(ExpedienteEstadoId, model);
 

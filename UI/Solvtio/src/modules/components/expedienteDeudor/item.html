@@ -6,75 +6,129 @@
                 <h5 class="card-title">{{ title }}</h5>
             </div>
             <div class="card-body">
-                <div class="row g-3000 align-items-center mb-3000">
-                    <div class="col-auto col-3">
-                        <label for="fecha" class="form-label">Fecha:</label>
-                        <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="fecha" />
-                    </div>
-                    <div class="col-auto col-9">
-                        <label for="noteType" class="form-label">Tipo:</label>
-                        <select formControlName="noteType" class="form-select form-select-sm00" aria-label=".form-select-sm example">
+                <div class="row align-items-center">
+                    <div class="col-auto col-12">
+                        <label for="idTipoDeudor" class="form-label">Tipo:</label>
+                        <select formControlName="idTipoDeudor" class="form-select form-select-sm00" aria-label=".form-select-sm example">
                             <option [ngValue]="null" disabled>Seleccione un elemento</option>
                             <option *ngFor="let item of tipos" [ngValue]="item.id">
                                 {{item.nombre}}</option>
                         </select>
                     </div>
                     <div class="col-auto col-12 mt-3">
-                        <label for="deudor" class="form-label">Deudor:</label>
-                        <textarea type="text" class="form-control" placeholder="escriba la deudor..." formControlName="deudor" rows="5"></textarea>
+                        <label for="domicilioNotificacion" class="form-label">Domicilio a efectos de
+                            comunicación:</label>
+                        <textarea type="text" class="form-control" placeholder="escriba la dirección..." formControlName="domicilioNotificacion" rows="3"></textarea>
+                    </div>
+                    <div class="col-auto col-3">
+                        <label for="codigoPostal" class="form-label">Cod.Postal:</label>
+                        <input type="text" class="form-control" placeholder="CP..." formControlName="codigoPostal" />
+                    </div>
+                    <div class="col-auto col-4">
+                        <label for="idProvincia" class="form-label">Provincia:</label>
+                        <select formControlName="idProvincia" (change)="onChangeProvincia(idProvincia)" class="form-select form-select-sm00" aria-label=".form-select-sm example">
+                            <option [ngValue]="null" disabled>Seleccione un elemento</option>
+                            <option *ngFor="let item of provincias" [ngValue]="item.id">
+                                {{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-auto col-5">
+                        <label for="idMunicipio" class="form-label">Municipio:</label>
+                        <select formControlName="idMunicipio" class="form-select form-select-sm00" aria-label=".form-select-sm example">
+                            <option [ngValue]="null" disabled>Seleccione un elemento</option>
+                            <option *ngFor="let item of municipios" [ngValue]="item.id">
+                                {{item.nombre}}</option>
+                        </select>
                     </div>
                 </div>
+
+                <div class="d-flex align-items-center justify-content-between flex-wrap px-3 py-2 border-bottom mt-4 pb-0">
+                    <div class="d-flex align-items-center">
+                        <div _ngcontent-gef-c245="" class="d-flex align-items-center">
+                            <h6>Datos de la persona</h6>
+                        </div>
+                    </div>
+                    <div _ngcontent-gef-c245="" class="tx-13 text-muted mt-2 mt-sm-0">*</div>
+                </div>
+                <div class="row align-items-center" *ngIf="deudor.persona.idPersona > 0">
+                    <div class="col-auto col-2">
+                        <label class="form-label">No Doc.:</label>
+                        <input type="text" class="form-control" value="{{ deudor.persona.noDocumento }}" readonly />
+                    </div>
+                    <div class="col-auto col-8">
+                        <label class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" value="{{ deudor.persona.nombreApellidos }}" readonly />
+                    </div>
+                    <div class="col-auto col-2">
+                        <label class="form-label">Telef.:</label>
+                        <input type="text" class="form-control" value="{{ deudor.persona.telefonosTodos }}" readonly />
+                    </div>
+                </div>
+                <div class="row align-items-center" *ngIf="deudor.persona.idPersona <= 0">
+                    <div class="col-auto col-6">
+                        <label class="form-label">No Documento:</label>
+                        <input type="text" class="form-control" formControlName="personaNoDocumento" />
+                    </div>
+                    <div class="col-auto col-6">
+                        <label class="form-label">Tipo Documento:</label>
+                        <input type="text" class="form-control" formControlName="personaIdTipoIdentidad" />
+                    </div>
+                    <div class="col-auto col-6">
+                        <label class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" formControlName="personaNombre" />
+                    </div>
+                    <div class="col-auto col-6">
+                        <label class="form-label">Apellidos:</label>
+                        <input type="text" class="form-control" formControlName="personaApellidos" />
+                    </div>
+                    <div class="col-auto col-7">
+                        <label class="form-label">Email:</label>
+                        <input type="text" class="form-control" formControlName="personaEmail" />
+                    </div>
+                    <div class="col-auto col-5">
+                        <label class="form-label">Telf.:</label>
+                        <input type="text" class="form-control" formControlName="personaTelefono" />
+                    </div>
+                </div>
+
+
+                <div class="d-flex align-items-center justify-content-between flex-wrap px-3 py-2 border-bottom mt-4 pb-0">
+                    <div class="d-flex align-items-center">
+                        <div _ngcontent-gef-c245="" class="d-flex align-items-center">
+                            <h6>Datos del abogado y despacho</h6>
+                        </div>
+                    </div>
+                    <div _ngcontent-gef-c245="" class="tx-13 text-muted mt-2 mt-sm-0">*</div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-auto col-6">
+                        <label class="form-label">Abogado:</label>
+                        <input type="text" class="form-control" formControlName="abogadoNombre" />
+                    </div>
+                    <div class="col-auto col-6">
+                        <label class="form-label">Despacho:</label>
+                        <input type="text" class="form-control" formControlName="abogadoDespacho" />
+                    </div>
+                    <div class="col-auto col-5">
+                        <label class="form-label">Teléfono:</label>
+                        <input type="text" class="form-control" formControlName="abogadoTelefono" />
+                    </div>
+                    <div class="col-auto col-7">
+                        <label class="form-label">Email:</label>
+                        <input type="text" class="form-control" formControlName="abogadoEmail" />
+                    </div>
+                    <div class="col-auto col-12">
+                        <label for="abogadoDireccion" class="form-label">Dirección:</label>
+                        <textarea type="text" class="form-control" placeholder="escriba la dirección..." formControlName="abogadoDireccion" rows="3"></textarea>
+                    </div>
+                </div>
+                <!--                 <pre>{{ deudor | json }}</pre> -->
+
             </div>
             <div class="card-footer text-muted d-md-flex justify-content-md-end">
                 <!-- <a class="btn btn-outline-secondary px-4" href="caracteristicabase" style="margin-right: 8px;">Cancelar</a> -->
                 <button type="submit" class="btn btn-outline-success px-4">Guardar</button>
             </div>
         </div>
-
-        <section class="panel">
-            @Html.DcvHeader("Datos Generales") @*
-            <header class="panel-heading">Expediente Deudor</header>*@
-            <div class="panel-body">
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <label class="control-label">Tipo:</label> @Html.DcvSelectBootstrapTipoDeudor(Model.IdTipoDeudor)
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.DcvFormGroupItemTextAreaFor("col-sm-12", "Domicilio a efectos de comunicación:", Model.DomicilioNotificacion, "DomicilioNotificacion", 4, "Escriba aquí la dirección...")
-                </div>
-                <div class="form-group">
-                    @Html.DcvFormGroupItemTextEditFor("col-sm-3", "Código Postal:", Model.CodigoPostal, "CodigoPostal") @Html.DcvFormGroupItemBaseBaseFor("col-sm-4", "Provincia:", Html.DcvSelectBootstrapProvincia(Model.IdProvincia)) @Html.DcvFormGroupItemBaseBaseFor("col-sm-5",
-                    "Municipio:", Html.DcvSelectBootstrapMunicipio(Model.IdMunicipio, Model.IdProvincia))
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-12 text-right ">
-                        <button id="btnSave" class="btn btn-danger" type="submit">Guardar</button>
-                        <a class="btn btn-default" href="@Url.Action(MVC.Expedientes.Edit(Model.IdExpediente))">Cancelar</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </form>
-
-    <!-- <hr>
-        <pre>
-        Estado del formulario: {{ formData.valid }}
-        <br>
-        Status:{{ formData.status }}
-        </pre>
-        <pre>
-            {{formData.value | json}}
-        </pre> 
- <div cdkDrag cdkDragRootElement=".modal-content">
-    <div class="modal-body">
-        <pre>{{caracteristicaBase | json}}</pre>
-    </div>
-</div>    
-    -->
-
-
-
-
 </ng-container>

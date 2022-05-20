@@ -43,12 +43,21 @@ namespace Solvtio.Models
         {
             IdExpediente = model.IdExpediente;
             IdTipoDeudor = model.IdTipoDeudor;
-            //Deudor = model.Deudor;
-            //NoteType = model.NoteType;
-            //Usuario = model.Usuario;
+            DomicilioNotificacion = model.DomicilioNotificacion;
+            CodigoPostal = model.CodigoPostal;
+            IdProvincia = model.IdProvincia;
+            IdMunicipio = model.IdMunicipio;
 
-            //if (model.IdExpedienteDeudor > 0) IdExpedienteDeudor = model.IdExpedienteDeudor;
-            //if (model.IdExpedienteEstado > 0) IdExpedienteEstado = model.IdExpedienteEstado;
+            CodigoPostal = model.CodigoPostal;
+            AbogadoNombre = model.AbogadoNombre;
+            AbogadoDespacho = model.AbogadoDespacho;
+            AbogadoTelefono = model.AbogadoTelefono;
+            AbogadoDireccion = model.AbogadoDireccion;
+            AbogadoEmail = model.AbogadoEmail;
+            //public PersonaDto Persona { get; set; } //TelefonosTodos EmailsTodos
+
+            if (model.IdExpedienteDeudor > 0) IdExpedienteDeudor = model.IdExpedienteDeudor;
+            if (model.Persona.IdPersona > 0) IdPersona = model.Persona.IdPersona;
         }
 
         #endregion

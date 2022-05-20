@@ -28,3 +28,25 @@ export class PersonaDto {
     if (!!item) Object.assign(this, item);
   }
 }
+
+export class PaginationPage {
+  noPage: number = 0;
+  isEnabled: boolean = true;
+
+  constructor(item?: Partial<PaginationPage>) {
+    if (!!item) Object.assign(this, item);
+  }
+}
+
+export class KpiInfo {
+  id: number = 0;
+  count: number = 0;
+  name: string = '';
+  description: string = '';
+  descriptionLarge: string = '';
+  tipoIndicador: number = 0;
+
+  constructor(item?: Partial<KpiInfo>) {
+    if (!!item) Object.assign(this, item);
+  }
+}

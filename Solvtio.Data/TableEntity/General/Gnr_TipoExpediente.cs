@@ -45,7 +45,8 @@ namespace Solvtio.Models
         public bool Activo { get; set; }
 
         public int Id => IdTipoExpediente;
-
+        public string Nombre => Descripcion;
+        
         #endregion
 
         #region Properties Virtual

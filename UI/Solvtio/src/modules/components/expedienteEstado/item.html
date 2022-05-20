@@ -1,0 +1,34 @@
+<!-- <div class="px-4"></div> -->
+<ng-container *ngIf="formData">
+    <form (ngSubmit)="saveData()" [formGroup]="formData">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">{{ title }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto col-4">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                        <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="fecha" />
+                    </div>
+                    <div class="col-auto col-8">
+                        <label for="idTipoEstado" class="form-label">Tipo:</label>
+                        <select formControlName="idTipoEstado" class="form-select form-select-sm00" aria-label=".form-select-sm example">
+                            <!-- <option [ngValue]="null" disabled>Seleccione un elemento</option> -->
+                            <option *ngFor="let item of tipos" [ngValue]="item.id">
+                                {{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-auto col-12 mt-3">
+                        <label for="observacion" class="form-label">Observaciones:</label>
+                        <textarea type="text" class="form-control" placeholder="escriba las notas y observaciones..." formControlName="observacion" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted d-md-flex justify-content-md-end">
+                <!-- <a class="btn btn-outline-secondary px-4" href="caracteristicabase" style="margin-right: 8px;">Cancelar</a> -->
+                <button type="submit" class="btn btn-outline-success px-4">Guardar</button>
+            </div>
+        </div>
+    </form>
+</ng-container>

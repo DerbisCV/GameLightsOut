@@ -1,4 +1,12 @@
-<div class="px-4">
+<div class="container-fluid" style="padding-top: 37px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="caracteristicabase">Caracteristicas Bases</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ficha</li>
+        </ol>
+    </nav>
+
     <ng-container *ngIf="formData">
         <form (ngSubmit)="saveData()" [formGroup]="formData">
             <div class="card">
@@ -54,4 +62,5 @@
 
 
     </ng-container>
+
 </div>

@@ -46,6 +46,7 @@ export class ExpedienteItemComponent implements OnInit {
   pagadores = new Array<ModelDtoNombre>();
   hitosFacturacion = new Array<ModelDtoNombre>();
   subTipoProcedimiento = new Array<ModelDtoNombre>();
+  tipoArea = new Array<ModelDtoNombre>();
 
   datePickerConfig = {
     dateInputFormat: 'DD.MM.yyyy',
@@ -74,7 +75,6 @@ export class ExpedienteItemComponent implements OnInit {
   }
 
   async ngOnInit() {
-    console.log('ngOnInit form');
     this.idExpediente = this.route.snapshot.params['id'];
   }
 
@@ -97,9 +97,8 @@ export class ExpedienteItemComponent implements OnInit {
     // this.expediente.inicio = this.datePipe.transform(this.expediente.inicio, 'dd-MM-yyyy');
     this.formData = this.fb.group(controlsConfig);
 
-    console.log(this.expediente);
-    console.log(controlsConfig);
-    console.log(this.formData);
+    // console.log(this.expediente);
+    // console.log(this.formData);
   }
 
   async getDataAux() {
@@ -125,6 +124,7 @@ export class ExpedienteItemComponent implements OnInit {
         'Exp-Subtipo-Procedimiento',
         true
       );
+    this.tipoArea = await this.api.nom.tipoAreaGetAll();
   }
 
   async getDataChild() {

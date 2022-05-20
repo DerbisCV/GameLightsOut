@@ -22,7 +22,8 @@
                             <th class="v-align text-left">Abogado / Tel.</th>
                             <th class="v-align text-center">Provincia</th>
                             <th class="v-align text-right text-end">
-                                <span class="label label-primary pull-right">{{ deudores.length }}</span>
+                                <!-- <span class="label label-primary pull-right">{{ deudores.length }}</span> -->
+                                <span class="badge rounded-pill bg-secondary">{{ deudores.length }}</span>
                             </th>
                         </tr>
                     </thead>
@@ -45,11 +46,17 @@
                             <td class="v-align text-center">{{ item.provincia?.nombre }}</td>
                             <td class="v-align">
                                 <div class="pull-right hidden-phone">
-                                    <button (click)="false" class="btn btn-primary btn-xs" title="Editar registro"><i
+                                    <button type="button" (click)="openModalItemEdit(template, item.idExpedienteDeudor)" class="btn btn-primary btn-xs" title="Editar registro"><i
+                                            class="fa-regular fa-pen-to-square"></i></button>
+                                    <button type="button" (click)="remove(item.idExpedienteDeudor)" class="btn btn-danger btn-xs ms-1" title="Eliminar registro">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button>
+
+                                    <!-- <button (click)="false" class="btn btn-primary btn-xs" title="Editar registro"><i
                                             class="fa-regular fa-pen-to-square"></i></button>
                                     <button (click)="remove(item.idExpedienteDeudor)" class="btn btn-danger btn-xs ms-1" title="Eliminar registro">
                                         <i class="fa-regular fa-trash-can"></i>
-                                    </button>
+                                    </button> -->
                                     <!-- <a href="@Url.Action(MVC.Expedientes.ExpedienteDeudorEdit(item.IdExpedienteDeudor))" target="_blank" class="btn btn-primary btn-xs" title="Editar registro"><i
                                             class="icon-pencil"></i></a>
                                     <a href="@Url.Action(MVC.Expedientes.ExpedienteDeudorDelete(item.IdExpedienteDeudor, item.IdExpediente))" class="btn btn-danger btn-xs"><i class="icon-trash"
@@ -61,8 +68,8 @@
 
                     </tbody>
                 </table>
+                <!-- <pre>{{ deudores | json }}</pre> -->
 
-                <pre>{{ deudores | json }}</pre>
             </div>
         </div>
     </div>

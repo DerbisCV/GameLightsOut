@@ -3,35 +3,39 @@
     public class ExpedienteDeudorDto
     {
         public int IdExpedienteDeudor { get; set; }
-        
-        public int IdTipoDeudor { get; set; }       
+        public int IdExpediente { get; set; }
+        public int IdTipoDeudor { get; set; }
         public DtoIdNombre Gnr_TipoDeudor { get; set; }
 
+        public int? IdProvincia { get; set; }
         public DtoIdNombre Provincia { get; set; }
+        public int? IdMunicipio { get; set; }
+
         public PersonaDto Persona { get; set; } //TelefonosTodos EmailsTodos
-        public int IdExpediente { get; set; }
+
         public string DomicilioNotificacion { get; set; }
+        public string CodigoPostal { get; set; }
         public string AbogadoNombre { get; set; }
         public string AbogadoDespacho { get; set; }
         public string AbogadoTelefono { get; set; }
+        public string AbogadoEmail { get; set; }
+        public string AbogadoDireccion { get; set; }
+
 
         //public int IdPersona { get; set; }
         //public int IdTipoDeudor { get; set; }
         //public virtual Expediente Expediente { get; set; }
         //public virtual Gnr_Persona Gnr_Persona { get; set; }
-        //public string AbogadoEmail { get; set; }
-        //public string AbogadoDireccion { get; set; }
 
-        #region Properties New
 
-        //public int? IdProvincia { get; set; }
+
         //[ForeignKey("IdProvincia")]
 
-        //public int? IdMunicipio { get; set; }
+
         //[ForeignKey("IdMunicipio")]
         //public virtual Municipio Municipio { get; set; }
 
-        //public string CodigoPostal { get; set; }
+
 
         //public int? IdExpedienteContrato { get; set; }
         //[ForeignKey("IdExpedienteContrato")]
@@ -46,6 +50,16 @@
         //public virtual CaracteristicaBase TipoResponsabilidad { get; set; }
 
         //public string Observaciones { get; set; }
+
+        public string personaNoDocumento { get; set; }
+        public string personaNombre { get; set; }
+        public string personaApellidos { get; set; }
+        public string personaTelefono { get; set; }
+        public string personaEmail { get; set; }
+        public int? personaIdTipoIdentidad { get; set; }
+
+        #region Methods
+
 
         #endregion
     }

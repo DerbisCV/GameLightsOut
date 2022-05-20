@@ -1,6 +1,7 @@
 import {
   CaracteristicaBase,
   CaracteristicaBaseSearch,
+  DtoIdNombre,
   ModelDtoNombre,
 } from 'src/models';
 import { ApiService } from '../api.service';
@@ -9,6 +10,13 @@ export class NomencladorApiService {
   constructor(private api: ApiService) {}
   // private path = 'api/Nomenclador';
   private pathApi = this.api.environment.apiUrl + 'Nomenclador';
+
+  public async tipoExpedienteGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(`${this.pathApi}/TipoExpedienteGetAll`);
+  }
+  public async tipoAreaGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(`${this.pathApi}/TipoAreaGetAll`);
+  }
 
   public async clienteOficinaGetAll(): Promise<ModelDtoNombre[]> {
     return await this.api.get(`${this.pathApi}/ClienteOficinaGetAll`);
@@ -31,6 +39,43 @@ export class NomencladorApiService {
   }
   public async tipoNotaGetAll(): Promise<ModelDtoNombre[]> {
     return await this.api.get(`${this.pathApi}/TipoNotaGetAll`); //http://localhost:40274/api/Nomenclador/TipoNotaGetAll
+  }
+  public async tipoDeudorGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(`${this.pathApi}/TipoDeudorGetAll`); //http://localhost:40274/api/Nomenclador/TipoNotaGetAll
+  }
+  public async provinciasGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(`${this.pathApi}/ProvinciaGetAll`); //http://localhost:40274/api/Nomenclador/TipoNotaGetAll
+  }
+  public async municipiosByProvincia(
+    idProvincia: number
+  ): Promise<ModelDtoNombre[]> {
+    return await this.api.get(
+      `${this.pathApi}/MunicipiosByProvincia?idProvincia=${idProvincia}`
+    );
+  }
+
+  public async getTipoSubFaseByEstado(
+    estadoTipo: number
+  ): Promise<DtoIdNombre[]> {
+    return await this.api.get(
+      `${this.pathApi}/GetTipoSubFaseByEstado?estadoTipo=${estadoTipo}`
+    );
+  }
+
+  public async getTipoIncidenciaByEstado(
+    estadoTipo: number
+  ): Promise<DtoIdNombre[]> {
+    return await this.api.get(
+      `${this.pathApi}/GetTipoIncidenciaByEstado?estadoTipo=${estadoTipo}`
+    );
+  }
+
+  public async tipoEstadoGetAllByExpediente(
+    idExpediente: number
+  ): Promise<ModelDtoNombre[]> {
+    return await this.api.get(
+      `${this.pathApi}/TipoEstadoGetAllByExpediente?idExpediente=${idExpediente}`
+    );
   }
 
   public async getCaracteristicaBaseByGrupo(

@@ -1,5 +1,9 @@
-﻿using Solvtio.Data.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using Solvtio.Data.Contracts;
 using Solvtio.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Solvtio.Data.Implementations
 {
@@ -10,6 +14,16 @@ namespace Solvtio.Data.Implementations
         public CaracteristicaBaseRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext)
         {
             //_context = solvtioDbContext;
+        }
+
+        public async Task<List<CaracteristicaBase>> GetByGrup(string grupo, bool soloActivos)
+        {
+            var query = _context.CaracteristicaBaseSet
+                .Where(x => x.Grupo == grupo);
+            if (soloActivos)
+                query = query.Where(x => x.Activo);
+
+            return await query.ToListAsync();
         }
 
         //public void Add(CaracteristicaBase entity)

@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../modules/expedientes/module').then((m) => m.ExpedienteModule),
   },
+  {
+    path: 'dashboard/:id',
+    loadChildren: () =>
+      import('../modules/dashboards/module').then((m) => m.DashboardModule),
+  },
 ];
 
 @NgModule({

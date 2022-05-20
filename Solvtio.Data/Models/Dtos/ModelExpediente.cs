@@ -1,10 +1,12 @@
 ﻿using Solvtio.Common;
 using Solvtio.Data.Models.Dtos;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
-    public class ModelExpedienteEdit : ModelExpediente 
+    public class ModelExpedienteEdit : ModelExpediente
     {
         #region Properties
 
@@ -118,24 +120,25 @@ namespace Solvtio.Models
         {
         }
 
-		public ModelExpediente(Expediente exp)
-		{
-		//	this.IdExpediente = exp.IdExpediente;
-		//	this.NoExpediente = exp.NoExpediente;
-		//	this.ReferenciaExterna = exp.ReferenciaExterna;
-		//	this.TipoExpediente = (TipoExpedienteEnum)exp.IdTipoExpediente;
-		//	this.ClienteOficina = new ModelClienteOficina(exp.Gnr_ClienteOficina);
-		//	this.DeudorPrincipal = new ModelPersona(exp.ExpedienteDeudors.FirstOrDefault()); //DeudorPrincipal;
-		//	this.FechaAlta = exp.FechaAlta;
-		//	this.Importe = new ModelMoney(exp.DeudaFinal);
-		//	this.EstadoActual = new ModelEstado(exp.EstadoActual);
-		//	this.Procurador = new ModelPersona(exp.Gnr_Procurador);
+        public ModelExpediente(Expediente exp)
+        {
+            //	this.IdExpediente = exp.IdExpediente;
+            //	this.NoExpediente = exp.NoExpediente;
+            //	this.ReferenciaExterna = exp.ReferenciaExterna;
+            //	this.TipoExpediente = (TipoExpedienteEnum)exp.IdTipoExpediente;
+            //	this.ClienteOficina = new ModelClienteOficina(exp.Gnr_ClienteOficina);
+            //	this.DeudorPrincipal = new ModelPersona(exp.ExpedienteDeudors.FirstOrDefault()); //DeudorPrincipal;
+            //	this.FechaAlta = exp.FechaAlta;
+            //	this.Importe = new ModelMoney(exp.DeudaFinal);
+            //	this.EstadoActual = new ModelEstado(exp.EstadoActual);
+            //	this.Procurador = new ModelPersona(exp.Gnr_Procurador);
         }
 
-		#endregion
+        #endregion
 
-		#region Properties
+        #region Properties
 
+        [Key]
         public int IdExpediente { get; set; }
         public string NoExpediente { get; set; }
         public string ReferenciaExterna { get; set; }
@@ -146,16 +149,16 @@ namespace Solvtio.Models
         public DateTime? FechaAlta { get; set; }
 
         public decimal? DeudaFinal { get; set; }
-        
+
         public int? IdEstadoLast { get; set; }
         public EstadoDtoMin Estado { get; set; }
-        
+
         public DtoIdNombre Deudor { get; set; }
         public DtoIdNombre Abogado { get; set; }
         public DtoIdNombre Oficina { get; set; }
         public DtoIdNombre TipoExpediente { get; set; }
         public DtoIdNombre Juzgado { get; set; }
-        
+
         #endregion
 
         #region Properties ReadOnly
@@ -170,6 +173,106 @@ namespace Solvtio.Models
         //        return _subastasSenaladasTotal.Value;
         //    }
         //}
+        #endregion
+    }
+
+    [NotMapped]
+    public class ModelExpedienteToKpi : ModelExpediente
+    {
+        public int IdTipoExpediente { get; set; }
+        ////[ForeignKey("IdClienteOficina")]
+        //[NotMapped]
+        //public Gnr_ClienteOficina Gnr_ClienteOficina { get; set; }
+
+        public int? ExpedienteEstadoLastId { get; set; }
+        public int? ExpedienteEstadoLastIdTipoEstado { get; set; }
+        public int? ExpedienteEstadoLastIdTipoSubFaseEstado { get; set; }
+        public DateTime? ExpedienteEstadoLastFecha { get; set; }
+        //public int? ExpedienteEstadoLast { get; set; }        
+
+    }
+
+    public class ExpedienteHipDto
+    {
+        #region Constructors
+        public ExpedienteHipDto()
+        {
+        }
+
+        public ExpedienteHipDto(Hip_Expediente exp)
+        {
+            IdExpediente = exp.IdExpediente;
+            IdRevisionJudicial = exp.IdRevisionJudicial;
+
+            //public int? IdLibertadArredanticia { get; set; }
+            //public int? IdEstadoVenia { get; set; }
+            //public int? IdExpedienteEjc { get; set; }
+            //public int? IdExpedienteOrd { get; set; }
+            //public int? IdExpedienteJV { get; set; }
+            //public int? AutoSobreseimientoIdMotivo { get; set; }
+            //public int? AutoSobreseimientoIdEstado { get; set; }
+            //public int? AutoSobreseimientoIdApelacionPor { get; set; }
+            //public int? AutoSobreseimientoIdResultadoApelacion { get; set; }
+            //public int? OcupantesResultado { get; set; }
+            //public int? OposicionResultado { get; set; }
+            //public int? ApelacionPor { get; set; }
+            //public int? ApelacionResultado { get; set; }
+        }
+
+        #endregion
+
+        #region Properties
+
+        public int IdExpediente { get; set; }
+        public int? IdRevisionJudicial { get; set; }
+        public int? IdLibertadArredanticia { get; set; }
+        public int? IdEstadoVenia { get; set; }
+        public int? IdExpedienteEjc { get; set; }
+        public int? IdExpedienteOrd { get; set; }
+        public int? IdExpedienteJV { get; set; }
+        public int? AutoSobreseimientoIdMotivo { get; set; }
+        public int? AutoSobreseimientoIdEstado { get; set; }
+        public int? AutoSobreseimientoIdApelacionPor { get; set; }
+        public int? AutoSobreseimientoIdResultadoApelacion { get; set; }
+        public int? OcupantesResultado { get; set; }
+        public int? OposicionResultado { get; set; }
+        public int? ApelacionPor { get; set; }
+        public int? ApelacionResultado { get; set; }
+
+        public DateTime? FechaPosesionPositivaInmuebles { get; set; }
+        public DateTime? FechaVeniaAdmitida { get; set; }
+        public DateTime? AutoSobreseimientoFechaApelacion { get; set; }
+        public DateTime? OcupantesFechaCelebracionVista { get; set; }
+        public DateTime? OcupantesFechaResolucion { get; set; }
+        public DateTime? OposicionFecha { get; set; }
+        public DateTime? OposicionVistaFecha { get; set; }
+        public DateTime? OposicionResolucionFecha { get; set; }
+        public DateTime? Apelacion { get; set; }
+        public DateTime? ApelacionResultadoFecha { get; set; }
+        public DateTime? ApelacionEjecutanteFechaInterposicion { get; set; }
+        public DateTime? ApelacionEjecutanteFechaImpugnacion { get; set; }
+
+        public decimal? ImporteAdmision { get; set; } // Is from Expediente
+        public decimal? DeudaPrincipal { get; set; }
+        public decimal? DeudaIntRemuneratorios { get; set; }
+        public decimal? DeudaIntDemora { get; set; }
+        public decimal? DeudaComisionesGastos { get; set; }
+        public decimal? DeudaIntDemoraCalculados { get; set; }
+        public decimal? DeudaMinutaLetrado { get; set; }
+        public decimal? DeudaMinutaProcurador { get; set; }
+        public decimal? DeudaTasaJudicial { get; set; }
+        public decimal? CostasPresupuestadas { get; set; }
+
+        public bool EsTitulizado { get; set; }
+        public bool MayorCuantia { get; set; }
+        public bool FacturaIntegral { get; set; }
+        public bool AutoSobreseimientoFinalizado { get; set; }
+        public bool Ocupantes { get; set; }
+        public bool Oposicion { get; set; }
+
+        #endregion
+
+        #region Properties ReadOnly
         #endregion
     }
 }

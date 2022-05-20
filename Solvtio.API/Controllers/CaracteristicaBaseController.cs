@@ -34,6 +34,22 @@ namespace Solvtio.API.Controllers
             }
         }
 
+        [HttpGet("GetByGrup")]
+        public async Task<ActionResult<List<CaracteristicaBase>>> GetByGrup(string grupo, bool soloActivos = false)
+        {
+            try
+            {
+                var result = await _repository.GetByGrup(grupo, soloActivos);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetByGrup: ");
+                return StatusCode(500, error);
+            }
+        }
+        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<CaracteristicaBase>> Get(int id)
         {

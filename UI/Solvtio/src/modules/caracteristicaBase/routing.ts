@@ -21,6 +21,11 @@ const routes: Routes = [
         path: 'update/:id',
         component: CaracteristicaBaseItemComponent,
       },
+      {
+        path: 'byGroup/:id',
+        component: CaracteristicaBaseListComponent,
+      },
+      //https://solvtio.tarsso.com/Nomenclador/Caracteristica/Pais?Area=
     ],
   },
 ];

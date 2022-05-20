@@ -13,7 +13,7 @@ import { ExpedienteDeudorDto, ModelDtoNombre } from 'src/models';
 import { NotificationsService } from 'src/services/notifications.service';
 import { ApiService } from '../../../services/api.service';
 import { DialogService } from '../../../services/dialog/dialog.service';
-import { DtoIdNombre } from '../../../models/common.model';
+import { DtoIdNombre, PersonaDto } from '../../../models/common.model';
 
 @Component({
   selector: 'expediente-deudor-item',
@@ -27,9 +27,13 @@ export class ExpedienteDeudorItemComponent implements OnInit {
   @Output() childChanged = new EventEmitter<string>();
 
   deudor = new ExpedienteDeudorDto();
+  persona = new PersonaDto();
   formData!: FormGroup;
   tipos = new Array<ModelDtoNombre>();
+  provincias = new Array<ModelDtoNombre>();
+  municipios = new Array<ModelDtoNombre>();
   public title = 'Nuevo Deudor';
+  idProvincia = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -63,16 +67,49 @@ export class ExpedienteDeudorItemComponent implements OnInit {
     );
 
     this.formData = this.fb.group(controlsConfig);
-    console.clear();
-    console.log(this.formData.getRawValue());
+    // console.clear();
+    // console.log(this.formData.getRawValue());
 
-    //this.tipos = await this.api.srvApiNomenclador.tipoDeudorGetAll();
+    this.tipos = await this.api.srvApiNomenclador.tipoDeudorGetAll();
+    this.provincias = await this.api.srvApiNomenclador.provinciasGetAll();
+    if (this.deudor.idProvincia > 0)
+      this.municipios = await this.api.srvApiNomenclador.municipiosByProvincia(
+        this.deudor.idProvincia
+      );
+    // console.table(this.tipos);
+  }
+
+  async onChangeProvincia(provinciaValue: number) {
+    provinciaValue = this.formData.controls['idProvincia'].value;
+
+    // console.log(provinciaValue);
+    // console.log(this.formData.getRawValue());
+    this.municipios = await this.api.srvApiNomenclador.municipiosByProvincia(
+      provinciaValue
+    );
+    // console.table(this.municipios);
+  }
+
+  refreshFormData() {
+    if (this.deudor.persona.idPersona <= 0) {
+      // this.formData.controls['persona'] = n
+      // this.formData.controls.PersonaDto.setValue('abc');
+      // personaNoDocumento: string | undefined = '';
+      // personaNombre: string | undefined = '';
+      // personaApellidos: string | undefined = '';
+      // personaTelefono: string | undefined = '';
+      // personaEmail: string | undefined = '';
+      // personaIdTipoIdentidad: number | undefined = 0;
+    }
   }
 
   saveData() {
     console.clear();
     console.log(this.formData.getRawValue());
     console.log(this.idExpediente);
+    console.log(this.persona.noDocumento);
+
+    this.refreshFormData();
 
     let resultPromise =
       this.idExpedienteDeudor == 0

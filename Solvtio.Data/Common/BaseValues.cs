@@ -442,6 +442,40 @@ namespace Solvtio.Models
 
         #endregion
 
+        #region Fechas
+        
+        internal DateTime FechaActual = DateTime.Now.Date;
+        internal DateTime FechaActualMenos2 = DateTime.Now.AddDays(-2);
+        internal DateTime FechaActualMenos3 = DateTime.Now.AddDays(-3);
+        internal DateTime FechaActualMenos5 = DateTime.Now.AddDays(-5);
+        internal DateTime FechaActualMenos7 = DateTime.Now.AddDays(-7);
+        internal DateTime FechaActualMenos10 = DateTime.Now.AddDays(-10);
+        internal DateTime FechaActualMenos13 = DateTime.Now.AddDays(-13);
+        internal DateTime FechaActualMenos15 = DateTime.Now.AddDays(-15);
+        internal DateTime FechaActualMenos20 = DateTime.Now.AddDays(-20);
+        internal DateTime FechaActualMenos25 = DateTime.Now.AddDays(-25);
+        internal DateTime FechaActualMenos30 = DateTime.Now.AddDays(-30);
+        internal DateTime FechaActualMenos33 = DateTime.Now.AddDays(-33);
+        internal DateTime FechaActualMenos40 = DateTime.Now.AddDays(-40);
+        internal DateTime FechaActualMenos45 = DateTime.Now.AddDays(-45);
+        internal DateTime FechaActualMenos60 = DateTime.Now.AddDays(-60);
+        internal DateTime FechaActualMenos80 = DateTime.Now.AddDays(-80);
+        internal DateTime FechaActualMenos90 = DateTime.Now.AddDays(-90);
+        internal DateTime FechaActualMenos120 = DateTime.Now.AddDays(-120);
+        internal DateTime FechaActualMenos150 = DateTime.Now.AddDays(-150);
+        internal DateTime FechaActualMenos180 = DateTime.Now.AddDays(-180);
+        internal DateTime FechaActualMenos200 = DateTime.Now.AddDays(-200);
+        internal DateTime FechaActualMenos540 = DateTime.Now.AddDays(-540);
+        internal DateTime FechaActualMenos1440 = DateTime.Now.AddDays(-1440);
+        internal DateTime Fecha20210101 = new DateTime(2021, 1, 1);
+
+        internal const int IdTipoEstadoEjcRecepcionExpediente = (int)ExpedienteEstadoTipo.EjecutivoRecepcionExpediente;
+        internal const int IdTipoEstadoEjcPresentacionDemanda = (int)ExpedienteEstadoTipo.EjecutivoPresentacionDemanda;
+        internal const int IdTipoEstadoEjcAdmisionTramiteEmbargo = (int)ExpedienteEstadoTipo.EjecutivoAdmisionTramiteEmbargo;
+
+        internal List<int> LstEstadoSubfaseHipTramitacion = new List<int> { TipoFaseEstadoHip0301, TipoFaseEstadoHip0302 };
+
+        #endregion
     }
 
     public static class SolvtioValue

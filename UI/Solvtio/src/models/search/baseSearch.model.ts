@@ -83,10 +83,18 @@ export class FilterBase {
   public code1: string = '';
   public code2: string = '';
   public code3: string = '';
+  public code4: string = '';
+  public code5: string = '';
 
   public idTipo1?: number | null = null;
   public idTipo2?: number | null = null;
   public idTipo3?: number | null = null;
+  public idTipo4?: number | null = null;
+  public idTipo5?: number | null = null;
+
+  public isOnOff1?: boolean | null = null;
+  public isOnOff2?: boolean | null = null;
+  public isOnOff3?: boolean | null = null;
 
   constructor(item?: Partial<FilterBase>) {
     if (!!item) Object.assign(this, item);
@@ -94,8 +102,8 @@ export class FilterBase {
 }
 
 export class PaginationBase {
-  pageNumber: number = 0;
-  pageLimit: number = 5;
+  pageNumber: number = 1;
+  pageLimit: number = 15;
   totalElements: number = 0;
   totalPages: number = 0;
 }

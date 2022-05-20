@@ -21,14 +21,28 @@ export class ExpedienteDeudorDto {
   idExpedienteDeudor: number = 0;
   idExpediente: number = 0;
 
+  idTipoDeudor: number = 0;
+  idProvincia: number = 0;
+  idMunicipio: number = 0;
+
   gnr_TipoDeudor!: DtoIdNombre;
   provincia: DtoIdNombre | undefined = new DtoIdNombre();
-  persona!: PersonaDto | undefined;
+  persona: PersonaDto = new PersonaDto();
 
   domicilioNotificacion: string | undefined = '';
+  codigoPostal: string | undefined = '';
   abogadoNombre: string | undefined = '';
   abogadoDespacho: string | undefined = '';
   abogadoTelefono: string | undefined = '';
+  abogadoEmail: string | undefined = '';
+  abogadoDireccion: string | undefined = '';
+
+  personaNoDocumento: string | undefined = '';
+  personaNombre: string | undefined = '';
+  personaApellidos: string | undefined = '';
+  personaTelefono: string | undefined = '';
+  personaEmail: string | undefined = '';
+  personaIdTipoIdentidad: number | undefined = 0;
 
   constructor(item?: Partial<ExpedienteDeudorDto>) {
     if (!!item) Object.assign(this, item);

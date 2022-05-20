@@ -1,0 +1,1 @@
+export { DashboradKpiComponent } from './kpi';

@@ -34,8 +34,14 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="caracteristicabase">Caracteristicas</a></li>
-                                <li><a class="dropdown-item" href="caracteristicabase">Caracteristicas 1</a></li>
+                                <li><a class="dropdown-item" href="caracteristicabase">Caracteristicas Base</a></li>
+                                <li><a class="dropdown-item" href="caracteristicabase/byGroup/Pais">CB - Paises</a></li>
+                                <li><a class="dropdown-item" href="caracteristicabase/byGroup/Tipo-Resolucion-Judicial">CB - Resolución
+                                        Judicial</a></li>
+                                <li><a class="dropdown-item" href="caracteristicabase/byGroup/Empleado-Tipo-Contrato">CB
+                                        - Empleado Contrato</a></li>
+                                <li><a class="dropdown-item" href="caracteristicabase/byGroup/Inmueble-GestionadoPor">CB
+                                        - Inm.Gestionado X</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -46,12 +52,26 @@
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Expedientes</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="expediente">Todos</a></li>
-                                <li><a class="dropdown-item" href="#">Alquiler</a></li>
-                                <li><a class="dropdown-item" href="#">Hipotecario</a></li>
+                                <li><a class="dropdown-item" href="expediente/alquiler">Alquiler</a></li>
+                                <li><a class="dropdown-item" href="expediente/hipotecario">Hipotecarios</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dashboards</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="dashboard/1">KPIs</a></li>
+                                <li><a class="dropdown-item" href="expediente/alquiler">Alquiler</a></li>
+                                <li><a class="dropdown-item" href="expediente/hipotecario">KPIs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a></li>
+                                <li><a class="dropdown-item" href="dashboard">KPIs</a></li>
                             </ul>
                         </li>
 
@@ -63,8 +83,9 @@
 
                         <!--#forma="NgForm" (submit)="buscarExpediente(new)"
                      -->
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="noExp" ngModel>
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input class="form-control me-2" type="search" placeholder="Nº Exp. a buscar" aria-label="Search" name="noExp" ngModel>
+                        <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-search"></i>
+                        </button>
                     </form>
                 </div>
             </div>

@@ -22,6 +22,13 @@ export class CaracteristicaBaseApiService {
     });
   }
 
+  //GetByGrup string grupo, bool soloActivos = false
+  public async getByGrup(grupo: string): Promise<CaracteristicaBase[]> {
+    return this.api.get<CaracteristicaBase[]>(
+      `${this.pathApi}/GetByGrup?grupo=${grupo}`
+    );
+  }
+
   public async getById(id: string): Promise<CaracteristicaBase> {
     const item: CaracteristicaBase = await this.api.get(
       `${this.pathApi}/${id}`

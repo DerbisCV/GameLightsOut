@@ -1,0 +1,95 @@
+<div class="container-fluid" style="padding-top: 37px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="expediente">Expedientes</a></li>
+            <li class="breadcrumb-item"><a href="expediente/update/{{expediente.idExpediente}}">{{expediente.noExpediente}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ficha</li>
+        </ol>
+    </nav>
+
+    <ng-container *ngIf="formData">
+        <form (ngSubmit)="saveData()" [formGroup]="formData">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">{{ title }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-auto col-3">
+                                    <label for="fecha" class="form-label">Fecha:</label>
+                                    <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="fecha" />
+                                </div>
+                                <div class="col-auto col-5">
+                                    <label for="idTipoSubFaseEstado" class="form-label">Subfase:</label>
+                                    <select formControlName="idTipoSubFaseEstado" class="form-select form-select-sm00" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione un elemento</option>
+                                        <option *ngFor="let item of tipoSubFaseByEstado" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="idTipoSubFaseCliente" class="form-label">Motivo Cliente:</label>
+                                    <select formControlName="idTipoSubFaseCliente" class="form-select form-select-sm00" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Seleccione un elemento</option>
+                                        <option *ngFor="let item of tipoSubFaseCliente" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto col-12 mt-3">
+                                    <label for="observacion" class="form-label">Agregar nuena nota ...:</label>
+                                    <textarea type="text" class="form-control" placeholder="escriba las notas y observaciones..." formControlName="observacion" rows="6"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-outline-success px-4">Guardar</button>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h6 class="card-title">Notas</h6>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="v-align text-left">Fecha</th>
+                                            <th class="v-align text-left">Nota</th>
+                                            <th class="v-align text-left">Usuario</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of notas">
+                                            <td class="col">{{ item.fecha | date: 'dd/MM/yyyy'}}</td>
+                                            <td class="col">{{ item.nota| slice:0:80 }}</td>
+                                            <td class="col"> {{ item.usuario }} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Otros Datos</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-auto col-4">
+                                    <label for="fecha" class="form-label">Fecha:</label>
+                                    <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="fecha" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+</div>

@@ -32,5 +32,20 @@
         public int? IdTipo1 { get; set; }
         public int? IdTipo2 { get; set; }
         public int? IdTipo3 { get; set; }
+        public int? IdTipo4 { get; set; }
+        public int? IdTipo5 { get; set; }
+
+        public bool? IsOnOff1 { get; set; }
+
+        //        code1: ""
+        //code2: ""
+        //code3: ""
+        //idTipo1: 8
+        //idTipo2: ""
+        //idTipo3: ""
+        //idTipo4: ""
+        //idTipo5: ""
+        //: ""
+
     }
 }

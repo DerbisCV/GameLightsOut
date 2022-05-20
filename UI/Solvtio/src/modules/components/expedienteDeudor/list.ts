@@ -31,16 +31,16 @@ export class ExpedienteDeudorListComponent implements OnInit {
     private notificationsService: NotificationsService,
     private modalService: BsModalService
   ) {
-    console.log('component - constructor');
-    console.log(this.idExpediente);
+    // console.log('component - constructor');
+    // console.log(this.idExpediente);
     // this.getData();
   }
 
   ngOnInit(): void {
-    console.log('component - ngOnInit');
-    console.log(this.idExpediente);
+    // console.log('component - ngOnInit');
+    // console.log(this.idExpediente);
     this.getData();
-    console.log(this.deudores);
+    // console.log(this.deudores);
   }
 
   async getData() {
@@ -51,12 +51,12 @@ export class ExpedienteDeudorListComponent implements OnInit {
     await this.api.srvApiExpediente
       .getDeudores(this.idExpediente)
       .then((x) => (this.data = x));
-    console.log('data');
-    console.log(this.data);
+    // console.log('data');
+    // console.log(this.data);
 
     this.deudores = Object.assign(this.deudores, this.data);
-    console.log('deudores:');
-    console.log(this.deudores);
+    // console.log('deudores:');
+    // console.log(this.deudores);
     //   return Object.assign(person, {
     //     employeeId: id
     // });

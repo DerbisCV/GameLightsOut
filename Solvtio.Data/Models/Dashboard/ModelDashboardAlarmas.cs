@@ -1,4 +1,8 @@
-﻿namespace Solvtio.Models
+﻿using Solvtio.Common;
+using Solvtio.Models.Common;
+using System.Collections.Generic;
+
+namespace Solvtio.Models
 {
     public class ModelDashboardAlarmas
 	{
@@ -11,33 +15,35 @@
 		public ModelDashboardAlarmas(TipoExpedienteEnum tipoExpediente)
 		{
 			CreateBase();
-			Filter.IdTipoExpediente = (int)tipoExpediente;
-			Filter.TipoExpedienteSelected = tipoExpediente;
+			FilterOld.IdTipoExpediente = (int)tipoExpediente;
+			FilterOld.TipoExpedienteSelected = tipoExpediente;
 		}
         public ModelDashboardAlarmas(TipoExpedienteEnum tipoExpediente, int? idPersona, int? idTipoGestionado = null)
         {
             CreateBase();
-            Filter.IdTipoExpediente = (int)tipoExpediente;
-            Filter.TipoExpedienteSelected = tipoExpediente;
-            Filter.IdUsuario = idPersona;
-            Filter.IdTipoOtro4 = idTipoGestionado;
+            FilterOld.IdTipoExpediente = (int)tipoExpediente;
+            FilterOld.TipoExpedienteSelected = tipoExpediente;
+            FilterOld.IdUsuario = idPersona;
+            FilterOld.IdTipoOtro4 = idTipoGestionado;
         }
-        public ModelDashboardAlarmas(ModelFilterBase filter)
+        public ModelDashboardAlarmas(FilterBase filter)
 		{
 			CreateBase();
 			Filter = filter;
-			if (Filter.IdTipoExpediente.HasValue)
-				Filter.TipoExpedienteSelected = (TipoExpedienteEnum)Filter.IdTipoExpediente.Value;
+			if (FilterOld.IdTipoExpediente.HasValue)
+				FilterOld.TipoExpedienteSelected = (TipoExpedienteEnum)FilterOld.IdTipoExpediente.Value;
 		}
 
 		private void CreateBase()
 		{
-			Filter = new ModelFilterBase();
+			FilterOld = new ModelFilterBase();
 		}
 
 		#endregion
 
-		public ModelFilterBase Filter { get; set; }
+		public ModelFilterBase FilterOld { get; set; }
+        public FilterBase Filter { get; set; }
+
 
         #region Properties Hipotecario
 
@@ -182,6 +188,32 @@
         #endregion
 
         #region Properties ReadOnly
+
+        public List<KpiInfo> LstKpiInfoHip =>
+            new List<KpiInfo>
+            {
+                new KpiInfo(HipotecarioAlarmaIncidentados, TipoIndicadorQa.HipotecarioAlarmaIncidentados),
+                new KpiInfo(HipotecarioAlarmaAdmisionDemanda, TipoIndicadorQa.HipotecarioAlarmaAdmisionDemanda),
+                new KpiInfo(HipotecarioAlarmaInadmisionDemanda, TipoIndicadorQa.HipotecarioAlarmaIncidentados),
+                new KpiInfo(HipotecarioAlarmaSucesionCopiaSellada, TipoIndicadorQa.HipotecarioAlarmaSucesionCopiaSellada),
+                new KpiInfo(HipotecarioAlarmaCertificacionCargas, TipoIndicadorQa.HipotecarioAlarmaCertificacionCargas),
+                new KpiInfo(HipotecarioAlarmaRequerimientoPago, TipoIndicadorQa.HipotecarioAlarmaRequerimientoPago),
+                new KpiInfo(HipotecarioAlarmaSolicitudSubasta, TipoIndicadorQa.HipotecarioAlarmaSolicitudSubasta),
+                new KpiInfo(HipotecarioAlarmaDecretoConvocatoria, TipoIndicadorQa.HipotecarioAlarmaDecretoConvocatoria),
+                new KpiInfo(HipotecarioAlarmaDecretoAdjudicacion, TipoIndicadorQa.HipotecarioAlarmaDecretoAdjudicacion),
+                new KpiInfo(HipotecarioAlarmaPosesion, TipoIndicadorQa.HipotecarioAlarmaPosesion),
+                new KpiInfo(HipotecarioAlarmaTestimonio, TipoIndicadorQa.HipotecarioAlarmaTestimonio),
+                new KpiInfo(HipotecarioAlarmaRecepcionSolicitudCierre01, TipoIndicadorQa.HipotecarioAlarmaRecepcionSolicitudCierre01),
+                new KpiInfo(HipotecarioAlarmaRecepcionSolicitudCierre02, TipoIndicadorQa.HipotecarioAlarmaRecepcionSolicitudCierre02),
+                new KpiInfo(HipotecarioAlarmaRecepcionSolicitudCierre03, TipoIndicadorQa.HipotecarioAlarmaRecepcionSolicitudCierre03),
+                new KpiInfo(HipotecarioAlarmaRecepcionSolicitudCierre04, TipoIndicadorQa.HipotecarioAlarmaRecepcionSolicitudCierre04),
+                new KpiInfo(HipotecarioAlarmaRecepcionSolicitudCierre05, TipoIndicadorQa.HipotecarioAlarmaRecepcionSolicitudCierre05),
+            };
+        
+        public List<KpiInfo> LstKpiInfo =>
+            Filter.IdTipo1 == (int)TipoExpedienteEnum.Hipotecario ? LstKpiInfoHip : 
+            new List<KpiInfo>();
+        
         //public int Hip_PdteNotificacionCalc
         //{
         //	get

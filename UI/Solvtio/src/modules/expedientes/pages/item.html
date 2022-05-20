@@ -1,4 +1,4 @@
-<div class="px-4 container-fluid">
+<div class="container-fluid" style="padding-top: 37px;">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
@@ -54,7 +54,7 @@
                                     <label for="referenciaExterna" class="form-label">Tipo Área:</label>
                                     <select formControlName="idTipoArea" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Seleccione un elemento</option>
-                                        <option *ngFor="let item of oficinas" [ngValue]="item.id">
+                                        <option *ngFor="let item of tipoArea" [ngValue]="item.id">
                                             {{item.nombre}}</option>
                                     </select>
                                 </div>
@@ -240,7 +240,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="card">
+                    <div id="card-estado-actual" class="card">
                         <div class="card-header">
                             <div class="row">
                                 <h6 class="card-title mb-0 col-8">{{ estadoActual.tipoEstado.nombre }}</h6>
@@ -252,40 +252,30 @@
                             <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list>
                         </div>
                     </div>
-                    <div class="card mt-4">
-                        <div class="card-header">
-                            <h6 class="card-title mb-0">Datos Adicionales</h6>
-                        </div>
-                        <div class="card-body">
-                            <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list>
-                        </div>
-                    </div>
 
-                    <hr>
-                    <!--   <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list> -->
-                    <tabset>
-                        <tab heading="Estados" id="tab1">Estados ...</tab>
-                        <tab heading="Deudores">
-                            <expediente-deudor-list [idExpediente]="expediente.idExpediente">
-                            </expediente-deudor-list>
-                        </tab>
-                        <tab heading="Inmuebles">Basic content 2</tab>
-                    </tabset>
+
+                    <expediente-data-hipotecario [idExpediente]="expediente.idExpediente"></expediente-data-hipotecario>
+
+
+
+
+                    <!--  <hr>  <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list> -->
+
                 </div>
             </div>
         </form>
 
-        <div class="row mt-4">
+        <div class="row mt-2">
             <div class="col-12">
-                <div>
-                    <!-- <tabset>
-                        <tab heading="Estados" id="tab1">Estados ...</tab>
-                        <tab heading="Deudores">
-                            <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list>
-                        </tab>
-                        <tab heading="Inmuebles">Basic content 2</tab>
-                    </tabset> -->
-                </div>
+                <tabset>
+                    <tab heading="Estados" id="tab1">
+                        <expediente-estado-list [idExpediente]="expediente.idExpediente"></expediente-estado-list>
+                    </tab>
+                    <tab heading="Deudores">
+                        <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list>
+                    </tab>
+                    <tab heading="Inmuebles">Basic content 2</tab>
+                </tabset>
             </div>
         </div>
 

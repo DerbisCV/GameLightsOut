@@ -1,0 +1,126 @@
+<div class="container-fluid" style="padding-top: 37px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+            <!-- <li class="breadcrumb-item"><a href="#">Expedientes</a></li> -->
+            <li class="breadcrumb-item active" aria-current="page">Expedientes de Alquiler</li>
+        </ol>
+    </nav>
+
+    <div class="col-lg-12 stretch-card">
+        <div class="card">
+            <div class="card-header">
+                <form [formGroup]="formGroupFilter" (ngSubmit)="filtrar()">
+                    <div class="form-group row">
+                        <div class="col-1">
+                            <input formControlName="code1" placeholder="No Exp..." class="form-control form-control-sm" type="text" />
+                        </div>
+                        <div class="col-1">
+                            <input formControlName="code2" placeholder="Ref.Ext / Auto" class="form-control form-control-sm" type="text" />
+                        </div>
+                        <div class="col-1">
+                            <input formControlName="code3" placeholder="Deudor..." class="form-control form-control-sm" type="text" />
+                        </div>
+                        <div class="col-2">
+                            <select formControlName="idTipo1" class="form-select form-select-sm" aria-label=".form-select-sm example" title="Oficina...">
+                                <option [ngValue]="null">-</option>
+                                <option *ngFor="let item of oficinas" [ngValue]="item.id">
+                                    {{item.nombre}}</option>
+                            </select>
+
+                            <!-- <pre>{{ oficinas | json }}</pre> -->
+                        </div>
+                        <div class="col-2">
+                            <select formControlName="idTipo2" class="form-select form-select-sm" aria-label=".form-select-sm example" title="Cartera...">
+                                <option [ngValue]="null">-</option>
+                                <option *ngFor="let item of carteras" [ngValue]="item.id">
+                                    {{item.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <select formControlName="idTipo3" class="form-select form-select-sm" aria-label=".form-select-sm example" title="Procurador...">
+                                <option [ngValue]="null">-</option>
+                                <option *ngFor="let item of procuradores" [ngValue]="item.id">
+                                    {{item.nombre}}</option>
+                            </select>
+                        </div>
+                        <!-- <div class="col-1">
+                            <select formControlName="idTipo4" class="form-select form-select-sm" aria-label=".form-select-sm example" title="Tipo Exp...">
+                                <option [ngValue]="null">-</option>
+                                <option *ngFor="let item of tipoExpediente" [ngValue]="item.id">
+                                    {{item.nombre}}</option>
+                            </select>
+                        </div> -->
+                        <div class="col-1">
+                            <select formControlName="isOnOff1" class="form-select form-select-sm" aria-label=".form-select-sm example" title="Paralizado" placeholder="Paralizado...">
+                                <option [ngValue]="null">-</option>
+                                <option [ngValue]="true">Paralizado: SI</option>
+                                <option [ngValue]="false">Paralizado: NO</option>
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <select formControlName="idTipo5" class="form-select form-select-sm" aria-label=".form-select-sm example" title="Tipo Area...">
+                                <option [ngValue]="null">-</option>
+                                <option *ngFor="let item of tipoArea" [ngValue]="item.id">
+                                    {{item.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="col-1 text-end">
+                            <button type="submit" class="btn btn-primary btn-sm me-2"><i
+                                    class="fa-solid fa-search"></i></button>
+                            <a class="btn btn-success btn-sm me-2" href="expediente/create"><i
+                                    class="fa-solid fa-plus"></i> Nuevo</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th class="pt-0">No Exp.</th>
+                                <th class="pt-0">Ref.Externa</th>
+                                <th class="pt-0">Oficina</th>
+                                <th class="pt-0">Tipo</th>
+                                <th class="pt-0">Estado</th>
+                                <th class="pt-0 text-center">F.Alta</th>
+                                <th class="pt-0 text-end"><span class="badge bg-secondary">{{
+                                        this.expedienteSearch.paginationFilter.pagination.totalElements }}</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of expedienteSearch.result">
+                                <td class="col">
+                                    <a class="" [routerLink]="['update', row.idExpediente ]">{{ row.noExpediente }}</a>
+                                </td>
+                                <td class="col"> {{ row.referenciaExterna }} </td>
+                                <td class="col"> {{ row.oficina?.nombre }} </td>
+                                <td class="col"> {{ row.tipoExpediente?.nombre }} </td>
+                                <td class="col"> {{ row.estado?.tipo?.nombre }} </td>
+                                <td class="col text-center">{{ row.fechaAlta | date: 'dd/MM/yyyy'}}</td>
+                                <td class="col text-end">
+                                    <div class="pull-right hidden-phone">
+                                        <a class="btn btn-primary btn-xs" title="Editar registro" routerLink="/expediente/update/{{row.idExpediente}}">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class='page-item {{(page.isEnabled ? "" : "disabled0 active")}}' *ngFor="let page of getPaginationBtnToShow()">
+                            <a class="page-link" (click)="goToPage(page.noPage)">{{ page.noPage }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- <pre>{{ this.expedienteSearch.result | json }}</pre> -->
+    </div>
+</div>

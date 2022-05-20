@@ -1,6 +1,3 @@
-using Solvtio.Common;
-using Solvtio.Models.Model;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Solvtio.Models
 {
     [Table("TipoIncidenciaEstado")]
-    public class TipoIncidenciaEstado : INombre
+    public class TipoIncidenciaEstado : IName
     {
         #region Constructors
 
@@ -48,7 +45,7 @@ namespace Solvtio.Models
         #endregion
 
         #region Properties ReadOnly
-
+        public int Id => IdTipoIncidenciaEstado;
         #endregion
 
         #region Properties NotMapped

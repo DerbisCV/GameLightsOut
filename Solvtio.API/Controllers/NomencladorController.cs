@@ -26,11 +26,12 @@ namespace Solvtio.API.Controllers
         private readonly IClienteRepository _repositoryCliente;
         private readonly IClienteOficinaRepository _repositoryClienteOficina;
         private readonly ITipoAreaRepository _repositoryTipoArea;
+        private readonly ITipoExpedienteRepository _repositoryTipoExpediente;
         private readonly IAbogadoRepository _repositoryAbogado;
         private readonly IProcuradorRepository _repositoryProcurador;
 
         public NomencladorController(ILogger<NomencladorController> logger, IMapper mapper,
-            INomencladorReadOnlyRepository nomencladorReadOnlyRepository,
+            INomencladorReadOnlyRepository nomencladorReadOnlyRepository, ITipoExpedienteRepository tipoExpedienteRepository,
             ICaracteristicaBaseRepository repository, IClienteRepository clienteRepository, IClienteOficinaRepository clienteOficinaRepository,
             ITipoAreaRepository tipoAreaRepository, IAbogadoRepository abogadoRepository, IProcuradorRepository procuradorRepository
             ) : base(logger)
@@ -41,6 +42,7 @@ namespace Solvtio.API.Controllers
             _repositoryCliente = clienteRepository;
             _repositoryClienteOficina = clienteOficinaRepository;
             _repositoryTipoArea = tipoAreaRepository;
+            _repositoryTipoExpediente = tipoExpedienteRepository;
             _repositoryAbogado = abogadoRepository;
             _repositoryProcurador = procuradorRepository;
         }
@@ -147,19 +149,34 @@ namespace Solvtio.API.Controllers
 
         #endregion
 
-        #region TipoArea
+        #region TipoArea / TipoExpediente
 
         [HttpGet("TipoAreaGetAll")]
         public ActionResult<List<ModelDtoNombre>> TipoAreaGetAll()
         {
             try
             {
-                var result = _repositoryTipoArea.GetAll();
+                var result = _repositoryTipoArea.GetAll().OrderBy(x => x.Nombre).ToList();
                 return Ok(_mapper.Map<List<ModelDtoNombre>>(result));
             }
             catch (Exception ex)
             {
                 var error = LogError(ex, "Something went wrong inside TipoAreaGetAll: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet("TipoExpedienteGetAll")]
+        public ActionResult<List<ModelDtoNombre>> TipoExpedienteGetAll()
+        {
+            try
+            {
+                var result = _repositoryTipoExpediente.GetAll().OrderBy(x => x.Descripcion).ToList();
+                return Ok(_mapper.Map<List<ModelDtoNombre>>(result));
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside TipoExpedienteGetAll: ");
                 return StatusCode(500, error);
             }
         }
@@ -242,7 +259,91 @@ namespace Solvtio.API.Controllers
             }
         }
 
+        [HttpGet("ProvinciaGetAll")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> ProvinciaGetAll()
+        {
+            try
+            {
+                var result = await _nomencladorReadOnlyRepository.GetProvincias();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside ProvinciaGetAll: ");
+                return StatusCode(500, error);
+            }
+        }
 
+        [HttpGet("MunicipiosByProvincia")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> MunicipiosByProvincia(int? idProvincia)
+        {
+            if (!idProvincia.HasValue) return Ok(new List<ModelDtoNombre>());
+
+            try
+            {
+                var result = await _nomencladorReadOnlyRepository.GetMunicipiosByProvincia(idProvincia.Value);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside MunicipiosByProvincia: ");
+                return StatusCode(500, error);
+            }
+        }
+
+       
+        [HttpGet("TipoEstadoGetAllByExpediente")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> TipoEstadoGetAllByExpediente(int? idExpediente)
+        {
+            if (!idExpediente.HasValue) return Ok(new List<ModelDtoNombre>());
+
+            try
+            {
+                var result = await _nomencladorReadOnlyRepository.TipoEstadoGetAllByExpediente(idExpediente);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside MunicipiosByProvincia: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet("GetTipoSubFaseByEstado")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> GetTipoSubFaseByEstado(ExpedienteEstadoTipo? estadoTipo)
+        {
+            if (!estadoTipo.HasValue) return Ok(new List<ModelDtoNombre>());
+
+            try
+            {
+                var result = await _nomencladorReadOnlyRepository.GetTipoSubFaseByEstado(estadoTipo.Value);
+                return Ok(_mapper.Map<List<DtoIdNombre>>(result));
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetTipoSubFaseByEstado: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet("GetTipoIncidenciaByEstado")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> GetTipoIncidenciaByEstado(ExpedienteEstadoTipo? estadoTipo)
+        {
+            if (!estadoTipo.HasValue) return Ok(new List<ModelDtoNombre>());
+
+            try
+            {
+                var result = await _nomencladorReadOnlyRepository.GetTipoIncidenciaByEstado(estadoTipo.Value);
+                return Ok(_mapper.Map<List<DtoIdNombre>>(result));
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetTipoSubFaseByEstado: ");
+                return StatusCode(500, error);
+            }
+        }
+        //Task<List<TipoSubFaseEstado>> GetTipoSubFaseByEstado(ExpedienteEstadoTipo estadoTipo, bool soloActivos = true);
+        //Task<List<TipoIncidenciaEstado>> GetTipoIncidenciaByEstado(ExpedienteEstadoTipo estadoTipo, bool soloActivos = true);
 
 
         [HttpGet("TipoDeudorGetAll")]

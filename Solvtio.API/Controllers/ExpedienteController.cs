@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Solvtio.Data.Contracts;
 using Solvtio.Data.Models.Dtos;
 using Solvtio.Models;
+using Solvtio.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +16,30 @@ namespace Solvtio.API.Controllers
     [ApiController]
     public class ExpedienteController : ControllerBaseSolvtioApi
     {
+        #region Constructor & Properties
+
         private readonly IMapper _mapper;
         private readonly IExpedienteRepository _repository;
         private readonly IExpedienteNotaRepository _repositoryExpedienteNota;
         private readonly IExpedienteDeudorRepository _repositoryExpedienteDeudor;
+        private readonly IExpedienteEstadoRepository _repositoryExpedienteEstado;
 
-        public ExpedienteController(ILogger<ExpedienteController> logger, IMapper mapper, 
-            IExpedienteRepository repository, 
+        public ExpedienteController(ILogger<ExpedienteController> logger, IMapper mapper,
+            IExpedienteRepository repository,
             IExpedienteNotaRepository repositoryExpedienteNota,
+            IExpedienteEstadoRepository repositoryExpedienteEstado,
             IExpedienteDeudorRepository repositoryExpedienteDeudor) : base(logger)
         {
             _mapper = mapper;
             _repository = repository;
             _repositoryExpedienteNota = repositoryExpedienteNota;
+            _repositoryExpedienteEstado = repositoryExpedienteEstado;
             _repositoryExpedienteDeudor = repositoryExpedienteDeudor;
         }
+
+        #endregion
+
+        #region Expediente
 
         [HttpPost("GetWithPagination")]
         public async Task<ActionResult<SearchExpediente>> GetWithPagination(PaginationFilter paginationFilter)
@@ -77,6 +87,22 @@ namespace Solvtio.API.Controllers
             }
         }
 
+
+        [HttpGet("GetIdExpedienteByNo")]
+        public ActionResult<int?> GetIdExpedienteByNo(string noExpediente)
+        {
+            try
+            {
+                var result = _repository.GetIdExpedienteByNo(noExpediente);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetIdExpedienteByNo: ");
+                return StatusCode(500, error);
+            }
+        }
+
         [HttpPost]
         public IActionResult Add(CaracteristicaBase model)
         {
@@ -89,7 +115,7 @@ namespace Solvtio.API.Controllers
             {
                 var error = LogError(ex, "Something went wrong inside Add: ");
                 return StatusCode(500, error);
-            }            
+            }
         }
 
         [HttpPut("{id}")]
@@ -120,9 +146,31 @@ namespace Solvtio.API.Controllers
             {
                 var error = LogError(ex, "Something went wrong inside Delete: ");
                 return StatusCode(500, error);
-            }            
+            }
         }
 
+        #endregion
+
+        #region Expediente ByType
+
+        [HttpGet("GetExpedienteByTypeHip")]
+        public async Task<ActionResult<ExpedienteHipDto>> GetExpedienteByTypeHip(int id)
+        {
+            try
+            {
+                var result = await _repository.GetExpedienteByTypeHip(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetIdExpedienteByNo: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        #endregion
+
+        #region Estado
 
         [HttpGet("GetEstadoActual")]
         public async Task<ActionResult<ExpedienteEstadoDto>> GetEstadoActual(int id)
@@ -139,25 +187,114 @@ namespace Solvtio.API.Controllers
             }
         }
 
-        [HttpGet("GetIdExpedienteByNo")]
-        public ActionResult<int?> GetIdExpedienteByNo(string noExpediente)
+        [HttpGet("GetEstados")]
+        public async Task<ActionResult<List<ExpedienteEstadoDto>>> GetEstados(int idExpediente)
         {
             try
             {
-                var result = _repository.GetIdExpedienteByNo(noExpediente);
+                var result = await _repositoryExpedienteEstado.GetByExpediente(idExpediente);
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                var error = LogError(ex, "Something went wrong inside GetIdExpedienteByNo: ");
+                var error = LogError(ex, "Something went wrong inside GetEstados: ");
                 return StatusCode(500, error);
             }
         }
 
+        [HttpGet("EstadoGetById")]
+        public async Task<ActionResult<ExpedienteEstadoDto>> EstadoGetById(int idExpedienteEstado)
+        {
+            try
+            {
+                var result = await _repositoryExpedienteEstado.Get(idExpedienteEstado);
+                return Ok(_mapper.Map<ExpedienteEstadoDto>(result));
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetEstados: ");
+                return StatusCode(500, error);
+            }
+        }
 
+        [HttpPost("EstadoAdd")]
+        public IActionResult EstadoAdd(ExpedienteEstadoDto model)
+        {
+            try
+            {
+                model.Usuario = UserIdentityName ?? String.Empty;
+                _repositoryExpedienteEstado.Add(new ExpedienteEstado(model));
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside EstadoAdd: ");
+                return StatusCode(500, error);
+            }
+        }
 
+        [HttpPut("EstadoUpdate")]
+        public IActionResult EstadoUpdate(ExpedienteEstadoDto model)
+        {
+            try
+            {
+                model.Usuario = UserIdentityName;
+                _repositoryExpedienteEstado.Update(model);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside EstadoUpdate: ");
+                return StatusCode(500, error);
+            }
+        }
 
+        [HttpDelete("EstadoDelete")]
+        public IActionResult EstadoDelete(int idExpedienteEstado)
+        {
+            try
+            {
+                _repositoryExpedienteEstado.Delete(new ExpedienteEstado() { ExpedienteEstadoId = idExpedienteEstado });
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside EstadoDelete: ");
+                return StatusCode(500, error);
+            }
+        }
 
+        [HttpGet("GetExpedienteNotaByEstado")]
+        public async Task<ActionResult<List<ExpedienteNotaDto>>> GetExpedienteNotaByEstado(int idExpedienteEstado)
+        {
+            try
+            {
+                var result = await _repositoryExpedienteEstado.GetExpedienteNotaByEstado(idExpedienteEstado);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetExpedienteNotaByEstado: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet("LogEstadoSubfaseByEstado")]
+        public async Task<ActionResult<List<LogEstadoSubfase>>> LogEstadoSubfaseByEstado(int idExpedienteEstado)
+        {
+            try
+            {
+                var result = await _repositoryExpedienteEstado.LogEstadoSubfaseByEstado(idExpedienteEstado);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside LogEstadoSubfaseByEstado: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        #endregion
 
         #region Notas
 
@@ -237,8 +374,7 @@ namespace Solvtio.API.Controllers
         }
 
         #endregion
-
-
+        
         #region Deudores
 
         [HttpGet("GetDeudores")]
@@ -291,7 +427,7 @@ namespace Solvtio.API.Controllers
         {
             try
             {
-                _repositoryExpedienteDeudor.Update(new ExpedienteDeudor(model));
+                _repositoryExpedienteDeudor.Update(model);
                 return Ok();
             }
             catch (Exception ex)
@@ -317,8 +453,28 @@ namespace Solvtio.API.Controllers
         }
 
         #endregion
+        
+        #region Otros
 
+        #endregion
 
+        #region Dashboards
 
+        [HttpPost("GetDashboardKpi")]
+        public async Task<ActionResult<List<KpiInfo>>> GetDashboardKpi(FilterBase filter)
+        {
+            try
+            {
+                var result = await _repository.GetModelDashboardAlarmas(filter);
+                return Ok(result.LstKpiInfo);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetAll: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        #endregion
     }
 }

@@ -14,11 +14,17 @@ export class ApiService extends BaseHttpService {
   srvApiExpediente: ExpedienteApiService;
   srvApiNomenclador: NomencladorApiService;
 
+  exp: ExpedienteApiService;
+  nom: NomencladorApiService;
+
   constructor(http: HttpClient, router: Router) {
     super(http, router);
 
     this.srvApiCaracteristicaBase = new CaracteristicaBaseApiService(this);
     this.srvApiExpediente = new ExpedienteApiService(this);
     this.srvApiNomenclador = new NomencladorApiService(this);
+
+    this.exp = this.srvApiExpediente;
+    this.nom = this.srvApiNomenclador;
   }
 }

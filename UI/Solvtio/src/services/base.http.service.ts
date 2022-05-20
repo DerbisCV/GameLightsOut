@@ -40,6 +40,9 @@ export abstract class BaseHttpService extends HasEnvironment {
     show_loading: boolean = true
   ): Promise<T> {
     if (!!show_loading) this.send_loading(true);
+
+    //var option = { headers: { 'Content-Type': undefined } };
+
     return new Promise((resolve, reject) => {
       this.http.post(url, data).subscribe(
         (d) => {

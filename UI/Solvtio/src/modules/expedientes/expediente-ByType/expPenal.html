@@ -1,0 +1,77 @@
+<div class="card mt-4">
+    <div class="card-header">
+        <h6 class="card-title mb-0">Datos Adicionales</h6>
+    </div>
+    <div class="card-body">
+        <!-- <expediente-deudor-list [idExpediente]="expediente.idExpediente"></expediente-deudor-list> -->
+    </div>
+</div>
+
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between p-300 border-bottom tx-16">
+                <div class="d-flex align-items-center">
+                    <h6 class="card-title">Lista de Estados</h6>
+                </div>
+                <div class="d-flex">
+                    <button type="button" (click)="openModalItemNew(template)" class="btn btn-outline-success btn-xs mb-2" title="Nuevo registro"><i
+                            class="fa-regular fa-file"></i> Nuevo</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="v-align text-left">Tipo</th>
+                            <th class="v-align text-center">Fecha</th>
+                            <th class="v-align text-center">Fecha Fin</th>
+                            <th class="v-align text-left">Observaciones</th>
+                            <th class="v-align text-left">Usuario</th>
+                            <th class="v-align text-right text-end">
+                                <span class="badge rounded-pill bg-secondary">{{ dataRows.length }}</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let item of dataRows">
+                            <td class="col">
+                                {{ item.tipoEstado.nombre }}
+                                <!-- <a class="" [routerLink]="['updateEstado', item.idExpedienteEstado ]">{{
+                                    item.tipoEstado.nombre }}</a>
+                                <a routerLink="/updateEstado">Heroes</a> -->
+                                <!-- <a routerLink="/expediente/updateEstado/{{item.idExpedienteEstado}}">Heroes</a> -->
+                            </td>
+                            <td class="col text-center">{{ item.fecha | date: 'dd/MM/yyyy'}}</td>
+                            <td class="col text-center">{{ item.fechaFin | date: 'dd/MM/yyyy'}}</td>
+                            <td class="col">{{ item.observacion | slice:0:80 }}</td>
+                            <td class="col"> {{ item.usuario }} </td>
+                            <td class="col text-end">
+                                <div class="pull-right hidden-phone">
+                                    <a class="btn btn-primary btn-xs" title="Editar registro" routerLink="/expediente/updateEstado/{{item.idExpedienteEstado}}">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <!-- <button type="button" (click)="openModalItemEdit(template, item.idExpedienteEstado)" class="btn btn-primary btn-xs" title="Editar registro"><i
+                                            class="fa-regular fa-pen-to-square"></i></button> -->
+                                    <button type="button" (click)="remove(item.idExpedienteEstado)" class="btn btn-danger btn-xs ms-1" title="Eliminar registro">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <pre>{{ deudores | json }}</pre> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <expediente-estado-item [idExpediente]="idExpediente" [idExpedienteEstado]="idToEdit" (childChanged)="onChildChange()">
+    </expediente-estado-item>
+</ng-template>

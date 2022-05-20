@@ -1,218 +1,136 @@
-import {
-  Component,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-  ViewEncapsulation,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-} from '@angular/core';
-import {
-  Expediente,
-  ExpedienteSearch,
-  ModelExpediente,
-  PaginationFilter,
-} from 'src/models';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ExpedienteSearch, PaginationFilter, PaginationPage } from 'src/models';
 import { ApiService } from '../../../services/api.service';
-import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { DialogService } from 'src/services/dialog/dialog.service';
 import { NotificationsService } from 'src/services/notifications.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-interface EventObject {
-  event: string;
-  value: {
-    limit: number;
-    page: number;
-  };
-}
+import { DtoIdNombre } from '../../../models/common.model';
+import { ModelDtoNombre } from '../../../models/CaracteristicaBase.model';
 
 @Component({
   selector: 'page-Expediente-list',
   templateUrl: './list.html',
   styleUrls: ['./list.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpedienteListComponent implements OnInit {
-  @ViewChild('actionTpl') actionTpl!: TemplateRef<any>;
-  @ViewChild('tplNoExp') tplNoExp!: TemplateRef<any>;
-  @ViewChild('tplFechaAlta') tplFechaAlta!: TemplateRef<any>;
-
-  formGroupFilter: FormGroup = this.fb.group({
-    noExpediente: [''],
-    refExterna: [''],
-    deudor: [''],
-  });
+  formGroupFilter: FormGroup = this.fb.group({});
   expedienteSearch: ExpedienteSearch = new ExpedienteSearch();
-  configuration = { ...DefaultConfig };
-  public columns = [
-    { key: 'noExpediente', title: 'No Exp.', cellTemplate: this.tplNoExp },
-    { key: 'referenciaExterna', title: 'Ref.Externa' },
-    { key: 'clienteOficina', title: 'Oficina' },
-    { key: 'tipoExpediente', title: 'Tipo' },
-    { key: 'fechaAlta', title: 'F.Alta', cellTemplate: this.tplFechaAlta },
-    {
-      key: 'idExpediente',
-      title: '',
-      cellTemplate: this.actionTpl,
-      orderEnabled: false,
-      searchEnabled: false,
-    },
-  ];
 
-  //public data: Expediente[] = [];
-  public data = new Array<ModelExpediente>();
-  public pagination = {
-    limit: 10,
-    offset: 1,
-    count: -1,
-  };
+  oficinas = new Array<ModelDtoNombre>();
+  carteras = new Array<ModelDtoNombre>();
+  procuradores = new Array<ModelDtoNombre>();
+  tipoExpediente = new Array<ModelDtoNombre>();
+  tipoArea = new Array<ModelDtoNombre>();
 
   constructor(
     private api: ApiService,
     private dialogService: DialogService,
     private notificationsService: NotificationsService,
-    private cdr: ChangeDetectorRef,
     private fb: FormBuilder
   ) {
     this.createFormGroup();
   }
 
   ngOnInit(): void {
-    this.configuration = { ...DefaultConfig };
-    // this.configuration.searchEnabled = true;
-    this.configuration.paginationMaxSize = 10;
-
     this.getPaginatedData();
-    this.tableRefresh();
-    this.cdr.detectChanges();
+    this.loadDataAux();
+  }
+
+  async loadDataAux() {
+    this.oficinas = await this.api.nom.clienteOficinaGetAll();
+    this.procuradores = await this.api.nom.procuradorGetAll();
+    this.tipoExpediente = await this.api.nom.tipoExpedienteGetAll();
+    this.tipoArea = await this.api.nom.tipoAreaGetAll();
+    this.carteras = await this.api.nom.carteraGetAll();
   }
 
   createFormGroup() {
-    this.formGroupFilter = this.fb.group({
-      noExpediente: [''],
-      refExterna: [''],
-      deudor: [''],
-      idOficina: [''],
-      idCartera: [''],
-      idProcurador: [''],
-      idTipoExpediente: [''],
-      idTipoArea: [''],
-      paralizado: [''],
+    this.expedienteSearch = new ExpedienteSearch({
+      paginationFilter: new PaginationFilter(),
     });
+
+    this.formGroupFilter = this.fb.group({
+      code1: [''],
+      code2: [''],
+      code3: [''],
+      idTipo1: [],
+      idTipo2: [],
+      idTipo3: [],
+      idTipo4: [],
+      idTipo5: [],
+      isOnOff1: [],
+    });
+  }
+
+  goToPage(noPage: number) {
+    this.expedienteSearch.paginationFilter.pagination.pageNumber = noPage;
+    this.getPaginatedData();
   }
 
   async filtrar() {
     //console.log(this.formGroupFilter.getRawValue());
 
-    let paginationFilter = new PaginationFilter();
-    paginationFilter.pagination.pageNumber = 1;
-    paginationFilter.pagination.pageLimit = this.pagination.limit;
-    paginationFilter.filter.code1 =
-      this.formGroupFilter.controls['noExpediente'].value;
-    //debugger;
-    //console.log(paginationFilter.filter.code1);
+    this.expedienteSearch.paginationFilter.pagination.pageNumber = 1;
+    let filter = this.expedienteSearch.paginationFilter.filter;
+    filter.code1 = this.formGroupFilter.controls['code1'].value;
+    filter.code2 = this.formGroupFilter.controls['code2'].value;
+    filter.code3 = this.formGroupFilter.controls['code3'].value;
+    filter.idTipo1 = this.formGroupFilter.controls['idTipo1'].value;
+    filter.idTipo2 = this.formGroupFilter.controls['idTipo2'].value;
+    filter.idTipo3 = this.formGroupFilter.controls['idTipo3'].value;
+    filter.idTipo4 = this.formGroupFilter.controls['idTipo4'].value;
+    filter.idTipo5 = this.formGroupFilter.controls['idTipo5'].value;
+    filter.isOnOff1 = this.formGroupFilter.controls['isOnOff1'].value;
 
-    this.expedienteSearch = await this.api.srvApiExpediente.getPaginated(
-      paginationFilter
-    );
+    console.clear();
+    console.log(this.formGroupFilter.getRawValue());
 
-    this.tableRefresh();
-    this.configTableColumns();
-    this.cdr.detectChanges();
-  }
-  // public code1: string = '';
-  // public code2: string = '';
-  // public code3: string = '';
-
-  // public idTipo1?: number | null = null;
-  // public idTipo2?: number | null = null;
-  // public idTipo3?: number | null = null;
-
-  eventEmitted($event: { event: string; value: any }): void {
-    if ($event.event !== 'onClick') {
-      this.parseEvent($event);
-    }
-  }
-
-  private parseEvent(obj: EventObject): void {
-    this.pagination.limit = obj.value.limit
-      ? obj.value.limit
-      : this.pagination.limit;
-    this.pagination.offset = obj.value.page
-      ? obj.value.page
-      : this.pagination.offset;
-    this.pagination = { ...this.pagination };
-    // const params = `_limit=${this.pagination.limit}&_page=${this.pagination.offset}`; // see https://github.com/typicode/json-server
-    // this.getData(params);
     this.getPaginatedData();
   }
 
   async getPaginatedData() {
-    // this.expedienteSearch = await this.api.srvApiExpediente.get(
-    //   new ExpedienteSearch()
-    // );
-    let paginationFilter = new PaginationFilter();
-    paginationFilter.pagination.pageNumber = this.pagination.offset;
-    paginationFilter.pagination.pageLimit = this.pagination.limit;
-
+    console.clear();
+    console.log(this.expedienteSearch.paginationFilter);
     this.expedienteSearch = await this.api.srvApiExpediente.getPaginated(
-      paginationFilter
+      this.expedienteSearch.paginationFilter
     );
     console.log(this.expedienteSearch);
-    console.log(this.expedienteSearch.paginationFilter.pagination);
-
-    this.tableRefresh();
-    this.configTableColumns();
+    // console.log(this.expedienteSearch.paginationFilter.pagination);
   }
 
-  tableRefresh() {
-    this.pagination.count =
-      this.expedienteSearch.paginationFilter.pagination.totalElements;
-    this.data = this.expedienteSearch.result;
-    this.pagination.count =
-      this.expedienteSearch.paginationFilter.pagination.totalElements;
-  }
+  getPaginationBtnToShow() {
+    var result = new Array<PaginationPage>();
 
-  // /**
-  //  * Populate the table with new data based on the page number
-  //  * @param page The page to select
-  //  */
-  // async setPage(pageInfo: { offset: number }) {
-  //   this.page.pageNumber = pageInfo.offset;
+    let firstPage = new PaginationPage({
+      noPage: 1,
+      isEnabled:
+        this.expedienteSearch.paginationFilter.pagination.pageNumber != 1,
+    });
+    result.push(firstPage);
+    if (this.expedienteSearch.paginationFilter.pagination.totalPages > 1) {
+      for (let i = 2; i < 9; i++) {
+        if (this.expedienteSearch.paginationFilter.pagination.totalPages >= i) {
+          let newPage = new PaginationPage();
+          newPage.noPage = i;
+          newPage.isEnabled =
+            newPage.noPage !=
+            this.expedienteSearch.paginationFilter.pagination.pageNumber;
+          result.push(newPage);
+        }
+      }
+    }
+    if (this.expedienteSearch.paginationFilter.pagination.totalPages > 9) {
+      let lastPage = new PaginationPage({
+        noPage: this.expedienteSearch.paginationFilter.pagination.totalPages,
+        isEnabled:
+          this.expedienteSearch.paginationFilter.pagination.totalPages !=
+          this.expedienteSearch.paginationFilter.pagination.pageNumber,
+      });
+      result.push(lastPage);
+    }
 
-  //   let expSearch = new ExpedienteSearch();
-  //   expSearch.currentPage = pageInfo.offset;
-
-  //   // this.api.srvApiExpediente.getPaginated(expSearch).subscribe(pagedData => {
-  //   //   this.page = pagedData.page;
-  //   //   this.rows = pagedData.data;
-  //   // });
-
-  //   this.expedienteSearch = await this.api.srvApiExpediente.getPaginated(
-  //     expSearch
-  //   );
-  //   console.log(this.expedienteSearch);
-  //   this.data = this.expedienteSearch.result;
-  //   this.configTableColumns();
-  // }
-
-  configTableColumns() {
-    this.columns = [
-      { key: 'noExpediente', title: 'No Exp.', cellTemplate: this.tplNoExp },
-      { key: 'referenciaExterna', title: 'Ref.Externa' },
-      { key: 'clienteOficina', title: 'Oficina' },
-      { key: 'tipoExpediente', title: 'Tipo' },
-      { key: 'fechaAlta', title: 'F.Alta', cellTemplate: this.tplFechaAlta },
-      {
-        key: 'idExpediente',
-        title: '',
-        cellTemplate: this.actionTpl,
-        orderEnabled: false,
-        searchEnabled: false,
-      },
-    ];
+    return result;
   }
 
   remove(id: number): void {

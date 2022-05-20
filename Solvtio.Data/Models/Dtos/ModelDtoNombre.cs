@@ -1,12 +1,16 @@
 ﻿using Solvtio.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Data.Models.Dtos
 {
+    [NotMapped]
     public class ModelDtoNombre
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
     }
+
+    [NotMapped]
     public class DtoIdNombre
     {
         public DtoIdNombre() { }

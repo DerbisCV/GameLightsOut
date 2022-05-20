@@ -1,4 +1,5 @@
 // import { ApiService } from '../api.service';
+import { FilterBase } from '../../models/search/baseSearch.model';
 // import { EmployeeSearch } from '../../models/search/employeeSearch.model';
 // import { CommunitySearch, Employee, OfficeSearch } from 'src/models';
 // import * as _ from 'underscore';
@@ -11,6 +12,7 @@ import {
   ExpedienteEstadoDto,
   ExpedienteNotaDto,
   ExpedienteSearch,
+  KpiInfo,
   PaginationFilter,
 } from 'src/models';
 import { ApiService } from '../api.service';
@@ -35,9 +37,19 @@ export class ExpedienteApiService {
     if (paginationFilter.pagination.pageNumber === 0)
       paginationFilter.pagination.pageNumber = 1;
 
+    console.log(paginationFilter);
+
+    //$http.post("items/uploadItem", formData, {headers: { "Content-Type": undefined }})
+
     return new ExpedienteSearch(
       await this.api.post(`${this.pathApi}/GetWithPagination`, paginationFilter)
     );
+  }
+
+  public async getDashboardKpi(filter: FilterBase): Promise<KpiInfo[]> {
+    if (filter.idTipo1 === 0) filter.idTipo1 = 1;
+
+    return await this.api.post(`${this.pathApi}/GetDashboardKpi`, filter);
   }
 
   public async getById(id: string): Promise<Expediente> {
@@ -79,6 +91,14 @@ export class ExpedienteApiService {
   public async getNotas(idExpediente: number): Promise<ExpedienteNotaDto[]> {
     return await this.api.get(
       `${this.pathApi}/GetNotas?idExpediente=${idExpediente}`
+    );
+  }
+
+  public async getNotasByEstado(
+    idExpedienteEstado: number
+  ): Promise<ExpedienteNotaDto[]> {
+    return await this.api.get(
+      `${this.pathApi}/GetExpedienteNotaByEstado?idExpedienteEstado=${idExpedienteEstado}`
     );
   }
 
@@ -148,6 +168,46 @@ export class ExpedienteApiService {
   public async deudorDelete(id: number) {
     return this.api.delete(
       `${this.pathApi}/DeudorDelete?idExpedienteDeudor=${id}`
+    );
+  }
+
+  public async getEstados(
+    idExpediente: number
+  ): Promise<ExpedienteEstadoDto[]> {
+    return await this.api.get(
+      `${this.pathApi}/GetEstados?idExpediente=${idExpediente}`
+    );
+  }
+
+  public async getEstadoById(
+    idExpedienteEstado: number
+  ): Promise<ExpedienteEstadoDto> {
+    if (idExpedienteEstado == 0) return new ExpedienteEstadoDto();
+
+    const item: ExpedienteEstadoDto = await this.api.get(
+      `${this.pathApi}/EstadoGetById?idExpedienteEstado=${idExpedienteEstado}`
+    );
+    return new ExpedienteEstadoDto(item);
+  }
+
+  public async estadoAdd(idExpediente: number, item: ExpedienteEstadoDto) {
+    item.idExpediente = idExpediente;
+    return this.api.post<ExpedienteEstadoDto>(
+      `${this.pathApi}/EstadoAdd`,
+      item
+    );
+  }
+
+  public async estadoDelete(id: number) {
+    return this.api.delete(
+      `${this.pathApi}/EstadoDelete?idExpedienteEstado=${id}`
+    );
+  }
+
+  public async estadoUdpate(item: ExpedienteEstadoDto) {
+    return this.api.put<ExpedienteEstadoDto>(
+      `${this.pathApi}/EstadoUpdate`,
+      item
     );
   }
 }

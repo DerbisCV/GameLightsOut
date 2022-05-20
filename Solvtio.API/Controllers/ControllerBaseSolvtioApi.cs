@@ -15,9 +15,17 @@ namespace Solvtio.API.Controllers
 
         internal string LogError(Exception ex, string headMessage = "Something went wrong: ")
         {
-            var msg = $"{headMessage}{ex.Message}";
+            var msg = $"{headMessage}{GetErrorMessageFull(ex)}";
             _logger.LogError(msg);
             return msg;
+        }
+
+        private object GetErrorMessageFull(Exception ex)
+        {
+            if (ex == null) return null;
+            if (ex.InnerException == null) return ex.Message;
+
+            return $"{ex.Message} | (InnerException => {ex.InnerException.Message})" ;
         }
 
         public string UserIdentityName => User?.Identity?.Name;
