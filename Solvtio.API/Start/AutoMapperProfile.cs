@@ -10,7 +10,8 @@ namespace Solvtio.API.Start
         {
             CreateMap<Hip_Expediente, ExpedienteHipDto>().ReverseMap();
             CreateMap<ExpedienteNota, ExpedienteNotaDto>().ReverseMap();
-            //CreateMap<ExpedienteDeudor, ExpedienteDeudorDto>().ReverseMap();
+            CreateMap<Alq_Expediente, AlqExpedienteDto>().ReverseMap();
+
             CreateMap<ExpedienteDeudor, ExpedienteDeudorDto>()
                 .ForMember(dest => dest.Persona, opt => opt.MapFrom(src => src.Gnr_Persona));
             CreateMap<Gnr_Persona, PersonaDto>().ReverseMap();
@@ -33,6 +34,7 @@ namespace Solvtio.API.Start
             CreateMap<Gnr_TipoExpediente, ModelDtoNombre>();
             CreateMap<Gnr_TipoArea, ModelDtoNombre>();
 
+            
             //public async Task<ExpedienteEstadoDto> GetEstadoActual(int idExpediente) 
             //{
             //    var idEstadoLast = _solvtioDbContext.ExpedienteSet.First(x => x.IdExpediente == idExpediente)?.IdEstadoLast;

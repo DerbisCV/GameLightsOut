@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Solvtio.Data.Contracts;
 using Solvtio.Models;
@@ -13,11 +14,13 @@ namespace Solvtio.API.Controllers
     [ApiController]
     public class AlquilerController : ControllerBaseSolvtioApi
     {
-        //private readonly IAlquilerRepository _repository;
-        private readonly ICaracteristicaBaseRepository _repository;
+        private readonly IMapper _mapper;
+        private readonly IAlquilerRepository _repository;
+        //private readonly ICaracteristicaBaseRepository _repository;
 
-        public AlquilerController(ILogger<AlquilerController> logger, ICaracteristicaBaseRepository repository) : base(logger)
+        public AlquilerController(IMapper mapper, ILogger<AlquilerController> logger, IAlquilerRepository repository) : base(logger)
         {
+            _mapper = mapper;
             _repository = repository;
         }
 
@@ -52,13 +55,13 @@ namespace Solvtio.API.Controllers
         //}
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Alq_Expediente>> Get(int id)
+        public async Task<ActionResult<AlqExpedienteDto>> Get(int id)
         {
             try
             {
                 var model = await _repository.Get(id);
                 if (model == null) return NotFound();
-                return Ok(model);
+                return Ok(_mapper.Map<AlqExpedienteDto>(model));
             }
             catch (Exception ex)
             {
@@ -83,12 +86,12 @@ namespace Solvtio.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Alq_Expediente model)
+        public IActionResult Update(int id, AlqExpedienteDto model)
         {
             try
             {
                 model.IdExpediente = id;
-                //_repository.Update(model);
+                _repository.Update(model);
                 return Ok();
             }
             catch (Exception ex)

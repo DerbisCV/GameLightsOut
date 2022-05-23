@@ -1,15 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Solvtio.Data.Common;
 using Solvtio.Data.Contracts;
+using Solvtio.Data.Models.Dtos;
 using Solvtio.Models;
-using Solvtio.Models;
+using Solvtio.Models.Common;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using Solvtio.Data.Common;
-using Solvtio.Data.Models.Dtos;
-using System.Collections.Generic;
-using System;
-using Solvtio.Models.Common;
 
 namespace Solvtio.Data.Implementations
 {
@@ -239,7 +238,7 @@ namespace Solvtio.Data.Implementations
             var lstExpedientesParalizado = db.Gnr_TipoEstado.Where(x => x.Paralizado).Select(x => x.IdTipoEstado);
             var lstExpedientesFinalizado = db.Gnr_TipoEstado.Where(x => x.Fin).Select(x => x.IdTipoEstado);
 
-            var queryBase = db.Expedientes.Include(x => x.Gnr_ClienteOficina).AsNoTracking();
+            var queryBase = db.ExpedienteSet.Include(x => x.Gnr_ClienteOficina).AsNoTracking();
             var queryBaseInmueble = db.Hip_Inmueble.Include(x => x.Hip_TipoInmueble).AsNoTracking();
 
             if (quitarLosResultadosConGestionReciente) //Sin Gestion Reciente
@@ -476,7 +475,7 @@ namespace Solvtio.Data.Implementations
 
             #endregion
 
-            if (queryBase == null) queryBase = db.Expedientes.Include(x => x.Gnr_ClienteOficina);
+            if (queryBase == null) queryBase = db.ExpedienteSet.Include(x => x.Gnr_ClienteOficina);
 
             if (!tipoIndicadorQa.EsDeNegociacion())
                 queryBase = queryBase.Where(x => !x.Paralizado);

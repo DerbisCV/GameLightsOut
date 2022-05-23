@@ -1,0 +1,235 @@
+<ng-container *ngIf="formData">
+    <form [formGroup]="formData">
+
+
+        <div class="row pt-4">
+            <div class="col-12">
+                <tabset>
+                    <tab heading="Datos Alquiler" id="tabDatosAlq">
+                        <div class="tab-body">
+                            <div class="row">
+                                <div class="col-auto col-4">
+                                    <label for="referenciaExternaMACRO" class="form-label">MACRO Antigua:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="referenciaExternaMACRO">
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="referenciaExternaMSGI" class="form-label">Identif. Cliente:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="referenciaExternaMSGI">
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="idAlqContrato" class="form-label">Id Contrato:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="idAlqContrato">
+                                </div>
+
+                                <div class="col-auto col-3">
+                                    <label for="segmento" class="form-label">Segmento:</label>
+                                    <select formControlName="segmento" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="deudaInicial" class="form-label">Deuda Inicial:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="deudaInicial">
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="deudaPendiente" class="form-label">Deuda Pendiente:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="deudaPendiente">
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="tipoProcedimiento" class="form-label">Tipo Procedimiento:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="tipoProcedimiento">
+                                </div>
+
+                                <div class="col-auto col-4">
+                                    <label for="deudaRecuperada" class="form-label">Deuda Recuperada:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="deudaRecuperada">
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="promocionNo" class="form-label">Nº Promoción:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="promocionNo">
+                                </div>
+                                <div class="col-auto col-5">
+                                    <label for="promocionNombre" class="form-label">Nombre Promoción:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="promocionNombre">
+                                </div>
+
+                                <div class="col-auto col-3">
+                                    <label for="fianza" class="form-label">Fianza:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="fianza">
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="garantiaAdicional" class="form-label">Garantía:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="garantiaAdicional">
+                                </div>
+                                <div class="col-auto col-6">
+                                    <label for="idAbogadoZona" class="form-label">Abogado Zona:</label>
+                                    <select formControlName="idAbogadoZona" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+
+
+                                <div class="col-auto col-2">
+                                    <label for="fechaEnvioBurofax" class="form-label">F.Burofax Envío:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="fechaEnvioBurofax" />
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="fechaRecepcionBurofax" class="form-label">F.Burofax Recep.:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="fechaRecepcionBurofax" />
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="recepcionBurofaxMotivo" class="form-label">Est. R. Burofax:</label>
+                                    <select formControlName="recepcionBurofaxMotivo" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-auto col-5">
+                                    <label for="idTipoEstadoCliente" class="form-label">Estado Cliente:</label>
+                                    <select formControlName="idTipoEstadoCliente" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+
+
+                                <div class="col-auto col-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="derivadoDepartamentoConcursal">
+                                        <label class="form-check-label" for="derivadoDepartamentoConcursal">Solicitada
+                                            venia</label>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="serviciosSociales">
+                                        <label class="form-check-label" for="serviciosSociales">Servicios
+                                            Sociales</label>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="tomadaPosesion">
+                                        <label class="form-check-label" for="tomadaPosesion">Tomada Posesión</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Sucesión">
+                        <div class="tab-body">
+                            <div class="row">
+                                <div class="col-auto col-3">
+                                    <label for="sucesionPresentada" class="form-label">Sucesión Presentada:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="sucesionPresentada" />
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="sucesionCopiaSellada" class="form-label">Copia Sellada:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="sucesionCopiaSellada" />
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="sucesionAcordada" class="form-label">Sucesión Acordada:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="sucesionAcordada" />
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="sucesionDenegada" class="form-label">Sucesión Denegada:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="sucesionDenegada" />
+                                </div>
+
+                                <div class="col-auto col-5">
+                                    <label for="idSucesionCausaIncidencia" class="form-label">Causa de
+                                        Incidencia:</label>
+                                    <select formControlName="idSucesionCausaIncidencia" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-auto col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="sucesionOposicion">
+                                        <label class="form-check-label" for="sucesionOposicion">Oposición</label>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="sucesionRecurrida" class="form-label">Sucesión Recurrida:</label>
+                                    <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="sucesionRecurrida" />
+                                </div>
+                                <div class="col-auto col-2">
+                                    <label for="sucesionResultadoRecuso" class="form-label">Resultado Recuso:</label>
+                                    <select formControlName="sucesionResultadoRecuso" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-auto col-3">
+                                    <label for="idSucesionEstadoProcesalCliente" class="form-label">Estado
+                                        Cliente:</label>
+                                    <select formControlName="idSucesionEstadoProcesalCliente" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-auto col-3">
+                                    <label for="idSucesionProblemasDetalles" class="form-label">Problemas
+                                        (detalles):</label>
+                                    <select formControlName="idSucesionProblemasDetalles" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Otros Datos">
+                        <div class="tab-body">
+                            <div class="row">
+                                <div class="col-auto col-8">
+                                    <label for="cedente" class="form-label">Cedente:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="cedente">
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="codigoActivoCedente" class="form-label">Cod. Act. Cedente:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="codigoActivoCedente">
+                                </div>
+
+                                <div class="col-auto col-6">
+                                    <label for="idTipoGarantiaAdicional" class="form-label">Tipo Garantia Adic.:</label>
+                                    <select formControlName="idTipoGarantiaAdicional" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-auto col-6">
+                                    <label for="idProcedimientoActual" class="form-label">Proced. Actual:</label>
+                                    <select formControlName="idProcedimientoActual" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-auto col-4">
+                                    <label for="idEstadoDemanda" class="form-label">Estado Demanda:</label>
+                                    <select formControlName="idEstadoDemanda" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option [ngValue]="null" disabled>Selecciona ...</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="importeCostas" class="form-label">Imp. Costas:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="importeCostas">
+                                </div>
+                                <div class="col-auto col-4">
+                                    <label for="importeCondonacion" class="form-label">Imp. Condonación:</label>
+                                    <input type="text" class="form-control" placeholder="" formControlName="importeCondonacion">
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </form>
+</ng-container>

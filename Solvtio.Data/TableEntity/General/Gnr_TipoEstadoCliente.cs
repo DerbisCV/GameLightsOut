@@ -12,6 +12,7 @@ namespace Solvtio.Models
         public int IdTipoEstadoCliente { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
+
         public virtual ICollection<Alq_Expediente> Alq_Expediente { get; set; }
     }
 }

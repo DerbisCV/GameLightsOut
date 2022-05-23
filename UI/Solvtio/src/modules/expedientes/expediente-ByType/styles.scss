@@ -1,0 +1,15 @@
+:host ::ng-deep #table {
+    font-family: var(--bs-body-font-family);
+}
+
+.tab-body {
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.form-check {
+    padding-top: 2rem;
+}

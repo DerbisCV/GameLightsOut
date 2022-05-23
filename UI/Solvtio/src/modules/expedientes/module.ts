@@ -18,6 +18,7 @@ import { ExpedienteAlquilerListComponent } from './pages/alquiler';
 import { ExpedienteHipotecarioListComponent } from './pages/hipotecario';
 import { ExpedienteDataHipotecarioComponent } from './expediente-ByType/expHipotecario';
 import { ExpedienteDataPenalComponent } from './expediente-ByType/expPenal';
+import { ExpedienteDataAlquilerComponent } from './expediente-ByType/expAlquiler';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ExpedienteDataPenalComponent } from './expediente-ByType/expPenal';
     ExpedienteHipotecarioListComponent,
     ExpedienteDataHipotecarioComponent,
     ExpedienteDataPenalComponent,
+    ExpedienteDataAlquilerComponent,
   ],
   imports: [
     CommonModule,
@@ -60,6 +62,7 @@ import { ExpedienteDataPenalComponent } from './expediente-ByType/expPenal';
     ExpedienteHipotecarioListComponent,
     ExpedienteDataHipotecarioComponent,
     ExpedienteDataPenalComponent,
+    ExpedienteDataAlquilerComponent,
   ],
   providers: [],
 })

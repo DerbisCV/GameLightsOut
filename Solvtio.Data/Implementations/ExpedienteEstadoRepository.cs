@@ -83,7 +83,7 @@ namespace Solvtio.Data.Implementations
         {
             if (estado == null) return null;
 
-            var expediente = _context.Expedientes.FirstOrDefault(x => x.IdExpediente == estado.IdExpediente);
+            var expediente = _context.ExpedienteSet.FirstOrDefault(x => x.IdExpediente == estado.IdExpediente);
             if (expediente == null) return null;
 
             if (estado.Gnr_TipoEstado.Fin) expediente.Fin = estado.Fecha;

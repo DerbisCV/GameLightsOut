@@ -155,7 +155,7 @@ namespace Solvtio.Models
         public int IdTipoArea { get; set; }
         [Index]
         public int IdClienteOficina { get; set; }
-        
+
         public DateTime? FechaCierre { get; set; }
         public DateTime? Inicio { get; set; }
         public DateTime? Fin { get; set; }
@@ -418,8 +418,8 @@ namespace Solvtio.Models
         public int? IdAbogado { get; set; }
         [ForeignKey("IdAbogado")]
         public virtual Gnr_Abogado Gnr_Abogado { get; set; }
-        
-        
+
+
         [ForeignKey("IdClienteOficina")]
         public virtual Gnr_ClienteOficina Gnr_ClienteOficina { get; set; }
 
@@ -427,8 +427,8 @@ namespace Solvtio.Models
         public int? IdProcurador { get; set; }
         [ForeignKey("IdProcurador")]
         public virtual Gnr_Procurador Gnr_Procurador { get; set; }
-        
-        
+
+
         //public virtual Gnr_Valija Gnr_Valija { get; set; }
         [ForeignKey("IdPartidoJudicial")]
         public virtual PartidoJudicial Hip_PartidoJudicial { get; set; }
@@ -1484,6 +1484,20 @@ namespace Solvtio.Models
             ReferenciaExterna = model.ReferenciaExterna;
             Referencia2 = model.Referencia2;
             FechaCargaAppCliente = model.FechaCargaAppCliente?.Date;
+        }
+
+        public void RefreshBy(AlqExpedienteDto model)
+        {
+            SucesionPresentada = model.SucesionPresentada;
+            SucesionCopiaSellada = model.SucesionCopiaSellada;
+            SucesionAcordada = model.SucesionAcordada;
+            SucesionDenegada = model.SucesionDenegada;
+            IdSucesionCausaIncidencia = model.IdSucesionCausaIncidencia;
+            SucesionOposicion = model.SucesionOposicion;
+            SucesionRecurrida = model.SucesionRecurrida;
+            SucesionResultadoRecuso = model.SucesionResultadoRecuso;
+            IdSucesionEstadoProcesalCliente = model.IdSucesionEstadoProcesalCliente;
+            IdSucesionProblemasDetalles = model.IdSucesionProblemasDetalles;
         }
 
         public void RefreshBy(Expediente model)

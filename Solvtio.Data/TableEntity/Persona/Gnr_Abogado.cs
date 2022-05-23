@@ -11,7 +11,7 @@ namespace Solvtio.Models
         {
             Activo = true;
 
-            Alq_Expediente = new List<Alq_Expediente>();
+            //Alq_Expediente = new List<Alq_Expediente>();
             Alq_Expediente_EstadoTramitaJuzgado = new List<Alq_Expediente_EstadoTramitaJuzgado>();
             Expedientes = new List<Expediente>();
             Gnr_Cliente = new List<Gnr_Cliente>();
@@ -45,7 +45,7 @@ namespace Solvtio.Models
 
         #region One To Many
 
-        public virtual ICollection<Alq_Expediente> Alq_Expediente { get; set; }
+        //public virtual ICollection<Alq_Expediente> Alq_Expediente { get; set; }
         public virtual ICollection<Alq_Expediente_EstadoTramitaJuzgado> Alq_Expediente_EstadoTramitaJuzgado { get; set; }
         public virtual ICollection<Expediente> Expedientes { get; set; }
         public virtual ICollection<Gnr_Cliente> Gnr_Cliente { get; set; }

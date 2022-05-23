@@ -462,7 +462,7 @@ namespace Solvtio.Data
         public DbSet<AccionFlujo> AccionFlujoes { get; set; }
         public DbSet<AlertaDestinatario> AlertaDestinatarios { get; set; }
         public DbSet<AlertaSupervisor> AlertaSupervisors { get; set; }
-        public DbSet<Alq_Expediente> Alq_Expedientes { get; set; }
+        public DbSet<Alq_Expediente> AlqExpedienteSet { get; set; }
         public DbSet<Alq_Expediente_Contrato> Alq_Expediente_Contratos { get; set; }
         public DbSet<Alq_Expediente_Contratos_Deuda_Lineas> Alq_Expediente_Contratos_Deuda_Lineas { get; set; }
         public DbSet<Alq_Expediente_Contratos_PlanPagos_Lineas> Alq_Expediente_Contratos_PlanPagos_Lineas { get; set; }
@@ -487,7 +487,7 @@ namespace Solvtio.Data
         public DbSet<Configuracion> Configuracions { get; set; }
         public DbSet<Departamento> DepartamentoSet { get; set; }
 
-        public DbSet<Expediente> Expedientes { get; set; }
+        //public DbSet<Expediente> Expedientes { get; set; }
         public DbSet<ExpedienteAccion> ExpedienteAccions { get; set; }
         public DbSet<ExpedienteAcreedore> ExpedienteAcreedores { get; set; }
         public DbSet<ExpedienteAlerta> ExpedienteAlertas { get; set; }

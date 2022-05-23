@@ -5,11 +5,11 @@ using Solvtio.Models.Model;
 
 namespace Solvtio.Models
 {
-    public class Alq_Expediente : ExpedienteExt
-	{
-		#region Constructors
+    public class Alq_Expediente
+    {
+        #region Constructors
 
-		public Alq_Expediente()
+        public Alq_Expediente()
         {
             Alq_Expediente_Contratos = new List<Alq_Expediente_Contrato>();
             //Ejc_Expediente1 = new List<Ejc_Expediente>();
@@ -27,6 +27,8 @@ namespace Solvtio.Models
 
         #region Properties
 
+        public int Id => IdExpediente;
+
         public int IdExpediente { get; set; }
         [ForeignKey("IdExpediente")]
         public virtual Expediente Expediente { get; set; }
@@ -42,6 +44,7 @@ namespace Solvtio.Models
         public DateTime? FechaEstadoActual { get; set; }
         public string NumAuto { get; set; }
         public int? IdAbogadoZona { get; set; }
+
         public string ObservacionesMigracion { get; set; }
         public bool EstaCompleto { get; set; }
         public DateTime? FechaEnvioBurofax { get; set; }
@@ -53,7 +56,6 @@ namespace Solvtio.Models
         public int? IdAlqContrato { get; set; }
         public string TipoProcedimiento { get; set; }
         public TipoSegmento? Segmento { get; set; }
-        public int? IdTipoEstadoCliente { get; set; }
         public string Cedente { get; set; }
         public string CodigoActivoCedente { get; set; }
         public decimal? ImporteCostas { get; set; }
@@ -80,12 +82,17 @@ namespace Solvtio.Models
         [ForeignKey("IdEstadoDemanda")]
         public virtual Gnr_ListasValores_Valores EstadoDemanda { get; set; }
 
+        public int? IdTipoEstadoCliente { get; set; }
+        [ForeignKey("IdTipoEstadoCliente")]
+        public virtual Gnr_TipoEstadoCliente Gnr_TipoEstadoCliente { get; set; }
+
         public bool DerivadoDepartamentoConcursal { get; set; }
         public bool ServiciosSociales { get; set; }
         public bool TomadaPosesion { get; set; }
 
-        public virtual Gnr_Abogado Gnr_Abogado { get; set; }
-        public virtual Gnr_TipoEstadoCliente Gnr_TipoEstadoCliente { get; set; }
+        //public virtual Gnr_Abogado Gnr_Abogado { get; set; }
+
+
 
         public int? IdExpedienteEjc { get; set; }
         //[ForeignKey("IdExpedienteEjc")]
@@ -163,5 +170,50 @@ namespace Solvtio.Models
             TomadaPosesion = modelBase.TomadaPosesion;
         }
 
+        internal void RefreshBy(AlqExpedienteDto model)
+        {
+            ReferenciaExternaMACRO = model.ReferenciaExternaMACRO;
+            ReferenciaExternaMSGI = model.ReferenciaExternaMSGI;
+            IdAlqContrato = model.IdAlqContrato;
+            Segmento = model.Segmento;
+            DeudaInicial = model.DeudaInicial;
+            DeudaPendiente = model.DeudaPendiente;
+            TipoProcedimiento = model.TipoProcedimiento;
+            DeudaRecuperada = model.DeudaRecuperada;
+            PromocionNo = model.PromocionNo;
+            PromocionNombre = model.PromocionNombre;
+            Fianza = model.Fianza;
+            GarantiaAdicional = model.GarantiaAdicional;
+            IdAbogadoZona = model.IdAbogadoZona;
+            FechaEnvioBurofax = model.FechaEnvioBurofax;
+            FechaRecepcionBurofax = model.FechaRecepcionBurofax;
+            RecepcionBurofaxMotivo = model.RecepcionBurofaxMotivo;
+            IdTipoEstadoCliente = model.IdTipoEstadoCliente;
+            DerivadoDepartamentoConcursal = model.DerivadoDepartamentoConcursal;
+            ServiciosSociales = model.ServiciosSociales;
+            TomadaPosesion = model.TomadaPosesion;
+
+            Cedente = model.Cedente;
+            CodigoActivoCedente = model.CodigoActivoCedente;
+            IdTipoGarantiaAdicional = model.IdTipoGarantiaAdicional;
+            IdProcedimientoActual = model.IdProcedimientoActual;
+            IdEstadoDemanda = model.IdEstadoDemanda;
+            ImporteCostas = model.ImporteCostas;
+            ImporteCondonacion = model.ImporteCondonacion;
+
+            if (Expediente != null)
+            {
+                Expediente.SucesionPresentada = model.SucesionPresentada;
+                Expediente.SucesionCopiaSellada = model.SucesionCopiaSellada;
+                Expediente.SucesionAcordada = model.SucesionAcordada;
+                Expediente.SucesionDenegada = model.SucesionDenegada;
+                Expediente.IdSucesionCausaIncidencia = model.IdSucesionCausaIncidencia;
+                Expediente.SucesionOposicion = model.SucesionOposicion;
+                Expediente.SucesionRecurrida = model.SucesionRecurrida;
+                Expediente.SucesionResultadoRecuso = model.SucesionResultadoRecuso;
+                Expediente.IdSucesionEstadoProcesalCliente = model.IdSucesionEstadoProcesalCliente;
+                Expediente.IdSucesionProblemasDetalles = model.IdSucesionProblemasDetalles;            
+            }
+        }
     }
 }

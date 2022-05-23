@@ -253,12 +253,16 @@
                         </div>
                     </div>
 
+                    <expediente-data-hipotecario *ngIf="expediente.idTipoExpediente == 1" [idExpediente]="expediente.idExpediente"></expediente-data-hipotecario>
 
-                    <expediente-data-hipotecario [idExpediente]="expediente.idExpediente"></expediente-data-hipotecario>
+                    <expediente-data-alquiler *ngIf="expediente.idTipoExpediente == 5" [idExpediente]="expediente.idExpediente" [events]="eventsSubject.asObservable()">
+                    </expediente-data-alquiler>
 
+                    <!-- 
+                    <child > </child>   
+                     -->
 
-
-
+                    <!-- <pre>{{ expediente | json }}</pre> -->
                     <!--  <hr>  <expediente-nota-list [idExpediente]="expediente.idExpediente"></expediente-nota-list> -->
 
                 </div>

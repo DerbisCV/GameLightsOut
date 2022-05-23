@@ -9,11 +9,11 @@ namespace Solvtio.Data.Implementations
 {
     public class AlquilerRepository : GenericRepository<Alq_Expediente>, IAlquilerRepository
     {
-        //private readonly SolvtioDbContext _solvtioDbContext;
+        private readonly SolvtioDbContext _solvtioDbContext;
 
         public AlquilerRepository(SolvtioDbContext solvtioDbContext) : base(solvtioDbContext)
         {
-            //_context = solvtioDbContext;
+            _solvtioDbContext = solvtioDbContext;
         }
 
         public async Task<IEnumerable<Alq_Expediente>> GetWithPagination(PaginationFilter paginationFilter)
@@ -24,6 +24,31 @@ namespace Solvtio.Data.Implementations
                 .Take(paginationFilter.Pagination.PageLimit);
 
             return await result.ToListAsync();
+        }
+
+        public async Task<string> Update(AlqExpedienteDto model)
+        {
+            try
+            {
+                var entity = _dbSet
+                    .Include(x => x.Expediente)
+                    .FirstOrDefault(x => x.IdExpediente == model.IdExpediente);
+                if (entity == null) throw new System.Exception("No se encontró el expediente");
+
+                entity.RefreshBy(model);
+                _context.SaveChanges();
+
+                //var expediente = await _solvtioDbContext.ExpedienteSet
+                //    .FirstOrDefaultAsync(x => x.IdExpediente == model.IdExpediente);
+                //entity.Expediente.RefreshBy(model);
+                //_context.SaveChanges();
+
+                return string.Empty;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         //public void Add(Expediente entity)

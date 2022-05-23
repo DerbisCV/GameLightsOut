@@ -3,6 +3,7 @@ import {
   ElementRef,
   OnInit,
   TemplateRef,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,6 +20,8 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ExpedienteNotaItemComponent } from 'src/modules/components/expedienteNota/item';
+import { ExpedienteDataAlquilerComponent } from '../expediente-ByType/expAlquiler';
+import { Subject } from 'rxjs';
 defineLocale('es', deLocale);
 
 // import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -27,9 +30,23 @@ defineLocale('es', deLocale);
   selector: 'page-expediente-list',
   templateUrl: './item.html',
   encapsulation: ViewEncapsulation.None,
+  // directives: [ExpedienteDataAlquilerComponent]
   // providers: [DatePipe]
 })
 export class ExpedienteItemComponent implements OnInit {
+  // @ViewChild(ExpedienteDataAlquilerComponent, { static: true })
+  // private componentExpAlq: ExpedienteDataAlquilerComponent;
+
+  // @ViewChild(ExpedienteDataAlquilerComponent)
+  // componentExpAlq: ExpedienteDataAlquilerComponent;
+
+  // @ViewChild('childComponent', {static: false}) componentExpAlq: ExpedienteDataAlquilerComponent;
+
+  eventsSubject: Subject<void> = new Subject<void>();
+  emitEventToChild() {
+    this.eventsSubject.next();
+  }
+
   idExpediente: number = 0;
   expediente = new Expediente();
   formData!: FormGroup;
@@ -151,6 +168,9 @@ export class ExpedienteItemComponent implements OnInit {
           'Ha ocurrido un error, los datos no han podido ser guardados.'
         )
       );
+
+    // this.componentExpAlq.save();
+    this.eventsSubject.next();
   }
 
   savedSuccessfull() {

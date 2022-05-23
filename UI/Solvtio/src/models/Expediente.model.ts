@@ -136,3 +136,70 @@ export class EstadoDtoMin {
 function assignDate(obj: Date | null, objWithVal: Date | null | undefined) {
   obj = !!objWithVal ? new Date(objWithVal) : null;
 }
+
+export class AlqExpedienteDto {
+  idExpediente: number = 0;
+  referenciaExternaMACRO: string = '';
+  referenciaExternaMSGI: string = '';
+  referencia2: string = '';
+  referenciaJudicial: string = '';
+  clienteOficina: string = '';
+  numAuto: string = '';
+  observacionesMigracion: string = '';
+  tipoProcedimiento: string = '';
+  cedente: string = '';
+  codigoActivoCedente: string = '';
+  promocionNo: string = '';
+  promocionNombre: string = '';
+
+  segmento: number = 0;
+  deudaInicial?: number;
+  deudaPendiente?: number;
+  deudaRecuperada?: number;
+  fianza?: number;
+  garantiaAdicional?: number;
+  importeCostas?: number;
+  importeCondonacion?: number;
+
+  fechaEstadoActual!: Date | null;
+  fechaEnvioBurofax!: Date | null;
+  fechaRecepcionBurofax!: Date | null;
+
+  idAbogadoZona?: number;
+  idAlqContrato?: number;
+  idAccionPropuesta?: number;
+  idTipoGarantiaAdicional?: number;
+  idProcedimientoActual?: number;
+  idEstadoDemanda?: number;
+  idExpedienteEjc?: number;
+  idExpedientePadre?: number;
+  idTipoEstadoCliente?: number;
+
+  tipoRecepcionBurofaxMotivo?: number;
+
+  estaCompleto: boolean = false;
+  derivadoDepartamentoConcursal: boolean = false;
+  serviciosSociales: boolean = false;
+  tomadaPosesion: boolean = false;
+
+  sucesionPresentada!: Date | null;
+  sucesionAcordada!: Date | null;
+  sucesionCopiaSellada!: Date | null;
+  sucesionDenegada!: Date | null;
+  sucesionRecurrida!: Date | null;
+  sucesionOposicion: boolean = false;
+  sucesionResultadoRecuso?: number;
+  idSucesionCausaIncidencia?: number;
+  idSucesionEstadoProcesalCliente?: number;
+  idSucesionProblemasDetalles?: number;
+
+  constructor(item?: Partial<AlqExpedienteDto>) {
+    if (!!item) {
+      Object.assign(this, item);
+
+      assignDate(this.fechaEstadoActual, item.fechaEstadoActual);
+      assignDate(this.fechaEnvioBurofax, item.fechaEnvioBurofax);
+      assignDate(this.fechaRecepcionBurofax, item.fechaRecepcionBurofax);
+    }
+  }
+}
