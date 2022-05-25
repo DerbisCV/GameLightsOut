@@ -25,24 +25,29 @@
                                     <label for="segmento" class="form-label">Segmento:</label>
                                     <select formControlName="segmento" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Selecciona ...</option>
-
+                                        <option *ngFor="let item of tipoSegmentos" [ngValue]="item.id">{{item.nombre}}
+                                        </option>
                                     </select>
                                 </div>
+
                                 <div class="col-auto col-3">
                                     <label for="deudaInicial" class="form-label">Deuda Inicial:</label>
                                     <input type="text" class="form-control" placeholder="" formControlName="deudaInicial">
                                 </div>
                                 <div class="col-auto col-3">
-                                    <label for="deudaPendiente" class="form-label">Deuda Pendiente:</label>
+                                    <label for="deudaPendiente" class="form-label">Deuda
+                                        Pendiente:</label>
                                     <input type="text" class="form-control" placeholder="" formControlName="deudaPendiente">
                                 </div>
                                 <div class="col-auto col-3">
-                                    <label for="tipoProcedimiento" class="form-label">Tipo Procedimiento:</label>
+                                    <label for="tipoProcedimiento" class="form-label">Tipo
+                                        Procedimiento:</label>
                                     <input type="text" class="form-control" placeholder="" formControlName="tipoProcedimiento">
                                 </div>
 
                                 <div class="col-auto col-4">
-                                    <label for="deudaRecuperada" class="form-label">Deuda Recuperada:</label>
+                                    <label for="deudaRecuperada" class="form-label">Deuda
+                                        Recuperada:</label>
                                     <input type="text" class="form-control" placeholder="" formControlName="deudaRecuperada">
                                 </div>
                                 <div class="col-auto col-3">
@@ -50,7 +55,8 @@
                                     <input type="text" class="form-control" placeholder="" formControlName="promocionNo">
                                 </div>
                                 <div class="col-auto col-5">
-                                    <label for="promocionNombre" class="form-label">Nombre Promoción:</label>
+                                    <label for="promocionNombre" class="form-label">Nombre
+                                        Promoción:</label>
                                     <input type="text" class="form-control" placeholder="" formControlName="promocionNombre">
                                 </div>
 
@@ -66,13 +72,14 @@
                                     <label for="idAbogadoZona" class="form-label">Abogado Zona:</label>
                                     <select formControlName="idAbogadoZona" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Selecciona ...</option>
-
+                                        <option *ngFor="let item of abogados" [ngValue]="item.id">{{item.nombre}}
+                                        </option>
                                     </select>
                                 </div>
 
-
                                 <div class="col-auto col-2">
-                                    <label for="fechaEnvioBurofax" class="form-label">F.Burofax Envío:</label>
+                                    <label for="fechaEnvioBurofax" class="form-label">F.Burofax
+                                        Envío:</label>
                                     <input type="text" class="form-control mb-3" placeholder="fecha..." bsDatepicker formControlName="fechaEnvioBurofax" />
                                 </div>
                                 <div class="col-auto col-2">
@@ -83,17 +90,19 @@
                                     <label for="recepcionBurofaxMotivo" class="form-label">Est. R. Burofax:</label>
                                     <select formControlName="recepcionBurofaxMotivo" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Selecciona ...</option>
-
+                                        <option *ngFor="let item of tipoRecepcionBurofaxMotivos" [ngValue]="item.id">
+                                            {{item.nombre}}
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="col-auto col-5">
                                     <label for="idTipoEstadoCliente" class="form-label">Estado Cliente:</label>
                                     <select formControlName="idTipoEstadoCliente" class="form-select form-select-sm" aria-label=".form-select-sm example">
                                         <option [ngValue]="null" disabled>Selecciona ...</option>
-
+                                        <option *ngFor="let item of tipoEstadoClientes" [ngValue]="item.id">
+                                            {{item.nombre}}</option>
                                     </select>
                                 </div>
-
 
                                 <div class="col-auto col-3">
                                     <div class="form-check">
@@ -112,7 +121,8 @@
                                 <div class="col-auto col-3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" formControlName="tomadaPosesion">
-                                        <label class="form-check-label" for="tomadaPosesion">Tomada Posesión</label>
+                                        <label class="form-check-label" for="tomadaPosesion">Tomada
+                                            Posesión</label>
                                     </div>
                                 </div>
                             </div>

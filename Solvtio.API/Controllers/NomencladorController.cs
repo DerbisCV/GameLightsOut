@@ -413,11 +413,57 @@ namespace Solvtio.API.Controllers
             }
         }
 
+        [HttpGet("TipoSegmentoGetAll")]
+        public ActionResult<List<ModelDtoNombre>> TipoSegmentoGetAll()
+        {
+            try
+            {
+                var lstAll = TipoSegmento.Retail.ToEnumList<TipoSegmento>()
+                    .Select(x => new ModelDtoNombre() { Id = (int)x, Nombre = x.GetDescription() })
+                    .ToList();
+                return Ok(lstAll);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside TipoNotaGetAll: ");
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet("TipoRecepcionBurofaxMotivoGetAll")]
+        public ActionResult<List<ModelDtoNombre>> TipoRecepcionBurofaxMotivoGetAll()
+        {
+            try
+            {
+                var lstAll = TipoRecepcionBurofaxMotivo.DejanAviso.ToEnumList<TipoRecepcionBurofaxMotivo>()
+                    .Select(x => new ModelDtoNombre() { Id = (int)x, Nombre = x.GetDescription() })
+                    .ToList();
+                return Ok(lstAll);
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside TipoNotaGetAll: ");
+                return StatusCode(500, error);
+            }
+        }
+
         #endregion
 
         #region Other
 
-
+        [HttpGet("TipoEstadoClienteGetAll")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> TipoEstadoClienteGetAll()
+        {
+            try
+            {
+                return Ok(await _nomencladorReadOnlyRepository.TipoEstadoClienteGetAll());
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside TipoEstadoClienteGetAll: ");
+                return StatusCode(500, error);
+            }
+        }
 
         #endregion
 

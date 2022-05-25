@@ -13,6 +13,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable, Subscription } from 'rxjs';
 import { AlqExpedienteDto } from '../../../models/Expediente.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModelDtoNombre } from 'src/models';
 
 @Component({
   selector: 'expediente-data-alquiler',
@@ -26,10 +27,10 @@ export class ExpedienteDataAlquilerComponent implements OnInit {
   data = new AlqExpedienteDto();
   formData!: FormGroup;
 
-  // dataRows = new Array<ExpedienteEstadoDto>();
-  // data = new Array<any>();
-  // modalRef?: BsModalRef;
-  // idToEdit: number = -1;
+  abogados = new Array<ModelDtoNombre>();
+  tipoSegmentos = new Array<ModelDtoNombre>();
+  tipoRecepcionBurofaxMotivos = new Array<ModelDtoNombre>();
+  tipoEstadoClientes = new Array<ModelDtoNombre>();
 
   constructor(
     private fb: FormBuilder,
@@ -63,8 +64,15 @@ export class ExpedienteDataAlquilerComponent implements OnInit {
 
     this.formData = this.fb.group(controlsConfig);
 
-    // console.log(this.expediente);
-    // console.log(this.formData);
+    this.loadDataAux();
+  }
+
+  async loadDataAux() {
+    this.abogados = await this.api.nom.abogadoGetAll();
+    this.tipoSegmentos = await this.api.nom.tipoSegmentoGetAll();
+    this.tipoRecepcionBurofaxMotivos =
+      await this.api.nom.tipoRecepcionBurofaxMotivoGetAll();
+    this.tipoEstadoClientes = await this.api.nom.tipoEstadoClienteGetAll();
   }
 
   save(): void {

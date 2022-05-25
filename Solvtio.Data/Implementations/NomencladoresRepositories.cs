@@ -117,6 +117,19 @@ namespace Solvtio.Data.Implementations
                 }).ToListAsync();
         }
 
+        public async Task<IList<ModelDtoNombre>> TipoEstadoClienteGetAll(bool soloActivos = true)
+        {
+            var query = _context.Gnr_TipoEstadoClienteSet.AsQueryable();
+            if (soloActivos) query = query.Where(x => x.Activo);
+
+            return await query.OrderBy(x => x.Descripcion)
+                .Select(x => new ModelDtoNombre
+                {
+                    Id = x.IdTipoEstadoCliente,
+                    Nombre = x.Descripcion,
+                }).ToListAsync();
+        }
+
         #region Provincia Municipio
 
         public async Task<IList<ModelDtoNombre>> GetProvincias()

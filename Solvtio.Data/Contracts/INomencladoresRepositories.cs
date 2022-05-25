@@ -13,6 +13,7 @@ namespace Solvtio.Data.Contracts
         Task<IList<ModelDtoNombre>> GetPartidoJudiciales();
         Task<IList<ModelDtoNombre>> GetCarteras();
         Task<IList<ModelDtoNombre>> TipoDeudorGetAll();
+        Task<IList<ModelDtoNombre>> TipoEstadoClienteGetAll(bool soloActivos = true);
 
         Task<IList<ModelDtoNombre>> GetProvincias();
         Task<IList<ModelDtoNombre>> GetMunicipiosByProvincia(int? idProvincia);

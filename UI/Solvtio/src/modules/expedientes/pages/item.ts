@@ -170,10 +170,10 @@ export class ExpedienteItemComponent implements OnInit {
       );
 
     // this.componentExpAlq.save();
-    this.eventsSubject.next();
   }
 
   savedSuccessfull() {
+    this.eventsSubject.next();
     this.notificationsService.success('', 'Datos guardados correctamente!');
     console.log('saveData OK');
 

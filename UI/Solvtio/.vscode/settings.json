@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["Caracteristica", "popperjs"]
+  "cSpell.words": ["Caracteristica", "popperjs"],
+  "prettier.printWidth": 180
 }

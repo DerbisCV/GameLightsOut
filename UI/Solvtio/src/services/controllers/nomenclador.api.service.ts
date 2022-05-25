@@ -94,6 +94,18 @@ export class NomencladorApiService {
     );
   }
 
+  public async tipoSegmentoGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(`${this.pathApi}/TipoSegmentoGetAll`);
+  }
+  public async tipoRecepcionBurofaxMotivoGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(
+      `${this.pathApi}/TipoRecepcionBurofaxMotivoGetAll`
+    );
+  }
+  public async tipoEstadoClienteGetAll(): Promise<ModelDtoNombre[]> {
+    return await this.api.get(`${this.pathApi}/TipoEstadoClienteGetAll`);
+  }
+
   public async get(
     search: CaracteristicaBaseSearch
   ): Promise<CaracteristicaBaseSearch> {
