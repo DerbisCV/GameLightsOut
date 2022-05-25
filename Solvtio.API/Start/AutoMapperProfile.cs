@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Solvtio.Data.Models.Dtos;
+using Solvtio.Data.Models.Estado;
+using Solvtio.Data.Models.Estado.Alquiler;
 using Solvtio.Models;
 
 namespace Solvtio.API.Start
@@ -11,6 +13,8 @@ namespace Solvtio.API.Start
             CreateMap<Hip_Expediente, ExpedienteHipDto>().ReverseMap();
             CreateMap<ExpedienteNota, ExpedienteNotaDto>().ReverseMap();
             CreateMap<Alq_Expediente, AlqExpedienteDto>().ReverseMap();
+
+            CreateMap<Alq_Expediente_EstadoFinalizacion, EstadoAlqFinalizacionDto>().ReverseMap();
 
             CreateMap<ExpedienteDeudor, ExpedienteDeudorDto>()
                 .ForMember(dest => dest.Persona, opt => opt.MapFrom(src => src.Gnr_Persona));
@@ -33,9 +37,11 @@ namespace Solvtio.API.Start
             CreateMap<Provincia, ModelDtoNombre>();
             CreateMap<Gnr_TipoExpediente, ModelDtoNombre>();
             CreateMap<Gnr_TipoArea, ModelDtoNombre>();
+            CreateMap<Gnr_TipoEstadoMotivo, ModelDtoNombre>();
 
-            
-            //public async Task<ExpedienteEstadoDto> GetEstadoActual(int idExpediente) 
+
+
+            //public async Task<ExpedienteEstadoDto> GetEstadoActual(int idExpediente)  
             //{
             //    var idEstadoLast = _solvtioDbContext.ExpedienteSet.First(x => x.IdExpediente == idExpediente)?.IdEstadoLast;
             //    if (!idEstadoLast.HasValue) throw new System.Exception("No se encontró el expediente o este no tiene estado");

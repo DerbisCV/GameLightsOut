@@ -1,8 +1,10 @@
+using Solvtio.Data.Models.Estado.Alquiler;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solvtio.Models
 {
-    public partial class Alq_Expediente_EstadoFinalizacion
+    public partial class Alq_Expediente_EstadoFinalizacion : EstadoAlqFinalizacionPoco
     {
         #region Properties
 
@@ -10,31 +12,32 @@ namespace Solvtio.Models
         [ForeignKey("IdExpedienteEstado")]
         public virtual ExpedienteEstado ExpedienteEstado { get; set; }
 
-        public bool PagoDeuda { get; set; }
-        public bool EntregaPosesion { get; set; }
-        public bool DesestimacionDemanda { get; set; }
-        
-        public bool Llaves { get; set; }
-        public bool EnervacionJudicial { get; set; }
-        public bool DesestimientoJudicial { get; set; }
-        public bool PorAcuerdo { get; set; }
-        public bool ParalizacionInstCliente { get; set; }
-        public bool Mediacion { get; set; }
-        public bool CondonacionSinProceso { get; set; }
-		public bool Facturable { get; set; }
-		public bool Precontencioso { get; set; }
-        public bool SentenciaEstimatoria { get; set; }
-
-        public bool Archivo { get; set; }
-        public bool ArchivoProvisional { get; set; }
-        public bool CesionVenia { get; set; }
-        //public bool? TomadaPosesion { get; set; }
-
         public int? IdMotivo { get; set; }
         [ForeignKey("IdMotivo")]
         public virtual Gnr_TipoEstadoMotivo Motivo { get; set; }
 
-
         #endregion
+
+        public void RefreshBy(EstadoAlqFinalizacionDto model)
+        {
+            IdMotivo = model.IdMotivo;
+            IdExpedienteEstado = model.IdExpedienteEstado;
+            PagoDeuda = model.PagoDeuda;
+            EntregaPosesion = model.EntregaPosesion;
+            DesestimacionDemanda = model.DesestimacionDemanda;
+            Llaves = model.Llaves;
+            EnervacionJudicial = model.EnervacionJudicial;
+            DesestimientoJudicial = model.DesestimientoJudicial;
+            PorAcuerdo = model.PorAcuerdo;
+            ParalizacionInstCliente = model.ParalizacionInstCliente;
+            Mediacion = model.Mediacion;
+            CondonacionSinProceso = model.CondonacionSinProceso;
+            Facturable = model.Facturable;
+            Precontencioso = model.Precontencioso;
+            SentenciaEstimatoria = model.SentenciaEstimatoria;
+            Archivo = model.Archivo;
+            ArchivoProvisional = model.ArchivoProvisional;
+            CesionVenia = model.CesionVenia;
+        }
     }
 }

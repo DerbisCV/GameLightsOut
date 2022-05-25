@@ -1,8 +1,9 @@
-﻿using Solvtio.Models;
+﻿using Solvtio.Data.Models.Dtos;
+using Solvtio.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Solvtio.Data.Models.Dtos
+namespace Solvtio.Data.Models.Estado
 {
     [NotMapped]
     public class EstadoDtoMin
@@ -11,7 +12,7 @@ namespace Solvtio.Data.Models.Dtos
         public EstadoDtoMin(ExpedienteEstado model)
         {
             if (model == null) return;
-            
+
             IdExpedienteEstado = model.ExpedienteEstadoId;
             Fecha = model.Fecha;
             Tipo = new DtoIdNombre(model.IdTipoEstado, model.Gnr_TipoEstado.Nombre);
@@ -75,4 +76,5 @@ namespace Solvtio.Data.Models.Dtos
         #endregion
 
     }
+
 }

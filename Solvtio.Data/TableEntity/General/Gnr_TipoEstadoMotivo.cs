@@ -26,6 +26,7 @@ namespace Solvtio.Models
         public virtual Gnr_TipoEstado Gnr_TipoEstado { get; set; }
 
         public int Id => IdMotivo;
+        public string Nombre => Descripcion;
 
         #endregion
 

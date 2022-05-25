@@ -342,8 +342,23 @@ namespace Solvtio.API.Controllers
                 return StatusCode(500, error);
             }
         }
-        //Task<List<TipoSubFaseEstado>> GetTipoSubFaseByEstado(ExpedienteEstadoTipo estadoTipo, bool soloActivos = true);
-        //Task<List<TipoIncidenciaEstado>> GetTipoIncidenciaByEstado(ExpedienteEstadoTipo estadoTipo, bool soloActivos = true);
+
+        [HttpGet("GetTipoEstadoMotivoByTipoEstado")]
+        public async Task<ActionResult<List<ModelDtoNombre>>> GetTipoEstadoMotivoByTipoEstado(ExpedienteEstadoTipo? estadoTipo)
+        {
+            if (!estadoTipo.HasValue) return Ok(new List<ModelDtoNombre>());
+
+            try
+            {
+                var result = await _nomencladorReadOnlyRepository.GetTipoEstadoMotivoByTipoEstado(estadoTipo.Value);
+                return Ok(_mapper.Map<List<DtoIdNombre>>(result));
+            }
+            catch (Exception ex)
+            {
+                var error = LogError(ex, "Something went wrong inside GetTipoEstadoMotivoByTipoEstado: ");
+                return StatusCode(500, error);
+            }
+        }
 
 
         [HttpGet("TipoDeudorGetAll")]

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Solvtio.Data.Contracts;
 using Solvtio.Data.Models.Dtos;
+using Solvtio.Data.Models.Estado;
 using Solvtio.Models;
 using Solvtio.Models.Common;
 using System;

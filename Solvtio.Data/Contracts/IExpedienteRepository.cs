@@ -1,5 +1,6 @@
 ﻿using Solvtio.Data.Common;
 using Solvtio.Data.Models.Dtos;
+using Solvtio.Data.Models.Estado;
 using Solvtio.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;

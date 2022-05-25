@@ -70,6 +70,14 @@ export class NomencladorApiService {
     );
   }
 
+  public async getTipoEstadoMotivoByTipoEstado(
+    estadoTipo: number
+  ): Promise<DtoIdNombre[]> {
+    return await this.api.get(
+      `${this.pathApi}/GetTipoEstadoMotivoByTipoEstado?estadoTipo=${estadoTipo}`
+    );
+  }
+
   public async tipoEstadoGetAllByExpediente(
     idExpediente: number
   ): Promise<ModelDtoNombre[]> {

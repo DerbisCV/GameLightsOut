@@ -21,10 +21,11 @@ namespace Solvtio.Data.Contracts
         Task<IList<ModelDtoNombre>> GetCaracteristicaBaseByGrupo(string grupo, bool soloActivos = false);
         Task<IList<ModelDtoNombre>> GetPagadoresPorOficina(int? idClienteOficina);
 
-        //
+        // 
         Task<IList<ModelDtoNombre>> TipoEstadoGetAllByExpediente(int? idExpediente);
         Task<List<TipoSubFaseEstado>> GetTipoSubFaseByEstado(ExpedienteEstadoTipo estadoTipo, bool soloActivos = true);
         Task<List<TipoIncidenciaEstado>> GetTipoIncidenciaByEstado(ExpedienteEstadoTipo estadoTipo, bool soloActivos = true);
+        Task<List<Gnr_TipoEstadoMotivo>> GetTipoEstadoMotivoByTipoEstado(ExpedienteEstadoTipo estadoTipo);
     }
 
     public interface IClienteOficinaRepository : IGenericRepository<Gnr_ClienteOficina>

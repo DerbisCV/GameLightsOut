@@ -1,5 +1,6 @@
 ﻿using Solvtio.Common;
 using Solvtio.Data.Models.Dtos;
+using Solvtio.Data.Models.Estado;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Solvtio.Data.Contracts;
 using Solvtio.Data.Models.Dtos;
+using Solvtio.Data.Models.Estado;
+using Solvtio.Data.Models.Estado.Alquiler;
 using Solvtio.Models;
 using System;
 using System.Collections.Generic;
@@ -57,6 +59,37 @@ namespace Solvtio.Data.Implementations
 
             ExpedienteUpdatedFromEstado(entity);
         }
+
+        #region Alquiler
+
+        public async Task<EstadoAlqFinalizacionDto> GetEstadoAlqFinalizacion(int idExpedienteEstado)
+        {
+            var entity = _context.Alq_Expediente_EstadoFinalizaciones
+                .FirstOrDefault(x => x.IdExpedienteEstado == idExpedienteEstado);
+
+            return _mapper.Map<EstadoAlqFinalizacionDto>(entity);
+        }
+
+        public async Task<string> Update(EstadoAlqFinalizacionDto model)
+        {
+            try
+            {
+                var entity = _context.Alq_Expediente_EstadoFinalizaciones
+                    .FirstOrDefault(x => x.IdExpedienteEstado == model.IdExpedienteEstado);
+                if (entity == null) throw new Exception($"El estado ({model.IdExpedienteEstado}) no existe.");
+
+                entity.RefreshBy(model);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return null;
+        }
+
+        #endregion
 
         internal void EstadoUpdate(ExpedienteEstado estado)
         {

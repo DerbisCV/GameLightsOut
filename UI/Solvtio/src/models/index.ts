@@ -19,3 +19,4 @@ export {
   ExpedienteNotaDto,
   ExpedienteDeudorDto,
 } from 'src/models/expedienteChildren/expChildren.model';
+export { EstadoAlqFinalizacionDto } from 'src/models/estado/EstadoAlqDto.model';

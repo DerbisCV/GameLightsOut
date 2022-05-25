@@ -19,6 +19,7 @@ import { NotificationsService } from 'src/services/notifications.service';
 import { ApiService } from '../../../services/api.service';
 import { DialogService } from '../../../services/dialog/dialog.service';
 import { DtoIdNombre, PersonaDto } from '../../../models/common.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'expediente-estado-ficha',
@@ -30,6 +31,11 @@ export class ExpedienteEstadoFichaComponent implements OnInit {
   @Input() idExpediente: number = 0;
 
   @Output() childChanged = new EventEmitter<string>();
+
+  eventsSubject: Subject<void> = new Subject<void>();
+  emitEventToChild() {
+    this.eventsSubject.next();
+  }
 
   estado = new ExpedienteEstadoDto();
   expediente = new Expediente();
@@ -149,6 +155,7 @@ export class ExpedienteEstadoFichaComponent implements OnInit {
 
   saveDataSuccessful() {
     this.notificationsService.success('', 'Datos guardados correctamente!');
+    this.eventsSubject.next();
     //this.childChanged.emit('');
   }
   saveDataError() {

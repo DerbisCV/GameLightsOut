@@ -1,0 +1,129 @@
+<ng-container *ngIf="formData">
+    <form [formGroup]="formData">
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Proceso Finalizado</h5>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto col-12">
+                        <label for="idMotivo" class="form-label">Motivo de Finalizacion:</label>
+                        <select formControlName="idMotivo" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option [ngValue]="null" disabled>Selecciona ...</option>
+                            <option *ngFor="let item of motivos" [ngValue]="item.id">{{item.nombre}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="enervacionJudicial">
+                            Enervación Judicial
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="pagoDeuda"> Pago Deuda
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="entregaPosesion"> Entrega
+                            Posesión
+                        </label>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="desestimacionDemanda">
+                            Inadmisión Demanda
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="desestimientoJudicial">
+                            Desestimación Judicial
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="porAcuerdo"> Por Acuerdo
+                        </label>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="llaves">
+                            Llaves
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="paralizacionInstCliente">
+                            Paralización Inst. Cliente
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="mediacion"> Mediación
+                        </label>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="condonacionSinProceso">
+                            Condonación sin
+                            proceso
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="facturable">
+                            Facturable
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="precontencioso">
+                            Precontencioso
+                        </label>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="sentenciaEstimatoria">
+                            Sentencia Estimatoria
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="archivo">
+                            Archivo
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="archivoProvisional">
+                            Archivo Provisional
+                        </label>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-sm-4">
+                        <label class="control-label">
+                            <input class="form-check-input" type="checkbox" formControlName="cesionVenia">
+                            Cesión Venia
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-container>

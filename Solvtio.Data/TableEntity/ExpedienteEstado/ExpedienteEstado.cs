@@ -1,4 +1,4 @@
-using Solvtio.Data.Models.Dtos;
+using Solvtio.Data.Models.Estado;
 using Solvtio.Models.Model;
 using System;
 using System.Collections.Generic;

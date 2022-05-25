@@ -75,19 +75,8 @@
 
                 </div>
                 <div class="col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Otros Datos</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-auto col-4">
-                                    <label for="fecha" class="form-label">Fecha:</label>
-                                    <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="fecha" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <estado-alquiler-finalizacion [idEstado]="estado.idExpedienteEstado" *ngIf="estado.idTipoEstado == 79" [events]="eventsSubject.asObservable()">
+                    </estado-alquiler-finalizacion>
                 </div>
             </div>
         </form>
